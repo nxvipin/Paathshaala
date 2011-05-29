@@ -1,47 +1,60 @@
 <?php
 /**
-* Content class.
-* All functions that deal with abstract content are packaged in this class. Any function handling abstarct content MUST be packaged here. 
+* Content class is the base class of various specific content classes (eg: video)
+* All functions that deal with abstract content are packaged in this class. Any function handling abstract content MUST be packaged here. 
 * Specific content must be packaged in its own class.
+* @author Vipin Nair <swvist@gmail.com>
+* @author Jaseem Abid <jaseemabid@gmail.com>
+* @copyright Copyright (c) 2011, Vipin Nair & Jaseem Abid
+* @license http://www.gnu.org/licenses/gpl.html GNU General Public License 
 * @package content
 */
 
+/**
+* Includes files for database connectivity.
+*/
 include_once 'database.php';
-class content
+
+/**
+* Content class. Defined as abstract and is a reference implementation for specific content classes.
+* @package content
+*/
+abstract class content
 {
-	protected $cid;
+	
+	protected $cid,$title,$desc,$timestamp,$uid,$status,$views;
 	
 	/**
-	* Constructor to initialize a content object.
-	* @param integer $cid Content ID with which the object is initialized
+	*  Abstarct function that MUST be implemented in subclasses to get specific content details.
 	*/
-	public function _construct($cid)
+	abstract protected function getDetails();
+	public function getContentId()
 	{
-		$this->cid=$cid;
+		return $this->cid;
 	}
-		
-	/**
-	* 
-	* @param
-	* @return
-	*/
-	
-	protected function getdetails()
-	
-	
-	/**
-	* Check if a content exists for a given content id.
-	* @param integer $cid Content ID
-	* @return integer Returns 1 if exist and copies the content id into private variable $cid, 0 otherwise.
-	*/
-	public function ifexists($cid)
+	public function getTitle()
 	{
-		$this->cid=pg_escape_string($cid);
-		$sql="Select cn_id from content where cn_id=$cid";
-		if(pg_num_rows(dbquery($sql)))
-			return 1;
-		else
-			return 0;			
-	}	
+		return $this->title;
+	}
+	public function getDesc()
+	{
+		return $this->desc;
+	}
+	public function getTimestamp()
+	{
+		return $this->timestamp;
+	}
+	public function getStatus()
+	{
+		return $this->status;
+	}
+	public function getViews()
+	{
+		return $this->views;
+	}
+	public function getUserId()
+	{
+		return $this->uid;
+	}
 }
 ?>
