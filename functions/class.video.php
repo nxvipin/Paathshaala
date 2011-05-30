@@ -49,6 +49,12 @@ class video extends content
 	{
 		return $this->getServer()."/".$this->path."/".$this->cid.$this->file.".ogv";
 	}
+	public function getThumbnail()
+	{
+		return $this->getServer()."/thumbs/".$this->cid.$this->file.".png";
+	}
+	
+	
 }
 
 ?>

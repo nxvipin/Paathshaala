@@ -60,6 +60,18 @@ abstract class content
 	{
 		return $this->uid;
 	}
-}
+	
+	/**
+	* Returns the content tags as an array. Tag name is pulled from tag id internally.
+	* A separate method MUST be defined if tag name is to be generated from tag id,
+	* alter the below code accordingly to incorporate the new method.
+	* @return array Returns array of tags for given content.
+	*/
+	public function getTags()
+	{
+		$sql="(Select tg_name from tags where tg_id in (Select ct_tagid from content_tags where ct_contentid='".$this->cid."'))"; 
+		$res=dbquery($sql);
+		return pg_fetch_array($res);
+	}
 
 ?>
