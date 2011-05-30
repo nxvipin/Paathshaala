@@ -20,19 +20,35 @@ class video extends content
 {
 	protected $serverid, $path, $file;
 	
-	public function _construct($cid)
+	public function __construct($cid)
 	{
 		$this->cid=$cid;
-		
+		$this->getDetails();
 	}
-	public function getDetails()
+	protected function getDetails()
 	{
-		$sql="Select cn_title from content_video where cn_id='2'";
+		$sql="Select * from content_video where cn_id='".$this->cid."'";
 		$res=dbquery($sql);
 		$vid=pg_fetch_assoc($res);
 		$this->title=$vid['cn_title'];
+		$this->desc=$vid['cn_desc'];
+		$this->timestamp=$vid['cn_timestamp'];
+		$this->status=$vid['cn_status'];
+		$this->views=$vid['cn_views'];
+		$this->uid=$vid['cn_uid'];
+		$this->serverid=$vid['cf_serverid'];
+		$this->path=$vid['cf_path'];
+		$this->file=$vid['cv_file'];
 	}
-	
+	protected function getServer()
+	{
+		if($this->serverid=="SP")
+			return "http://192.168.5.27";
+	}
+	public function getCompletePath()
+	{
+		return $this->getServer()."/".$this->path."/".$this->cid.$this->file.".ogv";
+	}
 }
 
 ?>
