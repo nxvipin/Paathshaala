@@ -13,7 +13,7 @@
 /**
 * Includes files for database connectivity.
 */
-include_once 'database.php';
+include 'database.php';
 
 /**
 * Content class. Defined as abstract and is a reference implementation for specific content classes.
@@ -22,12 +22,16 @@ include_once 'database.php';
 abstract class content
 {
 	
-	protected $cid,$title,$desc,$timestamp,$uid,$status,$views;
+	public $cid,$title,$desc,$timestamp,$uid,$status,$views;
 	
 	/**
 	*  Abstarct function that MUST be implemented in subclasses to get specific content details.
 	*/
 	abstract protected function getDetails();
+	public function _construct($cid)
+	{
+		$this->cid=$cid;
+	}
 	public function getContentId()
 	{
 		return $this->cid;
@@ -57,4 +61,5 @@ abstract class content
 		return $this->uid;
 	}
 }
+
 ?>
