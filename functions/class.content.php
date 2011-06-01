@@ -14,6 +14,7 @@
 * Includes files for database connectivity.
 */
 include 'database.php';
+include 'functions.php';
 
 /**
 * Content class. Defined as abstract and is a reference implementation for specific content classes.
@@ -70,8 +71,8 @@ abstract class content
 	public function getTags()
 	{
 		$sql="(Select tg_name from tags where tg_id in (Select ct_tagid from content_tags where ct_contentid='".$this->cid."'))"; 
-		$res=dbquery($sql);
-		return pg_fetch_array($res);
+		return resource2array(dbquery($sql));
 	}
+}
 
 ?>
