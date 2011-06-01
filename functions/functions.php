@@ -8,6 +8,8 @@
 * @package general
 */
 
+include 'settings.php';
+
 /**
 * Function to connect to the database. Creates a persistent connection.
 * @return resource Database connection resource.
