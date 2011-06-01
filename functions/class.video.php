@@ -40,18 +40,13 @@ class video extends content
 		$this->path=$vid['cf_path'];
 		$this->file=$vid['cv_file'];
 	}
-	protected function getServer()
-	{
-		if($this->serverid=="SP")
-			return "http://192.168.5.27";
-	}
 	public function getCompletePath()
 	{
-		return $this->getServer()."/".$this->path."/".$this->cid.$this->file.".ogv";
+		return getServer($this->serverid)."/".$this->path."/".$this->cid.$this->file.".ogv";
 	}
 	public function getThumbnail()
 	{
-		return $this->getServer()."/thumbs/".$this->cid.$this->file.".png";
+		return getServer($this->serverid)."/thumbs/".$this->cid.$this->file.".png";
 	}
 	
 	
