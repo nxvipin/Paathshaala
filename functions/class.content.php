@@ -13,7 +13,7 @@
 /**
 * Includes files for database connectivity.
 */
-include 'database.php';
+
 include 'functions.php';
 
 /**
