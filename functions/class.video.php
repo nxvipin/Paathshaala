@@ -6,7 +6,7 @@
 * @author Jaseem Abid <jaseemabid@gmail.com>
 * @copyright Copyright (c) 2011, Vipin Nair & Jaseem Abid
 * @license http://www.gnu.org/licenses/gpl.html GNU General Public License 
-* @package content
+* @package video
 */
 
 /**
