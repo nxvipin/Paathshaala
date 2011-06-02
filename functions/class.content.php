@@ -25,9 +25,6 @@ abstract class content
 	
 	public $cid,$title,$desc,$timestamp,$uid,$status,$views;
 	
-	/**
-	*  Abstarct function that MUST be implemented in subclasses to get specific content details.
-	*/
 	public function _construct($cid)
 	{
 		$this->cid=$cid;
@@ -60,6 +57,35 @@ abstract class content
 	{
 		return $this->uid;
 	}
+	
+	/**
+	* Returns the content tags as an array. Tag name is pulled from tag ID internally.
+	* A separate method MUST be defined if tag name is to be generated from tag id,
+	* alter the below code accordingly to incorporate the new method.
+	* @return array Returns array of tags for given content.
+	*/
+	public function getTags($cid)
+	{
+		$sql="(Select tg_name from tags where tg_id in (Select ct_tagid from content_tags where ct_contentid='".$cid."'))"; 
+		return resource2array(dbquery($sql));
+	}
+	
+	/**
+	* Accepts a CSV string of tags for a content and adds it to tha database.
+	* TODO: Optimize the function to execute one SQL query.
+	* @param string $tags CSV tags for a content.
+	*/
+	public function addTags($tags)
+	{
+		$tagarray = csv2array(pg_escape_string($tags));
+		for($i=0;$i<count($tagarray);$i++)
+		{
+			$sql= "Insert into content_tags(ct_contentid, ct_tagid) values('".$this->cid."','".createTag($tagarray[$i])."')";
+			dbquery($sql);
+		}
+	}
+	
+	
 	
 	
 }
