@@ -28,7 +28,6 @@ abstract class content
 	/**
 	*  Abstarct function that MUST be implemented in subclasses to get specific content details.
 	*/
-	abstract protected function getDetails();
 	public function _construct($cid)
 	{
 		$this->cid=$cid;
@@ -62,17 +61,7 @@ abstract class content
 		return $this->uid;
 	}
 	
-	/**
-	* Returns the content tags as an array. Tag name is pulled from tag id internally.
-	* A separate method MUST be defined if tag name is to be generated from tag id,
-	* alter the below code accordingly to incorporate the new method.
-	* @return array Returns array of tags for given content.
-	*/
-	public function getTags()
-	{
-		$sql="(Select tg_name from tags where tg_id in (Select ct_tagid from content_tags where ct_contentid='".$this->cid."'))"; 
-		return resource2array(dbquery($sql));
-	}
+	
 }
 
 ?>
