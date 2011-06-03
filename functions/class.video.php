@@ -27,9 +27,9 @@ class video extends content
 	public function __construct()
 	{
 		$a = func_get_args();
-        $i = func_num_args(); 
-        if($i==1)
-            call_user_func_array(array($this,'view'),$a);
+		$i = func_num_args(); 
+		if($i==1)
+			call_user_func_array(array($this,'view'),$a);
 		if($i==6)
 			call_user_func_array(array($this,'create'),$a);
 	}
@@ -43,7 +43,19 @@ class video extends content
 	public function view($cid)
 	{
 		$this->cid=$cid;
-		$this->getDetails();
+		$sql="Select * from content_video where cn_id='".$this->cid."'";
+		$res=dbquery($sql);
+		$vid=pg_fetch_assoc($res);
+		$this->title=$vid['cn_title'];
+		$this->desc=$vid['cn_desc'];
+		$this->timestamp=$vid['cn_timestamp'];
+		$this->status=$vid['cn_status'];
+		$this->views=$vid['cn_views'];
+		$this->uid=$vid['cn_uid'];
+		$this->serverid=$vid['cf_serverid'];
+		$this->path=$vid['cf_path'];
+		$this->file=$vid['cv_file'];
+		$this->addViewCount();
 	}
 	
 	/**
@@ -61,7 +73,7 @@ class video extends content
 		$this->title=pg_escape_string($title);
 		$this->desc=pg_escape_string($desc);
 		$this->uid=pg_escape_string($uid);
-		$this->sid=pg_escape_string($sid);
+		$this->serverid=pg_escape_string($sid);
 		$this->path=pg_escape_string($path);
 		$this->file=pg_escape_string($file);
 		$sql="INSERT INTO content_video(cn_title, cn_desc, cn_userid, cf_serverid, cf_path, cv_file) VALUES('".$this->title."','".$this->desc."','".$this->uid."','".$this->sid."','".$this->path."','".$this->file."') Returning cn_id";
