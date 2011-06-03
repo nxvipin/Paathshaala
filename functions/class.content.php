@@ -23,7 +23,7 @@ include 'functions.php';
 abstract class content
 {
 	
-	public $cid,$title,$desc,$timestamp,$uid,$status,$views;
+	protected $cid,$title,$desc,$timestamp,$uid,$status,$views,$seriesid,$order;
 	
 	public function _construct($cid)
 	{
@@ -57,7 +57,14 @@ abstract class content
 	{
 		return $this->uid;
 	}
-	
+	public function getSeries()
+	{
+		return $this->seriesid;
+	}
+	public function getOrder()
+	{
+		return $this->order;
+	}
 	/**
 	* Returns the content tags as an array. Tag name is pulled from tag ID internally.
 	* A separate method MUST be defined if tag name is to be generated from tag id,
@@ -92,6 +99,18 @@ abstract class content
 	{
 		$sql="update content set cn_views=cn_views+1 where cn_id='".$this->cid."'";
 		dbquery($sql);
+	}
+	
+	/**
+	* If the content is part of a series, it  returns the Series ID, otherwise null.
+	* Data is fetched form the database.
+	*/
+	public function fetchSeries()
+	{
+		$sql="Select cs_order, cs_seriesid from content_series where cs_contentid='".$this->cid."'";
+		$series=pg_fetch_assoc(dbquery($sql));
+		$this->seriesid=$series['cs_seriesid'];
+		$this->order=$series['cs_order'];
 	}
 	
 	
