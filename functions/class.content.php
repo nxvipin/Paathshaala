@@ -113,6 +113,15 @@ abstract class content
 		$this->order=$series['cs_order'];
 	}
 	
+	/**
+	* Returns all the Content ID's in the series to whcih the current content belongs.
+	* @return array Array of all Content ID's which belong to the series of current content.
+	*/
+	public function getCompleteSeries()
+	{
+		$sql="Select cs_contentid from content_series where cs_seriesid='".$this->seriesid."'";
+		return resource2array(dbquery($sql));
+	}
 	
 }
 
