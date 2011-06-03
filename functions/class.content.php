@@ -49,7 +49,7 @@ abstract class content
 	{
 		return $this->status;
 	}
-	public function getViews()
+	public function getViewCount()
 	{
 		return $this->views;
 	}
@@ -85,7 +85,14 @@ abstract class content
 		}
 	}
 	
-	
+	/**
+	* Increases the view count number whenever the video is loaded.
+	*/
+	public function addViewCount()
+	{
+		$sql="update content set cn_views=cn_views+1 where cn_id='".$this->cid."'";
+		dbquery($sql);
+	}
 	
 	
 }
