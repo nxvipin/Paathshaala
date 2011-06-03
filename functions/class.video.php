@@ -99,8 +99,16 @@ class video extends content
 		return getServer($this->serverid)."/thumbs/".$this->cid.$this->file.".png";
 	}
 	
-	
-	
+	/**
+	* Static function that returns the Content ID most recent 'n' videos in the database.
+	* @param integer $n Number of recent videos to fetch.
+	* @return array Array of Content ID's of 'n' latest videos.
+	*/
+	public static function getRecent($n)
+	{
+		$sql="Select cn_id from content_video order by cn_timestamp DESC limit ".$n;
+		return resource2array(dbquery($sql));
+	}
 	
 	
 }
