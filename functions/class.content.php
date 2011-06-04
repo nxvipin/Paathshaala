@@ -123,6 +123,19 @@ abstract class content
 		return resource2array(dbquery($sql));
 	}
 	
+	/**
+	* Searches for keywords in Title, Description and Tags of a content. 
+	* TODO: Multiple keywords not supported yet and does not search in the Name and Description of Series if any.
+	* TODO: Improve search.
+	* @param string $query Search keyword
+	* @return array Array of all Content ID's with the keyword.
+	*/
+	public static function generalSearch($query)
+	{
+		$sql="select distinct cn_id from content where cn_title ilike '%$query%' OR cn_desc ilike '%$query%' UNION select distinct ct_contentid from content_tags where ct_tagid IN (select tg_id from tags where tg_name ilike '%$query%') order by cn_id";
+		return resource2array(dbquery($sql));
+	}
+	
 }
 
 ?>
