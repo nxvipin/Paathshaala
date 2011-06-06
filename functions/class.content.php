@@ -130,12 +130,22 @@ abstract class content
 	* @param string $query Search keyword
 	* @return array Array of all Content ID's with the keyword.
 	*/
-	public static function generalSearch($query)
+	public static function generalSearch($query, $offset, $limit)
 	{
-		$sql="select distinct cn_id from content where cn_title ilike '%$query%' OR cn_desc ilike '%$query%' UNION select distinct ct_contentid from content_tags where ct_tagid IN (select tg_id from tags where tg_name ilike '%$query%') order by cn_id";
+		$sql="select distinct cn_id from content where cn_title ilike '%$query%' OR cn_desc ilike '%$query%' UNION select distinct ct_contentid from content_tags where ct_tagid IN (select tg_id from tags where tg_name ilike '%$query%') order by cn_id Limit $limit Offset $offset";
 		return resource2array(dbquery($sql));
 	}
 	
+	/**
+	* Searches for content with a given tag.
+	* @param string $tag Search Tag
+	* @return array Array of all Content ID's with the tag.
+	*/
+	public static function tagSearch($query,$offset,$limit)
+	{
+		$sql="select distinct ct_contentid from content_tags where ct_tagid IN (select tg_id from tags where tg_name ilike '%$query%') order by ct_contentid Limit $limit Offset $offset";
+		return resource2array(dbquery($sql));
+	}
 }
 
 ?>
