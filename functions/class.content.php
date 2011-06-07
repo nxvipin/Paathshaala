@@ -126,7 +126,7 @@ abstract class content
 	/**
 	* Searches for keywords in Title, Description and Tags of a content. 
 	* TODO: Multiple keywords not supported yet and does not search in the Name and Description of Series if any.
-	* TODO: Improve search.
+	* TOMoDO: Improve search.
 	* @param string $query Search keyword
 	* @return array Array of all Content ID's with the keyword.
 	*/
@@ -138,12 +138,23 @@ abstract class content
 	
 	/**
 	* Searches for content with a given tag.
-	* @param string $tag Search Tag
+	* @param string $query Search Tag
 	* @return array Array of all Content ID's with the tag.
 	*/
 	public static function tagSearch($query,$offset,$limit)
 	{
 		$sql="select distinct ct_contentid from content_tags where ct_tagid IN (select tg_id from tags where tg_name ilike '%$query%') order by ct_contentid Limit $limit Offset $offset";
+		return resource2array(dbquery($sql));
+	}
+	
+	/**
+	* Searches for a keyword in the content description.
+	* @param string $query Search Tag
+	* @return array Array of all Content ID's with the tag.
+	*/
+	public static function descriptionSearch($query,$offset,$limit)
+	{
+		$sql="select distinct cn_id from content where cn_desc ilike '%$query%' order by cn_id Limit $limit Offset $offset";
 		return resource2array(dbquery($sql));
 	}
 }
