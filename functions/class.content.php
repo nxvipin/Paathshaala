@@ -25,10 +25,6 @@ abstract class content
 	
 	protected $cid,$title,$desc,$timestamp,$uid,$status,$views,$seriesid,$order;
 	
-	public function _construct($cid)
-	{
-		$this->cid=$cid;
-	}
 	public function getContentId()
 	{
 		return $this->cid;

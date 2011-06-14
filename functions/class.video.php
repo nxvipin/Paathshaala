@@ -34,6 +34,11 @@ class video extends content
 			call_user_func_array(array($this,'create'),$a);
 	}
 	
+	public function __destruct()
+	{
+	
+	}
+	
 	/**
 	* Function is called to initialize the properties with the given $cid.
 	* the protected property cid with the argument and calls the
