@@ -32,7 +32,7 @@ class user
 		$i = func_num_args(); 
 		if($i==1)
 			call_user_func_array(array($this,'view'),$a);
-		if($i==6)
+		if($i==5)
 			call_user_func_array(array($this,'create'),$a);
 	}
 	
@@ -50,6 +50,31 @@ class user
 		$this->ufullname=$user['us_fullname'];
 		$this->uroll=$user['us_rollno'];
 		$this->uemail=$user['us_email'];
+	}
+	
+	/**
+	* Function to create a new user. The generated User ID is stored in the property uid.
+	* @param string $uname Username of the username
+	* @param string $upass Password of the user which is encrypted using sha1()
+	* @param string $ufullname Full Name of the user.
+	* @param string $uroll Register number of the user.
+	* @param string $uemail Email ID of the user
+	*/
+	protected function create($uname, $upass, $ufullname, $uroll, $uemail)
+	{
+		$this->uname=pg_escape_string($uname);
+		$this->upass=sha1(pg_escape_string($upass));
+		$this->ufullname=pg_escape_string($ufullname);
+		$this->uroll=pg_escape_string($uroll);
+		$this->uemail=pg_escape_string($uemail);
+		$sql="Insert into users (us_name, us_pass, us_fullname, us_rollno, us_email) values ('".$this->uname."','".$this->upass."','".$this->ufullname."','".$this->uroll."','".$this->uemail."') returning us_id";
+		$user=pg_fetch_assoc(dbquery($sql));
+		$this->uid=$user['us_id'];
+	}
+	
+	public function getUserId()
+	{
+		Return $this->uid;
 	}
 	
 	public function getUsername()
