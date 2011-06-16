@@ -34,10 +34,7 @@ class video extends content
 			call_user_func_array(array($this,'create'),$a);
 	}
 	
-	public function __destruct()
-	{
-	
-	}
+	public function __destruct() { }
 	
 	/**
 	* Function is called to initialize the properties with the given $cid.
@@ -45,7 +42,7 @@ class video extends content
 	* getDetails() method to initialize other class properties from the database.
 	* @param integer $cid Content ID
 	*/
-	public function view($cid)
+	protected function view($cid)
 	{
 		$this->cid=$cid;
 		$sql="Select * from content_video where cn_id='".$this->cid."'";
@@ -73,7 +70,7 @@ class video extends content
 	* @param string $path Location of the video file WITHOUT any trailing slashes.
 	* @param string $file File name of the video WITHOUT extension.
 	*/
-	public function create($title,$desc,$uid,$sid,$path,$file)
+	protected function create($title,$desc,$uid,$sid,$path,$file)
 	{
 		$this->title=pg_escape_string($title);
 		$this->desc=pg_escape_string($desc);
