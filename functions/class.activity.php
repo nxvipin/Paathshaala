@@ -31,5 +31,24 @@ class activity
 	{
 		$sql="Insert into like(lk_cid,lk_uid,lk_like) values('".$cid."','".$uid."','".$like."') returning lk_id";
 		return pg_fetch_result(dbquery($sql),0,0);
-	}	
+	}
+	
+	/**
+	* Stores feedback in the database. Anonymous users will have a special user ID.
+	* Name/Email of the Anonymous user should be appended to the description.
+	* @param string $ip IP address of the user.
+	* @param string $uid User ID, Anonymous user will have special user ID. NOT fixed yet.
+	* @param string $type Type of Feedback (I: idea, X:problem, P: praise, Q: question)
+	* @param string $desc Feedback message
+	* @return integer Feedback ID
+	*/
+	public static function feedback($ip,$uid,$type,$desc)
+	{
+		$ip=pg_escape_string($ip);
+		$uid=pg_escape_string($uid);
+		$type=pg_escape_string($type);
+		$desc=pg_escape_string($desc);
+		$sql="Insert into feedback(fb_ip,fb_uid,fb_type,fb_desc) values('$ip','$uid','$type','$desc') returning fb_id";	
+		return pg_fetch_result(dbquery($sql),0,0);
+	}
 }
