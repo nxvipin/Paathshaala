@@ -67,9 +67,9 @@ abstract class content
 	* alter the below code accordingly to incorporate the new method.
 	* @return array Returns array of tags for given content.
 	*/
-	public function getTags($cid)
+	public function getTags()
 	{
-		$sql="(Select tg_name from tags where tg_id in (Select ct_tagid from content_tags where ct_contentid='".$cid."'))"; 
+		$sql="(Select tg_name from tags where tg_id in (Select ct_tagid from content_tags where ct_contentid='".$this->cid."'))"; 
 		return resource2array(dbquery($sql));
 	}
 	
