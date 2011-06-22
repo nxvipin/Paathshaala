@@ -12,7 +12,7 @@
 /**
 * Includes Base class content
 */
-include 'class.content.php';
+include_once 'class.content.php';
 /**
 *  
 */

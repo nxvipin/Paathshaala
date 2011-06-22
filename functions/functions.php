@@ -11,7 +11,7 @@
 /**
 * Settings.php file contains default application settings.(Database settings for eg.)
 */
-include 'settings.php';
+include_once 'settings.php';
 
 /**
 * Function to connect to the database. Creates a persistent connection.

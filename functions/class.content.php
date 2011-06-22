@@ -14,7 +14,7 @@
 * Includes files for database connectivity.
 */
 
-include 'functions.php';
+include_once 'functions.php';
 
 /**
 * Content class. Defined as abstract and is a reference implementation for specific content classes.
