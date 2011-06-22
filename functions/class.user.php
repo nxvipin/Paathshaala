@@ -12,7 +12,7 @@
 * Includes files for database connectivity.
 */
 
-include 'functions.php';
+include_once 'functions.php';
 
 /**
 * Class user for managing users.
