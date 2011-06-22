@@ -51,4 +51,21 @@ class activity
 		$sql="Insert into feedback(fb_ip,fb_uid,fb_type,fb_desc) values('$ip','$uid','$type','$desc') returning fb_id";	
 		return pg_fetch_result(dbquery($sql),0,0);
 	}
+	
+	/**
+	* Stores user comments. 
+	* TODO: Crude implementation, needs to be fixed.
+	* @param integer $cid Content ID
+	* @param integer $uid User ID of the commentor
+	* @param string $comment The comment string.
+	* @return integer Comment ID of the comment.
+	*/
+	public static function comment($cid,$uid,$comment)
+	{
+		$uid=pg_escape_string($uid);
+		$cid=pg_escape_string($cid);
+		$comment=pg_escape_string($comment);
+		$sql="Insert into comments(cm_cid,cm_uid,cm_msg) values('".$cid."','".$uid."','".$comment."') returning cm_id";
+		return pg_fetch_result(dbquery($sql),0,0);
+	}
 }
