@@ -87,6 +87,17 @@ class user
 		return $this->ufullname;
 	}
 	
+	/**
+	* Static function to return full name of a user when User Id is passed.
+	* @param integer $uid User ID whose full name is required.
+	* @return string Full Name of the user with given User ID
+	*/
+	public static function getFullNameS($uid)
+	{
+		$sql="Select us_fullname from users where us_id = '$uid'";
+		return pg_fetch_result(dbquery($sql),0,0);
+	}
+	
 	public function getRoll()
 	{
 		return $this->uroll;
@@ -96,4 +107,6 @@ class user
 	{
 		return $this->uemail;
 	}
+	
+	
 }
