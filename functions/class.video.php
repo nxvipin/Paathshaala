@@ -53,7 +53,7 @@ class video extends content
 		$this->timestamp=$vid['cn_timestamp'];
 		$this->status=$vid['cn_status'];
 		$this->views=$vid['cn_views'];
-		$this->uid=$vid['cn_uid'];
+		$this->uid=$vid['cn_userid'];
 		$this->serverid=$vid['cf_serverid'];
 		$this->path=$vid['cf_path'];
 		$this->file=$vid['cv_file'];
