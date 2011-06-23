@@ -1,0 +1,73 @@
+/* The main structural CSS sheet */
+
+/* Custom font embedding */
+@font-face {
+font-family: 'PT Serif Regular';
+src: url('fonts/PTF55F_W.eot');
+src: url('fonts/PTF55F_W.eot?iefix') format('eot'),
+ url('fonts/PTF55F_W.woff') format('woff'),
+ url('fonts/PTF55F_W.ttf') format('truetype'),
+ url('fonts/PTF55F_W.svg#PTSerif-Regular') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+/* Change selected text color */
+::-moz-selection {
+color:white;
+background:#3A75AF ;
+}
+::selection {
+color:white;
+background:#3A75AF ;
+}
+
+
+/* HTML5 good practice */
+header, footer, section, aside, nav, article {
+display: block;
+}
+
+/* A general class to restrict stuff into a div */
+
+.fitin {
+width:100%;
+height:100%;
+}
+
+.restrict {
+max-width:100%;
+max-height:100%;
+}
+
+img#loading {
+position:fixed;
+top:300px;
+left:45%;
+}
+
+html {
+font-size: 100.01%;
+min-height: 100%;
+margin: 0;
+}
+
+body {
+font-family:'PT Serif Regular';
+background:#F9F9F9;
+margin: 0;
+cursor: url(pics/arrow.png) 0 0, auto;
+color: #555555;
+line-height: 1.4;
+}
+
+a {
+color: #555555;
+text-decoration:none;
+border:0px;
+cursor: url(pics/pointer.png) 0 0, auto;
+}
+
+a:hover {
+text-decoration: underline;
+}
