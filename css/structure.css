@@ -71,3 +71,9 @@ cursor: url(pics/pointer.png) 0 0, auto;
 a:hover {
 text-decoration: underline;
 }
+
+#container{
+margin: 0 auto;
+width: 920px;
+padding: 0px;
+}
