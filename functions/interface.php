@@ -32,6 +32,7 @@ function getVideoJson($cid)
 			"viewcount"=>$v->getViewCount(),
 			"status"=>$v->getStatus(),
 			"path"=>$v->getCompletePath(),
+			"poster"=>$v->getPoster(),
 			"uid"=>$v->getUserId(),
 			"uname"=>user::getFullNameS($v->getUserId())
 			);
