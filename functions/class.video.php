@@ -96,7 +96,7 @@ class video extends content
 	* Returns the complete path of the video file. 
 	* Path is of the form: http://<server_ip>/thumbs/<cid><file>.png
 	*/
-	public function getThumbnail()
+	public function getPoster()
 	{
 		return getServer($this->serverid)."/thumbs/".$this->cid.$this->file.".png";
 	}
