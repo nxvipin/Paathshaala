@@ -38,4 +38,27 @@ function getVideoJson($cid)
 			);
 	return json_encode($json);
 }
+
+/**
+* 
+* @param
+* @return
+*/
+function getTagSearchJson($tag,$page)
+{
+	$contentarray=content::tagSearch($tag,($page*10)-10,10);
+	echo $contentarray[2];
+	$json=array();
+	for($i=0;$i<count($contentarray);$i++)
+	{
+		$obj = new video($contentarray[$i]);
+		array_push($json,array( 'cid'=>$obj->getContentId(),
+							'title'=>$obj->getTitle(),
+							'viewcount'=>$obj->getViewCount(),
+							'poster'=>$obj->getPoster(),
+							'timestamp'=>$obj->getTimestamp()));
+	}
+	return json_encode($json);
+}
+	
 ?>
