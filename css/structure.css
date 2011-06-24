@@ -77,3 +77,173 @@ margin: 0 auto;
 width: 920px;
 padding: 0px;
 }
+
+/* TOP BAR */
+
+#topbar {
+background: none repeat scroll 0 0 #EFEFEF;
+border-bottom: 1px solid #D4D4D4;
+border-top: 1px solid #FFFFFF;
+box-shadow: 0 0 10px rgba(212, 212, 212, 0.9);
+height: 32px;
+position: absolute;
+width: 100%;
+margin: 0;
+}
+
+#top {
+height: 100px; /* min logo size */
+position: relative;
+}
+
+#top #logo{
+border-color: #D2D2D2;
+background:#f5f5f5;
+background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#efefef));
+background: -moz-linear-gradient(top,#ffffff,#efefef);
+border-right: 1px solid #DDDDDD;
+border-style: none solid solid;
+border-width: 0 1px 1px;
+float: left;
+padding: 5px 12px 10px;
+position: relative;
+}
+
+#top #logo:hover {
+background:#f7f7f7;
+text-decoration: none;
+}
+
+#top #logo h1 {
+background: url("pics/paathshaala.png") no-repeat scroll center bottom transparent;
+border-color: #D2D2D2;
+margin: 7px 0 0;
+height: 60px;
+width: 183px;
+}
+
+#top #logo h1:hover {
+background: url("pics/paathshaala_black.png") no-repeat scroll center bottom transparent;
+}
+
+#top .topbarLeft {
+left: 220px;
+position: absolute;
+top: 3px;
+}
+
+ul.userBar, ul.topbarLeft {
+float: right;
+margin: 0;
+padding: 0;absolute
+white-space: nowrap;
+}
+
+ul.userBar li, ul.topbarLeft li {
+display: inline;
+list-style-type: none;
+margin-left: 3px;
+margin-right: 3px;
+}
+
+ul.userBar li {
+position:relative;
+top:5px;
+}
+
+.userBar a, .topbarLeft a, .userBar button, .topbarLeft button {
+color: #777777;
+font-size: 14px;
+font-weight: bold;
+text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.userBar a:hover, .topbarLeft a:hover, .userBar button:hover, .topbarLeft button:hover {
+color: #555555;
+text-decoration: none;
+}
+
+.userBar li:first-child, .topbarLeft li:first-child {
+margin-left: 0;
+}
+
+.user-bar li:last-child, .topbarLeft li:last-child {
+margin-right: 0;
+}
+
+/* BOTTOM BAR */
+
+#bottombar {
+background: none repeat scroll 0 0 #EFEFEF;
+border-top: 1px solid #D4D4D4;
+box-shadow: 0 0 -10px rgba(212, 212, 212, 0.9);
+height: 40px;
+width: 100%;
+margin: 0;
+z-index:-2;
+}
+
+#bottom {
+margin: 0 auto;
+width: 920px;
+height:100px;
+padding: 0px;
+position:relative;
+top:40px; /* Height of bottom bar */
+}
+
+#bottom #logo{
+border-color: #D2D2D2;
+background:#f5f5f5;
+background: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#ffffff));
+background: -moz-linear-gradient(top,#efefef,#ffffff);
+border: 1px #D2D2D2 solid;
+float: right;
+padding: 4px 12px 10px;
+position: relative;
+}
+
+#bottom #logo:hover {
+background:#f7f7f7;
+text-decoration: none;
+}
+
+#bottom #logo h1 {
+background: url("pics/tuw60.png") no-repeat scroll center bottom transparent;
+border-color: #D2D2D2;
+margin: 7px 0 0;
+height: 80px;
+width: 183px;
+}
+
+/* BOTTOM BAR links */
+.bottomLinks li {
+position:relative;
+display: inline;
+list-style-type: none;
+margin:0px 1px;
+left:-10px;
+top:70px;
+
+}
+
+.bottomLinks a {
+color: #777777;
+font-size: 14px;
+font-weight: bold;
+text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.bottomLinks a:hover {
+color: #555555;
+text-decoration: none;
+}
+
+.bottomLinks li:first-child {
+margin-left: 0;
+}
+
+.bottomLinks li:last-child {
+margin-right: 0;
+}
+
