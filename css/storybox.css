@@ -1,0 +1,157 @@
+/* Custom boxes */
+div.groupBox {
+border:0px solid;
+margin:0;
+padding:0;
+}
+
+.groupTitle {
+display: block;
+font-size: 20px;
+font-style:italic;
+left: -27px;
+position: relative;
+top: 0;
+z-index: 10;
+}
+
+div.storyBox {
+position:relative;
+display:inline-block;
+background:#F1F2F2;
+background: -moz-linear-gradient(center top , #FFFFFF 0%, #F1F2F2 33.3333%, #FFFFFF 100%) repeat scroll 0 0 transparent;
+text-decoration: none;
+height:185px;
+width:200px;
+border: 1px solid #DDDDDD;
+border-radius: 3px 3px 3px 3px;
+padding:5px;
+margin:12px;
+}
+
+.storyBox:nth-child(4n) {
+margin-right:0px;
+}
+
+.storyBox:nth-child(4n+1) {
+margin-left:0px;
+}
+
+.imageBox {
+position:absolute;
+display:block;
+width:188px;
+height:125px;
+border: 1px solid #DDDDDD;
+padding:5px;
+}
+
+img.thumbnail {
+margin:0px;
+width:188px;
+height:125px;
+display:inline;
+}
+
+.metaBox {
+position:relative;
+left:-10px;
+top:136px;
+background:#F1F2F2;
+background: -moz-linear-gradient(center top , #FFFFFF 0%, #F1F2F2 33.3333%, #FFFFFF 100%) repeat scroll 0 0 transparent;
+text-decoration: none;
+height:30px;
+width:188px;
+border: 1px solid #DDDDDD;
+border-radius: 3px 3px 3px 3px;
+padding:5px;
+margin:5px 10px;
+}
+
+.metaUser {
+float:left;
+display: inline;
+padding: 0;
+}
+
+.metaImage {
+height:30px;
+width:30px;
+margin:0px;
+padding:0px;
+}
+
+.metaName {
+display:inline;
+font-size:12px;
+padding-left:5px;
+position:relative;
+top:-8px;
+max-width:20px;
+}
+.loggedUser {
+float:right;
+display: inline;
+padding: 0;
+}
+
+.loggedImage {
+height:30px;
+margin-top:2px;
+padding:0px;
+}
+
+.loggedName {
+display:inline;
+font-size:16px;
+padding-left:5px;
+padding-right:5px;
+position:relative;
+top:-9px;
+}
+
+.metaViews {
+float: right;
+display:inline;
+font-size:12px;
+padding-left:5px;
+position:relative;
+top:9px;
+}
+
+.more, .less {
+display:block;
+font-size:12px;
+position:relative;
+left:850px;
+cursor: url('../pics/pointer.png') , auto;
+}
+
+.less {
+display:none;
+}
+
+#popularHidden{
+display:none;
+}
+
+.metaInfo {
+position: relative;
+top:-49px;
+display: inline-block;
+background: #000000;
+color:#ffffff;
+font-size: 14px;
+height: 43px;
+opacity: 0.6;
+width: 100%;
+overflow:hidden;
+}
+
+.metaInfo:hover {
+opacity:0.8;
+background:#010101;
+color:#ffffff;
+top:-100px;
+height:94px;
+}
