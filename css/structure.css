@@ -75,7 +75,7 @@ text-decoration: underline;
 #container{
 margin:0 auto -30px; /* -30px is needed because #bottom is moved down relatively and it adds a gap */
 width: 920px;
-min-height:300px;
+min-height:600px;
 padding: 0px;
 }
 
