@@ -2,6 +2,7 @@
 
 $header="
 	<meta charset='UTF-8' />
+	<link rel='stylesheet' href='css/structure.css'/>
 	<script src='js/jquery-1.6.1.min.js' type='text/javascript'></script>
 	<script src='js/jquery.timeago.js' type='text/javascript'></script>
 	<script src='js/grayout.js' type='text/javascript' ></script>
