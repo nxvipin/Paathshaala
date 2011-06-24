@@ -256,7 +256,7 @@ color: #555555;
 position:absolute;
 left:0px;
 top:5px;
-cursor: url(pics/pointer.png) 0 0, auto;
+cursor: url(../pics/pointer.png) 0 0, auto;
 }
 
 input.searchBox {
@@ -267,5 +267,5 @@ border: 1px #D2D2D2 solid;
 padding-left:30px;
 border-radius: 13px 13px 13px 13px;
 height:25px;
-cursor: url(pics/text.png) 0 0, auto;
+cursor: url(../pics/text.png) 0 0, auto;
 }
