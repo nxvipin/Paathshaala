@@ -40,9 +40,10 @@ function getVideoJson($cid)
 }
 
 /**
-* 
-* @param
-* @return
+* Returns search results of $tag keyword as a JSON string.
+* @param string $tag Searches the Database for content with the given tag.
+* @param integer $page The Page number for search results.
+* @return string JSON String containing search results.
 */
 function getTagSearchJson($tag,$page)
 {
@@ -61,4 +62,24 @@ function getTagSearchJson($tag,$page)
 	return json_encode($json);
 }
 	
+/**
+* Returs the JSON strings of the 8 most popular videos and their details.
+* @return string Popular Videos JSON.
+*/
+function getPopularVideoJson()
+{
+	$sql="Select cn_id from content_video order by cn_views desc limit 8";
+	$contentarray=resource2array(dbquery($sql));
+	$json=array();
+	for($i=0;$i<8;$i++)
+	{
+		$obj=new video($contentarray[$i]);
+		array_push($json,array( 'cid'=>$obj->getContentId(),
+							'title'=>$obj->getTitle(),
+							'viewcount'=>$obj->getViewCount(),
+							'poster'=>$obj->getPoster(),
+							'timestamp'=>$obj->getTimestamp()));
+	}
+	return json_encode($json);
+}
 ?>
