@@ -22,20 +22,6 @@ function getUrlVars()
 }
 
 /* Comments */
-/* Comment delete and box wipe out */
-
-function delCom(delId) {
-console.log('deleting' + delId);
-$.post("delC.php", { comId: delId } );
-return false;
-}
-
-$('.delComCross').click(function() {
-	var click = $(this);
-	console.log(click);
-	$(this).parent().parent().slideUp("fast");
-});
-
 
 /* Comment submit function */
 /* Change attributes and file to submit the comment */ 
