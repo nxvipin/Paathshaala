@@ -6,6 +6,25 @@ $(".searchBox").
 		$(this).animate({width: '270px'} , 150 , '' , function () {});
 });
 
+$(".delComCross").click(function() {
+	var cross = $(this);
+	var click = cross.parent().parent(); // Click is the whole comm div
+	var commentId = click.attr('cId');
+	var temp = cross.parent().children(".data"); // <div class='data'>
+	var origContent = temp.html();
+	temp.html("<div id='delConfirmRespText'>You really wanna delete the coment ? <br/> <span class='delYesNo' id='delYes'> Yes </span> <span class='delYesNo' id='delNo'> No </span></div>");
+	cross.css({'color':'#f9f9f9' , 'cursor':'url(pics/arrow.png), auto' });
+	$('span#delYes').click(function() {
+		click.fadeOut("slow");
+		$.post("delC.php", { comId: commentId } );
+	});
+	$('span#delNo').click(function() {
+		temp.html(origContent);
+		cross.css({'color':'#555555' , 'cursor':'url(pics/pointer.png), auto' });
+	});
+});
+
+
 function showPopular() {
 	$('#popularMore').hide();
 	$('#popularHidden').slideDown('fast');
@@ -45,6 +64,3 @@ function showlogin() {
 		$("#logChangeButton").attr('src', 'pics/down.png');
 	}
 }
-
-
-
