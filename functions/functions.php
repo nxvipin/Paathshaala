@@ -19,8 +19,8 @@ include_once 'settings.php';
 */
 function dbconnect()
 {
-	global $host,$dbname,$user,$password,$port;
-	$dbconn = pg_pconnect("host=$host port=$port dbname=$dbname user=$user password=$password");
+	global $global_host,$global_dbname,$global_user,$global_password,$global_port;
+	$dbconn = pg_pconnect("host=$global_host port=$global_port dbname=$global_dbname user=$global_user password=$global_password");
 	return $dbconn;
 }
 
