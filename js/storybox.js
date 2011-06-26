@@ -13,12 +13,12 @@ function updateFeatured() {
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
 				"<div class='imageBox'>" +
-					"<img src='" + myobj.thumb +"' class='thumbnail'/>" +
+					"<img src='" + myobj.poster +"' class='thumbnail'/>" +
 					"<div class='metaInfo'>" + myobj.title + "</div>" +
 				"</div> </a>" +
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
-						"<img src='" + myobj.userpic + "' class='metaImage' onerror=\"this.src='pics/me.png2'\" /> <!-- onerror tag is important  -->" +
+						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
 						"<span class='metaName' >" + myobj.uname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
@@ -42,12 +42,12 @@ function updatePopular() {
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
 				"<div class='imageBox'>" +
-					"<img src='" + myobj.thumb +"' class='thumbnail'/>" +
+					"<img src='" + myobj.poster +"' class='thumbnail'/>" +
 					"<div class='metaInfo'>" + myobj.title + "</div>" +
 				"</div> </a>" +
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
-						"<img src='" + myobj.userpic + "' class='metaImage' onerror=\"this.src='pics/me.png2'\" /> <!-- onerror tag is important  -->" +
+						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
 						"<span class='metaName' >" + myobj.uname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
@@ -63,12 +63,12 @@ function updatePopular() {
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
 				"<div class='imageBox'>" +
-					"<img src='" + myobj.thumb +"' class='thumbnail'/>" +
+					"<img src='" + myobj.poster +"' class='thumbnail'/>" +
 					"<div class='metaInfo'>" + myobj.title + "</div>" +
 				"</div> </a>" +
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
-						"<img src='" + myobj.userpic + "' class='metaImage' onerror=\"this.src='pics/me.png2'\" /> <!-- onerror tag is important  -->" +
+						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
 						"<span class='metaName' >" + myobj.uname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
@@ -78,7 +78,7 @@ function updatePopular() {
 		}
 	groupBox1 = groupBox1 + "</div>";
 
-	var popularDiv = "<span class=groupTitle>Popular</span>" + groupBox1 + "<span class=more id='popularMore' onclick='showPopular()'>Gimme more !!</span>" + groupBox2 + "<span class=less id=popularLess onclick='hidePopular()'>Hide all this !!</span>" ;
+	var popularDiv = "<span class=groupTitle>Popular</span>" + groupBox1 + "<span class='more' id='popularMore' onclick='showPopular()'>Gimme more !!</span>" + groupBox2 + "<span class='less' id=popularLess onclick='hidePopular()'>Hide all this !!</span>" ;
 
 		$('div#container').append(popularDiv);
 	});
@@ -95,12 +95,12 @@ function updateTopRated() {
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
 				"<div class='imageBox'>" +
-					"<img src='" + myobj.thumb +"' class='thumbnail'/>" +
+					"<img src='" + myobj.poster +"' class='thumbnail'/>" +
 					"<div class='metaInfo'>" + myobj.title + "</div>" +
 				"</div> </a>" +
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
-						"<img src='" + myobj.userpic + "' class='metaImage' onerror=\"this.src='pics/me.png2'\" /> <!-- onerror tag is important  -->" +
+						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
 						"<span class='metaName' >" + myobj.uname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +

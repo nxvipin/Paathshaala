@@ -64,3 +64,9 @@ function showlogin() {
 		$("#logChangeButton").attr('src', 'pics/down.png');
 	}
 }
+
+$(document).ready(function(){
+	$('img.metaImage').error().attr('src','pics/default.png');
+});
+
+
