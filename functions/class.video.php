@@ -98,7 +98,8 @@ class video extends content
 	*/
 	public function getPoster()
 	{
-		return getServer($this->serverid)."/thumbs/".$this->cid.$this->file.".png";
+		global $global_thumbs_folder;
+		return getServer($this->serverid)."/".$global_thumbs_folder."/".$this->cid.$this->file.".png";
 	}
 	
 	/**
