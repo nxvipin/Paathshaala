@@ -36,7 +36,7 @@ function getVideoHtml($cid)
 	echo $tags;
 	$video= "<h2 class='video_title'>".$v->getTitle()."</h2>".
 			"<div class='video-js-box'>
-				<video poster='".$v->getPoster()."' class='video-js' controls preload height='325px' width='550px'>
+				<video cid='".$v->getContentId()."' poster='".$v->getPoster()."' class='video-js' controls preload height='325px' width='550px'>
 				<source src='content/ted2.ogv' type='video/ogg; codecs='theora, vorbis'' />
 			</video>
 			</div>".
