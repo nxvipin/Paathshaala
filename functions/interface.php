@@ -63,8 +63,8 @@ function getTagSearchJson($tag,$page)
 }
 	
 /**
-* Returs the JSON strings of the 8 most popular videos and their details.
-* @param integer $count The number of videos to be returned.
+* Returs the JSON strings of the $count most popular videos and their details.
+* @param integer $count The number of videos that should be returned.
 * @return string Popular Videos JSON.
 */
 function getPopularVideoJson($count)
@@ -72,7 +72,8 @@ function getPopularVideoJson($count)
 	$sql="Select cn_id from content_video order by cn_views desc limit $count";
 	$contentarray=resource2array(dbquery($sql));
 	$json=array();
-	for($i=0;$i<8;$i++)
+	$vcount=count($contentarray);
+	for($i=0;$i<$vcount;$i++)
 	{
 		$obj=new video($contentarray[$i]);
 		array_push($json,array( 'cid'=>$obj->getContentId(),
