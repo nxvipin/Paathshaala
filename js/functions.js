@@ -31,7 +31,7 @@ function subComment() {
 	var comm = $("#comment").attr('value');
 	if(comm !== '') {
 		$('#loading').fadeIn('fast');
-		$.post("commR.php", { comment: comm },
+		$.post("response/commR.php", { comment: comm },
 			function(data) {
 				$('#commentInfo').html(data); /* displaying the returned comment, remove in production code */
 		});
