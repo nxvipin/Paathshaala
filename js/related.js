@@ -57,7 +57,7 @@ Response = "<span class='response' cid='" + myobj.cid + "'>Is this related ? <sp
 
 
 	});
-	$("#loading").fadeOut('slow');
+	$("#loading").fadeOut(1000);
 }
 
 /* Function calls to update the dom, no need to call in the page.*/
