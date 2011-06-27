@@ -80,5 +80,15 @@ $bottomBar = "<div id='bottom'>
 		</ul>
 </div> <!-- /bottom -->";
 
+$commentSubmit = "<div class='commentBox'>
+	<div class='commentBoxImage'> <img src='pics/me.png' class='fitin' /> </div>
+	<div class='commentBoxText'>
+			
+			<span class='commentTitle' style='margin-left:5px;'>Jaseem Abid</span>
+			<div class='data'>
+				<textarea id='comment' rows='2' cols='57' placeholder='Comment here. Enter for submit and down key for new line.'></textarea>
+			</div>
+	</div>
+</div>";
 
 ?>
