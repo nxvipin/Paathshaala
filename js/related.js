@@ -45,14 +45,14 @@ Response = "<span class='response' cid='" + myobj.cid + "'>Is this related ? <sp
 				ContId = $(this).parent().attr('cid');
 				$(this).parent().html('Thanks for the feedback').delay(1000).fadeOut(1000);
 				var playingId = $('video').attr('cid');
-				$.post("relatedFeed.php", { playingId : playingId,relatedId:ContId,response:'yes'});
+				$.post("response/relatedFeed.php", { playingId : playingId,relatedId:ContId,response:'yes'});
 			});
 
 		$("span#relNo").click(function() {
 				ContId = $(this).parent().attr('cid');
 				$(this).parent().html('Thanks for the feedback').parent().parent().parent().fadeOut("slow");
 				var playingId = $('video').attr('cid');
-				$.post("relatedFeed.php", { playingId : playingId,relatedId:ContId,response:'no'});
+				$.post("response/relatedFeed.php", { playingId : playingId,relatedId:ContId,response:'no'});
 		});
 
 
