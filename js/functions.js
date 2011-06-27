@@ -59,7 +59,7 @@ $('#comment').jkey('down',function(){
 });
 
 /* Need grayout.js */
-/* feedback stuff 
+/* feedback stuff */
 
 function hideFeedback() {
 	$('#feedback').fadeOut("fast");
@@ -72,14 +72,6 @@ function showFeedback() {
 	grayOut(true);
 	$('#feedback').load('feedback.html' , function() { loadingBar.fadeOut('slow'); }).fadeIn("slow");
 }
-
-*/
-
-
-
-
-
-
 
 
 
