@@ -10,6 +10,7 @@
 ?>
 <script src='js/video.js' type='text/javascript'></script>
 <link rel='stylesheet' href='css/video-js.css'>
+<link rel='stylesheet' href='css/video.css'>
 
 <script type='text/javascript'>
 $(document).ready(function() {
@@ -32,7 +33,6 @@ $(document).ready(function() {
 
 <div id='container'>
 <?php echo $topNotLoggedIn; ?>
-
 
 
 </div><!-- /container -->
