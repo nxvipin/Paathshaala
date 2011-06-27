@@ -1,0 +1,229 @@
+/* Video page stuff */
+h2.videoTitle{
+display:inline-block;
+color:#3a75af;
+font: 22px sans-serif;
+padding:0px;
+margin:5px;
+}
+
+div.videoBar {
+position:relative;
+width:557px;
+height:32px;
+margin:5px;
+border:1px solid #dddddd;
+border-radius:5px;
+background:#f5f5f5;
+background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#efefef));
+background: -moz-linear-gradient(top,#ffffff,#efefef);
+}
+
+.tags {
+margin-top: -32px;
+}
+
+.tags li{
+display:inline-block;
+margin-left:5px;
+}
+
+.tags a {
+background:#3369c0;
+border-radius: 4px 4px 4px 4px;
+color: #f7f7f7;
+font-size: 10px;
+line-height: 0;
+margin-right: 1px;
+margin-top: 1px;
+padding: 2px;
+text-transform: uppercase;
+}
+
+.tags a:hover {
+background:#44608e;
+}
+
+img.VideoBarButton {
+margin:3px;  /* Size fitting and verical align. Using 32 px images */
+vertical-align:middle;
+height:25px;
+}
+
+span.videoBarElement {
+display: inline-block; /** important **/
+vertical-align:middle; /** important **/
+padding:0;
+font-size:14px;
+}
+
+/* Video side listing*/
+span.sideMainTitle {
+background: #3A75AF;
+color: white;
+font-family: monospace;
+font-size: 20px;
+margin: 10px 0 25px;
+padding-left: 75px;
+display:inline-block;
+position:relative;
+width:275px;
+}
+
+div.relatedVideoWrap {
+position:relative;
+overflow:hidden;
+height:475px;
+}
+
+div.relatedVideo {
+/* The video listing in the right side used for series n related n similar*/
+width:350px;
+height:90px;
+margin:0 0 5px 0;
+padding:0px;
+font-size:12px;
+display:block;
+}
+
+div.relatedVideo:hover {
+background:#efefef;
+}
+
+div.relatedVideoImage {
+width:110px;
+height:74px;
+position:relative;
+padding:2px;
+border: 1px solid #cccccc;
+border-radius:5px;
+background:transparent;
+}
+
+div.relatedVideoContent {
+display:block;
+height:74px;
+width:230px;
+position:relative;
+left:120px;
+top:-78px;
+}
+
+span.sideYesNo {
+color:white;
+background:#777777;
+border-radius:5px;
+padding:2px;
+margin:0px 2px;
+cursor: url(../pics/pointer.png), auto;
+font-size:10px;
+}
+
+span.sideTitle {
+font-size:13px;
+color:#1F456B;
+}
+
+span.sideTitle:hover {
+color:#3A75AF;
+}
+
+span.sideViews { /* No property needed, all inherited :) */
+margin:1px 0px;
+color:#3A75AF;
+font-family:monospace;
+}
+
+span.sideUploader { /* No property needed, all inherited :) */
+margin:1px 0px;
+color:#3A75AF;
+}
+
+span.smallSubtitle {  /* Saying stuff like top comments in the video page */
+display:block;
+border-bottom: 1px solid #CCCCCC;
+color:#1F456B;
+font-weight: normal;
+font-size:16px;
+margin: 10px 0;
+padding: 2px 5px;
+}
+
+/* Comments */
+div.commentBox {
+margin:10px 0px;
+width:570px;
+min-height:80px;
+border-bottom: 1px dotted #CCCCCC;
+padding-bottom:10px;
+}
+
+div.commentBoxImage {
+margin:0px 2px 0px opx;
+border:0px;
+width:60px;
+height:60px;
+float:left;
+clear:left;
+}
+
+div.commentBoxText {jaseem an=bid 
+margin:0px; border:0px; width:500px; float:right; clear:right;
+}
+
+textarea#comment {
+color: #555555;
+font-family: 'PT Serif Regular';
+line-height: 1.4;
+}
+
+span.commentTitle {
+display:inline-block;
+margin: 0 0 0 -10px;
+font-size:13px;
+color:#1F456B;
+padding:0px;
+font-style: italic;
+}
+
+time.timeago {
+font-size:12px;
+margin:0 0 0 5px;
+font-style: italic;
+color: #666666;
+}
+
+.delComCross{
+position:relative;
+top:0px;
+left:485px;
+cursor: url(../pics/pointer.png), auto;
+color:#555555;
+}
+
+.delConfirm {
+cursor: url(../pics/pointer.png), auto;
+padding: 10px 0 10px 25px;
+position: relative;
+right:100px;
+}
+
+div#delConfirmRespText {
+margin:10px auto;
+}
+
+span.delYesNo {
+color:white;
+background:#777777;
+border-radius:5px;
+padding:4px;
+margin:2px;
+cursor: url(../pics/pointer.png), auto;
+font-size:16px;
+position: relative;
+top: 5px;
+}
+
+span.delYesNo:hover {
+background :#3369C0
+}
