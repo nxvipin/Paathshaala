@@ -317,3 +317,21 @@ border-radius: 13px 13px 13px 13px;
 height:25px;
 padding-left:10px;
 }
+
+/* Coloumn Structure */
+/*-------------------------- */
+.mainLeft, /* Wide normal left coloumn , like the one in faq */
+.mainRight /* Normal side bar in the right side */ { 
+display:table-cell;
+padding:0px;
+}
+
+.mainLeft {
+width:570px;
+margin-right:10px;
+}
+
+.mainRight {
+width:330px;
+margin:0px;
+}
