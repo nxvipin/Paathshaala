@@ -44,6 +44,7 @@ img#loading {
 position:fixed;
 top:300px;
 left:45%;
+z-index:1000;
 }
 
 html {
