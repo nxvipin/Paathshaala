@@ -37,8 +37,8 @@ Response = "<span class='response' cid='" + myobj.cid + "'>Is this related ? <sp
 
 		/*This block of code exist because of ugly DOM api. Moves the side element up the ht of video title to get a horizontally matched layout */
 		var titleHt = $(".video_title").height(); 
-		$("span.sideMainTitle").css({"top" :-titleHt + 30});
-		$("div.relatedVideoWrap").css({"top" :-titleHt + 30 });
+		$("span.sideMainTitle").css({"top" :-titleHt - 30});
+		$("div.relatedVideoWrap").css({"top" :-titleHt - 30 });
 
 		$("span#relYes").click(function() {
 
