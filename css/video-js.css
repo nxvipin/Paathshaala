@@ -7,15 +7,15 @@ REQUIRED STYLES (be careful overriding)
 /* Box containing video, controls, and download links.
    Will be set to the width of the video element through JS
    If you want to add some kind of frame or special positioning, use another containing element, not video-js-box. */
-.video-js-box { text-align: left; position: relative; line-height: 0 !important; margin: 5px auto; padding: 0 !important; border: 1px solid #dddddd !important; cursor:  url(pics/playback.png) 4 12, auto; box-shadow: 0px 0px 8px #191919;}
+.video-js-box { text-align: left; position: relative; line-height: 0 !important; margin: 5px auto; padding: 0 !important; border: 1px solid #dddddd !important; cursor:  url(../pics/playback.png) 4 12, auto; box-shadow: 0px 0px 8px #191919;}
 
 /* Video Element */
-video.video-js { background-color: #000; position: relative; padding: 0; cursor:  url(pics/playback.png) 4 12, auto; }
+video.video-js { background-color: #000; position: relative; padding: 0; cursor:  url(../pics/playback.png) 4 12, auto; }
 
 
 
 /* Poster Overlay Style */
-.video-js-box img.vjs-poster { display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; margin: 0; padding: 0; cursor: url(pics/playback.png) 4 12, auto; }
+.video-js-box img.vjs-poster { display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; margin: 0; padding: 0; cursor: url(../pics/playback.png) 4 12, auto; }
 
 /* Fullscreen styles for main elements */
 .video-js-box.vjs-fullscreen { position: fixed; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: 1000; }
@@ -92,7 +92,7 @@ so you can upgrade to newer versions easier. */
 
 /* Play/Pause
 -------------------------------------------------------------------------------- */
-.vjs-play-control {   cursor:  url(pics/playback.png) 4 12, auto; }
+.vjs-play-control {   cursor:  url(../pics/playback.png) 4 12, auto; }
 /* Play Icon */
 .vjs-play-control span { display: block; font-size: 0; line-height: 0; }
 .vjs-paused .vjs-play-control span {
@@ -111,22 +111,22 @@ so you can upgrade to newer versions easier. */
 /* Progress
 -------------------------------------------------------------------------------- */
 .vjs-progress-holder { /* Box containing play and load progresses */
-  position: relative; padding: 0; overflow:hidden; cursor:  url(pics/progress.png) 4 12, auto;
+  position: relative; padding: 0; overflow:hidden; cursor:  url(../pics/progress.png) 4 12, auto;
   height: 9px; border: 1px solid #777;
   margin: 7px 1px 0 5px; /* Placement within the progress control item */
   border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
 }
 .vjs-progress-holder div { /* Progress Bars */
-  position: absolute; display: block; width: 0; height: 9px; margin: 0; padding: 0; cursor:  url(pics/progress.png) 4 12, auto;
+  position: absolute; display: block; width: 0; height: 9px; margin: 0; padding: 0; cursor:  url(../pics/progress.png) 4 12, auto;
   border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
 }
-.vjs-play-progress { cursor:  url(pics/progress.png) 4 12, auto;
+.vjs-play-progress { cursor:  url(../pics/progress.png) 4 12, auto;
   /* CSS Gradient */
   /* Default */ background: #fff;
   /* Webkit  */ background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#777));
   /* Firefox */ background: -moz-linear-gradient(top,  #fff,  #777);
 }
-.vjs-load-progress { cursor:  url(pics/progress.png) 4 12, auto;
+.vjs-load-progress { cursor:  url(../pics/progress.png) 4 12, auto;
   opacity: 0.8;
   /* CSS Gradient */
   /* Default */ background-color: #555;
@@ -141,7 +141,7 @@ so you can upgrade to newer versions easier. */
 
 /* Volume
 -------------------------------------------------------------------------------- */
-.vjs-volume-control { cursor:  url(pics/sound.png) 4 12, auto; }
+.vjs-volume-control { cursor:  url(../pics/sound.png) 4 12, auto; }
 .vjs-volume-control div { display: block; margin: 0 5px 0 5px; padding: 4px 0 0 0; }
 /* Drawing the volume icon using 6 span elements */
 .vjs-volume-control div span { /* Individual volume bars */
@@ -161,9 +161,9 @@ so you can upgrade to newer versions easier. */
 
 /* Fullscreen
 -------------------------------------------------------------------------------- */
-.vjs-fullscreen-control { cursor:  url(pics/search.png) 4 12, auto; }
+.vjs-fullscreen-control { cursor:  url(../pics/search.png) 4 12, auto; }
 .vjs-fullscreen-control div {
-  padding: 0; text-align: left; vertical-align: top; cursor:  url(pics/search.png) 4 12, auto; 
+  padding: 0; text-align: left; vertical-align: top; cursor:  url(../pics/search.png) 4 12, auto; 
   margin: 5px 0 0 5px; /* Placement within the fullscreen control item */
   width: 20px; height: 20px;
 }
@@ -189,7 +189,7 @@ so you can upgrade to newer versions easier. */
 div.vjs-big-play-button {
   display: none; /* Start hidden */ z-index: 2;
   position: absolute; top: 50%; left: 50%; width: 80px; height: 80px; margin: -43px 0 0 -43px; text-align: center; vertical-align: center;
-  cursor:  url(pics/playback.png) 4 12, auto;
+  cursor:  url(../pics/playback.png) 4 12, auto;
   border: 3px solid #fff; opacity: 0.9;
   border-radius: 20px;
   /* CSS Background Gradients */
