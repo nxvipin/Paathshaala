@@ -69,4 +69,21 @@ $(document).ready(function(){
 	$('img.metaImage').error().attr('src','pics/default.png');
 });
 
+/* Submit comment using an enter key press */
+
+$('#comment').keypress(function(event) {
+	if (event.which == '13') {
+		event.preventDefault();
+		subComment();
+	}
+});
+
+/* Need the jkey plugin */
+/* New line in comment using a down key press */
+
+$('#comment').jkey('down',function(){
+	var comBox =$('#comment');
+	data = comBox.attr('value') + '\n';
+	comBox.attr('value' , data);
+});
 
