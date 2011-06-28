@@ -52,7 +52,7 @@ function updateComment() {
 		$(this).parent().height(ht);
 	});
 
-	$('img').error(function() {
+	$('div.commentBoxImage img').error(function() {
 		$(this).attr('src','pics/default.png');
 	});
 
