@@ -52,6 +52,10 @@ function updateComment() {
 		$(this).parent().height(ht);
 	});
 
+	$('img').error(function() {
+		$(this).attr('src','pics/default.png');
+	});
+
 	});
 	$("#loading").fadeOut('slow');
 }
