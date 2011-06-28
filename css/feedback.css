@@ -110,8 +110,10 @@ background:#348dd3;
 border-radius:5px;
 }
 
-.feedReply {
-margin:0px auto;
+div.feedReply {
+margin:70px;
+border:3px dotted #6480A5;
+padding:10px;
 }
 
 
