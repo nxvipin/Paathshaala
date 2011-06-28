@@ -42,12 +42,13 @@ $('span#feedbackFormSubmit').click(function() {
 	var fName = $('input#fName').attr('value');
 	var fDesc = $('textarea#fDesc').attr('value');
 	console.log("desc : " + fDesc);
-	$.post("response/feedR.php" , { 'type':fType ,'name':fName,'desc':fDesc } , function(data){
-		$('div#feedback').html(data);
-	})
-	.complete(function() {
-		//hideFeedback();
-	});
+	if( fName !=='' && fDesc !== '' ) {
+		$.post("response/feedR.php" , { 'type':fType ,'name':fName,'desc':fDesc } , function(data){
+			$('div#feedback').html(data);
+		});
+	} else {
+		alert("Fill in all the fields of the form.")
+	}
 });
 
 $('div#darkenScreenObject').click(function(){
