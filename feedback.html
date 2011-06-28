@@ -5,32 +5,54 @@
 	<div id='blueLine'>
 	</div>
 		<ul class='links'>
-			<li jaseem='I' class='hilite'>Idea</li>
-			<li jaseem='Q'>Question</li>
-			<li jaseem='X'>Problem</li>
-			<li jaseem='P'>Praise</li>
+			<li type='I' desc='So, Whats the idea?' class='hilite'>Idea</li>
+			<li type='Q' desc='Have you been through the FAQ ?' >Question</li>
+			<li type='X' desc='How can we help you ?' >Problem</li>
+			<li type='P' desc='Thanks for the support :)' >Praise</li>
 		</ul>
 	<div class='content'>
 			<div class='panel' style='display:block;'>
-				<form class='feedbackForm' method='post'>
-					<input id='fType' type='hidden' name='type' value='I' /><br />
-					<input id='fUname' type='text' name='uname' placeholder='Username' id='uname' /><br />
-					<textarea id='fDesc' name='desc' placeholder='So, Whats the idea?' id='desc'></textarea><br />
-					<span id='feedbackFormSubmit' onclick="subFeedback()" style="cursor:pointer;">Submit</span>
+				<form class='feedbackForm'>
+					<input required id='fType' type='hidden'  value='I' /><br />
+					<input required id='fName' type='text' placeholder='Username' /><br />
+					<textarea required id='fDesc' placeholder="So, Whats the idea?"></textarea><br />
+					<span id='feedbackFormSubmit' style="cursor:pointer;">Submit</span>
 				</form>
 			</div>
 	</div>
 
 <script type="text/javascript">
 
-	$('ul.links li').click(function() {
-	var numb = $("ul.links li").index(this);
-	var disp = $("ul.links li").eq(numb).attr('jaseem');
+$('ul.links li').click(function() {
+
 	$(this).parent().children().removeClass('hilite');
 	$(this).addClass('hilite');
 	$('div.content .panel').fadeOut("fast").fadeIn("");
-	$('#fType').attr('value' ,disp);
+	var numb = $("ul.links li").index(this);
+	var type = $("ul.links li").eq(numb).attr('type');
+	var desc = $("ul.links li").eq(numb).attr('desc');
+	$('input#fType').attr('value',type);
+	$('textarea#fDesc').attr('placeholder',desc);
 
+});
+
+$('span#feedbackFormSubmit').click(function() {
+	var fb = $(this).parent();
+	var fType = $('input#fType').attr('value');
+	var fName = $('input#fName').attr('value');
+	var fDesc = $('textarea#fDesc').attr('value');
+	console.log("desc : " + fDesc);
+	$.post("response/feedR.php" , { 'type':fType ,'name':fName,'desc':fDesc } , function(data){
+		$('div#feedback').html(data);
+	})
+	.complete(function() {
+		//hideFeedback();
+	});
+});
+
+$('div#darkenScreenObject').click(function(){
+	hideFeedback();
+	('img#loading').fadeOut(1000);
 });
 
 </script>
