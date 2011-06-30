@@ -1,3 +1,4 @@
+/*  updated again*/
 $(".searchBox").
 	focus(function () {
 		$(this).animate({width: '380px'} , 250 , '' , function () {}) 
@@ -47,6 +48,29 @@ function hideLiked() {
 	$('#likedMore').fadeIn();
 	$('#likedHidden').slideUp('fast');
 	$('#likedLess').hide();
+}
+
+/* Need grayout.js */
+/* feedback stuff */
+
+function hideFeedback() {
+	$('#feedback').fadeOut("fast");
+	grayOut(false);
+}
+
+function showFeedback() {
+	grayOut(true);
+	$('#feedback').load('feedback.html' , function() { loadingBar.fadeOut('slow'); }).fadeIn("slow");
+}
+
+function hideEditProfile() {
+	$('#editProfile').fadeOut("fast");
+	grayOut(false);
+}
+
+function showEditProfile() {
+	grayOut(true);
+	$('#editProfile').load('editProfile.html').fadeIn("slow");
 }
 
 var dashShown = 0;
@@ -99,6 +123,29 @@ $('#comment').jkey('down',function(){
 	comBox.attr('value' , data);
 });
 
+/* Need grayout.js */
+/* popup stuff */
+
+function hideFeedback() {
+	$('#feedback').fadeOut("fast");
+	grayOut(false);
+}
+
+function showFeedback() {
+	grayOut(true);
+	$('#feedback').load('feedback.html').fadeIn("slow");
+}
+
+function hideEditProfile() {
+	$('#editProfile').fadeOut("fast");
+	grayOut(false);
+}
+
+function showEditProfile() {
+	grayOut(true);
+	$('#editProfile').load('editProfile.html').fadeIn("slow");
+}
+
 $('img#bugButton.VideoBarButton').click(function(){
 	showFeedback();
 });
@@ -107,4 +154,11 @@ $('img#downloadButton.VideoBarButton').click(function(){
 	alert('Please right click on the video and save the video while being played');
 });
 
+$('img#editProfileButton').click(function(){
+	showEditProfile();
+});
 
+
+setTimeout(function(){
+	$('#loading').fadeOut(1000);
+}, 200);
