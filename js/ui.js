@@ -99,3 +99,12 @@ $('#comment').jkey('down',function(){
 	comBox.attr('value' , data);
 });
 
+$('img#bugButton.VideoBarButton').click(function(){
+	showFeedback();
+});
+
+$('img#downloadButton.VideoBarButton').click(function(){
+	alert('Please right click on the video and save the video while being played');
+});
+
+
