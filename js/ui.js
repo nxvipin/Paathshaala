@@ -37,6 +37,18 @@ function hidePopular() {
 	$('#popularLess').hide();
 }
 
+function showLiked() {
+	$('#likedMore').hide();
+	$('#likedHidden').slideDown('fast');
+	$('#likedLess').fadeIn();
+}
+
+function hideLiked() {
+	$('#likedMore').fadeIn();
+	$('#likedHidden').slideUp('fast');
+	$('#likedLess').hide();
+}
+
 var dashShown = 0;
 var loginShown = 0;
 
