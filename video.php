@@ -45,8 +45,8 @@ $(document).ready(function() {
 	
 	<div class='videoBar'>
 		<img src='pics/vidbar/watch.png' class='VideoBarButton' /><span class='videoBarElement' id='playCount'>Views:1,234</span>
-		<img src='pics/vidbar/download.png' title='Download' class='VideoBarButton' style='float:right;' onclick="alert('Please right click on the video and save the video while being played');"/>
-		<img src='pics/vidbar/bug.png' title='Report issue' class='VideoBarButton' style='float:right;' onclick="showFeedback()" />
+		<img src='pics/vidbar/download.png' title='Download' class='VideoBarButton' style='float:right;' id='downloadButton' />
+		<img src='pics/vidbar/bug.png' title='Report issue' class='VideoBarButton' style='float:right;' id='bugButton' />
 	</div>
 	
 	
