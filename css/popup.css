@@ -64,6 +64,7 @@ border-radius:4px;
 }
 
 .content div.panel {
+padding-top:10px;
 z-index:52;
 position:relative;
 top:-60px;
@@ -99,7 +100,7 @@ background:transparent;
 float:right;
 }
 
-#feedbackFormSubmit {
+span#feedbackFormSubmit,span#feedbackFormSubmitProfile,span#feedbackFormSubmitPasswd {
 display:inline-block;
 height:20px;
 padding:2px 3px;
