@@ -1,4 +1,4 @@
-div#feedback {
+div#feedback , div#editProfile {
 display:none;
 position:fixed;
 top:100px;
