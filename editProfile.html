@@ -1,0 +1,87 @@
+<!-- <div id='editProfile'> -->
+
+	<span class='fbTitle'>Edit your profile</span>
+	<span id='cross' onclick='hideEditProfile()'>X</span>
+	<div id='blueLine'>
+	</div>
+		<ul class='links'>
+			<li class='hilite'>Edit profile</li>
+			<li >Update password</li>
+		</ul>
+	<div class='content'>
+			<div class='panel' style='display:block;'>
+				<form class='feedbackForm'>
+					<input required id='pName' type='text' placeholder='Full name' /><br />
+					<input disabled id='pUName' type='text' placeholder='You cant change your username' /><br />
+					<input required id='pRoll' type='text' placeholder='Institute roll number' /><br />
+					<input required id='pDesc' type='text' placeholder='One word to describe you' /><br />
+					<span id='feedbackFormSubmitProfile' style="cursor:pointer;">Submit</span>
+				</form>
+			</div>
+			<div class='panel' style='display:none;'>
+				<form class='feedbackForm'>
+					<input required id='pWord1' type='password' placeholder='Enter password' /><br />
+					<input required id='pWord2' type='password' placeholder='Repeat password' /><br />
+					<span id='feedbackFormSubmitPasswd' style="cursor:pointer;">Submit</span>
+				</form>
+			</div>
+	</div>
+
+<script type="text/javascript">
+
+$('ul.links li').click(function() {
+	$(this).parent().children().removeClass('hilite');	/* Remove tab color from inactive tabs */
+	$(this).addClass('hilite');							/* Add tab color from inactive tabs */
+	var numb = $("ul.links li").index(this);
+	$('div.content .panel').hide().eq(numb).fadeIn("fast");
+	var type = $("ul.links li").eq(numb).attr('type');
+	var desc = $("ul.links li").eq(numb).attr('desc');
+	$('input#fType').attr('value',type);
+	$('textarea#fDesc').attr('placeholder',desc);
+});
+
+$('span#feedbackFormSubmitProfile').click(function() {
+	var pName = $('input#pName').attr('value');
+	var pRoll = $('input#pRoll').attr('value');
+	var pDesc = $('input#pDesc').attr('value');
+
+	console.log(pName); console.log(pRoll); console.log(pDesc);
+
+	if( pName !=='' && pRoll !=='' && pDesc !=='') {
+		$.post("response/updateProfile.php" , {'name':pName,'roll':pRoll ,'desc':pDesc} , function(data){
+			$('div.content').html(data);
+			setTimeout(function(){
+				hideEditProfile();
+			},1000);
+		});
+	} else {
+		alert("Fill in all the fields of the form.")
+	}
+});
+
+$('span#feedbackFormSubmitPasswd').click(function() {
+	var p1 = $('input#pWord1').attr('value');
+	var p2 = $('input#pWord2').attr('value');
+	if( p1 !== p2) { 
+		alert("Enter the same password");
+	} else if ( p1.length < 6 ) {
+		alert("Password too short. Minimum 6 characters");
+	} else if ( p1 == $('span#profileUsername').text() ) {
+		alert("Password same as your username. Too insecure");
+	} else {
+		$.post("response/updatePasswd.php" , { 'password': p1 } , function(data){
+			$('div.content').html(data);
+			setTimeout(function(){
+				hideEditProfile();
+			},1000);
+		});
+	}
+});
+
+$('div#darkenScreenObject').click(function(){
+	hideEditProfile();
+});
+
+</script>
+
+<!-- </div> -->
