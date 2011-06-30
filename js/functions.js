@@ -40,22 +40,4 @@ function subComment() {
 	$('#loading').fadeOut('fast');
 }
 
-/* Need grayout.js */
-/* feedback stuff */
-
-function hideFeedback() {
-	$('#feedback').fadeOut("fast");
-	grayOut(false);
-}
-
-function showFeedback() {
-	var loadingBar = $("#loading");
-	loadingBar.show();
-	grayOut(true);
-	$('#feedback').load('feedback.html' , function() { loadingBar.fadeOut('slow'); }).fadeIn("slow");
-}
-
-
-
-
 
