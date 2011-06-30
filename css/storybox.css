@@ -122,16 +122,20 @@ top:9px;
 .more, .less {
 display:block;
 font-size:12px;
-position:relative;
-left:850px;
+position: absolute;
+right: 200px;
 cursor: url('../pics/pointer.png') , auto;
 }
+.more:hover, .less:hover {
+text-decoration:underline;
+}
+
 
 .less {
 display:none;
 }
 
-#popularHidden{
+#popularHidden, #likedHidden {
 display:none;
 }
 
