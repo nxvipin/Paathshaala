@@ -1,0 +1,58 @@
+div#profileBox {
+font-size:20px;
+width:100%;
+height:200px;
+background:#f0f0f0;
+padding:5px;
+margin-bottom: 20px;
+}
+
+div#snapShot {
+display:inline-block;
+position:relative;
+left:-50px;
+top:-5px;
+background:#f9f9f9;
+box-shadow: 0 0 11px 1px #999999;
+margin:5px;
+height:150px;
+max-width:150px;
+padding:5px 5px 25px 5px;
+-webkit-transform:rotate(-5deg); /* I hate this part :( Ugly browsers. */
+-moz-transform:rotate(-5deg);
+-o-transform:rotate(-5deg);
+}
+
+span#picUname {
+font-family:'Droid sans';
+font-size:18px;
+padding:2px;
+}
+
+
+div#profileInfo {
+display: block;
+padding:10px;
+height: 160px;
+left: 210px;
+position: relative;
+top: -180px;
+width: 680px;
+}
+
+img#editProfileButton {
+position:relative;
+left:890px;
+top:-120px;
+cursor: url('../pics/pointer.png') , auto;
+padding:5px;
+z-index:5;
+}
+
+
+
+
+
+
+
+
