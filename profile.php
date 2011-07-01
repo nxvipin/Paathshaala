@@ -47,6 +47,7 @@
 <?php echo $bottomBar; ?>
 <div id="bottombar"></div>
 <script src='js/ui.js' type='text/javascript' ></script>
+<script src='js/myvideos.js' type='text/javascript' ></script>
 <script src='js/likedVideos.js' type='text/javascript' ></script>
 
 </body>
