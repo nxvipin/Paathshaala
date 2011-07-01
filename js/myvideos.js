@@ -10,8 +10,12 @@ function updatemyVideos() {
 	
 	var len = myJsonObj.length;
 
-	var groupBox1 = "<div class='groupBox'>";
-		for (i =0; i <4 ; i++){
+	var uploadVideo =  "<div class='storyBox' id='newVideo'><div class='imageBox'><img  src='content/cross.png'><div class='metaInfo'>Upload a new video</div></div><div class='metaBox'><div class='metaUser'><img class='metaImage' src='pics/me.png'> <span class='metaName'>Jaseem Abid</span></div><div class='metaViews'></div></div></div>";
+
+
+
+	var groupBox1 = "<div class='groupBox'>" + uploadVideo ;
+		for (i =0; i <3 ; i++){
 			var myobj = myJsonObj[i];
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
@@ -32,7 +36,7 @@ function updatemyVideos() {
 	groupBox1 = groupBox1 + "</div>";
 
 	var groupBox2 = "<div class='groupBox' id='myVideosHidden'>";
-		for (i =4; i < len ; i++){
+		for (i =3; i < len ; i++){
 			var myobj = myJsonObj[i];
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
