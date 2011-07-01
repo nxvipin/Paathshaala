@@ -135,7 +135,7 @@ text-decoration:underline;
 display:none;
 }
 
-#popularHidden, #likedHidden {
+#popularHidden, #likedHidden , #myVideosHidden {
 display:none;
 }
 
