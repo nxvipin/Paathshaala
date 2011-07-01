@@ -50,6 +50,18 @@ function hideLiked() {
 	$('#likedLess').hide();
 }
 
+function showMyVideos() {
+	$('#myVideosMore').hide();
+	$('#myVideosHidden').slideDown('fast');
+	$('#myVideosLess').fadeIn();
+}
+
+function hideMyVideos() {
+	$('#myVideosMore').fadeIn();
+	$('#myVideosHidden').slideUp('fast');
+	$('#myVideosLess').hide();
+}
+
 /* Need grayout.js */
 /* feedback stuff */
 
