@@ -139,7 +139,7 @@ abstract class content
 	*/
 	public static function tagSearch($query,$offset,$limit)
 	{
-		$sql="select distinct ct_contentid from content_tags where ct_tagid IN (select tg_id from tags where tg_name ilike '%$query%') order by ct_contentid Limit $limit Offset $offset";
+		$sql="Select cn_id from content where cn_id in (select distinct ct_contentid from content_tags where ct_tagid IN (select tg_id from tags where tg_name ilike '%$query%')) order by cn_views DESC Limit $limit Offset $offset";
 		return resource2array(dbquery($sql));
 	}
 	
