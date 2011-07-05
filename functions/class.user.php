@@ -62,8 +62,9 @@ class user
 	*/
 	protected function create($uname, $upass, $ufullname, $uroll, $uemail)
 	{
+		global $global_salt;
 		$this->uname=pg_escape_string($uname);
-		$this->upass=sha1(pg_escape_string($upass));
+		$this->upass=sha1(pg_escape_string($upass).$global_salt);
 		$this->ufullname=pg_escape_string($ufullname);
 		$this->uroll=pg_escape_string($uroll);
 		$this->uemail=pg_escape_string($uemail);
@@ -106,6 +107,11 @@ class user
 	public function getEmail()
 	{
 		return $this->uemail;
+	}
+	
+	public function getUserPicture()
+	{
+		return $this->
 	}
 	
 	
