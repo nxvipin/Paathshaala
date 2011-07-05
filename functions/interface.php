@@ -48,7 +48,6 @@ function getVideoJson($cid)
 function getTagSearchJson($tag,$page)
 {
 	$contentarray=content::tagSearch($tag,($page*10)-10,10);
-	echo $contentarray[2];
 	$json=array();
 	for($i=0;$i<count($contentarray);$i++)
 	{
