@@ -116,6 +116,17 @@ class user
 		return $global_user_folder."/".sha1($this->uid.$global_salt).".png";
 	}
 	
+	/**
+	* Static function to return the PATH of the user pic URL when user id is known.
+	* @param integer $uid User ID
+	* @return string relative PATH of the user DP.
+	*/
+	public static function getUserPictureS($uid)
+	{
+		global $global_user_folder, $global_salt;
+		return $global_user_folder."/".sha1($uid.$global_salt).".png";
+	}
+	
 	
 }
 
