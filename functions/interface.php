@@ -56,7 +56,10 @@ function getTagSearchJson($tag,$page)
 							'title'=>$obj->getTitle(),
 							'viewcount'=>$obj->getViewCount(),
 							'poster'=>$obj->getPoster(),
-							'timestamp'=>$obj->getTimestamp()));
+							'timestamp'=>$obj->getTimestamp(),
+							'uid'=>$obj->getUserId(),
+							'fullname'=>user::getFullNameS($obj->getUserId()),
+							'pic'=>user::getUserPictureS($obj->getUserId())));
 	}
 	return json_encode($json);
 }
@@ -79,8 +82,12 @@ function getPopularVideoJson($count)
 							'title'=>$obj->getTitle(),
 							'viewcount'=>$obj->getViewCount(),
 							'poster'=>$obj->getPoster(),
-							'timestamp'=>$obj->getTimestamp()));
+							'timestamp'=>$obj->getTimestamp(),
+							'uid'=>$obj->getUserId(),
+							'fullname'=>user::getFullNameS($obj->getUserId()),
+							'pic'=>user::getUserPictureS($obj->getUserId())));
 	}
 	return json_encode($json);
 }
+
 ?>
