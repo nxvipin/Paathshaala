@@ -46,6 +46,7 @@ class user
 	{
 		$sql="Select us_name, us_fullname, us_rollno, us_email from users where us_id = '$uid'";
 		$user=pg_fetch_assoc(dbquery($sql));
+		$this->uid=$uid;
 		$this->uname=$user['us_name'];
 		$this->ufullname=$user['us_fullname'];
 		$this->uroll=$user['us_rollno'];
@@ -111,8 +112,11 @@ class user
 	
 	public function getUserPicture()
 	{
-		return $this->
+		global $global_user_folder, $global_salt;
+		return $global_user_folder."/".sha1($this->uid.$global_salt).".png";
 	}
 	
 	
 }
+
+?>
