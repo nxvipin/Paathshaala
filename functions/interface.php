@@ -90,4 +90,29 @@ function getPopularVideoJson($count)
 	return json_encode($json);
 }
 
+/**
+* Returs the JSON strings of the $count Featured videos and their details.
+* @param integer $count The number of videos that should be returned.
+* @return string Featured Videos JSON.
+*/
+function getFeaturedVideoJson($count)
+{
+	$sql="Select ft_cid from featured limit $count";
+	$contentarray=resource2array(dbquery($sql));
+	$json=array();
+	$vcount=count($contentarray);
+	for($i=0;$i<$vcount;$i++)
+	{
+		$obj=new video($contentarray[$i]);
+		array_push($json,array( 'cid'=>$obj->getContentId(),
+							'title'=>$obj->getTitle(),
+							'viewcount'=>$obj->getViewCount(),
+							'poster'=>$obj->getPoster(),
+							'timestamp'=>$obj->getTimestamp(),
+							'uid'=>$obj->getUserId(),
+							'fullname'=>user::getFullNameS($obj->getUserId()),
+							'pic'=>user::getUserPictureS($obj->getUserId())));
+	}
+	return json_encode($json);
+}
 ?>
