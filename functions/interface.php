@@ -171,9 +171,9 @@ function getUserVideoLikesJson($uid,$like)
 }
 
 /**
-* 
-* @param
-* @return
+* Returns all videos uplaoded by a user.
+* @param integer $uid User ID to get uplaoded videos.
+* @return string JSON containing all uploaded video details.
 */
 function getUserUploadedVideos($uid)
 {
