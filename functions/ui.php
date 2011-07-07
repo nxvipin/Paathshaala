@@ -41,14 +41,15 @@ function getVideoHtml($cid)
 			</video>
 			</div>".
 			"<div class='videoBar'>
-				<img src='pics/vidbar/watch.png' class='VideoBarButton' /><span class='videoBarElement' id='playCount'>Views:1,234</span>
+				<img src='pics/vidbar/watch.png' class='VideoBarButton' /><span class='videoBarElement' id='playCount'>Views:".$v->getViewCount()."</span>
 				<img src='pics/vidbar/download.png' title='Download' class='VideoBarButton' style='float:right;' onclick=\"alert('Please right click on the video and save the video while being played');\"/>
 				<img src='pics/vidbar/bug.png' title='Report issue' class='VideoBarButton' style='float:right;' onclick=\"showFeedback()\" />
 			</div>".
 			"<img src='pics/vidbar/tag.png' title='tags' style='margin-left:6px;'/>".
 				"<ul class='tags'>".$tags."</ul>".
 			"<div class='VideoDesc'>".$v->getDesc()."</div>";
-	echo $video;
+	$v->addViewCount();
+	return $video;
 }
 
 

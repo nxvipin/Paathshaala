@@ -57,7 +57,6 @@ class video extends content
 		$this->serverid=$vid['cf_serverid'];
 		$this->path=$vid['cf_path'];
 		$this->file=$vid['cv_file'];
-		$this->addViewCount();
 	}
 	
 	/**
