@@ -29,7 +29,7 @@ class activity
 	*/
 	public static function like($cid,$uid,$like)
 	{
-		$sql="Insert into like(lk_cid,lk_uid,lk_like) values('".$cid."','".$uid."','".$like."') returning lk_id";
+		$sql="Insert into content_like(cl_cid,cl_uid,cl_value) values('".$cid."','".$uid."','".$like."') returning cl_id";
 		return pg_fetch_result(dbquery($sql),0,0);
 	}
 	
