@@ -1,6 +1,7 @@
 <?php
 /**
 * Interface functions are the functions that send/recieve data from the user interface.
+* TODO: Heavy refactoring possible. 
 * All interface functions MUST be defined here.
 * @author Vipin Nair <swvist@gmail.com>
 * @author Jaseem Abid <jaseemabid@gmail.com>
@@ -98,6 +99,32 @@ function getPopularVideoJson($count)
 function getFeaturedVideoJson($count)
 {
 	$sql="Select ft_cid from featured limit $count";
+	$contentarray=resource2array(dbquery($sql));
+	$json=array();
+	$vcount=count($contentarray);
+	for($i=0;$i<$vcount;$i++)
+	{
+		$obj=new video($contentarray[$i]);
+		array_push($json,array( 'cid'=>$obj->getContentId(),
+							'title'=>$obj->getTitle(),
+							'viewcount'=>$obj->getViewCount(),
+							'poster'=>$obj->getPoster(),
+							'timestamp'=>$obj->getTimestamp(),
+							'uid'=>$obj->getUserId(),
+							'fullname'=>user::getFullNameS($obj->getUserId()),
+							'pic'=>user::getUserPictureS($obj->getUserId())));
+	}
+	return json_encode($json);
+}
+
+/**
+* Returns the Top Rated videos content ID.
+* @param integer $count The number of Top rated videos required.
+* @return string JSON contatining data of top rated videos.
+*/
+function getTopRatedVideoJson($count)
+{
+	$sql="Select cn_id from content_video order by cn_likes desc limit $count";
 	$contentarray=resource2array(dbquery($sql));
 	$json=array();
 	$vcount=count($contentarray);
