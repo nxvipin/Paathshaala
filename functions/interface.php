@@ -175,7 +175,7 @@ function getUserVideoLikesJson($uid,$like)
 * @param integer $uid User ID to get uplaoded videos.
 * @return string JSON containing all uploaded video details.
 */
-function getUserUploadedVideos($uid)
+function getUserUploadedVideosJson($uid)
 {
 	$sql="Select cn_id from content_video where cn_userid=$uid";
 	$contentarray=resource2array(dbquery($sql));
