@@ -30,7 +30,16 @@ class activity
 	public static function like($cid,$uid,$like)
 	{
 		$sql="Insert into content_like(cl_cid,cl_uid,cl_value) values('".$cid."','".$uid."','".$like."') returning cl_id";
-		return pg_fetch_result(dbquery($sql),0,0);
+		$likeid=pg_fetch_result(dbquery($sql),0,0);
+		if($likeid)
+		{
+			if($like==1)
+				$sql="Update content set cn_likes=cn_likes+1 where cn_id=$cid";
+			else if($like==-1)
+				$sql="Update content set cn_dislikes=cn_dislikes+1 where cn_id=$cid";
+			dbquery($sql);
+		}
+		return $likeid;
 	}
 	
 	/**
