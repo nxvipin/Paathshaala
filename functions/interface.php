@@ -142,4 +142,57 @@ function getTopRatedVideoJson($count)
 	}
 	return json_encode($json);
 }
+
+/**
+* Returns liked/disliked videos of a user.
+* @param integer $uid User ID
+* @param integer $like preference(like:1 , dislike: -1)
+* @return string json string with user liked/disliked videos.
+*/
+function getUserVideoLikesJson($uid,$like)
+{
+	$sql="Select cl_cid from content_like where cl_uid=$uid and cl_value=$like";
+	$contentarray=resource2array(dbquery($sql));
+	$json=array();
+	$vcount=count($contentarray);
+	for($i=0;$i<$vcount;$i++)
+	{
+		$obj=new video($contentarray[$i]);
+		array_push($json,array( 'cid'=>$obj->getContentId(),
+							'title'=>$obj->getTitle(),
+							'viewcount'=>$obj->getViewCount(),
+							'poster'=>$obj->getPoster(),
+							'timestamp'=>$obj->getTimestamp(),
+							'uid'=>$obj->getUserId(),
+							'fullname'=>user::getFullNameS($obj->getUserId()),
+							'userpic'=>user::getUserPictureS($obj->getUserId())));
+	}
+	return json_encode($json);
+}
+
+/**
+* 
+* @param
+* @return
+*/
+function getUserUploadedVideos($uid)
+{
+	$sql="Select cn_id from content_video where cn_userid=$uid";
+	$contentarray=resource2array(dbquery($sql));
+	$json=array();
+	$vcount=count($contentarray);
+	for($i=0;$i<$vcount;$i++)
+	{
+		$obj=new video($contentarray[$i]);
+		array_push($json,array( 'cid'=>$obj->getContentId(),
+							'title'=>$obj->getTitle(),
+							'viewcount'=>$obj->getViewCount(),
+							'poster'=>$obj->getPoster(),
+							'timestamp'=>$obj->getTimestamp(),
+							'uid'=>$obj->getUserId(),
+							'fullname'=>user::getFullNameS($obj->getUserId()),
+							'userpic'=>user::getUserPictureS($obj->getUserId())));
+	}
+	return json_encode($json);
+}
 ?>
