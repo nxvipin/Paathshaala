@@ -43,6 +43,28 @@ class activity
 	}
 	
 	/**
+	* Static function to remove like/dislike of content by a user. 
+	* @param integer $cid Content ID of the liked/disliked content.
+	* @param integer $uid User ID who liked/disliked the content.
+	* @return integer on success:1 on fail: 0
+	*/
+	public static function removelike($cid,$uid)
+	{
+		$sql="Delete from content_like where cl_cid=$cid and cl_uid=$uid returning cl_value";
+		$like=pg_fetch_result(dbquery($sql),0,0);
+		if($like)
+		{
+			if($like==1)
+				$sql="Update content set cn_likes=cn_likes-1 where cn_id=$cid";
+			if($like==-1)
+				$sql="Update content set cn_dislikes=cn_dislikes-1 where cn_id=$cid";
+			dbquery($sql);
+			return 1;
+		}
+		return 0;
+	}
+	
+	/**
 	* Stores feedback in the database. Anonymous users will have a special user ID.
 	* Name/Email of the Anonymous user should be appended to the description.
 	* @param string $ip IP address of the user.
