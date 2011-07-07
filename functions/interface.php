@@ -60,7 +60,7 @@ function getTagSearchJson($tag,$page)
 							'timestamp'=>$obj->getTimestamp(),
 							'uid'=>$obj->getUserId(),
 							'fullname'=>user::getFullNameS($obj->getUserId()),
-							'pic'=>user::getUserPictureS($obj->getUserId())));
+							'userpic'=>user::getUserPictureS($obj->getUserId())));
 	}
 	return json_encode($json);
 }
@@ -86,7 +86,7 @@ function getPopularVideoJson($count)
 							'timestamp'=>$obj->getTimestamp(),
 							'uid'=>$obj->getUserId(),
 							'fullname'=>user::getFullNameS($obj->getUserId()),
-							'pic'=>user::getUserPictureS($obj->getUserId())));
+							'userpic'=>user::getUserPictureS($obj->getUserId())));
 	}
 	return json_encode($json);
 }
@@ -112,7 +112,7 @@ function getFeaturedVideoJson($count)
 							'timestamp'=>$obj->getTimestamp(),
 							'uid'=>$obj->getUserId(),
 							'fullname'=>user::getFullNameS($obj->getUserId()),
-							'pic'=>user::getUserPictureS($obj->getUserId())));
+							'userpic'=>user::getUserPictureS($obj->getUserId())));
 	}
 	return json_encode($json);
 }
@@ -138,7 +138,7 @@ function getTopRatedVideoJson($count)
 							'timestamp'=>$obj->getTimestamp(),
 							'uid'=>$obj->getUserId(),
 							'fullname'=>user::getFullNameS($obj->getUserId()),
-							'pic'=>user::getUserPictureS($obj->getUserId())));
+							'userpic'=>user::getUserPictureS($obj->getUserId())));
 	}
 	return json_encode($json);
 }
