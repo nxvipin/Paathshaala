@@ -28,6 +28,11 @@ function updateFeatured() {
 		}
 		featuredDiv = featuredDiv + "</div>";
 		$('div#container').append(featuredDiv);
+	}).complete(function(){
+		$('img.metaImage').each(function(){
+			$(this).error(function(){
+				$(this).attr('src','pics/default.png');
+			 });
 	});
 	$("#loading").fadeOut('slow');
 }
@@ -81,6 +86,11 @@ function updatePopular() {
 	var popularDiv = "<span class=groupTitle>Popular</span>" + groupBox1 + "<span class='more' id='popularMore' onclick='showPopular()'>Gimme more !!</span>" + groupBox2 + "<span class='less' id=popularLess onclick='hidePopular()'>Hide all this !!</span>" ;
 
 		$('div#container').append(popularDiv);
+	}).complete(function(){
+		$('img.metaImage').each(function(){
+			$(this).error(function(){
+				$(this).attr('src','pics/default.png');
+			 });
 	});
 	$("#loading").fadeOut('slow');
 }
@@ -110,6 +120,11 @@ function updateTopRated() {
 		}
 		featuredDiv = featuredDiv + "</div>";
 		$('div#container').append(featuredDiv);
+	}).complete(function(){
+		$('img.metaImage').each(function(){
+			$(this).error(function(){
+				$(this).attr('src','pics/default.png');
+			 });
 	});
 	$("#loading").fadeOut('slow');
 }
