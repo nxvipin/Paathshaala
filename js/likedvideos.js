@@ -1,22 +1,18 @@
-/*	Codes to update the liked videos in the profile page
-	No need to call functions in the html since it is called in the js script.
-	Insert the script at the end of the page.
+/*
+	Codes to update the liked videos in the profile page
 */
-
 
 function updateLiked() {
 	$("#loading").show();
-	$.getJSON( 'json/liked.json', function(myJsonObj) {
-	
+	$.getJSON( 'json/uservideolikes.json.php', function(myJsonObj) {
 	var len = myJsonObj.length;
-
 	var groupBox1 = "<div class='groupBox'>";
 		for (i =0; i <4 ; i++){
 			var myobj = myJsonObj[i];
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
 				"<div class='imageBox'>" +
-					"<img src='" + "http://localhost/paathshaala/content/thumb.jpg" +"' class='thumbnail'/>" + /* myobj.poster */
+					"<img src='" + myobj.poster +"' class='thumbnail'/>" + 
 					"<div class='metaInfo'>" + myobj.title + "</div>" +
 				"</div> </a>" +
 				"<div class='metaBox'>" +
@@ -58,7 +54,3 @@ function updateLiked() {
 	});
 	$("#loading").fadeOut('slow');
 }
-
-
-
-updateLiked();

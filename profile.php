@@ -10,6 +10,16 @@
 ?>
 <link rel='stylesheet' href='css/profile.css'>
 <link rel='stylesheet' href='css/storybox.css'>
+<script src='js/myvideos.js' type='text/javascript' ></script>
+<script src='js/likedvideos.js' type='text/javascript' ></script>
+<script src='js/dislikedvideos.js' type='text/javascript' ></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	updatemyVideos();
+	updateLiked();
+	updateDisliked();
+});
+</script>
 
 
 </head>
@@ -48,8 +58,5 @@
 <?php echo $bottomBar; ?>
 <div id="bottombar"></div>
 <script src='js/ui.js' type='text/javascript' ></script>
-<script src='js/myvideos.js' type='text/javascript' ></script>
-<script src='js/likedVideos.js' type='text/javascript' ></script>
-
 </body>
 </html>
