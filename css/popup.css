@@ -3,19 +3,29 @@ display:none;
 position:fixed;
 top:100px;
 left:35%;
-background : #fafafa;
+background:#f0f0f0;
+background:-webkit-gradient(linear, left top, left bottom, from(#efefef), to(#f9f9f9));
+background:-moz-linear-gradient(center top , #efefef 0%, #F1F2F2 33.3333%, #f9f9f9 100%) repeat scroll 0 0 transparent;
+color:#555555;
 width : 400px;
-height : 265px;
+height : 275px;
 border : 1px solid #80afdf;
 padding : 10px;
-color : #6480a5;
-box-shadow:0px 0px 5px 3px #000910;
+box-shadow: 0 0 5px 3px #000910;
+box-shadow: 0 0 5px 2px #999999 inset;
 z-index:51;
 }
 
+div#feedback form.feedbackForm {
+border:0px solid #80afdf;
+position:relative;
+top:-20px;
+}
+
 span.fbTitle {
-font-size:16px;
-background:#fafafa;
+font-family: 'Pacifico', arial, serif;
+font-size:20px;
+background:transparent;
 color:#6480a5;
 }
 
@@ -31,8 +41,7 @@ div#blueLine {
 height:40px;
 width:100%;
 margin:10px 0px;
-background:#f4faff;
-color:#6480a5;
+background:transparent;
 border-bottom:1px solid #b5d2f0;
 border-top:1px dotted #d1d1d1;
 }
@@ -46,20 +55,22 @@ height:20px;
 padding:2px 3px;
 margin:-10px 1px 1px 1px;
 border-radius:4px;
-background:#f4faff;
-color:#759be0;
+background:#ececec;
+background: -webkit-gradient(linear, 0% 0, 0% 100%, from(white), to(#E1E1E1));
+background: -moz-linear-gradient(top,white,#E1E1E1);
+color:#233451;
 cursor:pointer;
 }
 
 .links li:hover {
 color:#ffffff;
-background:#348dd3;
+background:#438BB1;
 border-radius:4px;
 }
 
 .links li.hilite {
 color:#ffffff;
-background:#348dd3;
+background:#438BB1;
 border-radius:4px;
 }
 
@@ -73,21 +84,16 @@ width:400px;
 height:100px;
 }
 
-form.feedbackForm {
-border:0px solid #80afdf;feedReply
-position:relative;
-top:-40px;
-}
-
 form.feedbackForm input , form.feedbackForm textarea {
-border:1px solid #80afdf;
+border:1px solid #3a75af;
 font-size:14px;
-color:#555555;
+background:transparent;
 height:16px;
 width:390px;
 padding:3px;
 margin:5px 0px;
 border-radius:5px;
+color:#555555;
 }
 
 form.feedbackForm textarea {
@@ -110,13 +116,3 @@ color:#ffffff;
 background:#348dd3;
 border-radius:5px;
 }
-
-div.feedReply {
-margin:70px;
-border:3px dotted #6480A5;
-padding:10px;
-}
-
-
-
-
