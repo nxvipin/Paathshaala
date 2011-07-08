@@ -5,7 +5,7 @@
 
 function updateFeatured() {
 	$("#loading").show();
-	$.getJSON( 'json/featured.json', function(myJsonObj) {
+	$.getJSON( 'json/featured.json.php', function(myJsonObj) {
 	var featuredDiv = "<span class=groupTitle>Featured</span>" +
 						"<div class='groupBox'>";
 		for (i in myJsonObj){
@@ -34,7 +34,7 @@ function updateFeatured() {
 
 function updatePopular() {
 	$("#loading").show();
-	$.getJSON( 'json/popular.json', function(myJsonObj) {
+	$.getJSON( 'json/popular.json.php', function(myJsonObj) {
 
 	var groupBox1 = "<div class='groupBox'>";
 		for (i =0; i <4 ; i++){
@@ -58,7 +58,7 @@ function updatePopular() {
 	groupBox1 = groupBox1 + "</div>";
 
 	var groupBox2 = "<div class='groupBox' id='popularHidden'>";
-		for (i =0; i <4 ; i++){
+		for (i =4; i <8 ; i++){
 			var myobj = myJsonObj[i];
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
@@ -87,7 +87,7 @@ function updatePopular() {
 
 function updateTopRated() {
 	$("#loading").show();
-	$.getJSON( 'json/toprated.json', function(myJsonObj) {
+	$.getJSON( 'json/toprated.json.php', function(myJsonObj) {
 	var featuredDiv = "<span class=groupTitle>Top Rated</span>" +
 						"<div class='groupBox'>";
 		for (i in myJsonObj){
