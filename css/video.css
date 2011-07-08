@@ -175,6 +175,7 @@ textarea#comment {
 color: #555555;
 font-family: 'PT Serif Regular';
 line-height: 1.4;
+width: 500px;
 }
 
 span.commentTitle {
