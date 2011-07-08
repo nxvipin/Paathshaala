@@ -32,10 +32,11 @@ function updateFeatured() {
 		$('img.metaImage').each(function(){
 			$(this).error(function(){
 				$(this).attr('src','pics/default.png');
-			 });
+			});
+		});
 	});
 	$("#loading").fadeOut('slow');
-}
+	};
 
 function updatePopular() {
 	$("#loading").show();
@@ -90,7 +91,8 @@ function updatePopular() {
 		$('img.metaImage').each(function(){
 			$(this).error(function(){
 				$(this).attr('src','pics/default.png');
-			 });
+			});
+		});
 	});
 	$("#loading").fadeOut('slow');
 }
@@ -124,7 +126,8 @@ function updateTopRated() {
 		$('img.metaImage').each(function(){
 			$(this).error(function(){
 				$(this).attr('src','pics/default.png');
-			 });
+			});
+		});
 	});
 	$("#loading").fadeOut('slow');
 }
