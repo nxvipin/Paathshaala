@@ -33,6 +33,7 @@
 	
 	<div id='profileInfo'>
 		I am : <span id=''>Jaseem Abid </span><br />
+		email : jaseemabid@gmail.com <br />
 		here I am called : <span id='profileUsername'>jaseemabid</span><br />
 		Insti Roll : b090264cs (Helps us to give you better suggestions )<br />
 		One word to describe me : JavaScript Ninja <br />
