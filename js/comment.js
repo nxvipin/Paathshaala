@@ -55,7 +55,9 @@ function updateComment() {
 	$('div.commentBoxImage img').error(function() {
 		$(this).attr('src','pics/default.png');
 	});
-
+	
+	$("time.timeago").timeago();
+	
 	});
 	$("#loading").fadeOut('slow');
 }

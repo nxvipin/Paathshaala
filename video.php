@@ -14,8 +14,7 @@
 
 <script type='text/javascript'>
 $(document).ready(function() {
-		VideoJS.setupAllWhenReady();
-		$("time.timeago").timeago();
+	VideoJS.setupAllWhenReady();
 });
 </script>
 </head>
