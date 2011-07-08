@@ -336,3 +336,19 @@ margin-right:10px;
 width:330px;
 margin:0px;
 }
+
+/* General styling */
+
+.newBlue {
+color:#3A75AF
+}
+
+.q {
+	color:#3a75af;
+	font-size: 16px;
+}
+
+.ans {
+	color:#737373;
+	font-size: 14px;
+}
