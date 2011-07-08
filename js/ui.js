@@ -1,4 +1,3 @@
-/*  updated again*/
 $(".searchBox").
 	focus(function () {
 		$(this).animate({width: '380px'} , 250 , '' , function () {}) 
@@ -24,7 +23,6 @@ $(".delComCross").click(function() {
 		cross.css({'color':'#555555' , 'cursor':'url(pics/pointer.png), auto' });
 	});
 });
-
 
 function showPopular() {
 	$('#popularMore').hide();
@@ -60,29 +58,6 @@ function hideMyVideos() {
 	$('#myVideosMore').fadeIn();
 	$('#myVideosHidden').slideUp('fast');
 	$('#myVideosLess').hide();
-}
-
-/* Need grayout.js */
-/* feedback stuff */
-
-function hideFeedback() {
-	$('#feedback').fadeOut("fast");
-	grayOut(false);
-}
-
-function showFeedback() {
-	grayOut(true);
-	$('#feedback').load('feedback.html' , function() { loadingBar.fadeOut('slow'); }).fadeIn("slow");
-}
-
-function hideEditProfile() {
-	$('#editProfile').fadeOut("fast");
-	grayOut(false);
-}
-
-function showEditProfile() {
-	grayOut(true);
-	$('#editProfile').load('editProfile.html').fadeIn("slow");
 }
 
 var dashShown = 0;
@@ -155,7 +130,7 @@ function hideEditProfile() {
 
 function showEditProfile() {
 	grayOut(true);
-	$('#editProfile').load('editProfile.html').fadeIn("slow");
+	$('#editProfile').load('editprofile.html').fadeIn("slow");
 }
 
 $('img#bugButton.VideoBarButton').click(function(){
@@ -169,7 +144,6 @@ $('img#downloadButton.VideoBarButton').click(function(){
 $('img#editProfileButton').click(function(){
 	showEditProfile();
 });
-
 
 setTimeout(function(){
 	$('#loading').fadeOut(1000);
