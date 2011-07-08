@@ -27,13 +27,13 @@ position:relative;
 }
 
 div.relatedVideo {
-width:650px;
+width:100%;
+height:80px;
 }
 
 div.relatedVideoContent {
 width: 525px;
 }
-
 
 </style>
 
