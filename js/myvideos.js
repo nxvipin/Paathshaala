@@ -5,7 +5,7 @@
 
 function updatemyVideos() {
 	$("#loading").show();
-	$.getJSON( 'json/uservideouploads.json.php', function(myJsonObj) {
+	$.getJSON( 'json/uservideouploads.json.php?uid=1002', function(myJsonObj) {
 	
 	var len = myJsonObj.length;
 
@@ -25,7 +25,7 @@ function updatemyVideos() {
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
 						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.uname +"</span>" +
+						"<span class='metaName' >" + myobj.fullname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
 				"</div>" +
@@ -46,7 +46,7 @@ function updatemyVideos() {
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
 						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.uname +"</span>" +
+						"<span class='metaName' >" + myobj.fullname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
 				"</div>" +

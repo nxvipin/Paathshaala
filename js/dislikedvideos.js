@@ -18,7 +18,7 @@ function updateDisliked() {
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
 						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.uname +"</span>" +
+						"<span class='metaName' >" + myobj.fullname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
 				"</div>" +
@@ -39,7 +39,7 @@ function updateDisliked() {
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
 						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.uname +"</span>" +
+						"<span class='metaName' >" + myobj.fullname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
 				"</div>" +

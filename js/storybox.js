@@ -19,7 +19,7 @@ function updateFeatured() {
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
 						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.uname +"</span>" +
+						"<span class='metaName' >" + myobj.fullname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
 				"</div>" +
@@ -54,7 +54,7 @@ function updatePopular() {
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
 						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.uname +"</span>" +
+						"<span class='metaName' >" + myobj.fullname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
 				"</div>" +
@@ -75,7 +75,7 @@ function updatePopular() {
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
 						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.uname +"</span>" +
+						"<span class='metaName' >" + myobj.fullname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
 				"</div>" +
@@ -113,7 +113,7 @@ function updateTopRated() {
 				"<div class='metaBox'>" +
 					"<div class='metaUser'>" +
 						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.uname +"</span>" +
+						"<span class='metaName' >" + myobj.fullname +"</span>" +
 					"</div>" +
 					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
 				"</div>" +
