@@ -28,4 +28,5 @@ background:-moz-linear-gradient(center top , #efefef 0%, #F1F2F2 33.3333%, #f9f9
 -webkit-box-shadow: 0 0 5px 2px #999999 inset;
 box-shadow: 0 0 5px 3px #000910;
 box-shadow: 0 0 5px 2px #999999 inset;
+border-radius:20px;
 }
