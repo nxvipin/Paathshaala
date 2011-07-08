@@ -1,7 +1,7 @@
 /*	Codes to update the 3 storyBox layouts in the intro page with ajax.
-	No need to call functions in the html since it is called in the js script.
-	Insert the script at the end of the page.
+	Call functions in the html after load.
 */
+
 
 function updateFeatured() {
 	$("#loading").show();
@@ -128,9 +128,3 @@ function updateTopRated() {
 	});
 	$("#loading").fadeOut('slow');
 }
-
-/* Function calls to update the dom, no need to call in the page.*/
-
-updateFeatured();
-updatePopular();
-updateTopRated();
