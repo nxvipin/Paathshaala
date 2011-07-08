@@ -57,6 +57,11 @@ function updateDisliked() {
 				$(this).attr('src','pics/default.png');
 			});
 		});
+		$('img.thumbnail').each(function(){
+			$(this).error(function(){
+				$(this).attr('src','pics/error.png');
+			});
+		});
 	});
 	$("#loading").fadeOut('slow');
 }
