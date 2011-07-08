@@ -5,7 +5,7 @@
 
 function updatemyVideos() {
 	$("#loading").show();
-	$.getJSON( 'json/uservideouploads.json.php?uid=1002', function(myJsonObj) {
+	$.getJSON( 'json/uservideouploads.json.php', function(myJsonObj) {
 	
 	var len = myJsonObj.length;
 
@@ -58,6 +58,12 @@ function updatemyVideos() {
 	var myVideosDiv = "<span class=groupTitle>My videos</span>" + groupBox1 + "<span class='more' id='myVideosMore' onclick='showMyVideos()'>Gimme more !!</span>" + groupBox2 + "<span class='less' id=myVideosLess onclick='hideMyVideos()'>Hide all this !!</span>" ;
 
 		$('div#container').append(myVideosDiv);
+	}).complete(function(){
+		$('img.metaImage').each(function(){
+			$(this).error(function(){
+				$(this).attr('src','pics/default.png');
+			});
+		});
 	});
 	$("#loading").fadeOut('slow');
 }

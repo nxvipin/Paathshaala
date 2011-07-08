@@ -51,6 +51,12 @@ function updateLiked() {
 	var likedDiv = "<span class=groupTitle>Liked videos</span>" + groupBox1 + "<span class='more' id='likedMore' onclick='showLiked()'>Gimme more !!</span>" + groupBox2 + "<span class='less' id=likedLess onclick='hideLiked()'>Hide all this !!</span>" ;
 
 		$('div#container').append(likedDiv);
+	}).complete(function(){
+		$('img.metaImage').each(function(){
+			$(this).error(function(){
+				$(this).attr('src','pics/default.png');
+			});
+		});
 	});
 	$("#loading").fadeOut('slow');
 }

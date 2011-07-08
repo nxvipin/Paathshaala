@@ -51,6 +51,12 @@ function updateDisliked() {
 	var disLikedDiv = "<span class=groupTitle>Disliked videos</span>" + groupBox1 + "<span class='more' id='disLikedMore' onclick='showDisliked()'>Gimme more !!</span>" + groupBox2 + "<span class='less' id=DisLikedLess onclick='hideDisliked()'>Hide all this !!</span>" ;
 
 		$('div#container').append(disLikedDiv);
+	}).complete(function(){
+		$('img.metaImage').each(function(){
+			$(this).error(function(){
+				$(this).attr('src','pics/default.png');
+			});
+		});
 	});
 	$("#loading").fadeOut('slow');
 }
