@@ -2,10 +2,11 @@ var activePage=0;
 
 /*
 	@params:	q:query
+				tag:tag search
 				p:page number. This is internal now, not handles via get variables. Can provide a UI later if needed.
 */
 
-function update(q,p) { 
+function update(q,tag,p) { 
 
 	if ( q === '') { /* Disables empty queries */
 		$('#findStuff').append("<span style='margin:25px auto'>Enter your keyword to search. You cant run blank queries </span>");
@@ -13,8 +14,11 @@ function update(q,p) {
 		$('div#ShowNext').remove();
 		return;
 	}
-
-	var link = 'json/search.json.php?q=' + q + '&p=' + p;
+	if (tag === undefined ) { /* tag dont exist */
+		var link = 'json/search.json.php?q=' + q + '&p=' + p;
+	} else { /* tag exist */
+		var link = 'json/tagsearch.json.php?tag=' + tag + '&p=' + p;
+	}
 	$("#loading").show();
 	var searchDiv = $('#findStuff');
 	$.getJSON( link, function(myJsonObj) {
@@ -45,7 +49,7 @@ function update(q,p) {
 	$("span#searchYes").click(function() {
 		ContId = $(this).parent().attr('cid');
 		$(this).parent().html('Thanks for the feedback').delay(1000).fadeOut(1000);
-		var q = getUrlVars()['q'];
+		var q = getUrlVars()['q'];/* tag exist */
 		$.post("response/relatedFeed.php", { 'q':q , cId:ContId,response:'yes'});
 	});
 
@@ -66,5 +70,6 @@ function update(q,p) {
 
 $('#next').mouseenter( function() {
 	var q = getUrlVars()['q'];
-	update( q , ++activePage);
+	var tag = getUrlVars()['tag'];
+	update( q , tag ,++activePage);
 });
