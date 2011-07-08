@@ -14,50 +14,36 @@ var likesDisliked = "<span id='likesDisliked'><span id='likeButton' data='1' tit
 
 function updateLikeBox(st) {
 	if(st === '1' ) {
-	likeBox.html(likesLiked );
+		likeBox.html(likesLiked );
 	} else if (st === '-1') {
-	likeBox.html(likesDisliked );
+		likeBox.html(likesDisliked );
 	} else if (st === '2' ) {
-	likeBox.html('');
+		likeBox.html('');
 	} else {
-	likeBox.html(likesDefault );
-}
+		likeBox.html(likesDefault );
+	}
 
+	$('span#likeButton').click(function() {
+		var status = $(this).parent().attr("id");
+		var value = $(this).attr("data");
+		if (status !== 'likesLiked' ) {
+			console.log("cid " + videoId);
+			console.log("value " + value);
+			$.post("response/likes.php", { cid: videoId, value: value } );
+			updateLikeBox('1');
+		}
+	});
 
-
-$('span#likeButton').click(function() {
+	$('span#dislikeButton').click(function() {
 	var status = $(this).parent().attr("id");
 	var value = $(this).attr("data");
-	if (status !== 'likesLiked' ) {
-		console.log("cid " + videoId);
-		console.log("value " + value);
-		$.post("response/likes.php", { cid: videoId, value: value } );
-		updateLikeBox('1');
-	}
-	
-});
-
-$('span#dislikeButton').click(function() {
-var status = $(this).parent().attr("id");
-var value = $(this).attr("data");
-	if (status !== 'likesDisliked' ) {
-		console.log("cid " + videoId);
-		console.log("value " + value);
-		$.post("response/likes.php", { cid: videoId, value: value } );
-		updateLikeBox('-1');
-	}
-
-});
-
+		if (status !== 'likesDisliked' ) {
+			console.log("cid " + videoId);
+			console.log("value " + value);
+			$.post("response/likes.php", { cid: videoId, value: value } );
+			updateLikeBox('-1');
+		}
+	});
 }
 
 updateLikeBox(defStatus); /* Update to def status */
-
-
-
-
-
-
-
-
-
