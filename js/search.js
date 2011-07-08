@@ -55,7 +55,7 @@ function update(q,tag,p) {
 
 	$("span#searchNo").click(function() {
 		ContId = $(this).parent().attr('cid');
-		$(this).parent().$('#findStuff').html('Thanks for the feedback').parent().parent().parent().fadeOut("slow");
+		$(this).parent().html('Thanks for the feedback').parent().parent().parent().fadeOut("slow");
 		var q = getUrlVars()['q'];
 		$.post("response/relatedFeed.php", { 'q':q , cId:ContId,response:'no'});
 	});
