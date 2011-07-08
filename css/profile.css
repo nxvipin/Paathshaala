@@ -1,3 +1,10 @@
+@font-face {
+font-family: 'Pacifico';
+font-style: normal;
+font-weight: normal;
+src: local('Pacifico Regular'), local('Pacifico-Regular'), url('../fonts/Pacifico.woff') format('woff');
+}
+
 div#profileBox {
 font-size:20px;
 width:100%;
