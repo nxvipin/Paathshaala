@@ -14,7 +14,7 @@ function update(q,p) {
 		return;
 	}
 
-	var link = 'searchjson.php?q=' + q + '&p=' + p;
+	var link = 'json/search.json.php?q=' + q + '&p=' + p;
 	$("#loading").show();
 	var searchDiv = $('#findStuff');
 	$.getJSON( link, function(myJsonObj) {
