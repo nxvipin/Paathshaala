@@ -35,6 +35,22 @@ div.relatedVideoContent {
 width: 525px;
 }
 
+div#ShowNext {
+width:100%;
+height:40px;
+padding-top:10px;
+margin-top:20px;
+text-align: center;
+color:#555555;
+background:#f0f0f0;
+background:-webkit-gradient(linear, left top, left bottom, from(#efefef), to(#f9f9f9));
+background:-moz-linear-gradient(center top , #efefef 0%, #F1F2F2 33.3333%, #f9f9f9 100%) repeat scroll 0 0 transparent;
+-webkit-box-shadow: 0 0 5px 3px #000910;
+-webkit-box-shadow: 0 0 5px 2px #999999 inset;
+box-shadow: 0 0 5px 3px #000910;
+box-shadow: 0 0 5px 2px #999999 inset;
+}
+
 </style>
 
 
@@ -55,10 +71,7 @@ width: 525px;
 <span class='smallSubtitle'>Search Results</span>
 
 <div id=findStuff></div>
-<div id='ShowNext' style='width:100%; height:30px; padding:10px 30px'>
-	Put a huge show more button here. <br/>
-	No need of js in this because it is already in the main next div, just hide it in the end :)
-</div>
+<div id='ShowNext'> Show more results.</div>
 <div id=next></div>
 
 
