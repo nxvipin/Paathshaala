@@ -11,7 +11,8 @@
 <script type='text/javascript'>
 $(document).ready(function() {
 	var q = getUrlVars()['q'];
-	update( q , ++activePage);
+	var tag = getUrlVars()['tag'];
+	update( q , tag ,++activePage);
 });
 </script>
 
