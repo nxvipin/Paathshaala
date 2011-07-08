@@ -44,11 +44,11 @@ $(document).ready(function() {
 	
 	<div class='videoBar'>
 		<img src='pics/vidbar/watch.png' class='VideoBarButton' /><span class='videoBarElement' id='playCount'>Views:1,234</span>
+		<span id='likes' defStatus='1' ></span>
 		<img src='pics/vidbar/download.png' title='Download' class='VideoBarButton' style='float:right;' id='downloadButton' />
 		<img src='pics/vidbar/bug.png' title='Report issue' class='VideoBarButton' style='float:right;' id='bugButton' />
 	</div>
-	
-	
+
 	<!-- /video bar -->
 	
 	<img src='pics/vidbar/tag.png' title='tags' style='margin-left:6px;'/>
@@ -95,8 +95,6 @@ $(document).ready(function() {
 <script src='js/comment.js' type='text/javascript'></script>
 <script src='js/related.js' type='text/javascript'></script>
 <script src='js/ui.js' type='text/javascript' ></script>
-
-
-
+<script src='js/like.js' type='text/javascript'></script>
 </body>
 </html>
