@@ -110,6 +110,17 @@ $('#comment').jkey('down',function(){
 	comBox.attr('value' , data);
 });
 
+/* Handle height of comment box */
+
+var commbox = $('textarea#comment').parent().parent().parent();
+var ht = commbox.height();
+$('textarea#comment').keyup( function() {
+	var len = $('#comment').attr('value').length;
+	var lineno = Math.floor( Number(len) / 40 );
+	$(this).attr('rows' , lineno + 2)
+	commbox.height(ht + (22 * lineno) );
+});
+
 /* Need grayout.js */
 /* popup stuff */
 
