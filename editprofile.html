@@ -12,6 +12,7 @@
 			<div class='panel' style='display:block;'>
 				<form class='feedbackForm'>
 					<input required id='pName' type='text' placeholder='Full name' /><br />
+					<input required id='pEmail' type='email' placeholder='Your Email' /><br />
 					<input disabled id='pUName' type='text' placeholder='You cant change your username' /><br />
 					<input required id='pRoll' type='text' placeholder='Institute roll number' /><br />
 					<input required id='pDesc' type='text' placeholder='One word to describe you' /><br />
@@ -20,8 +21,9 @@
 			</div>
 			<div class='panel' style='display:none;'>
 				<form class='feedbackForm'>
-					<input required id='pWord1' type='password' placeholder='Enter password' /><br />
-					<input required id='pWord2' type='password' placeholder='Repeat password' /><br />
+					<input required id='pWord' type='password' placeholder='Existing password' /><br />
+					<input required id='pWord1' type='password' placeholder='Enter new password' /><br />
+					<input required id='pWord2' type='password' placeholder='Repeat new password' /><br />
 					<span id='feedbackFormSubmitPasswd' style="cursor:pointer;">Submit</span>
 				</form>
 			</div>
@@ -44,11 +46,11 @@ $('span#feedbackFormSubmitProfile').click(function() {
 	var pName = $('input#pName').attr('value');
 	var pRoll = $('input#pRoll').attr('value');
 	var pDesc = $('input#pDesc').attr('value');
-
+	var pEmail = $('input#pEmail').attr('value'); 
 	console.log(pName); console.log(pRoll); console.log(pDesc);
 
-	if( pName !=='' && pRoll !=='' && pDesc !=='') {
-		$.post("response/updateProfile.php" , {'name':pName,'roll':pRoll ,'desc':pDesc} , function(data){
+	if( pName !=='' && pRoll !=='' && pDesc !=='' &&pEmail !== '') {
+		$.post("response/userupdate.php" , {'name':pName,'roll':pRoll ,'desc':pDesc, 'email':pEmail} , function(data){
 			$('div.content').html(data);
 			setTimeout(function(){
 				hideEditProfile();
@@ -60,6 +62,7 @@ $('span#feedbackFormSubmitProfile').click(function() {
 });
 
 $('span#feedbackFormSubmitPasswd').click(function() {
+	var p  = $('input#pWord1').attr('value');
 	var p1 = $('input#pWord1').attr('value');
 	var p2 = $('input#pWord2').attr('value');
 	if( p1 !== p2) { 
@@ -69,7 +72,7 @@ $('span#feedbackFormSubmitPasswd').click(function() {
 	} else if ( p1 == $('span#profileUsername').text() ) {
 		alert("Password same as your username. Too insecure");
 	} else {
-		$.post("response/updatePasswd.php" , { 'password': p1 } , function(data){
+		$.post("response/userupdate.php" , { 'oldPassword': p,'newPassword': p1 } , function(data){
 			$('div.content').html(data);
 			setTimeout(function(){
 				hideEditProfile();
