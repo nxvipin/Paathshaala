@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 	<div class='mainLeft'>
 
-	<h2 class='videoTitle'>TED Video 156, Paathshaala. HansRosling 2009STED Video 156, Paathshaala</h2>
+	<span class='videoTitle'>TED Video 156, Paathshaala. HansRosling 2009STED Video 156, Paathshaala</span>
 	
 	<!-- Begin VideoJS -->
 		<div class='video-js-box'>
