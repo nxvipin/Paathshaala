@@ -101,4 +101,12 @@ function createTag($tag)
 	}
 }
 
+/**
+* Redirects the user to home page. 
+*/
+function redirect()
+{
+	header("location: /");	
+}
+
 ?>
