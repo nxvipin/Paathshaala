@@ -109,4 +109,16 @@ function redirect()
 	header("location: /");	
 }
 
+/**
+* Checks if the session exists.
+*/
+function checkSession()
+{
+	session_start();
+	if(isset($_SESSION['uid']))
+		return true;
+	else
+		return false;
+}
+
 ?>
