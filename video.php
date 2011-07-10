@@ -79,10 +79,7 @@ function getActiveUser() {
 	</div>
 
 <span class='smallSubtitle'>Comments</span>
-<div class='commentWarp'></div>	function getActiveUser() {
-		<?php echo "return \"" .$_SESSION['uid']. "\"" ; ?> ;
-	}
-
+<div class='commentWarp'></div>
 
 <?php echo $commentSubmit; ?>
 
