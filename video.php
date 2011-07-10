@@ -16,6 +16,10 @@
 $(document).ready(function() {
 	VideoJS.setupAllWhenReady();
 });
+
+function getActiveUser() {
+		<?php echo "return \"" .$_SESSION['uid']. "\"" ; ?> ;
+}
 </script>
 </head>
 <body>
@@ -75,7 +79,10 @@ $(document).ready(function() {
 	</div>
 
 <span class='smallSubtitle'>Comments</span>
-<div class='commentWarp'></div>
+<div class='commentWarp'></div>	function getActiveUser() {
+		<?php echo "return \"" .$_SESSION['uid']. "\"" ; ?> ;
+	}
+
 
 <?php echo $commentSubmit; ?>
 
