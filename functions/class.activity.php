@@ -13,6 +13,7 @@
 */
 
 include_once 'functions.php';
+include_once 'class.user.php';
 
 /**
 * Class for handling user activities.
@@ -123,6 +124,7 @@ class activity
 			$_SESSION['username']=$user[1];
 			$_SESSION['fullname']=$user[2];
 			$_SESSION['status']=$user[3];
+			$_SESSION['userpic']=user::getUserPictureS($user[0]);
 			return 1;
 		}
 		return 0;
