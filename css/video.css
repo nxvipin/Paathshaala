@@ -190,7 +190,7 @@ font-style: italic;
 color: #666666;
 }
 
-.delComCross{
+span.CommentCrossReport , span.CommentCrossDelete {
 position:relative;
 top:0px;
 left:485px;
