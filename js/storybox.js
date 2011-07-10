@@ -1,7 +1,8 @@
-/*	Codes to update the 3 storyBox layouts in the intro page with ajax.
+/*
+	Codes to update the 3 storyBox layouts in the intro page with ajax.
 	Call functions in the html after load.
+	handling the hide/show more/less stuff here with jquery.
 */
-
 
 function updateFeatured() {
 	$("#loading").show();
@@ -68,7 +69,7 @@ function updatePopular() {
 		}
 	groupBox1 = groupBox1 + "</div>";
 
-	var groupBox2 = "<div class='groupBox' id='popularHidden'>";
+	var groupBox2 = "<div class='groupBox Hidden'>";
 		for (i =4; i <8 ; i++){
 			var myobj = myJsonObj[i];
 			var storyBox = "<div class='storyBox'>" +
@@ -87,9 +88,9 @@ function updatePopular() {
 			"</div>";
 			groupBox2 = groupBox2 + storyBox;
 		}
-	groupBox1 = groupBox1 + "</div>";
+	groupBox2 = groupBox2 + "</div>";
 
-	var popularDiv = "<span class=groupTitle>Popular</span>" + groupBox1 + "<span class='more' id='popularMore' onclick='showPopular()'>Gimme more !!</span>" + groupBox2 + "<span class='less' id=popularLess onclick='hidePopular()'>Hide all this !!</span>" ;
+	var popularDiv = "<div><span class=groupTitle>Popular</span>" + groupBox1 + "<span class='more'>Gimme more !!</span>" + groupBox2 + "<span class='less' onclick='hideMore()'>Hide all this !!</span></div>" ;
 
 		$('div#container').append(popularDiv);
 	}).complete(function(){
@@ -103,6 +104,17 @@ function updatePopular() {
 				$(this).attr('src','pics/error.png');
 			});
 		});
+		$('span.more').click(function(){
+			$(this).hide();
+			$(this).parent().find('.Hidden').slideDown('fast');
+			$(this).parent().find('.less').fadeIn();
+		});
+		$('span.less').click(function(){
+			$(this).parent().find('.Hidden').slideUp('fast');
+			$(this).parent().find('.more').fadeIn();
+			$(this).hide();
+		});
+
 	});
 	$("#loading").fadeOut('slow');
 }

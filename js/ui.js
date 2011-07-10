@@ -24,42 +24,6 @@ $(".delComCross").click(function() {
 	});
 });
 
-function showPopular() {
-	$('#popularMore').hide();
-	$('#popularHidden').slideDown('fast');
-	$('#popularLess').fadeIn();
-}
-
-function hidePopular() {
-	$('#popularMore').fadeIn();
-	$('#popularHidden').slideUp('fast');
-	$('#popularLess').hide();
-}
-
-function showLiked() {
-	$('#likedMore').hide();
-	$('#likedHidden').slideDown('fast');
-	$('#likedLess').fadeIn();
-}
-
-function hideLiked() {
-	$('#likedMore').fadeIn();
-	$('#likedHidden').slideUp('fast');
-	$('#likedLess').hide();
-}
-
-function showMyVideos() {
-	$('#myVideosMore').hide();
-	$('#myVideosHidden').slideDown('fast');
-	$('#myVideosLess').fadeIn();
-}
-
-function hideMyVideos() {
-	$('#myVideosMore').fadeIn();
-	$('#myVideosHidden').slideUp('fast');
-	$('#myVideosLess').hide();
-}
-
 var dashShown = 0;
 var loginShown = 0;
 
@@ -88,9 +52,9 @@ function showlogin() {
 	}
 }
 
-$(document).ready(function(){
-	$('img.metaImage').error().attr('src','pics/default.png');
-});
+
+$('img.metaImage').error().attr('src','pics/default.png');
+
 
 /* Submit comment using an enter key press */
 
