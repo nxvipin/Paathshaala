@@ -1,7 +1,6 @@
 <?php
 	/**
 	* Accepts Content likes from front end and stores in database.
-	* TODO: Implement Sessions.
 	*/
 	include '../functions/class.activity.php';
 	$cid=$_POST['cid'];
