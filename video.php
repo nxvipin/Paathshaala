@@ -6,6 +6,7 @@
 <?php
 
 	include 'source.php';
+	include 'functions/ui.php';
 	echo $header;
 ?>
 <script src='js/video.js' type='text/javascript'></script>
@@ -34,49 +35,7 @@ function getActiveUser() {
 
 	<div class='mainLeft'>
 
-	<span class='videoTitle'>TED Video 156, Paathshaala. HansRosling 2009STED Video 156, Paathshaala</span>
-	
-	<!-- Begin VideoJS -->
-		<div class='video-js-box'>
-			<video cid='666' poster='content/poster.png' class='video-js' controls preload height='325px' width='550px'>
-			<source src='content/ted2.ogv' type='video/ogg; codecs='theora, vorbis'' />
-			</video>
-		</div>
-	<!-- End VideoJS -->
-	
-	<!-- video bar -->
-	
-	<div class='videoBar'>
-		<img src='pics/vidbar/watch.png' class='VideoBarButton' /><span class='videoBarElement' id='playCount'>Views:1,234</span>
-		<span id='likes' defStatus='1' ></span>
-		<img src='pics/vidbar/download.png' title='Download' class='VideoBarButton' style='float:right;' id='downloadButton' />
-		<img src='pics/vidbar/bug.png' title='Report issue' class='VideoBarButton' style='float:right;' id='bugButton' />
-	</div>
-
-	<!-- /video bar -->
-	
-	<img src='pics/vidbar/tag.png' title='tags' style='margin-left:6px;'/>
-	<ul class='tags'>
-		<li><a href=''>lifeexpectancy</a></li>
-		<li><a href=''>statistics</a></li>
-		<li><a href=''>hiv</a></li>
-		<li><a href=''>ted</a></li>
-		<li><a href=''>africa</a></li>
-		<li><a href=''>tech</a></li>
-		<li><a href=''>Science</a></li>
-		<li><a href=''>aids</a></li>
-		<li><a href=''>poverty</a></li>
-		<li><a href=''>visualizations</a></li>
-		<li><a href=''>health</a></li>
-		<li><a href=''>presentation</a></li>
-		<li><a href=''>globalissues</a></li>
-		<li><a href=''>mortality</a></li>
-		<li><a href=''>disease</a></li>		
-	</ul>
-
-	<div class='VideoDesc'>
-		Hans Rosling unveils new data visuals that untangle the complex risk factors of one of the world's deadliest (and most misunderstood) diseases: HIV. He argues that preventing transmissions -- not drug treatments -- is the key to ending the epidemic.
-	</div>
+	<?php echo getVideoHtml($_GET['video']); ?>
 
 <span class='smallSubtitle'>Comments</span>
 <div class='commentWarp'></div>
