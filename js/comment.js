@@ -20,7 +20,7 @@ function updateComment() {
 			var comment = comments[i].value;
 			var userId = comment[0];
 			var commentBox = 
-			"<div class='commentBox' cId='" + comments[i]["id"] +"' >" +
+			"<div class='commentBox' cId='" + comments[i]["id"] +"' revId='" + comment[5] + "'>" +
 				"<div class='commentBoxImage'> <img src='" + comment[3] + "' class='fitin' /> </div>" +
 				"<div class='commentBoxText'>" +
 					compare(activeUser, userId ) +
@@ -40,13 +40,14 @@ function updateComment() {
 			var cross = $(this);
 			var click = cross.parent().parent(); // Click is the whole comm div
 			var commentId = click.attr('cId');
+			var revId = click.attr('revId');
 			var temp = cross.parent().children(".data"); // <div class='data'>
 			var origContent = temp.html();
 			temp.html("<div id='delConfirmRespText'>You really want to delete this comment ? <br/> <span class='delYesNo' id='delYes'> Yes </span> <span class='delYesNo' id='delNo'> No </span></div>");
 			cross.css({'color':'#f9f9f9' , 'cursor':'url(pics/arrow.png), auto' });
 			$('span#delYes').click(function() {
 				click.fadeOut("slow");
-				$.post("response/deletecomment.response.php", { comId: commentId } );
+				$.post("response/deletecomment.php", { commentId: commentId, revId:revId } );
 			});
 			$('span#delNo').click(function() {
 				temp.html(origContent);
@@ -58,13 +59,14 @@ function updateComment() {
 			var cross = $(this);
 			var click = cross.parent().parent(); // Click is the whole comm div
 			var commentId = click.attr('cId');
+			var revId = click.attr('revId');
 			var temp = cross.parent().children(".data"); // <div class='data'>
 			var origContent = temp.html();
 			temp.html("<div id='delConfirmRespText'>You really want to report this comment ? <br/> <span class='delYesNo' id='delYes'> Yes </span> <span class='delYesNo' id='delNo'> No </span></div>");
 			cross.css({'color':'#f9f9f9' , 'cursor':'url(pics/arrow.png), auto' });
 			$('span#delYes').click(function() {
 				click.fadeOut("slow");
-				$.post("response/reportcomment.response.php", { comId: commentId } );
+				$.post("response/reportcomment.php", { commentId: commentId, revId:revId } );
 			});
 			$('span#delNo').click(function() {
 				temp.html(origContent);
