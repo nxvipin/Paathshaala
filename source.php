@@ -56,7 +56,7 @@ $topNotLoggedIn = "<div id='top'>
 </ul>
 
 <div class='loggedUser' onclick='showDash()'>
-<img src='".$_SESSION['userpic']."' class='loggedImage' onerror='this.src='pics/me.png'' /> <!-- onerror tag is important -->
+<img src='".$_SESSION['userpic']."' class='loggedImage'/>
 <span class='loggedName' >".$_SESSION['fullname']."</span>
 <img src='pics/down.png' id='logChangeButton' style='position:relative; top:-9px; height:10px;'>
 </div>
