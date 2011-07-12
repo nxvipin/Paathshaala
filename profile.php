@@ -9,7 +9,6 @@
 	echo $header;
 ?>
 <link rel='stylesheet' href='css/profile.css'>
-<link rel='stylesheet' href='css/storybox.css'>
 <script src='js/myvideos.js' type='text/javascript' ></script>
 <script src='js/likedvideos.js' type='text/javascript' ></script>
 <script src='js/dislikedvideos.js' type='text/javascript' ></script>

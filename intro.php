@@ -6,7 +6,6 @@
 	include 'source.php';
 	echo $header;
 ?>
-<link rel="stylesheet" href="css/storybox.css" />
 </head>
 <body>
 <div id='topbar'></div>
