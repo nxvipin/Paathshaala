@@ -34,6 +34,7 @@ $topNotLoggedIn = "<div id='top'>
 <form class='login' action='response/login.php' method='post' style='display:none;'>
 		<img src='pics/user.png'> <input type='text' name='uname' placeholder='Username' style='margin-bottom:2px' /> <br />
 		<img src='pics/key.png'> <input type='password' name='pass' placeholder='Password' style='margin-bottom:-4px' /> <br />
+		<input type='hidden' name='page' value='".$_SERVER['PHP_SELF']."'>
 	<button type='submit' class='tickButton'><img src='pics/tick.png'></button>
 </form>
 
