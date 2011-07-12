@@ -61,9 +61,9 @@ $topNotLoggedIn = "<div id='top'>
 <img src='pics/down.png' id='logChangeButton' style='position:relative; top:-9px; height:10px;'>
 </div>
 <div class='dropDown' style='display:none'>
-<img src='pics/home.png'> Dashboard <br />
-<img src='pics/settings.png'> Help <br />
-<img src='pics/tick.png'> Sign off <br />
+<a href='profile.php'><img src='pics/home.png'> Dashboard </a><br />
+<a href='faq.php'><img src='pics/settings.png'> Help </a><br />
+<a href='response/logout.php'><img src='pics/tick.png'> Sign off </a><br />
 </div>
 </div> <!-- /top -->";
 }
