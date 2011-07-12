@@ -1,21 +1,23 @@
 <?php
-
+	session_start();
 $header="
 	<meta charset='UTF-8' />
 	<link rel='stylesheet' href='css/structure.css'/>
 	<link rel='stylesheet' href='css/popup.css'/>
+	<link rel='stylesheet' href='css/storybox.css'/>
 	<script src='js/jquery-1.6.1.min.js' type='text/javascript'></script>
 	<script src='js/jquery.timeago.js' type='text/javascript'></script>
 	<script src='js/grayout.js' type='text/javascript' ></script>
 	<script src='js/jquery.jkey.js' type='text/javascript' ></script>
 	<script src='js/functions.js' type='text/javascript' ></script>";
-
+	
+	if(!isset($_SESSION['uid'])){
 $topNotLoggedIn = "<div id='top'>
 	<a href='/newPaathshaalaUI/' id='logo' title='Paathshaala'> <h1></h1> </a>
 	<ul class='topbarLeft'>
 		<li> 
 			<form action='search.php' method='get'>
-				<input type='search' name='q' placeholder='Search' class='searchBox'/>
+				<input type='search' name='tag' placeholder='Search' class='searchBox'/>
 				 <button type='submit' class='searchButton'>
 					<img src='pics/search.png' alt=''/>
 				</button>
@@ -29,40 +31,41 @@ $topNotLoggedIn = "<div id='top'>
 		<li onclick='showlogin()'><a>Login</a>&nbsp;&nbsp;<img src='pics/down.png' id='logChangeButton'/></li>
 	</ul>
 
-<form class='login' action='process.php' method='post' style='display:none;'>
+<form class='login' action='response/login.php' method='post' style='display:none;'>
 		<img src='pics/user.png'> <input type='text' name='uname' placeholder='Username' style='margin-bottom:2px' /> <br />
 		<img src='pics/key.png'> <input type='password' name='pass' placeholder='Password' style='margin-bottom:-4px' /> <br />
 	<button type='submit' class='tickButton'><img src='pics/tick.png'></button>
 </form>
 
 </div> <!-- /top -->";
+	}
+	else{
 
+$topNotLoggedIn = "<div id='top'>
+<a href='' id='logo' title='Paathshaala'> <h1></h1> </a>
+<ul class='topbarLeft'>
+<li>
+<form action='search.php' method='get'>
+<input type='search' name='tag' placeholder='Search' class='searchBox'/>
+<button type='submit' class='searchButton'>
+<img src='pics/search.png' alt=''/>
+</button>
+</form>
+</li>
+</ul>
 
-$topLoggedIn = "<div id='top'>
-	<a href='' id='logo' title='Paathshaala'> <h1></h1> </a>
-	<ul class='topbarLeft'>
-		<li> 
-			<form action='search.php' method='get'>
-				<input type='search' name='q' placeholder='Search' class='searchBox'/>
-				 <button type='submit' class='searchButton'>
-					<img src='pics/search.png' alt=''/>
-				</button>
-			</form>
-		</li>
-	</ul>
-
-	<div class='loggedUser' onclick='showDash()'>
-		<img src='pics/me.png' class='loggedImage' onerror='this.src='pics/me.png2'' /> <!-- onerror tag is important  -->
-		<span class='loggedName' > Jaseem Abid is a kick ass guy</span>
-		<img src='pics/down.png' id='logChangeButton' style='position:relative; top:-9px; height:10px;'>
-	</div>
-	<div class='dropDown' style='display:none'>
-		<img src='pics/home.png'> Dashboard <br />
-		<img src='pics/settings.png'> Help <br />
-		<img src='pics/tick.png'> Sign off <br />
-	</div>
+<div class='loggedUser' onclick='showDash()'>
+<img src='".$_SESSION['userpic']."' class='loggedImage' onerror='this.src='pics/me.png'' /> <!-- onerror tag is important -->
+<span class='loggedName' >".$_SESSION['fullname']."</span>
+<img src='pics/down.png' id='logChangeButton' style='position:relative; top:-9px; height:10px;'>
+</div>
+<div class='dropDown' style='display:none'>
+<img src='pics/home.png'> Dashboard <br />
+<img src='pics/settings.png'> Help <br />
+<img src='pics/tick.png'> Sign off <br />
+</div>
 </div> <!-- /top -->";
-
+}
 $bottomBar = "<div id='bottom'>
 	<a href='http://www.teamunwired.com/' id='logo' title='teamunwired'> <h1></h1> </a>
 	<ul class='bottomLinks'>
