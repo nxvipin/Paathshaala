@@ -69,6 +69,11 @@ a:hover {
 text-decoration: underline;
 }
 
+div.dropDown a:hover {
+text-decoration: none;
+}
+
+
 #container{
 margin:0 auto -30px; /* -30px is needed because #bottom is moved down relatively and it adds a gap */
 width: 920px;
