@@ -135,6 +135,7 @@ class activity
 	*/
 	public static function logout()
 	{
+		session_start();
 		session_destroy();
 		$_SESSION=array();
 	}
