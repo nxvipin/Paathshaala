@@ -35,7 +35,7 @@ function showlogin() {
 }
 
 
-$('img.metaImage').error().attr('src','pics/default.png');
+$('img.metaImage , img.loggedImage').error().attr('src','pics/default.png');
 
 
 /* Submit comment using an enter key press */
