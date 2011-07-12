@@ -34,6 +34,7 @@ $topNotLoggedIn = "<div id='top'>
 <form class='login' action='response/login.php' method='post' style='display:none;'>
 		<img src='pics/user.png'> <input type='text' name='uname' placeholder='Username' style='margin-bottom:2px' /> <br />
 		<img src='pics/key.png'> <input type='password' name='pass' placeholder='Password' style='margin-bottom:-4px' /> <br />
+		<input type='hidden' name='page' value='".$_SERVER['PHP_SELF']."'>
 	<button type='submit' class='tickButton'><img src='pics/tick.png'></button>
 </form>
 
@@ -55,14 +56,14 @@ $topNotLoggedIn = "<div id='top'>
 </ul>
 
 <div class='loggedUser' onclick='showDash()'>
-<img src='".$_SESSION['userpic']."' class='loggedImage' onerror='this.src='pics/me.png'' /> <!-- onerror tag is important -->
+<img src='".$_SESSION['userpic']."' class='loggedImage'/>
 <span class='loggedName' >".$_SESSION['fullname']."</span>
 <img src='pics/down.png' id='logChangeButton' style='position:relative; top:-9px; height:10px;'>
 </div>
 <div class='dropDown' style='display:none'>
-<img src='pics/home.png'> Dashboard <br />
-<img src='pics/settings.png'> Help <br />
-<img src='pics/tick.png'> Sign off <br />
+<a href='profile.php'><img src='pics/home.png'> Dashboard </a><br />
+<a href='faq.php'><img src='pics/settings.png'> Help </a><br />
+<a href='response/logout.php'><img src='pics/tick.png'> Sign off </a><br />
 </div>
 </div> <!-- /top -->";
 }
