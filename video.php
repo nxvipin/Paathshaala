@@ -32,17 +32,19 @@ function getActiveUser() {
 <?php echo $topNotLoggedIn; ?>
 
 <!--  -->
-
 	<div class='mainLeft'>
-
-	<?php echo getVideoHtml($_GET['video']); ?>
-
-<span class='smallSubtitle'>Comments</span>
-<div class='commentWarp'></div>
-
-<?php echo $commentSubmit; ?>
-
-</div> <!--/ main left -->
+	<?php
+		if(isset($_GET['video'])){
+			echo getVideoHtml($_GET['video']);
+			echo "<span class='smallSubtitle'>Comments</span>";
+			echo "<div class='commentWarp'></div>";
+			echo $commentSubmit; 
+		}
+		else{
+			echo "Content not found :-(";
+		}
+	?>
+	</div> <!--/ main left -->
 
 <div class='mainRight'>
 
