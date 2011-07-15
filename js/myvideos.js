@@ -9,7 +9,7 @@ function updatemyVideos() {
 	
 	var len = myJsonObj.length;
 
-	var uploadVideo =  "<div class='storyBox' id='newVideo'><div class='imageBox'><img  src='content/cross.png'><div class='metaInfo'>Upload a new video</div></div><div class='metaBox'><div class='metaUser'><img class='metaImage' src='pics/me.png'> <span class='metaName'>Jaseem Abid</span></div><div class='metaViews'></div></div></div>";
+	var uploadVideo =  "<div class='storyBox' id='newVideo'><div class='imageBox'><img  src='pics/newvid.png'><div class='metaInfo'>Upload a new video</div></div><div class='metaBox'><div class='metaUser'><img class='metaImage' src='pics/me.png'> <span class='metaName'>Jaseem Abid</span></div><div class='metaViews'></div></div></div>";
 
 
 
