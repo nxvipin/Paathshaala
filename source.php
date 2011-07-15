@@ -83,16 +83,21 @@ $bottomBar = "<div id='bottom'>
 		<li><a href=''>Paathshaala &nbsp;</a>&nbsp;<img src='pics/facebook.png'>&nbsp;&nbsp;<img src='pics/twitter.png'> </li>
 		</ul>
 </div> <!-- /bottom -->";
-
+if(isset($_SESSION['uid']))
+{
 $commentSubmit = "<div class='commentBox'>
-	<div class='commentBoxImage'> <img src='pics/me.png' class='fitin' /> </div>
+	<div class='commentBoxImage'> <img src='".$_SESSION['userpic']."' class='fitin' /> </div>
 	<div class='commentBoxText'>
 			
-			<span class='commentTitle' style='margin-left:5px;'>Jaseem Abid</span>
+			<span class='commentTitle' style='margin-left:5px;'>".$_SESSION['fullname']."</span>
 			<div class='data'>
 				<textarea id='comment' rows='2' cols='57' placeholder='Comment here. Enter for submit and down key for new line.'></textarea>
 			</div>
 	</div>
 </div>";
-
+}
+else
+{
+	$commentSubmit="Please log in to comment.";
+}
 ?>
