@@ -5,7 +5,15 @@
 
 <?php
 
-	include 'source.php';
+	include_once 'source.php';
+	include_once 'functions/functions.php';
+	include_once 'functions/class.user.php';
+	if(!checksession()){
+		redirect();
+	}
+	else{
+		$u = new user ($_SESSION['uid']);
+	}
 	echo $header;
 ?>
 <link rel='stylesheet' href='css/profile.css'>
@@ -36,16 +44,15 @@ $(document).ready(function() {
 <div id='profileBox'>
 	<img id='editProfileButton' src='pics/settings.png'/ >
 	<div id='snapShot'>
-		<img src='pics/me.png' style='width: 100%;' />
-		<span id='picUname'> Jaseem Abid </span>
+		<img src="<?php echo $u->getUserPicture(); ?>" style='width: 100%;' />
+		<span id='picUname'><?php echo $_SESSION['fullname']; ?> </span>
 	</div>
 	
 	<div id='profileInfo'>
-		I am : <span id=''>Jaseem Abid </span><br />
-		email : jaseemabid@gmail.com <br />
-		here I am called : <span id='profileUsername'>jaseemabid</span><br />
-		Insti Roll : b090264cs (Helps us to give you better suggestions )<br />
-		One word to describe me : JavaScript Ninja <br />
+		I am : <span id=''><?php echo $u->getFullname(); ?></span><br />
+		email : <?php echo $u->getEmail(); ?> <br />
+		here I am called : <span id='profileUsername'><?php echo $u->getUsername(); ?></span><br />
+		Insti Roll : <?php echo $u->getRoll(); ?> (Helps us to give you better suggestions )<br />
 	</div>
 	
 </div>
