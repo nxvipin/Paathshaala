@@ -1,12 +1,6 @@
-/*
-	Codes to update the comments in the video page.
-	No need to call functions in the html since it is called in the js script.
-	Insert the script at the end of the page.
-*/
-
-function updateComment() {
+function updateComment(cid) {
 	$("#loading").show();
-	$.getJSON( 'json/comments.json.php', function(jsonObj) {
+	$.getJSON( "couch/comments/_design/comments/_view/commentbycid?key=" + cid + "\"", function(jsonObj) {
 		var commentDiv = '';
 		var comments = jsonObj.rows;
 		var activeUser = getActiveUser();
@@ -105,7 +99,3 @@ function subComment() {
 	$("#comment").attr('value' , ''); /* Clear comment feild */
 	$('#loading').fadeOut('fast');
 }
-
-
-/* Function calls to update the dom, no need to call in the page.*/
-updateComment();
