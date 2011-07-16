@@ -64,7 +64,7 @@ width: 680px;
 img#editProfileButton {
 position:relative;
 left:890px;
-top:-120px;
+top:-150px;
 cursor: url('../pics/pointer.png') , auto;
 padding:5px;
 z-index:5;
