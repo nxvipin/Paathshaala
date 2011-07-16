@@ -8,15 +8,16 @@ $(".searchBox").
 
 var dashShown = 0;
 var loginShown = 0;
+var joinShown = 0;
 
 function showDash() {
 
 	if (dashShown === 0) {
-		$('.dropDown').slideToggle('fast');
+		$('.dashBoard').slideToggle('fast');
 		dashShown = 1;
 		$("#logChangeButton").attr('src', 'pics/up.png');
 	} else {
-		$('.dropDown').slideToggle('fast');
+		$('.dashBoard').slideToggle('fast');
 		dashShown = 0;
 		$("#logChangeButton").attr('src', 'pics/down.png');
 	}
@@ -25,7 +26,9 @@ function showDash() {
 function showlogin() {
 	if (loginShown === 0 ) {
 		$('.login').slideToggle('fast');
+		$('.join').slideUp('fast');
 		loginShown = 1;
+		joinShown = 0;
 		$("#logChangeButton").attr('src', 'pics/up.png');
 	} else {
 		$('.login').slideToggle('fast');
@@ -34,11 +37,27 @@ function showlogin() {
 	}
 }
 
+function showJoin() {
+	if (joinShown === 0 ) {
+		$('.join').slideToggle('fast');
+		$('.login').slideUp('fast');
+		joinShown = 1;
+		loginShown = 0;
+		$("#logChangeButton").attr('src', 'pics/up.png');
+	} else {
+		$('.join').slideToggle('fast');
+		joinShown = 0;
+		$("#logChangeButton").attr('src', 'pics/down.png');
+	}
+}
 
 $('img.metaImage , img.loggedImage').error(function(){
 	$(this).attr('src','pics/default.png');
 })
 
+$('div#snapShot img').error(function(){
+	$(this).attr('src','pics/profile.png');
+})
 
 /* Submit comment using an enter key press */
 
@@ -66,7 +85,7 @@ $('textarea#comment').keyup( function() {
 	var len = $('#comment').attr('value').length;
 	var lineno = Math.floor( Number(len) / 40 );
 	$(this).attr('rows' , lineno + 2)
-	commbox.height(ht + (22 * lineno) );
+	commbox.height(ht + (21 * lineno) );
 });
 
 /* Need grayout.js */
