@@ -34,7 +34,7 @@ function updatemyVideos() {
 		}
 	groupBox1 = groupBox1 + "</div>";
 
-	var groupBox2 = "<div class='groupBox' id='myVideosHidden'>";
+	var groupBox2 = "<div class='groupBox Hidden'>";
 		for (i =3; i < len ; i++){
 			var myobj = myJsonObj[i];
 			var storyBox = "<div class='storyBox'>" +
@@ -55,7 +55,7 @@ function updatemyVideos() {
 		}
 	groupBox1 = groupBox1 + "</div>";
 
-	var myVideosDiv = "<span class=groupTitle>My videos</span>" + groupBox1 + "<span class='more' id='myVideosMore' onclick='showMyVideos()'>Gimme more !!</span>" + groupBox2 + "<span class='less' id=myVideosLess onclick='hideMyVideos()'>Hide all this !!</span>" ;
+	var myVideosDiv = "<span class=groupTitle>My videos</span>" + groupBox1 + "<span class='more'>Gimme more !!</span>" + groupBox2 + "<span class='less' onclick='hideMore()'>Hide all this !!</span></div>" ;
 
 		$('div#container').append(myVideosDiv);
 	}).complete(function(){
@@ -64,6 +64,16 @@ function updatemyVideos() {
 		});
 		$('img.thumbnail').error(function(){
 			$(this).attr('src','pics/error.png');
+		});
+		$('span.more').click(function(){
+			$(this).hide();
+			$(this).parent().find('.Hidden').slideDown('fast');
+			$(this).parent().find('.less').fadeIn();
+		});
+		$('span.less').click(function(){
+			$(this).parent().find('.Hidden').slideUp('fast');
+			$(this).parent().find('.more').fadeIn();
+			$(this).hide();
 		});
 	});
 	$("#loading").fadeOut('slow');
