@@ -20,24 +20,3 @@ function getUrlVars()
 	}
 	return vars;
 }
-
-/* Comments */
-
-/* Comment submit function */
-/* Change attributes and file to submit the comment */ 
-
-function subComment() {
-
-	var comm = $("#comment").attr('value');
-	if(comm !== '') {
-		$('#loading').fadeIn('fast');
-		$.post("response/submitcomment.php", { comment: comm },
-			function(data) {
-				$('#commentInfo').html(data); /* displaying the returned comment, remove in production code */
-		});
-	}
-	$("#comment").attr('value' , ''); /* Clear comment feild */
-	$('#loading').fadeOut('fast');
-}
-
-
