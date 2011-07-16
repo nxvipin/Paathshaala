@@ -33,18 +33,23 @@ color:#555555;
 box-shadow: 0 0 5px 3px #5b5b5b;
 margin:5px;
 height:150px;
-max-width:150px;
+width:150px;
 padding:5px 5px 25px 5px;
 -webkit-transform:rotate(-5deg); /* I hate this part :( Ugly browsers. */
 -moz-transform:rotate(-5deg);
 -o-transform:rotate(-5deg);
 }
 
-span#picUname {
-font-family:'Pacifico';
-font-size:20px;
+div#snapShot img {
+width:150px;
+height:135px;
 }
 
+div#picUname {
+font-family:'Pacifico';
+font-size:20px;
+text-align:center;
+}
 
 div#profileInfo {
 display: block;
