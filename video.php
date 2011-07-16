@@ -16,11 +16,17 @@
 <script type='text/javascript'>
 $(document).ready(function() {
 	VideoJS.setupAllWhenReady();
+
+	/* Function calls to update the comments */
+	var comm = $("#comment").attr('value');
+	updateComment(comm);
 });
 
 function getActiveUser() {
-		<?php echo "return \"" .$_SESSION['uid']. "\"" ; ?> ;
+	<?php echo "return \"" .$_SESSION['uid']. "\"" ; ?> ;
 }
+
+
 </script>
 </head>
 <body>
