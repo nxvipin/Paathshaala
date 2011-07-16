@@ -1,6 +1,6 @@
 function updateComment(cid) {
 	$("#loading").show();
-	$.getJSON( "couch/comments/_design/comments/_view/commentbycid?key=" + cid + "\"", function(jsonObj) {
+	$.getJSON( "couch/comments/_design/comments/_view/commentbycid?key=\"" + cid + "\"", function(jsonObj) {
 		var commentDiv = '';
 		var comments = jsonObj.rows;
 		var activeUser = getActiveUser();
