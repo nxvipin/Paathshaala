@@ -27,8 +27,6 @@ function updateLikeBox(st) {
 		var status = $(this).parent().attr("id");
 		var value = $(this).attr("data");
 		if (status !== 'likesLiked' ) {
-			console.log("cid " + videoId);
-			console.log("value " + value);
 			$.post("response/likes.php", { cid: videoId, value: value } );
 			updateLikeBox('1');
 		}
@@ -38,8 +36,6 @@ function updateLikeBox(st) {
 	var status = $(this).parent().attr("id");
 	var value = $(this).attr("data");
 		if (status !== 'likesDisliked' ) {
-			console.log("cid " + videoId);
-			console.log("value " + value);
 			$.post("response/likes.php", { cid: videoId, value: value } );
 			updateLikeBox('-1');
 		}
