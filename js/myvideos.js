@@ -60,12 +60,12 @@ function updatemyVideos() {
 		$('div#container').append(myVideosDiv);
 	}).complete(function(){
 		$('img.metaImage').each(function(){
-			$(this).error(function(){
+			$('img.metaImage').error(function(){
 				$(this).attr('src','pics/default.png');
 			});
 		});
 		$('img.thumbnail').each(function(){
-			$(this).error(function(){
+			$('img.thumbnail').error(function(){
 				$(this).attr('src','pics/error.png');
 			});
 		});
