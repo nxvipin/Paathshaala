@@ -44,7 +44,7 @@ $(document).ready(function() {
 <div id='profileBox'>
 	<img id='editProfileButton' src='pics/settings.png'/ >
 	<div id='snapShot'>
-		<img src="<?php echo $u->getUserPicture(); ?>" style='width: 100%;' />
+		<img src="<?php echo $u->getUserPicture(); ?>"/>
 		<span id='picUname'><?php echo $_SESSION['fullname']; ?> </span>
 	</div>
 	
