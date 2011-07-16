@@ -18,8 +18,7 @@ $(document).ready(function() {
 	VideoJS.setupAllWhenReady();
 
 	/* Function calls to update the comments */
-	var comm = $("#comment").attr('value');
-	updateComment(comm);
+	updateComment(<?php echo $_GET['video']; ?>);
 });
 
 function getActiveUser() {
