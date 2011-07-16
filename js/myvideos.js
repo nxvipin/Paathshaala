@@ -19,7 +19,7 @@ function updatemyVideos() {
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
 				"<div class='imageBox'>" +
-					"<img src='" + "http://localhost/paathshaala/content/thumb.jpg" +"' class='thumbnail'/>" + /* myobj.poster */
+					"<img src='" + myobj.poster +"' class='thumbnail'/>" +
 					"<div class='metaInfo'>" + myobj.title + "</div>" +
 				"</div> </a>" +
 				"<div class='metaBox'>" +
@@ -40,7 +40,7 @@ function updatemyVideos() {
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
 				"<div class='imageBox'>" +
-					"<img src='" + "http://localhost/paathshaala/content/thumb.jpg" +"' class='thumbnail'/>" + /* myobj.poster */
+					"<img src='" + myobj.poster +"' class='thumbnail'/>" +
 					"<div class='metaInfo'>" + myobj.title + "</div>" +
 				"</div> </a>" +
 				"<div class='metaBox'>" +
@@ -59,15 +59,11 @@ function updatemyVideos() {
 
 		$('div#container').append(myVideosDiv);
 	}).complete(function(){
-		$('img.metaImage').each(function(){
-			$('img.metaImage').error(function(){
-				$(this).attr('src','pics/default.png');
-			});
+		$('img.metaImage').error(function(){
+			$(this).attr('src','pics/default.png');
 		});
-		$('img.thumbnail').each(function(){
-			$('img.thumbnail').error(function(){
-				$(this).attr('src','pics/error.png');
-			});
+		$('img.thumbnail').error(function(){
+			$(this).attr('src','pics/error.png');
 		});
 	});
 	$("#loading").fadeOut('slow');
