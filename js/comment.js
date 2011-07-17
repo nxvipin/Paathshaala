@@ -15,7 +15,7 @@ function updateComment(url) {
 			var userId = comment[0];
 			var commentBox = 
 			"<div class='commentBox' cId='" + comments[i]["id"] +"' revId='" + comment[5] + "'>" +
-				"<div class='commentBoxImage'> <img src='" + comment[3] + "' class='fitin' /> </div>" +
+				"<div class='commentBoxImage'> <img src='" + comment[3] + "' /> </div>" +
 				"<div class='commentBoxText'>" +
 					compare(activeUser, userId ) +
 					"<span class='commentTitle'>"+ comment[1] +"</span>" +
