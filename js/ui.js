@@ -10,8 +10,7 @@ var dashShown = 0;
 var loginShown = 0;
 var joinShown = 0;
 
-function showDash() {
-
+$("div.loggedUser").click(function(){
 	if (dashShown === 0) {
 		$('.dashBoard').slideToggle('fast');
 		dashShown = 1;
@@ -21,12 +20,13 @@ function showDash() {
 		dashShown = 0;
 		$("#logChangeButton").attr('src', 'pics/down.png');
 	}
-}
+});
 
-function showlogin() {
+
+$("li#showlogin").click(function(){
 	if (loginShown === 0 ) {
-		$('.login').slideToggle('fast');
-		$('.join').slideUp('fast');
+		$('form.login').slideToggle('fast');
+		$('form.join').slideUp('fast');
 		loginShown = 1;
 		joinShown = 0;
 		$("#logChangeButton").attr('src', 'pics/up.png');
@@ -35,9 +35,9 @@ function showlogin() {
 		loginShown = 0;
 		$("#logChangeButton").attr('src', 'pics/down.png');
 	}
-}
+})
 
-function showJoin() {
+$("li#showJoin").click(function() {
 	if (joinShown === 0 ) {
 		$('.join').slideToggle('fast');
 		$('.login').slideUp('fast');
@@ -49,7 +49,7 @@ function showJoin() {
 		joinShown = 0;
 		$("#logChangeButton").attr('src', 'pics/down.png');
 	}
-}
+})
 
 $('img.metaImage , img.loggedImage').error(function(){
 	$(this).attr('src','pics/default.png');
