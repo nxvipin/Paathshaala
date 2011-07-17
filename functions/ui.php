@@ -37,8 +37,8 @@ function getVideoHtml($cid)
 	
 	<!-- Begin VideoJS -->
 		<div class='video-js-box'>
-			<video cid='".$v->getContentId()."' poster='".$v->getPoster()."' class='video-js' controls preload height='325px' width='550px'>
-			<source src='".$v->getCompletePath()."' type='video/ogg; codecs='theora, vorbis'' />
+			<video cid='".$v->getContentId()."' poster='".$v->getPoster()."' class='video-js' controls preload height=325 width=550>
+			<source src='".$v->getCompletePath()."' type='video/ogg; codecs=\"theora, vorbis\"' />
 			</video>
 		</div>
 	<!-- End VideoJS -->
