@@ -9,7 +9,8 @@ $header="
 	<script src='js/jquery.timeago.js' type='text/javascript'></script>
 	<script src='js/grayout.js' type='text/javascript' ></script>
 	<script src='js/jquery.jkey.js' type='text/javascript' ></script>
-	<script src='js/functions.js' type='text/javascript' ></script>";
+	<script src='js/functions.js' type='text/javascript' ></script>
+	<script src='js/validate.js' type='text/javascript' ></script>";
 	
 	if(!isset($_SESSION['uid'])){
 $topNotLoggedIn = "<div id='top'>
@@ -39,8 +40,9 @@ $topNotLoggedIn = "<div id='top'>
 </form>
 
 <form class='join' action='response/join.php' method='post'>
+		<div class='joinMessage'>Enter your credentials</div>
 		<img src='pics/user.png'> <input required type='text' id='fname' name='fname' placeholder='Full Name' /> <img src=''><br />
-		<img src='pics/users.png'> <input required type='text' id='uname' name='uname' placeholder='Username' /> <img src=''><br />
+		<img src='pics/users.png'> <input required type='text' id='uname' name='uname' placeholder='Username' /> <img src=''> <span class='check'>Check</span> <br />
 		<img src='pics/mail.png'> <input required type='email' id='email' name='email' placeholder='Email'/> <img src=''> <br />
 		<img src='pics/roll.png'> <input required type='text' id='roll' name='roll' placeholder='Roll Number' /> <img src=''> <br />
 		<img src='pics/key.png'> <input required type='password' id='pass1' name='pass1' placeholder='Password' /> <img src=''> <br />
