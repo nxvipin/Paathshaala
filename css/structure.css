@@ -305,10 +305,10 @@ border-radius:0px 0px 5px 5px;
 
 form.join {
 height: 240px;
-width: 280px;
+width: 300px;
 }
 
-form.join div.joinMessage {
+form.join div.joinMessage{
 text-align:center;
 font-size:14px;
 margin:0 0 5px 0;
@@ -320,6 +320,12 @@ border-radius:15px;
 form.join div.error {
 border-color:#d02323;
 }
+
+span.check {
+display:none;
+cursor: url(../pics/pointer.png) 0 0, auto;
+}
+
 
 .dashBoard {
 width:135px;
