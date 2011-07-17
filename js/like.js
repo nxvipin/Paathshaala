@@ -27,7 +27,7 @@ function updateLikeBox(st) {
 		var status = $(this).parent().attr("id");
 		var value = $(this).attr("data");
 		if (status !== 'likesLiked' ) {
-			$.post("response/likes.php", { cid: videoId, value: value } );
+			$.post("response/savelikes.php", { cid: videoId, value: value } );
 			updateLikeBox('1');
 		}
 	});
@@ -36,7 +36,7 @@ function updateLikeBox(st) {
 	var status = $(this).parent().attr("id");
 	var value = $(this).attr("data");
 		if (status !== 'likesDisliked' ) {
-			$.post("response/likes.php", { cid: videoId, value: value } );
+			$.post("response/savelikes.php", { cid: videoId, value: value } );
 			updateLikeBox('-1');
 		}
 	});
