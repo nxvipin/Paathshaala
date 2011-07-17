@@ -164,6 +164,11 @@ float:left;
 clear:left;
 }
 
+div.commentBoxImage img {
+width:90%;
+height:90%;
+}
+
 div.commentBoxText {
 font-size: 14px;
 margin:0px; border:0px; width:500px; float:right; clear:right;
