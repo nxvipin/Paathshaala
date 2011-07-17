@@ -44,6 +44,7 @@ $("li#showJoin").click(function() {
 		joinShown = 1;
 		loginShown = 0;
 		$("#logChangeButton").attr('src', 'pics/up.png');
+		validate(); // Calls the join form validate and submit functions from js/validate.js
 	} else {
 		$('.join').slideToggle('fast');
 		joinShown = 0;
