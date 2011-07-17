@@ -283,7 +283,8 @@ float:right;
 }
 
 /* Login form */
-form.login , .dropDown {
+form.login , form.join , .dashBoard {
+display:none;
 position:absolute;
 top:34px;
 right:0px;
@@ -302,14 +303,30 @@ box-shadow:5px 4px 5px rgba(2, 2, 2, 0.5);
 border-radius:0px 0px 5px 5px;
 }
 
-.dropDown {
+form.join {
+height:200px;
+width:265px;
+}
+
+form.join img.status {
+height:20px;
+/*position:relative;
+top:10px;*/
+}
+
+.dashBoard {
 width:135px;
 height:60px;
 z-index:1200;
 cursor: url(../pics/pointer.png) 0 0, auto;
 }
 
-form.login input {
+.dashBoard a {
+text-decoration:none;
+}
+
+form.login input, form.join input {
+-moz-transition: all 0.3s ease-in-out 0s;
 font-size:16px;
 background: #fefefe;
 width: 200px;
@@ -318,6 +335,19 @@ padding-left:10px;
 border-radius: 13px 13px 13px 13px;
 height:25px;
 padding-left:10px;
+margin-bottom:2px;
+outline: medium none;
+text-shadow: 0 1px 0 #FFFFFF;
+}
+
+form.login input.error , form.join input.error {
+border: 1px solid #ff8c8c;
+box-shadow: 0 0 5px #ff8c8c;
+}
+
+form.login input.valid , form.join input.valid {
+border: 1px solid #609a3b;
+box-shadow: 0 0 5px #609a3b;
 }
 
 /* Coloumn Structure */
