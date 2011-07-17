@@ -1,6 +1,6 @@
-function updateComment(cid) {
+function updateComment(url) {
 	$("#loading").show();
-	$.getJSON( "couch/comments/_design/comments/_view/commentbycid?key=\"" + cid + "\"", function(jsonObj) {
+	$.getJSON( url, function(jsonObj) {
 		var commentDiv = '';
 		var comments = jsonObj.rows;
 		var activeUser = getActiveUser();
@@ -25,7 +25,7 @@ function updateComment(cid) {
 			"</div>";
 			commentDiv = commentDiv + commentBox;
 		}
-		$('div.commentWarp').html(commentDiv);
+		$('div.commentWarp').append(commentDiv);
 	}).complete(function() {
 
 /* Handler for the 'X' on the comment box */
@@ -99,3 +99,15 @@ function subComment() {
 	$("#comment").attr('value' , ''); /* Clear comment feild */
 	$('#loading').fadeOut('fast');
 }
+
+function getNewComment(callback) {
+	$.getJSON("/couch/comments", function(db) {
+		$.getJSON("/couch/comments/_changes?since="+db.update_seq+"&heartbeat=10000&feed=longpoll", 
+			function(changes) {
+				if($.isFunction(callback)){
+					callback.call(this, changes);
+					getNewComment(callback);
+				}
+			}); 
+	});
+};

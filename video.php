@@ -18,7 +18,11 @@ $(document).ready(function() {
 	VideoJS.setupAllWhenReady();
 
 	/* Function calls to update the comments */
-	updateComment(<?php echo $_GET['video']; ?>);
+	updateComment("/couch/comments/_design/comments/_view/commentbycid?key=\"<?php echo $_GET['video']; ?>\"");
+	getNewComment(function(changes){
+		//alert(changes.results[0].id);
+		updateComment("/couch/comments/_design/comments/_view/commentbyid?key=\""+changes.results[0].id+"\"");
+	});
 });
 
 function getActiveUser() {
