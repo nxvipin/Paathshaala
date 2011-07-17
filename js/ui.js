@@ -55,7 +55,7 @@ $('img.metaImage , img.loggedImage').error(function(){
 	$(this).attr('src','pics/default.png');
 })
 
-$('div#snapShot img').error(function(){
+$('div#snapShot img, div.commentBoxImage img').error(function(){
 	$(this).attr('src','pics/profile.png');
 })
 
