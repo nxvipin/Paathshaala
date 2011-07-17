@@ -74,7 +74,7 @@ function updateComment(url) {
 	});
 
 	$('div.commentBoxImage img').error(function() {
-		$(this).attr('src','pics/default.png');
+		$(this).attr('src','pics/profile.png');
 	});
 	
 	$("time.timeago").timeago();

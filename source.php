@@ -16,8 +16,8 @@ $topNotLoggedIn = "<div id='top'>
 	<a href='/newPaathshaalaUI/' id='logo' title='Paathshaala'> <h1></h1> </a>
 	<ul class='topbarLeft'>
 		<li> 
-			<form action='search.php' method='get'>
-				<input type='search' name='tag' placeholder='Search' class='searchBox'/>
+			<form action='search.php' method='get' >
+				<input type='search' name='tag' placeholder='Search' class='searchBox' required />
 				 <button type='submit' class='searchButton'>
 					<img src='pics/search.png' alt=''/>
 				</button>
@@ -26,16 +26,27 @@ $topNotLoggedIn = "<div id='top'>
 	</ul>
 	
 	<ul class='userBar'>
-		<li><a href=''>Join</a></li>
+		<li id=showJoin><a>Join</a></li>
 		<li>|</li>
-		<li onclick='showlogin()'><a>Login</a>&nbsp;&nbsp;<img src='pics/down.png' id='logChangeButton'/></li>
+		<li id=showlogin><a>Login</a>&nbsp;&nbsp;<img src='pics/down.png' id='logChangeButton'/></li>
 	</ul>
 
-<form class='login' action='response/login.php' method='post' style='display:none;'>
-		<img src='pics/user.png'> <input type='text' name='uname' placeholder='Username' style='margin-bottom:2px' /> <br />
-		<img src='pics/key.png'> <input type='password' name='pass' placeholder='Password' style='margin-bottom:-4px' /> <br />
+<form class='login' action='response/login.php' method='post'>
+		<img src='pics/users.png'> <input required type='text' name='uname' placeholder='Username' /> <br />
+		<img src='pics/key.png'> <input required type='password' name='pass' placeholder='Password' /> <br />
 		<input type='hidden' name='page' value='".$_SERVER['PHP_SELF']."'>
 	<button type='submit' class='tickButton'><img src='pics/tick.png'></button>
+</form>
+
+<form class='join' action='response/join.php' method='post'>
+		<img src='pics/user.png'> <input required type='text' id='fname' name='fname' placeholder='Full Name' /> <img src=''><br />
+		<img src='pics/users.png'> <input required type='text' id='uname' name='uname' placeholder='Username' /> <img src=''><br />
+		<img src='pics/mail.png'> <input required type='email' id='email' name='email' placeholder='Email'/> <img src=''> <br />
+		<img src='pics/roll.png'> <input required type='text' name='roll' placeholder='Roll Number' /> <img src=''> <br />
+		<img src='pics/key.png'> <input required type='password' name='pass1' placeholder='Password' /> <img src=''> <br />
+		<img src='pics/key.png'> <input required type='password' name='pass2' placeholder='Password again'/> <img src=''> <br />
+		<input type='hidden' name='page' value='".$_SERVER['PHP_SELF']."'>
+		<img id='joinButton' src='pics/tick.png' style='float:right; margin-right:5px'>
 </form>
 
 </div> <!-- /top -->";
@@ -55,12 +66,12 @@ $topNotLoggedIn = "<div id='top'>
 </li>
 </ul>
 
-<div class='loggedUser' onclick='showDash()'>
+<div class='loggedUser'>
 <img src='".$_SESSION['userpic']."' class='loggedImage'/>
 <span class='loggedName' >".$_SESSION['fullname']."</span>
 <img src='pics/down.png' id='logChangeButton' style='position:relative; top:-9px; height:10px;'>
 </div>
-<div class='dropDown' style='display:none'>
+<div class='dashBoard' style='display:none'>
 <a href='profile.php'><img src='pics/home.png'> Dashboard </a><br />
 <a href='faq.php'><img src='pics/settings.png'> Help </a><br />
 <a href='response/logout.php'><img src='pics/tick.png'> Sign off </a><br />
@@ -85,7 +96,7 @@ $bottomBar = "<div id='bottom'>
 </div> <!-- /bottom -->";
 if(isset($_SESSION['uid']))
 {
-$commentSubmit = "<div class='commentBox'>
+$commentSubmit = "<div class='commentBox'style='height: 70px;'>
 	<div class='commentBoxImage'> <img src='".$_SESSION['userpic']."' class='fitin' /> </div>
 	<div class='commentBoxText'>
 			
