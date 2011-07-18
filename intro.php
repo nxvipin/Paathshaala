@@ -18,9 +18,10 @@
 <script src="js/storybox.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	updateFeatured();
-	updatePopular();
-	updateTopRated();
+
+	updateStoryBox( 'Featured' , 4)
+	updateStoryBox( 'Popular' , 8)
+	updateStoryBox( 'TopRated' , 4)
 });
 </script>
 </body>
