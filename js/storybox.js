@@ -26,6 +26,12 @@ function updateStoryBox(type, count) {
 /*
 	type : Featured / TopRated / Popular
 */
+
+	if ( count == undefined ) {
+		console.log( count );
+		count = 4 ;
+	}
+
 	var link , title;
 	var more = "<span class='more'>Gimme more !!</span>";
 	var less = "<span class='less'>Hide all this !!</span></div>";
