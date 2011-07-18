@@ -6,6 +6,7 @@ function getVideoHtml(cid) {
 	var link = 'json/video.json.php?video=' + cid;
 	var videoBox = $('div.videodiv');
 	$.getJSON( link, function(myObj) {
+		if (myObj.title ) {
 		var tags = myObj.tags;
 		var tagstring="";
 		for( i in tags ) {
@@ -32,6 +33,10 @@ function getVideoHtml(cid) {
 				"<img src='pics/vidbar/tag.png' title='tags' style='margin-left:6px;'/>" +
 				"<ul class='tags'>" + tagstring + "</ul>" +
 				"<div class='VideoDesc'>" + myObj.desc + "</div>";
+		} else {
+			video = "Sorry, content not found :("
+			$('div.commentBox , span.smallSubtitle , div.commentWarp').hide();
+		}
 		videoBox.html(video);
 	}).complete(function(){
 		VideoJS.setupAllWhenReady();
