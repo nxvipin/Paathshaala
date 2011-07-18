@@ -9,7 +9,9 @@ function getVideoHtml(cid) {
 		var tags = myObj.tags;
 		var tagstring="";
 		for( i in tags ) {
-			tagstring = tagstring + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
+			if (tags[i] !== '') {
+				tagstring = tagstring + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
+			}
 		}
 
 		video= "<span class='videoTitle'>" + myObj.title + "</span>" +
