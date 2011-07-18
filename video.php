@@ -15,8 +15,9 @@
 
 <script type='text/javascript'>
 $(document).ready(function() {
-	VideoJS.setupAllWhenReady();
-
+	//VideoJS.setupAllWhenReady();
+	$('video').VideoJS()
+	var myPlayer = VideoJS.setup("All");
 	/* Function calls to update the comments */
 	updateComment("/couch/comments/_design/comments/_view/commentbycid?key=\"<?php echo $_GET['video']; ?>\"");
 	getNewComment(function(changes){
@@ -42,6 +43,7 @@ function getActiveUser() {
 
 <!--  -->
 	<div class='mainLeft'>
+	<div class='videodiv'></div>
 	<?php
 		if(isset($_GET['video'])){
 			echo getVideoHtml($_GET['video']);
