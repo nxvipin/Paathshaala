@@ -55,7 +55,7 @@ function updatemyVideos() {
 		}
 	groupBox1 = groupBox1 + "</div>";
 
-	var myVideosDiv = "<span class=groupTitle>My videos</span>" + groupBox1 + "<span class='more'>Gimme more !!</span>" + groupBox2 + "<span class='less' onclick='hideMore()'>Hide all this !!</span></div>" ;
+	var myVideosDiv = "<div><span class=groupTitle>My videos</span>" + groupBox1 + "<span class='more'>Gimme more !!</span>" + groupBox2 + "</div><span class='less'>Hide all this !!</span>" ;
 
 		$('div#container').append(myVideosDiv);
 	}).complete(function(){
