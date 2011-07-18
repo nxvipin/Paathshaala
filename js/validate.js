@@ -7,7 +7,7 @@ function validate() {
 
 /* Reg expressions */
 var email = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
-var rollnum = /^[bmp]+[01][4-9][01]\d{3}[a-z][a-z]/;
+var rollnum = /^[bmp]+[01]\d[01]\d{3}[a-z][a-z]/;
 
 function val(element) { /* validates the form data, handles images etc */
 	var input =	$(element);
