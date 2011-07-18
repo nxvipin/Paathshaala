@@ -16,6 +16,7 @@
 
 <script type='text/javascript'>
 $(document).ready(function() {
+	getVideoHtml( <?php echo $_GET['video'] ?> );
 	/* Function calls to update the comments */
 	updateComment("/couch/comments/_design/comments/_view/commentbycid?key=\"<?php echo $_GET['video']; ?>\"");
 	getNewComment(function(changes){
@@ -43,7 +44,6 @@ function getActiveUser() {
 	<div class='videodiv'></div>
 	<?php
 		if(isset($_GET['video'])){
-			echo getVideoHtml($_GET['video']);
 			echo "<span class='smallSubtitle'>Comments</span>";
 			echo "<div class='commentWarp'></div>";
 			echo $commentSubmit; 
