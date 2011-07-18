@@ -142,6 +142,21 @@ class user
 			return 0;
 	}
 	
+	/**
+	* Static function check if an email already exists. 
+	* @param string $email Given Email ID
+	* @return integer (1: exists | 0: does not exists)
+	*/
+	public static function checkEmailExists($email)
+	{
+		$sql="Select us_id from users where us_email='$email'";
+		$row=pg_fetch_row(dbquery($sql));
+		if($row)
+			return 1;
+		else
+			return 0;
+	}
+	
 	
 	
 }
