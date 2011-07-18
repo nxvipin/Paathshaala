@@ -19,9 +19,9 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-	updateStoryBox( 'Featured')
-	updateStoryBox( 'Popular' , 8)
-	updateStoryBox( 'TopRated')
+	updateStoryBox('Featured')
+	updateStoryBox('Popular')
+	updateStoryBox('TopRated')
 });
 </script>
 </body>
