@@ -21,16 +21,11 @@ return box = "<div class='storyBox'>" +
 "</div>";
 }
 
-function updateStoryBox(type, count) {
+function updateStoryBox(type) {
 
 /*
 	type : Featured / TopRated / Popular
 */
-
-	if ( count == undefined ) {
-		console.log( count );
-		count = 4 ;
-	}
 
 	var link , title;
 	var more = "<span class='more'>Gimme more !!</span>";
@@ -45,9 +40,12 @@ function updateStoryBox(type, count) {
 	} else if (type === 'Popular') {
 		link = 'json/popular.json.php';
 		title = "<span class=groupTitle>Popular</span>";
+	} else if (type === 'Liked') {
+		link =  'json/uservideolikes.json.php';
 	}
 
 	$.getJSON( link , function(myJsonObj) {
+		var count = myJsonObj.length;
 		if (count === 4 ) {
 			var groupBox = "<div class='groupBox'>";
 			for (i =0; i <4 ; i++){
@@ -58,7 +56,7 @@ function updateStoryBox(type, count) {
 			groupBox = groupBox + "</div>";
 			res = title + groupBox;
 			$('div#container').append(res);
-		} else if (count > 7 ) { /* All multi boxes handled in same way if more than 4 */
+		} else { /* All multi boxes handled in same way if more than 4 */
 			var groupBox1 = "<div class='groupBox'>";
 				for (i =0; i <4 ; i++){
 					var myobj = myJsonObj[i];
@@ -68,7 +66,7 @@ function updateStoryBox(type, count) {
 			groupBox1 = groupBox1 + "</div>";
 
 			var groupBox2 = "<div class='groupBox Hidden'>";
-				for (i =4; i <8 ; i++){
+				for (i =4; i < count ; i++){
 					var myobj = myJsonObj[i];
 					var storyBox = makeBox(myobj)
 					groupBox2 = groupBox2 + storyBox;
