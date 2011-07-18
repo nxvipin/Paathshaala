@@ -24,7 +24,7 @@
 $(document).ready(function() {
 	updatemyVideos();
 	updateStoryBox('Liked');
-	updateDisliked();
+	updateStoryBox('Disliked');
 });
 </script>
 
@@ -34,8 +34,6 @@ $(document).ready(function() {
 <div id='topbar'></div>
 <div id='feedback'></div>
 <img src="pics/load.gif" id='loading'/ style='display:none;'>
-
-<?php //echo $sideDock; ?>
 <div id='container'>
 <?php echo $topNotLoggedIn; ?>
 
