@@ -23,7 +23,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	updatemyVideos();
-	updateLiked();
+	updateStoryBox('Liked');
 	updateDisliked();
 });
 </script>
@@ -35,7 +35,7 @@ $(document).ready(function() {
 <div id='feedback'></div>
 <img src="pics/load.gif" id='loading'/ style='display:none;'>
 
-
+<?php //echo $sideDock; ?>
 <div id='container'>
 <?php echo $topNotLoggedIn; ?>
 
