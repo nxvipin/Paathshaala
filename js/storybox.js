@@ -41,8 +41,11 @@ function updateStoryBox(type) {
 		link = 'json/popular.json.php';
 		title = "<span class=groupTitle>Popular</span>";
 	} else if (type === 'Liked') {
-		link =  'json/uservideolikes.json.php';
+		link = 'json/uservideolikes.json.php';
 		title = "<span class=groupTitle>Liked videos</span>";
+	} else if (type === 'Disliked') {
+		link = 'json/uservideodislikes.json.php';
+		title = "<span class=groupTitle>Disliked videos</span>";
 	}
 
 	$.getJSON( link , function(myJsonObj) {
