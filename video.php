@@ -9,6 +9,7 @@
 	include 'functions/ui.php';
 	echo $header;
 ?>
+<script src='js/like.js' type='text/javascript'></script>
 <script src='js/video.js' type='text/javascript'></script>
 <script src="js/parsevideo.js" type="text/javascript"></script>
 <link rel='stylesheet' href='css/video-js.css'>
@@ -68,6 +69,5 @@ function getActiveUser() {
 <script src='js/comment.js' type='text/javascript'></script>
 <script src='js/related.js' type='text/javascript'></script>
 <script src='js/ui.js' type='text/javascript' ></script>
-<script src='js/like.js' type='text/javascript'></script>
 </body>
 </html>

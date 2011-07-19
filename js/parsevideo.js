@@ -40,5 +40,7 @@ function getVideoHtml(cid) {
 		videoBox.html(video);
 	}).complete(function(){
 		VideoJS.setupAllWhenReady();
+		var defStatus = $('span#likes').attr('defStatus');
+		updateLikeBox(defStatus); /* Update to def status */
 	});
 }
