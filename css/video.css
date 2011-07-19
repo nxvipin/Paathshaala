@@ -148,9 +148,9 @@ padding: 2px 5px;
 
 /* Comments */
 div.commentBox {
-margin:10px 0px;
+margin:2px 0px;
 width:570px;
-min-height:80px;
+min-height:55px;
 border-bottom: 1px dotted #CCCCCC;
 padding-bottom:10px;
 }
@@ -170,6 +170,7 @@ height:90%;
 }
 
 div.commentBoxText {
+font-size: 14px;
 margin:0px; border:0px; width:500px; float:right; clear:right;
 }
 
@@ -211,19 +212,20 @@ right:100px;
 }
 
 div#delConfirmRespText {
-margin:10px auto;
+margin:-3px auto;
+font-size: 12px;
 }
 
 span.delYesNo {
+font-size: 12px;
 color:white;
 background:#777777;
 border-radius:5px;
-padding:4px;
+padding:3px;
 margin:2px;
 cursor: url(../pics/pointer.png), auto;
-font-size:16px;
 position: relative;
-top: 5px;
+top: 4px;
 }
 
 span.delYesNo:hover {

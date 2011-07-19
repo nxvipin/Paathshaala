@@ -127,6 +127,37 @@ class user
 		return $global_user_folder."/".sha1($uid.$global_salt).".png";
 	}
 	
+	/**
+	* Static function to check if a username already exists.
+	* @param string $uname Given Username
+	* @return integer returns (exists:1 | does not exist:0)
+	*/
+	public static function checkUsernameExists($uname)
+	{
+		$sql="Select us_id from users where us_name='$uname'";
+		$row=pg_fetch_row(dbquery($sql));
+		if($row)
+			return 1;
+		else
+			return 0;
+	}
+	
+	/**
+	* Static function check if an email already exists. 
+	* @param string $email Given Email ID
+	* @return integer (1: exists | 0: does not exists)
+	*/
+	public static function checkEmailExists($email)
+	{
+		$sql="Select us_id from users where us_email='$email'";
+		$row=pg_fetch_row(dbquery($sql));
+		if($row)
+			return 1;
+		else
+			return 0;
+	}
+	
+	
 	
 }
 
