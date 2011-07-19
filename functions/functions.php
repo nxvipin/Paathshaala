@@ -121,4 +121,16 @@ function checkSession()
 		return false;
 }
 
+/**
+* Returns names of all the series in the global_raw_series_folder as an Array
+*/
+function getAllRawSeries()
+{
+	global $global_raw_videos_folder;
+	$serieslist = scandir($global_raw_videos_folder);
+	array_shift($serieslist);
+	array_shift($serieslist);
+	return $serieslist;
+}
+
 ?>
