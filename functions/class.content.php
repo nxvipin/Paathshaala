@@ -23,7 +23,7 @@ include_once 'functions.php';
 abstract class content
 {
 	
-	protected $cid,$title,$desc,$timestamp,$uid,$status,$views,$seriesid,$order;
+	protected $cid,$title,$desc,$timestamp,$uid,$status,$views,$seriesid,$order,$sname;
 	
 	public function getContentId()
 	{
@@ -53,13 +53,17 @@ abstract class content
 	{
 		return $this->uid;
 	}
-	public function getSeries()
+	public function getSeriesId()
 	{
 		return $this->seriesid;
 	}
 	public function getOrder()
 	{
 		return $this->order;
+	}
+	public function getSeriesName()
+	{
+		return $this->sname;
 	}
 	/**
 	* Returns the content tags as an array. Tag name is pulled from tag ID internally.
@@ -107,6 +111,11 @@ abstract class content
 		$series=pg_fetch_assoc(dbquery($sql));
 		$this->seriesid=$series['cs_seriesid'];
 		$this->order=$series['cs_order'];
+		if($this->seriesid){
+			$sql="Select sr_name from series where sr_id='".$this->seriesid."'";
+			$name=pg_fetch_assoc(dbquery($sql));
+			$this->sname=$name['sr_name'];
+		}
 	}
 	
 	/**
