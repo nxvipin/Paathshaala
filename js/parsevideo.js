@@ -26,7 +26,7 @@ function getVideoHtml(cid) {
 			}
 		}
 
-		if ( myObj.sId) {
+		if ( myObj.sid) {
 			series = "<div class='series'> <img src='pics/series.png' /> <span>This video #" + myObj.order + " of <a href='search.php?sid=" + myObj.sid +"'>" + myObj.sname + "</a> </span> </div>"
 		} else {
 			series = '';
