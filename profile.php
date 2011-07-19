@@ -18,8 +18,6 @@
 ?>
 <link rel='stylesheet' href='css/profile.css'>
 <script src='js/myvideos.js' type='text/javascript' ></script>
-<script src='js/likedvideos.js' type='text/javascript' ></script>
-<script src='js/dislikedvideos.js' type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	updatemyVideos();
