@@ -157,6 +157,26 @@ class user
 			return 0;
 	}
 	
+	/**
+	* Checks if a user liked/dislike a content.
+	* @param integer $uid User ID of the logged in user.
+	* @param integer $cid Content ID to be checked.
+	* @return integer (1: Like, -1: dislike, 0: default, 2: user not logged in)
+	*/
+	public static function checkLike($uid,$cid)
+	{
+		if(!$uid)
+			return 2;
+		else{	
+			$sql="Select cl_value from content_like where cl_uid='$uid' and cl_cid='$cid'";
+			$row=pg_fetch_array(dbquery($sql));
+			if($row)
+				return $row[0];
+			else
+				return 0;
+		}
+	}
+	
 	
 	
 }
