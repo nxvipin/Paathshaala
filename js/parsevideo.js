@@ -8,11 +8,17 @@ function getVideoHtml(cid) {
 	$.getJSON( link, function(myObj) {
 		if (myObj.title ) {
 		var tags = myObj.tags;
-		var tagstring="";
+		var tagString ="" , series="" ;
 		for( i in tags ) {
 			if (tags[i] !== '') {
-				tagstring = tagstring + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
+				tagString = tagString + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
 			}
+		}
+
+		if ( myObj.sId) {
+			series = "<div class='series'> <img src='pics/series.png' /> <span>This video #" + myObj.order + " of <a href='search.php?sid=" + myObj.sid +"'>" + myObj.sname + "</a> </span> </div>"
+		} else {
+			series = '';
 		}
 
 		video= "<span class='videoTitle'>" + myObj.title + "</span>" +
@@ -26,12 +32,12 @@ function getVideoHtml(cid) {
 				"<!-- video bar -->" +
 				"<div class='videoBar'>" +
 					"<img src='pics/vidbar/watch.png' class='VideoBarButton' /><span class='videoBarElement' id='playCount'>Views:" + myObj.viewcount + "</span>" +
-					"<span id='likes' defStatus='" + myObj.likeStatus + "' ></span>" +
+					"<span id='likes' defStatus='" + myObj.likestatus + "' ></span>" +
 					"<img src='pics/vidbar/download.png' title='Download' class='VideoBarButton' style='float:right;' id='downloadButton' />" +
 				"</div>" +
 				"<!-- /video bar -->" +
 				"<img src='pics/vidbar/tag.png' title='tags' style='margin-left:6px;'/>" +
-				"<ul class='tags'>" + tagstring + "</ul>" +
+				"<ul class='tags'>" + tagString + "</ul>" + series +
 				"<div class='VideoDesc'>" + myObj.desc + "</div>";
 		} else {
 			video = "Sorry, content not found :("

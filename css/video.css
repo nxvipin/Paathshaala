@@ -231,3 +231,17 @@ top: 4px;
 span.delYesNo:hover {
 background :#3369C0
 }
+
+div.series span {
+position: relative;
+top: -8px;
+}
+
+
+div.series img {
+height:25px;
+width:25px;
+margin-left:6px;
+}
+
+
