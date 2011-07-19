@@ -12,15 +12,16 @@ function updateLikeBox(st) {
 	var likesLiked = "<span id='likesLiked'><span id='likeButton' data='1' title='You like this' style='opacity:0.5'><img src='pics/vidbar/plus.png'  class='VideoBarButton' /><span>You like this</span></span><span id='dislikeButton' data='-1' title='dislike this'><img src='pics/vidbar/minus.png'  class='VideoBarButton' />dislike this.</span></span>";
 
 	var likesDisliked = "<span id='likesDisliked'><span id='likeButton' data='1' title='like this'><img src='pics/vidbar/plus.png'  class='VideoBarButton' /><span>like this</span></span><span id='dislikeButton' data='-1' title='You dislike this' style='opacity:0.5'><img src='pics/vidbar/minus.png' class='VideoBarButton'/>You dislike this.</span></span>";
-	
 	var likesError = "<span id='likesDisliked' style='margin:0px 5px;'>Something went wrong :(</span>";
+
+	var likesloggedOut = "<span id='likesDisliked' style='margin:0px 5px;'>Login to like stuff :(</span>";
 
 	if(st === '1' ) {
 		likeBox.html(likesLiked );
 	} else if (st === '-1') {
 		likeBox.html(likesDisliked );
-	} else if (st === '2' ) {
-		likeBox.html('');
+	} else if (st === '2' ) { /* Status 2 => logged out */
+		likeBox.html(likesloggedOut);
 	} else if ( st === 0){
 		likeBox.html(likesDefault );
 	} else {

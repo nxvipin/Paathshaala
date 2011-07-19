@@ -2,11 +2,22 @@
 	@params:	cid:contentid of the video to be played
 */
 
-function getVideoHtml(cid) { 
-	var link = 'json/video.json.php?video=' + cid;
+function getVideoHtml(cid) {
+	var link;
+	console.log(cid);
+	if (cid === undefined ) { // Contribute page stuff 
+		cid = 'newvideo';
+		link = 'json/getnewvideo.json.php';
+	} else {
+		link = 'json/video.json.php?video=' + cid;
+	}
+	
 	var videoBox = $('div.videodiv');
 	$.getJSON( link, function(myObj) {
-		if (myObj.title ) {
+		if ( cid === 'newvideo' ) {
+			myObj.tags = ['Enter new tags for the video'];
+		}
+		if (myObj.path) {
 		var tags = myObj.tags;
 		var tagString ="" , series="" ;
 		for( i in tags ) {
@@ -46,7 +57,14 @@ function getVideoHtml(cid) {
 		videoBox.html(video);
 	}).complete(function(){
 		VideoJS.setupAllWhenReady();
-		var defStatus = $('span#likes').attr('defStatus');
-		updateLikeBox(defStatus); /* Update to def status */
+		if ( cid !== 'newvideo' ) {
+			var defStatus = $('span#likes').attr('defStatus');
+			updateLikeBox(defStatus); /* Update to def status */
+		} else {
+				$('div.videoBar').html("<div style='text-align:center;'>Thanks for adding a new video to paathshaala</div>"); // Remove download button
+				$('span.videoTitle').html("Enter a new title for your video");
+				$('div.VideoDesc').html("Description please :)")
+		}
+
 	});
 }
