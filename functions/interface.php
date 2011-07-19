@@ -25,6 +25,7 @@ include_once 'functions/class.user.php';
 function getVideoJson($cid,$uid)
 {
 	$v=new video($cid);
+	$v->fetchSeries();
 	$json=array(
 			"cid"=>$v->getContentId(),
 			"title"=>$v->getTitle(),
@@ -36,6 +37,9 @@ function getVideoJson($cid,$uid)
 			"path"=>$v->getCompletePath(),
 			"poster"=>$v->getPoster(),
 			"likestatus"=>user::checkLike($uid,$cid),
+			"sid"=>$v->getSeriesId(),
+			"sname"=>$v->getSeriesName(),
+			"order"=>$v->getOrder(),
 			"uid"=>$v->getUserId(),
 			"uname"=>user::getFullNameS($v->getUserId())
 			);
