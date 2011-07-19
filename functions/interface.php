@@ -19,9 +19,10 @@ include_once 'functions/class.user.php';
 /**
 * Returns JSON string containing all video details.
 * @param integer $cid Content ID of the video.
+* @param integer $uid User ID of the user who requests the video.
 * @return string JSON String 
 */
-function getVideoJson($cid)
+function getVideoJson($cid,$uid)
 {
 	$v=new video($cid);
 	$json=array(
@@ -34,6 +35,7 @@ function getVideoJson($cid)
 			"status"=>$v->getStatus(),
 			"path"=>$v->getCompletePath(),
 			"poster"=>$v->getPoster(),
+			"likestatus"=>user::checkLike($uid,$cid),
 			"uid"=>$v->getUserId(),
 			"uname"=>user::getFullNameS($v->getUserId())
 			);
