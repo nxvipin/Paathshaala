@@ -133,4 +133,18 @@ function getAllRawSeries()
 	return $serieslist;
 }
 
+/**
+* Returns a random video from a given PATH.
+* @param string $path Path of the folder.
+* @return string filename
+*/
+function getRandomVideo($path)
+{
+	$videolist = scandir($path);
+	array_shift($videolist);
+	array_shift($videolist);
+	return $videolist[array_rand($videolist)];
+	
+}
+
 ?>
