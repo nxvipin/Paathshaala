@@ -4,7 +4,14 @@ display:inline-block;
 color:#3a75af;
 font-size: 20px;
 padding:0px;
-margin:5px;
+margin:5px 5px 0px 5px;
+}
+
+span.videoUser {
+font-size:13px;
+position:relative;
+top:-3px;
+left:10px;
 }
 
 div.videoBar {
