@@ -13,35 +13,36 @@ function val(element) { /* validates the form data, handles images etc */
 	var input =	$(element);
 	var data =	input.attr('value');
 	var id =	input.attr('id');
+	var joinMessage = $('div.joinMessage');
 	var status = 0;
 	if ( id === 'fname') { 
 		if(data.length > 5) {
 			status = 1;
-			$('div.joinMessage').text('Okey ! Welcome ' + data)
+			joinMessage.text('Okey ! Welcome ' + data)
 		} else {
-			$('div.joinMessage').text('Full name too short');
+			joinMessage.text('Full name too short');
 		}
 	} //else if (id === 'uname' ) { /* Username handled differently outside this function */
-		//	$('div.joinMessage').addClass('error').text('You shouldn\'t be seeing this :(');
+		//	joinMessage.addClass('error').text('You shouldn\'t be seeing this :(');
 	/*} */else if (id === 'email' ) {
 			var res = email.test(data); // Validates email based on custom regex
 			status = res === true ? 1 : 0; 
 			if (status) {
-				$('div.joinMessage').removeClass('error').text('Okey, we wont spam you :)');
+				joinMessage.removeClass('error').text('Okey, we wont spam you :)');
 			} else {
-				$('div.joinMessage').addClass('error').text('Thats not a valid mail id :(');
+				joinMessage.addClass('error').text('Thats not a valid mail id :(');
 			}
 		} else if (id === 'roll' ) {
 			var res = rollnum.test(data);
 			status = res === true ? 1 : 0;
 			if (status) {
-				$('div.joinMessage').removeClass('error').text('Okey, seems like one :)');
+				joinMessage.removeClass('error').text('Okey, seems like one :)');
 			} else {
-				$('div.joinMessage').addClass('error').text('Enter a valid NITC roll number ');
+				joinMessage.addClass('error').text('Enter a valid NITC roll number ');
 			}
 		} else if (id === 'pass1' ) {
 			status = 1; // sets status to 1 and revert to zero on any errors defined down with custom error message
-			$('div.joinMessage').addClass('error').text('Enter a secure password');
+			joinMessage.addClass('error').text('Enter a secure password');
 			// Add more password restrictions here. Harder ones in the end. Use else if to traverse since 1 top error is enough to block it.
 			if (data === $("form.join input#uname").attr('value') ) {
 				var msg = "Password is same as your username";
@@ -52,29 +53,29 @@ function val(element) { /* validates the form data, handles images etc */
 			}
 			
 			if (status) {
-				$('div.joinMessage').removeClass('error').text('Secure password !');
+				joinMessage.removeClass('error').text('Secure password !');
 			} else {
-				$('div.joinMessage').text(msg);
+				joinMessage.text(msg);
 			}
 			
 		} else if (id === 'pass2' ) {
 			var pass1 = $("form.join input#pass1").attr('value');
 			if (data === pass1 ) {
 				status = 1;
-				$('div.joinMessage').removeClass('error').text('Same password entered');
+				joinMessage.removeClass('error').text('Same password entered');
 			} else {
-				$('div.joinMessage').addClass('error').text('Enter the same password');
+				joinMessage.addClass('error').text('Enter the same password');
 			}
 		} else {
-			$('div.joinMessage').addClass('error').text('Something went wrong !');
+			joinMessage.addClass('error').text('Something went wrong !');
 		}
 		
 		if(status === 1 ) {
 			$(input).next('img').attr('src','pics/verified.png');
-			$('div.joinMessage').removeClass('error');
+			joinMessage.removeClass('error');
 		} else {
 			$(input).next('img').attr('src','pics/cross.png');
-			$('div.joinMessage').addClass('error');
+			joinMessage.addClass('error');
 		}
 }
 
@@ -103,14 +104,14 @@ $("span.check").click(function(){
 	var input =	$("form.join input#uname")
 	var data =	input.attr('value');
 		$.getJSON( 'checkuser.php?var=' + data  , function(myObj) {
-			$('div.joinMessage').addClass('error');
+			joinMessage.addClass('error');
 			status = myObj.s; /* variable scope error, cant take this value out */
 			if (status === 1) {
 				$(input).next('img').attr('src','pics/verified.png');
-				$('div.joinMessage').removeClass('error').text('Username is available');
+				joinMessage.removeClass('error').text('Username is available');
 				$("span.check").fadeOut()
 			} else {
-				$('div.joinMessage').text('Username is not available');
+				joinMessage.text('Username is not available');
 			}
 		});
 });
