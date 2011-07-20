@@ -34,22 +34,26 @@ function getActiveUser() {
 <div id='container'>
 <?php echo $topNotLoggedIn; ?>
 
+<span style='font-size:24px; color:#3A75AF'> Contribute to paathshaala</span> <span id="helpTrigger" style='font-size:14px'> [help] </span>
+
+<div id='helpMessage' class='message' style='border:0px; display:none'>
+	We have a lot of unpublished videos with us which is not yet searchable. Your contribution will make this video public and useful for others.<i>One small step for a student, one giant leap for student kind.</i><br />
+	Please dont mess up !
+</div>
+
+
 	<div class='mainLeft'>
 	<div class='videodiv'></div>
 	</div> <!--/ main left -->
 
 <div class='mainRight'>
 
-<div class='message' id='warningMessage' style='background:#bdc7d8;'>
-	One small step for a student, one giant leap for student kind.
-	Please dont mess up ! <br/>
+
+
+<div class='message' id='helpMessage' >
+	Describe video details along
 </div>
 
-<div class='message' id='helpMessage' style='display:none;' >
-	We are here to help ! Please fill up the form sensibly.
-</div>
-
-<span style='font-size:20px;'> Enter new video details </span>
 
 <form class='newVideoSubmit'>
 
