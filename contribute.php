@@ -40,6 +40,29 @@ function getActiveUser() {
 
 <div class='mainRight'>
 
+<div class='message' id='warningMessage' style='background:#bdc7d8;'>
+	One small step for a student, one giant leap for student kind.
+	Please dont mess up ! <br/>
+</div>
+
+<div class='message' id='helpMessage' style='display:none;' >
+	We are here to help ! Please fill up the form sensibly.
+</div>
+
+<span style='font-size:20px;'> Enter new video details </span>
+
+<form class='newVideoSubmit'>
+
+<input type="text" id="title" placeholder="Enter a title for your new video"/>
+<input type="text" id="tags" placeholder="Now few comma seperated tags"/>
+<textarea id='desc' placeholder="Now add a good description to make this video searchable and useful for others"></textarea>
+
+<div class='newVideoSubmitButton'>
+	Submit video to paathshaala :)
+</div>
+</form>
+
+
 
 </div> <!-- /main right -->
 
