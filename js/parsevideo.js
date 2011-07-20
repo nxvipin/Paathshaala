@@ -4,7 +4,6 @@
 
 function getVideoHtml(cid) {
 	var link;
-	console.log(cid);
 	if (cid === undefined ) { // Contribute page stuff 
 		cid = 'newvideo';
 		link = 'json/getnewvideo.json.php';
