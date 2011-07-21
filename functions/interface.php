@@ -15,6 +15,7 @@
 */
 include_once 'functions/class.video.php';
 include_once 'functions/class.user.php';
+include_once 'functions/class.functions.php';
 
 /**
 * Returns JSON string containing all video details.
@@ -198,6 +199,29 @@ function getUserUploadedVideosJson($uid)
 							'uid'=>$obj->getUserId(),
 							'fullname'=>user::getFullNameS($obj->getUserId()),
 							'userpic'=>user::getUserPictureS($obj->getUserId())));
+	}
+	return json_encode($json);
+}
+
+/**
+* 
+* @param
+* @return
+*/
+function getRelatedSeriesJson($sid)
+{
+	$seriesvideos=content::getCompleteSeries($sid);
+	$count=count($seriesvideos);
+	$json=array();
+	for($i=0;$i<$count;$i++){
+		$obj = new video($seriesvideos[$i]);
+		array_push($json,array( 'cid'=>$obj->getContentId(),
+							'title'=>$obj->getTitle(),
+							'viewcount'=>$obj->getViewCount(),
+							'poster'=>$obj->getPoster(),
+							'timestamp'=>$obj->getTimestamp(),
+							'uid'=>$obj->getUserId(),
+							'uname'=>user::getFullNameS($obj->getUserId())));
 	}
 	return json_encode($json);
 }
