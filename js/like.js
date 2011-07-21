@@ -22,7 +22,7 @@ function updateLikeBox(st) {
 		likeBox.html(likesDisliked );
 	} else if (st === '2' ) { /* Status 2 => logged out */
 		likeBox.html(likesloggedOut);
-	} else if ( st === 0){
+	} else if ( st === '0' ){
 		likeBox.html(likesDefault );
 	} else {
 		likeBox.html(likesError);
