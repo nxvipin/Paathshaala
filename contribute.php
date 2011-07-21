@@ -11,7 +11,8 @@
 ?>
 <script src='js/like.js' type='text/javascript'></script>
 <script src='js/video.js' type='text/javascript'></script>
-<script src="js/parsevideo.js" type="text/javascript"></script>
+<script src='js/validatesubmit.js' type='text/javascript'></script>
+<script src='js/parsevideo.js' type='text/javascript'></script>
 <link rel='stylesheet' href='css/video-js.css'>
 <link rel='stylesheet' href='css/video.css'>
 
@@ -50,7 +51,7 @@ function getActiveUser() {
 
 
 
-<div class='message' id='helpMessage' >
+<div class='message' id='helpLog' >
 	Describe video details along
 </div>
 
@@ -78,8 +79,6 @@ function getActiveUser() {
 
 <?php echo $bottomBar; ?>
 <div id="bottombar"></div>
-<script src='js/comment.js' type='text/javascript'></script>
-<script src='js/related.js' type='text/javascript'></script>
 <script src='js/ui.js' type='text/javascript' ></script>
 </body>
 </html>
