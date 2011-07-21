@@ -119,12 +119,12 @@ abstract class content
 	}
 	
 	/**
-	* Returns all the Content ID's in the series to whcih the current content belongs.
-	* @return array Array of all Content ID's which belong to the series of current content.
+	* Returns all the Content ID's in the series given by the series ID.
+	* @return array Array of all Content ID's which belong to the geiven series.
 	*/
-	public function getCompleteSeries()
+	public static function getCompleteSeries($sid)
 	{
-		$sql="Select cs_contentid from content_series where cs_seriesid='".$this->seriesid."'";
+		$sql="Select cs_contentid from content_series where cs_seriesid='".$sid."'";
 		return resource2array(dbquery($sql));
 	}
 	
