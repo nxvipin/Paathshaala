@@ -62,9 +62,8 @@ function getActiveUser() {
 <input type="text" id="tags" placeholder="Now few comma seperated tags"/>
 <textarea id='desc' placeholder="Now add a good description to make this video searchable and useful for others"></textarea>
 
-<div class='newVideoSubmitButton'>
-	Submit video to paathshaala :)
-</div>
+<div class='newVideoSubmitButton'>Submit video to paathshaala :)</div>
+
 </form>
 
 
