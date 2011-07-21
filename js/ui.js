@@ -125,6 +125,10 @@ $('img#editProfileButton').click(function(){
 	showEditProfile();
 });
 
+$("span#helpTrigger").click(function(){
+	$("div#helpMessage").slideToggle();
+})
+
 setTimeout(function(){
 	$('#loading').fadeOut(1000);
 }, 200);

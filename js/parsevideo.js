@@ -4,7 +4,6 @@
 
 function getVideoHtml(cid) {
 	var link;
-	console.log(cid);
 	if (cid === undefined ) { // Contribute page stuff 
 		cid = 'newvideo';
 		link = 'json/getnewvideo.json.php';
@@ -32,7 +31,8 @@ function getVideoHtml(cid) {
 			series = '';
 		}
 
-		video= "<span class='videoTitle'>" + myObj.title + "</span>" +
+		video= "<span class='videoTitle'>" + myObj.title + "</span><br/>" +
+				"<span class='videoUser'> Video by : " + myObj.uname + "</span>" +
 				"<!-- Begin VideoJS -->" +
 				"<div class='video-js-box'>" +
 					"<video cid='" + myObj.cid + "' poster='" + myObj.poster + "' class='video-js' controls preload height=325 width=550>" +
