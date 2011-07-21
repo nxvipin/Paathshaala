@@ -23,10 +23,10 @@ function getVideoHtml(cid) {
 			if (tags[i] !== '') {
 				tagString = tagString + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
 			}
-		}
+		}validate()
 
 		if ( myObj.sid) {
-			series = "<div class='series'> <img src='pics/series.png' /> <span>This video #" + myObj.order + " of <a href='search.php?sid=" + myObj.sid +"'>" + myObj.sname + "</a> </span> </div>"
+			series = "<div class='series'> <img src='pics/series.png' /> <span>This video #" + myObj.order + " of <a href='search.php?sid=" + myObj.sid +"'>" + "<span id='sName'>" + myObj.sname +"</span>" + "</a> </span> </div>"
 		} else {
 			series = '';
 		}
@@ -64,6 +64,7 @@ function getVideoHtml(cid) {
 				$('div.videoBar').html("<div style='text-align:center;'>Thanks for adding a new video to paathshaala</div>"); // Remove download button
 				$('span.videoTitle').html("Enter a new title for your video");
 				$('div.VideoDesc').html("Description please :)")
+				validateVideo();
 		}
 
 	});
