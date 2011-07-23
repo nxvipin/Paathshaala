@@ -34,5 +34,14 @@ if(typeof String.prototype.supplant !== 'function') {
 	};
 }
 
-
+function hashTag(elem) {
+	var data = $(elem).html();
+	var reg = /#(\w{1,})/g;
+	var res = data.match(reg);
+	var len = res.length;
+	for( var i =0; i < len ; i = i+1) {
+		data = data.replace( res[i],'<a href=search.php?tag=' + res[i] + '>' + res[i] + '</a>' );
+	}
+	$(elem).html(data);
+}
 
