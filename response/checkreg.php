@@ -6,14 +6,13 @@
 	
 	include_once '../functions/class.user.php';
 	$status=array();
-	if(isset($_POST['username'])){
-		$status['status']=user::checkUsernameExists($_POST['username']);
+	if(isset($_GET['username'])){
+		$status['status']=user::checkUsernameExists($_GET['username']);
 		echo json_encode($status);
 	}
-	else if(isset($_POST['email'])){
-		$status['status']=user::checkEmailExists($_POST['email']);
+	else if(isset($_GET['email'])){
+		$status['status']=user::checkEmailExists($_GET['email']);
 		echo json_encode($status);
-	}	
-	
+	}
 
 ?>
