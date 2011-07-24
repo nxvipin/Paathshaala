@@ -67,7 +67,7 @@ function validate() {
 				verified[id] = getRegEx(regEx, id).test(data);
 				if ( verified[id] ) {
 					$.ajax({
-						url: '/Paathshaala/response/checkreg.php?username=' + data ,
+						url: 'response/checkreg.php?username=' + data ,
 						async: false,
 						dataType: 'json',
 						success: function (myObj) {
@@ -82,7 +82,7 @@ function validate() {
 				verified[id] = getRegEx(regEx, id).test(data);
 				if ( verified[id] ) {
 					$.ajax({
-						url: '/Paathshaala/response/checkreg.php?email=' + data ,
+						url: 'response/checkreg.php?email=' + data ,
 						async: false,
 						dataType: 'json',
 						success: function (myObj) {
@@ -97,7 +97,7 @@ function validate() {
 				verified[id] = getRegEx(regEx, id).test(data);
 				if ( verified[id] ) {
 					$.ajax({
-						url: '/Paathshaala/response/checkreg.php?roll=' + data ,
+						url: 'response/checkreg.php?roll=' + data ,
 						async: false,
 						dataType: 'json',
 						success: function (myObj) {
