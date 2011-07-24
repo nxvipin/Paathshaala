@@ -52,7 +52,7 @@ function updateStoryBox(type) {
 		var count = myJsonObj.length;
 		if (count === 4 ) {
 			var groupBox = "<div class='groupBox'>";
-			for (i =0; i <4 ; i++){
+			for (var i =0; i <4 ; i++){
 				var myobj = myJsonObj[i];
 				var storyBox = makeBox(myobj)
 				groupBox = groupBox + storyBox;
@@ -62,7 +62,7 @@ function updateStoryBox(type) {
 			$('div#container').append(res);
 		} else { /* All multi boxes handled in same way if more than 4 */
 			var groupBox1 = "<div class='groupBox'>";
-				for (i =0; i <4 ; i++){
+				for (var i =0; i <4 ; i++){
 					var myobj = myJsonObj[i];
 					var storyBox = makeBox(myobj)
 					groupBox1 = groupBox1 + storyBox;
