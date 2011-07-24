@@ -304,8 +304,8 @@ border-radius:0px 0px 5px 5px;
 }
 
 form.join {
-height: 240px;
-width: 300px;
+height: 255px;
+width: 260px;
 }
 
 form.join div.joinMessage{
@@ -326,6 +326,24 @@ display:none;
 cursor: url(../pics/pointer.png) 0 0, auto;
 }
 
+button#joinButton {
+background: -moz-linear-gradient(center top , #F0F0EA, #D5D7CE) repeat scroll 0 0 transparent;
+color: #333333;
+text-shadow: 0 1px 0 #FFFFFF;
+border: 1px solid #BBBBBB;
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+display: inline-block;
+font-size: 12px;
+outline: medium none;
+padding: 3px 10px 4px;
+text-align: center;
+text-decoration: none;
+position:relative;
+left:200px;
+top:5px;
+cursor: url(../pics/pointer.png) 0 0, auto;
+}
 
 .dashBoard {
 width:135px;
