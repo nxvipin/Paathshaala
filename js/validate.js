@@ -131,7 +131,13 @@ function validate() {
 			var input = this;
 			$(input).next('img').attr('src','pics/tinyload.gif');
 			val(input);
+		})
+		.focusout(function(){
+			var input = this;
+			$(input).next('img').attr('src','pics/tinyload.gif');
+			val(input);
 		});
+
 
 	$('#joinButton').click(function(){
 		for (i in verified ) {
