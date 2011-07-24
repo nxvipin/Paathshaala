@@ -67,7 +67,7 @@ function validate() {
 				verified[id] = getRegEx(regEx, id).test(data);
 				if ( verified[id] ) {
 					$.ajax({
-						url: 'response/checkreg.php?username=' + data ,
+						url: '/Paathshaala/response/checkreg.php?username=' + data ,
 						async: false,
 						dataType: 'json',
 						success: function (myObj) {
@@ -82,7 +82,7 @@ function validate() {
 				verified[id] = getRegEx(regEx, id).test(data);
 				if ( verified[id] ) {
 					$.ajax({
-						url: 'response/checkreg.php?email=' + data ,
+						url: '/Paathshaala/response/checkreg.php?email=' + data ,
 						async: false,
 						dataType: 'json',
 						success: function (myObj) {
@@ -97,7 +97,7 @@ function validate() {
 				verified[id] = getRegEx(regEx, id).test(data);
 				if ( verified[id] ) {
 					$.ajax({
-						url: 'response/checkreg.php?roll=' + data ,
+						url: '/Paathshaala/response/checkreg.php?roll=' + data ,
 						async: false,
 						dataType: 'json',
 						success: function (myObj) {
@@ -141,7 +141,13 @@ function validate() {
 			submit = submit && verified[i];
 		}
 		if (submit) {
-			$.getJSON( 'response/join.php' , entries , function(myObj) {});
+			$.getJSON( 'response/join.php' , entries , function(myObj) {
+				if(myObj.status) {
+					$('form.join').html("Join Succsessful, Now please login with the new username and password");
+				} else {
+					$('form.join').html("Somewhere something went wrong");
+				}
+			});
 		}
 	});
 } // End of validate()
