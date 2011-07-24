@@ -4,117 +4,144 @@
 */
 
 function validate() {
+	"use strict";
+	var verified = {}, msg = {}, entries = {}, regEx = {}, input, data, id, res, i, ajax, joinMessage = $('div.joinMessage'), submit= true ;
 
-/* Reg expressions */
-var email = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
-var rollnum = /^[bmp]+[01]\d[01]\d{3}[a-z][a-z]/;
+	verified = {
+		fname : false,
+		username: false,
+		email : false,
+		roll : false ,
+		pass1 : false,
+		pass2 : false
+	}
 
-function val(element) { /* validates the form data, handles images etc */
-	var input =	$(element);
-	var data =	input.attr('value');
-	var id =	input.attr('id');
-	var joinMessage = $('div.joinMessage');
-	var status = 0;
-	if ( id === 'fname') { 
-		if(data.length > 5) {
-			status = 1;
-			joinMessage.text('Okey ! Welcome ' + data)
-		} else {
-			joinMessage.text('Full name too short');
+	msg = {
+		fname : { 'valid' : 'Hello' /*{full name} */ ,
+		'invalid': 'Enter a valid full name' } ,
+
+		username : { 'valid' : 'Username available' ,
+		'invalid': 'This username is not available' } ,
+
+		email : { 'valid' : 'Thanks, we wont spam you !' ,
+		'invalid': 'Enter a valid email' } ,
+
+		roll : { 'valid' : 'Seems like a valid NITC roll' ,
+		'invalid': 'Enter a valid NITC roll num' } ,
+
+		pass1 : { 'valid' : 'Secure password' ,
+		'invalid': 'Enter a secure password' } ,
+
+		pass2 : { 'valid' : 'Password verified' ,
+		'invalid': 'Enter the same password as above' }
+	};
+
+	regEx = {
+		fname : /\w{5,}/ ,
+		username : /.{3,}/ ,
+		email : /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/ ,
+		roll : /^[bmp]+[01]\d[01]\d{3}[a-z][a-z]/ ,
+		pass1 : /.{6}/
+	};
+
+	function getRegEx(Obj,id) {
+		return Obj[id];
+	}
+
+	function val(element) { /* validates the form data */
+		input = $(element);
+		data = input.attr('value');
+		id = input.attr('id');
+
+		switch (id) {
+			case 'fname' :
+			case 'pass1' :
+				verified[id] = getRegEx(regEx, id).test(data);
+				entries[id] = data;
+				break;
+			case 'pass2' :
+				verified[id] = (data === entries['pass1']);
+				entries[id] = data;
+				break;
+			case 'username' :
+				verified[id] = getRegEx(regEx, id).test(data);
+				if ( verified[id] ) {
+					$.ajax({
+						url: '/Paathshaala/response/checkreg.php?username=' + data ,
+						async: false,
+						dataType: 'json',
+						success: function (myObj) {
+						ajax = !(!!myObj.status);
+						}
+					});
+				}
+				verified[id] = verified[id] && ajax;
+				entries[id] = data;
+				break;
+			case 'email' :
+				verified[id] = getRegEx(regEx, id).test(data);
+				if ( verified[id] ) {
+					$.ajax({
+						url: '/Paathshaala/response/checkreg.php?email=' + data ,
+						async: false,
+						dataType: 'json',
+						success: function (myObj) {
+							ajax = !(!!myObj.status);
+						}
+					});
+				}
+				verified[id] = verified[id] && ajax;
+				entries[id] = data;
+				break;
+			case 'roll' :
+				verified[id] = getRegEx(regEx, id).test(data);
+				if ( verified[id] ) {
+					$.ajax({
+						url: '/Paathshaala/response/checkreg.php?roll=' + data ,
+						async: false,
+						dataType: 'json',
+						success: function (myObj) {
+							ajax = !(!!myObj.status);
+						}
+					});
+				}
+				verified[id] = verified[id] && ajax;
+				entries[id] = data;
+				break;
 		}
-	} //else if (id === 'uname' ) { /* Username handled differently outside this function */
-		//	joinMessage.addClass('error').text('You shouldn\'t be seeing this :(');
-	/*} */else if (id === 'email' ) {
-			var res = email.test(data); // Validates email based on custom regex
-			status = res === true ? 1 : 0; 
-			if (status) {
-				joinMessage.removeClass('error').text('Okey, we wont spam you :)');
-			} else {
-				joinMessage.addClass('error').text('Thats not a valid mail id :(');
-			}
-		} else if (id === 'roll' ) {
-			var res = rollnum.test(data);
-			status = res === true ? 1 : 0;
-			if (status) {
-				joinMessage.removeClass('error').text('Okey, seems like one :)');
-			} else {
-				joinMessage.addClass('error').text('Enter a valid NITC roll number ');
-			}
-		} else if (id === 'pass1' ) {
-			status = 1; // sets status to 1 and revert to zero on any errors defined down with custom error message
-			joinMessage.addClass('error').text('Enter a secure password');
-			// Add more password restrictions here. Harder ones in the end. Use else if to traverse since 1 top error is enough to block it.
-			if (data === $("form.join input#uname").attr('value') ) {
-				var msg = "Password is same as your username";
-				status = 0;
-			} else if ( data.length < 6 ) {
-				var msg = "Password too short";
-				status = 0;
-			}
-			
-			if (status) {
-				joinMessage.removeClass('error').text('Secure password !');
-			} else {
-				joinMessage.text(msg);
-			}
-			
-		} else if (id === 'pass2' ) {
-			var pass1 = $("form.join input#pass1").attr('value');
-			if (data === pass1 ) {
-				status = 1;
-				joinMessage.removeClass('error').text('Same password entered');
-			} else {
-				joinMessage.addClass('error').text('Enter the same password');
-			}
-		} else {
-			joinMessage.addClass('error').text('Something went wrong !');
-		}
-		
-		if(status === 1 ) {
+
+	// Messages and icon change
+
+	for ( i in verified ) {
+		if (verified[i] === true ) {
+			joinMessage.text(msg[i].valid);
+			var input = 'input#' + i;
 			$(input).next('img').attr('src','pics/verified.png');
-			joinMessage.removeClass('error');
-		} else {
+		} else { 
+			joinMessage.text(msg[i].invalid);
+			var input = 'input#' + i;
 			$(input).next('img').attr('src','pics/cross.png');
-			joinMessage.addClass('error');
 		}
-}
+	}
 
-$("form.join input")
-	.focus(function(){
-		$(this).next('img').attr('src','pics/tinyload.gif')
-		$(this).keyup(function(){
-			var input = $(this);
-			if (input.attr('id') !== 'uname' ) {
-				val(input);
-			} else {
-				$("span.check").fadeIn()
-			}
+} // End of val()
+
+	$("form.join input")
+		.keyup(function(){
+			var input = this;
+			$(input).next('img').attr('src','pics/tinyload.gif');
+			val(input);
 		});
-	})
-	.focusout(function(){
-			var input = $(this);
-			if (input.attr('id') !== 'uname' ) {
-				val(input);
-			} else {
-				$("span.check").fadeIn()
+
+	$('#joinButton').click(function(){
+		for (i in verified ) {
+			if (! verified[i]) { 
+				joinMessage.text(msg[i].invalid);
 			}
+			submit = submit && verified[i];
+		}
+		if (submit) {
+			$.getJSON( 'response/join.php' , entries , function(myObj) {});
+		}
 	});
-
-$("span.check").click(function(){
-	var input =	$("form.join input#uname")
-	var data =	input.attr('value');
-		$.getJSON( 'checkuser.php?var=' + data  , function(myObj) {
-			joinMessage.addClass('error');
-			status = myObj.s; /* variable scope error, cant take this value out */
-			if (status === 1) {
-				$(input).next('img').attr('src','pics/verified.png');
-				joinMessage.removeClass('error').text('Username is available');
-				$("span.check").fadeOut()
-			} else {
-				joinMessage.text('Username is not available');
-			}
-		});
-});
-
 } // End of validate()
-
