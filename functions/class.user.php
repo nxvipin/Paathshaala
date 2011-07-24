@@ -177,6 +177,22 @@ class user
 		}
 	}
 	
+	/**
+	* Checks if a roll no already exists in the database.
+	* @param string $roll Register number of the user.
+	* @return integer (1:exists | 0:does not exist)
+	*/
+	public static function checkRollExists($roll)
+	{
+		$roll=strtolower($roll);
+		$sql="Select us_id from users where us_rollno='$roll'";
+		$row=pg_fetch_row(dbquery($sql));
+		if($row)
+			return 1;
+		else
+			return 0;
+	}
+	
 	
 	
 }
