@@ -119,6 +119,7 @@ function validate() {
 			$(input).next('img').attr('src','pics/verified.png');
 		} else { 
 			joinMessage.text(msg[i].invalid);
+			break;
 			var input = 'input#' + i;
 			$(input).next('img').attr('src','pics/cross.png');
 		}
