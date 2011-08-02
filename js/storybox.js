@@ -5,6 +5,12 @@
 */
 
 function makeBox (myobj) {
+	if( myobj.fullname.length > 16 ) {
+		var trim = myobj.fullname.slice(0 ,13 );
+			trim = trim + '...';
+	} else {
+		var trim = myobj.fullname; }
+
 return box = "<div class='storyBox'>" +
 	"<a href='video.php?video=" + myobj.cid +"' >" +
 		"<div class='imageBox'>" +
@@ -14,7 +20,7 @@ return box = "<div class='storyBox'>" +
 	"<div class='metaBox'>" +
 		"<div class='metaUser'>" +
 			"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-			"<span class='metaName' >" + myobj.fullname +"</span>" +
+			"<span class='metaName' >" + trim +"</span>" +
 		"</div>" +
 		"<div class='metaViews'>" + myobj.viewcount + "</div>" +
 	"</div>" +
