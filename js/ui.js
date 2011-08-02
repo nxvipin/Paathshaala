@@ -11,7 +11,7 @@ var loginShown = 0;
 var joinShown = 0;
 
 $("div.loggedUser").click(function(){
-	if (dashShown === 0) {
+	if (! dashShown) {
 		$('.dashBoard').slideToggle('fast');
 		dashShown = 1;
 		$("#logChangeButton").attr('src', 'pics/up.png');
@@ -35,10 +35,10 @@ $("li#showlogin").click(function(){
 		loginShown = 0;
 		$("#logChangeButton").attr('src', 'pics/down.png');
 	}
-})
+});
 
 $("li#showJoin").click(function() {
-	if (joinShown === 0 ) {
+	if (! joinShown) {
 		$('.join').slideToggle('fast');
 		$('.login').slideUp('fast');
 		joinShown = 1;
@@ -50,16 +50,15 @@ $("li#showJoin").click(function() {
 		joinShown = 0;
 		$("#logChangeButton").attr('src', 'pics/down.png');
 	}
-})
+});
 
 $('img.metaImage , img.loggedImage').error(function(){
 	$(this).attr('src','pics/default.png');
-})
+});
 
 $('div#snapShot img, div.commentBoxImage img').error(function(){
 	$(this).attr('src','pics/profile.png');
-})
-
+});
 
 /* Submit comment using an enter key press */
 
@@ -100,7 +99,7 @@ function hideFeedback() {
 
 function showFeedback() {
 	grayOut(true);
-	$('#feedback').load('feedback.html').fadeIn("slow");
+	$('div#feedback').load('feedback.html').fadeIn("slow");
 }
 
 function hideEditProfile() {
@@ -127,7 +126,7 @@ $('img#editProfileButton').click(function(){
 
 $("span#helpTrigger").click(function(){
 	$("div#helpMessage").slideToggle();
-})
+});
 
 setTimeout(function(){
 	$('#loading').fadeOut(1000);
