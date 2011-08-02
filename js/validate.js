@@ -1,4 +1,4 @@
-/*
+ /*
 	Functions to handle all join form manipulations
 	The whole code wrapped in validate() function which is called when form.join is shown
 */
@@ -150,7 +150,10 @@ function validate() {
 		if (submit) {
 			$.getJSON( 'response/join.php' , entries , function(myObj) {
 				if(myObj.status) {
-					$('form.join').html("Join Succsessful, Now please login with the new username and password");
+					$('form.join').html("Join Succsessful :)<br/>Now please login with the new username and password").height(70);
+					setTimeout(function(){
+						$('li#showlogin').trigger('click');
+					},1000);
 				} else {
 					$('form.join').html("Somewhere something went wrong");
 				}
