@@ -111,4 +111,8 @@ else
 {
 	$commentSubmit="Please log in to comment.";
 }
+
+$feedback = "<img src='pics/feedback.png' alt='feedback button' title='feedback button' class='feedbackDock' />
+<div id='feedback'></div>";
+
 ?>

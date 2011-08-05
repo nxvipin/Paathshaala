@@ -410,3 +410,14 @@ font-size: 16px;
 color:#737373;
 font-size: 14px;
 }
+
+img.feedbackDock {
+position:fixed;
+left:-2px;
+top:30%;
+cursor: url(../pics/arrow.png) 0 0, auto;
+}
+
+img.feedbackDock:hover {
+margin-left:2px;
+}

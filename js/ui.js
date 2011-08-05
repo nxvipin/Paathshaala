@@ -93,7 +93,7 @@ $('textarea#comment').keyup( function() {
 /* popup stuff */
 
 function hideFeedback() {
-	$('#feedback').fadeOut("fast");
+	$('div#feedback').fadeOut("fast");
 	grayOut(false);
 }
 
@@ -112,7 +112,7 @@ function showEditProfile() {
 	$('#editProfile').load('editprofile.html').fadeIn("slow");
 }
 
-$('img#bugButton.VideoBarButton').click(function(){
+$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
 	showFeedback();
 });
 
