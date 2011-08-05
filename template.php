@@ -17,10 +17,8 @@
 
 
 <div id='container'>
-<?php echo $topNotLoggedIn; ?>
-
-
-
+	<?php	echo $topNotLoggedIn;
+			echo $feedback; ?>
 </div><!-- /container -->
 
 <?php echo $bottomBar; ?>
