@@ -41,13 +41,10 @@ $('span#feedbackFormSubmit').click(function() {
 	var fType = $('input#fType').attr('value');
 	var fName = $('input#fName').attr('value');
 	var fDesc = $('textarea#fDesc').attr('value');
-	console.log("desc : " + fDesc);
 	if( fName !=='' && fDesc !== '' ) {
-		$.post("response/feedR.php" , { 'type':fType ,'name':fName,'desc':fDesc } , function(data){
-			$('div#feedback').html(data);
-		});
-	} else {
-		alert("Fill in all the fields of the form.")
+		$.post("response/submitfeedback.php" , { 'type':fType ,'name':fName,'desc':fDesc } , function(data){
+			$('div#feedback').html("<div style='font-size:19px; text-align:center; padding:100px 0px;'>" + data + "</div>");
+		} , "json" );
 	}
 });
 
