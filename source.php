@@ -14,7 +14,7 @@ $header="
 	
 	if(!isset($_SESSION['uid'])){
 $topNotLoggedIn = "<div id='top'>
-	<a href='/newPaathshaalaUI/' id='logo' title='Paathshaala'> <h1></h1> </a>
+	<a href='intro.php' id='logo' title='Paathshaala'> <h1></h1> </a>
 	<ul class='topbarLeft'>
 		<li> 
 			<form action='search.php' method='get' >
@@ -79,19 +79,25 @@ $topNotLoggedIn = "<div id='top'>
 </div> <!-- /top -->";
 }
 $bottomBar = "<div id='bottom'>
-	<a href='http://www.teamunwired.com/' id='logo' title='teamunwired'> <h1></h1> </a>
+	<a href='http://www.teamunwired.org/' id='logo' title='teamunwired'> <h1></h1> </a>
 	<ul class='bottomLinks'>
 		<li><a href=''>Credits</a></li>
 		<li>|</li>
 		<li><a href=''>Faq</a></li>
 		<li>|</li>
-		<li><a href=''>Contribute</a></li>
+		<li><a href='contribute.php'>Contribute</a></li>
 		<li>|</li>
-		<li><a href=''>Feedback</a></li>
+		<li>
+			<a href='http://www.teamunwired.org/'>Teamunwired</a> &nbsp;&nbsp;
+			<a href='http://www.teamunwired.org/'><img src='pics/web.png'></a>&nbsp;&nbsp;
+			<a href='http://www.facebook.com/teamunwired'><img src='pics/facebook.png'></a>&nbsp;&nbsp;
+			<a href='http://www.twitter.com/teamunwired'><img src='pics/twitter.png'></a>
+		</li>
 		<li>|</li>
-		<li><a href=''>Teamunwired</a> &nbsp;&nbsp;<img src='pics/web.png'>&nbsp;&nbsp;<img src='pics/facebook.png'>&nbsp;&nbsp;<img src='pics/twitter.png'></li>
-		<li>|</li>
-		<li><a href=''>Paathshaala &nbsp;</a>&nbsp;<img src='pics/facebook.png'>&nbsp;&nbsp;<img src='pics/twitter.png'> </li>
+		<li>
+			<a href='https://github.com/nitcalicut/Paathshaala/'>Paathshaala &nbsp;</a>&nbsp;
+			<a href='http://www.facebook.com/paathshaala.tuw'><img src='pics/facebook.png'> </a>&nbsp;&nbsp;
+			<a href='http://twitter.com/jaseemabid/'><img src='pics/twitter.png'> </a></li>
 		</ul>
 </div> <!-- /bottom -->";
 if(isset($_SESSION['uid']))
