@@ -34,7 +34,8 @@ $(document).ready(function() {
 <div id='feedback'></div>
 <img src="pics/load.gif" id='loading'/ style='display:none;'>
 <div id='container'>
-<?php echo $topNotLoggedIn; ?>
+	<?php	echo $topNotLoggedIn;
+			echo $feedback; ?>
 
 <div id='editProfile'></div>
 

@@ -33,7 +33,8 @@ function getActiveUser() {
 <img src="pics/load.gif" id='loading'/ style='display:none;'>
 
 <div id='container'>
-<?php echo $topNotLoggedIn; ?>
+	<?php	echo $topNotLoggedIn;
+			echo $feedback; ?>
 
 <span style='font-size:24px; color:#3A75AF'> Contribute to paathshaala</span> <span id="helpTrigger" style='font-size:14px'> [help] </span>
 

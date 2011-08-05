@@ -39,7 +39,8 @@ function getActiveUser() {
 <img src="pics/load.gif" id='loading'/ style='display:none;'>
 
 <div id='container'>
-<?php echo $topNotLoggedIn; ?>
+	<?php	echo $topNotLoggedIn;
+			echo $feedback; ?>
 
 	<div class='mainLeft'>
 	<div class='videodiv'></div>

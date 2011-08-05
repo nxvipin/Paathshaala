@@ -26,7 +26,8 @@ $(document).ready(function() {
 
 
 <div id='container'>
-<?php echo $topNotLoggedIn; ?>
+	<?php	echo $topNotLoggedIn;
+			echo $feedback; ?>
 
 <div class='mainLeft'>
 
