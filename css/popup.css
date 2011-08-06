@@ -1,19 +1,19 @@
-div#feedback , div#editProfile {
+div#feedback, div#editProfile {
 display:none;
 position:fixed;
 top:100px;
 left:35%;
-background:#f0f0f0;
-background:-webkit-gradient(linear, left top, left bottom, from(#efefef), to(#f9f9f9));
-background:-moz-linear-gradient(center top , #efefef 0%, #F1F2F2 33.3333%, #f9f9f9 100%) repeat scroll 0 0 transparent;
-color:#555555;
 width : 400px;
 height : 275px;
-border : 1px solid #80afdf;
-padding : 10px;
-box-shadow: 0 0 5px 3px #000910;
-box-shadow: 0 0 5px 2px #999999 inset;
 z-index:51;
+border-color: #D2D2D2;
+background:#f5f5f5;
+border-right: 1px solid #DDDDDD;
+border-style: none solid solid;
+border-width:1px;
+padding: 10px 10px 10px 10px;
+box-shadow:5px 4px 5px rgba(2, 2, 2, 0.5);
+border-radius:5px;
 }
 
 div#feedback form.feedbackForm {
@@ -52,26 +52,29 @@ z-index:55;
 position:relative;
 top:-45px;
 display:inline-block;
+background: -moz-linear-gradient(center top , #F0F0EA, #D5D7CE) repeat scroll 0 0 transparent;
+color: #333333;
+text-shadow: 0 1px 0 #FFFFFF;
+border: 1px solid #BBBBBB;
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+display: inline-block;
+outline: medium none;
+text-align: center;
+text-decoration: none;
+cursor: url(../pics/pointer.png) 0 0, auto;
 height:20px;
 padding:2px 3px;
 margin:-10px 1px 1px 1px;
-border-radius:4px;
-background:#ececec;
-background: -webkit-gradient(linear, 0% 0, 0% 100%, from(white), to(#E1E1E1));
-background: -moz-linear-gradient(top,white,#E1E1E1);
-color:#233451;
-cursor:pointer;
 }
 
 .links li:hover {
-color:#ffffff;
-background:#438BB1;
+background: #fefefe;
 border-radius:4px;
 }
 
 .links li.hilite {
-color:#ffffff;
-background:#438BB1;
+background: #fefefe;
 border-radius:4px;
 }
 
@@ -86,34 +89,45 @@ height:100px;
 }
 
 form.feedbackForm input , form.feedbackForm textarea {
-border:1px solid #3a75af;
+-moz-transition: all 0.3s ease-in-out 0s;
 font-size:14px;
-background:transparent;
-height:16px;
+color: #555555;
+background: #efefef;
 width:390px;
-padding:3px;
-margin:5px 0px;
-border-radius:5px;
-color:#555555;
+border: 1px #D2D2D2 solid;
+padding-left:10px;
+border-radius: 5px;
+height:25px;
+padding-left:10px;
+margin-bottom:2px;
+outline: medium none;
+text-shadow: 0 1px 0 #FFFFFF;
 }
 
 form.feedbackForm textarea {
 height:100px;
 }
 
-#feedbackFormSubmitButton {
-border:0px;
-background:transparent;
+.grayButton {
+background: -moz-linear-gradient(center top , #F0F0EA, #D5D7CE) repeat scroll 0 0 transparent;
+color: #333333;
+text-shadow: 0 1px 0 #FFFFFF;
+border: 1px solid #BBBBBB;
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+display: inline-block;
+font-size: 12px;
+outline: medium none;
+padding: 3px 10px 4px;
+text-align: center;
+text-decoration: none;
+cursor: url(../pics/pointer.png) 0 0, auto;
+position:relative;
+top:10px;
 float:right;
 }
 
-span#feedbackFormSubmit,span#feedbackFormSubmitProfile,span#feedbackFormSubmitPasswd {
-display:inline-block;
-height:20px;
-padding:2px 3px;
-margin:-5px 1px 1px 1px;
-border-radius:1px;
-color:#ffffff;
-background:#348dd3;
-border-radius:5px;
+.grayButton:hover {
+background: -moz-linear-gradient(center top ,#D5D7CE,  #F0F0EA) repeat scroll 0 0 transparent;
+color: #555555;
 }
