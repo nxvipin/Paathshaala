@@ -326,7 +326,7 @@ display:none;
 cursor: url(../pics/pointer.png) 0 0, auto;
 }
 
-button#joinButton {
+button#joinButton, button#loginButton {
 background: -moz-linear-gradient(center top , #F0F0EA, #D5D7CE) repeat scroll 0 0 transparent;
 color: #333333;
 text-shadow: 0 1px 0 #FFFFFF;
@@ -343,6 +343,11 @@ position:relative;
 left:200px;
 top:5px;
 cursor: url(../pics/pointer.png) 0 0, auto;
+}
+
+button#joinButton:hover, button#loginButton:hover {
+background: -moz-linear-gradient(center top ,#D5D7CE,  #F0F0EA) repeat scroll 0 0 transparent;
+color: #555555;
 }
 
 .dashBoard {
