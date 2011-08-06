@@ -9,13 +9,14 @@ function updatemyVideos() {
 	
 	var len = myJsonObj.length;
 
-	var uploadVideo =  "<div class='storyBox' id='newVideo'><div class='imageBox'><img  src='pics/newvid.png'><div class='metaInfo'></div></div><div class='metaBox'><div class='metaUser'><img class='metaImage' src='pics/me.png'> <span class='metaName'>Jaseem Abid</span></div><div class='metaViews'></div></div></div>";
+	var uploadVideo = '';
+	//var uploadVideo =  "<div class='storyBox' id='newVideo'><div class='imageBox'><img  src='pics/newvid.png'><div class='metaInfo'></div></div><div class='metaBox'><div class='metaUser'><img class='metaImage' src='pics/me.png'> <span class='metaName'>Jaseem Abid</span></div><div class='metaViews'></div></div></div>";
 
 	$('div#newVideo div.metaInfo').hide();
 
 
 	var groupBox1 = "<div class='groupBox'>" + uploadVideo ;
-		for (i =0; i <3 ; i++){
+		for (i =0; i <4 ; i++){
 			var myobj = myJsonObj[i];
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
@@ -36,7 +37,7 @@ function updatemyVideos() {
 	groupBox1 = groupBox1 + "</div>";
 
 	var groupBox2 = "<div class='groupBox Hidden'>";
-		for (i =3; i < len ; i++){
+		for (i =4; i < len ; i++){
 			var myobj = myJsonObj[i];
 			var storyBox = "<div class='storyBox'>" +
 				"<a href='video.php?video=" + myobj.cid +"' >" +
