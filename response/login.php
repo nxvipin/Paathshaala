@@ -5,6 +5,6 @@
 	
 	include_once '../functions/class.activity.php';
 	activity::login($_POST['uname'],$_POST['pass']);
-	header("Location: ".$_POST['page']."");
+	header("Location: ".$_POST['page']."?".$_POST['parameter']);
 
 ?>

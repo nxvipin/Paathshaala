@@ -36,6 +36,7 @@ $topNotLoggedIn = "<div id='top'>
 		<img src='pics/users.png'> <input required type='text' name='uname' placeholder='Username' /> <br />
 		<img src='pics/key.png'> <input required type='password' name='pass' placeholder='Password' /> <br />
 		<input type='hidden' name='page' value='".$_SERVER['PHP_SELF']."'>
+		<input type='hidden' name='parameter' value='".http_build_query($_GET)."'>
 	<button type='submit' class='tickButton'><img src='pics/tick.png'></button>
 </form>
 
