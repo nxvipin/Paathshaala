@@ -34,7 +34,8 @@ position:absolute;
 top:10px;
 right:10px;
 font-family:Arial;
-cursor:pointer;
+cursor: url(../pics/pointer.png) 0 0, auto;
+z-index: 100;
 }
 
 div#blueLine {
