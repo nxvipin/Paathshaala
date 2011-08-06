@@ -37,7 +37,7 @@ $topNotLoggedIn = "<div id='top'>
 		<img src='pics/key.png'> <input required type='password' name='pass' placeholder='Password' /> <br />
 		<input type='hidden' name='page' value='".$_SERVER['PHP_SELF']."'>
 		<input type='hidden' name='parameter' value='".http_build_query($_GET)."'>
-	<button type='submit' class='tickButton'><img src='pics/tick.png'></button>
+		<button type='submit' id='loginButton' type='button'>login</button>
 </form>
 
 <form class='join' action='response/join.php' method='get'>
