@@ -32,7 +32,7 @@ function dbconnect()
 function dbquery($sql)
 {
 	dbconnect();
-	return pg_query($sql) or die('Database Connection Error');
+	return pg_query($sql);
 }
 
 /**
