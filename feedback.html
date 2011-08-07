@@ -20,13 +20,13 @@
 
 <script type="text/javascript">
 
-$('ul.links li').click(function() {
+$('div#feedback ul.links li').click(function() {
 	$(this).parent().children().removeClass('hilite');
 	$(this).addClass('hilite');
-	$('div.content .panel').fadeOut("fast").fadeIn("");
-	var numb = $("ul.links li").index(this);
-	var type = $("ul.links li").eq(numb).attr('type');
-	var desc = $("ul.links li").eq(numb).attr('desc');
+	$('div#feedback div.content .panel').fadeOut("fast").fadeIn("");
+	var numb = $("div#feedback ul.links li").index(this);
+	var type = $("div#feedback ul.links li").eq(numb).attr('type');
+	var desc = $("div#feedback ul.links li").eq(numb).attr('desc');
 	$('input#fType').attr('value',type);
 	$('textarea#fDesc').attr('placeholder',desc);
 });
