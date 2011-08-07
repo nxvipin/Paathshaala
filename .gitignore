@@ -5,3 +5,6 @@ functions/settings.php
 content/
 users/
 uploads/
+others/
+piwik/
+robots.txt
