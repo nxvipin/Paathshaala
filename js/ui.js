@@ -109,7 +109,7 @@ function hideEditProfile() {
 
 function showEditProfile() {
 	grayOut(true);
-	$('#editProfile').load('editprofile.html').fadeIn("slow");
+	$('div#editProfile').load('editprofile.html').fadeIn("slow");
 }
 
 $('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
