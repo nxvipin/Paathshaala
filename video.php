@@ -9,9 +9,11 @@
 	include 'functions/ui.php';
 	echo $header;
 ?>
-<script src='js/like.js' type='text/javascript'></script>
+
 <script src='js/video.js' type='text/javascript'></script>
-<script src="js/parsevideo.js" type="text/javascript"></script>
+<script src='js/templates.js' type='text/javascript'></script>
+<script src='js/like.js' type='text/javascript'></script>
+<script src='js/jsonparse.js' type='text/javascript'></script>
 <link rel='stylesheet' href='css/video-js.css'>
 <link rel='stylesheet' href='css/video.css'>
 
@@ -47,7 +49,7 @@ function getActiveUser() {
 		if(isset($_GET['video'])){
 			echo "<span class='smallSubtitle'>Comments</span>";
 			echo "<div class='commentWarp'></div>";
-			echo $commentSubmit; 
+			echo $commentSubmit;
 		}
 		else{
 			echo "Content not found :-(";
@@ -71,3 +73,4 @@ function getActiveUser() {
 <script src='js/ui.js' type='text/javascript' ></script>
 </body>
 </html>
+
