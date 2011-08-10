@@ -22,6 +22,7 @@ $(document).ready(function() {
 	updateStoryBox('TopRated')
 });
 </script>
+<script src='js/ui.js' type='text/javascript'></script>
 </body>
 </html>
 
