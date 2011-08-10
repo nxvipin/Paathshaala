@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Paathshaala Intro</title>
+<title>Paathshaala FAQ</title>
 
 <?php
 
