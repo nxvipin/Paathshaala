@@ -11,12 +11,12 @@ $header="
 	<script src='js/jquery.jkey.js' type='text/javascript' ></script>
 	<script src='js/functions.js' type='text/javascript' ></script>
 	<script src='js/validate.js' type='text/javascript' ></script>";
-	
+
 	if(!isset($_SESSION['uid'])){
 $topNotLoggedIn = "<div id='top'>
 	<a href='index.php' id='logo' title='Paathshaala'> <h1></h1> </a>
 	<ul class='topbarLeft'>
-		<li> 
+		<li>
 			<form action='search.php' method='get' >
 				<input type='search' name='tag' placeholder='Search' class='searchBox' required />
 				 <button type='submit' class='searchButton'>
@@ -25,7 +25,7 @@ $topNotLoggedIn = "<div id='top'>
 			</form>
 		</li>
 	</ul>
-	
+
 	<ul class='userBar'>
 		<li id=showJoin><a>Join</a></li>
 		<li>|</li>
@@ -84,9 +84,9 @@ $bottomBar = "<div id='bottom'>
 	<ul class='bottomLinks'>
 		<li><a href=''>Credits</a></li>
 		<li>|</li>
-		<li><a href=''>Faq</a></li>
+		<li><a href='faq.php'>Faq</a></li>
 		<li>|</li>
-		<li><a href='contribute.php'>Contribute</a></li>
+		<li><a href=''>Contribute</a></li>
 		<li>|</li>
 		<li>
 			<a href='http://www.teamunwired.org/'>Teamunwired</a> &nbsp;&nbsp;
@@ -106,7 +106,7 @@ if(isset($_SESSION['uid']))
 $commentSubmit = "<div class='commentBox'style='height: 70px;'>
 	<div class='commentBoxImage'> <img src='".$_SESSION['userpic']."' class='fitin' /> </div>
 	<div class='commentBoxText'>
-			
+
 			<span class='commentTitle' style='margin-left:5px;'>".$_SESSION['fullname']."</span>
 			<div class='data'>
 				<textarea id='comment' rows='2' cols='57' placeholder='Comment here. Enter for submit and down key for new line.'></textarea>
@@ -123,3 +123,4 @@ $feedback = "<img src='pics/feedback.png' alt='feedback button' title='feedback 
 <div id='feedback'></div>";
 
 ?>
+
