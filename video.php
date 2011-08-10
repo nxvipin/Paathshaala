@@ -4,16 +4,11 @@
 <title>Paathshaala Video</title>
 
 <?php
-
 	include 'source.php';
 	include 'functions/ui.php';
 	echo $header;
 ?>
 
-<script src='js/video.js' type='text/javascript'></script>
-<script src='js/templates.js' type='text/javascript'></script>
-<script src='js/like.js' type='text/javascript'></script>
-<script src='js/jsonparse.js' type='text/javascript'></script>
 <link rel='stylesheet' href='css/video-js.css'>
 <link rel='stylesheet' href='css/video.css'>
 
@@ -57,20 +52,16 @@ function getActiveUser() {
 	?>
 	</div> <!--/ main left -->
 
-<div class='mainRight'>
-
-</div> <!-- /main right -->
+	<div class='mainRight'></div> <!-- /main right -->
 
 
 </div><!-- /container -->
 
-
-
 <?php echo $bottomBar; ?>
 <div id="bottombar"></div>
+<script src='js/video.js' type='text/javascript'></script>
 <script src='js/comment.js' type='text/javascript'></script>
 <script src='js/related.js' type='text/javascript'></script>
-<script src='js/ui.js' type='text/javascript' ></script>
 </body>
 </html>
 
