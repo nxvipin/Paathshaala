@@ -18,7 +18,6 @@
 ?>
 <link rel='stylesheet' href='css/profile.css'>
 <script src='js/myvideos.js' type='text/javascript' ></script>
-<script src="js/storybox.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	updatemyVideos();
@@ -44,14 +43,14 @@ $(document).ready(function() {
 		<img src="<?php echo $u->getUserPicture(); ?>"/>
 		<div id='picUname'><?php echo $_SESSION['fullname']; ?> </div>
 	</div>
-	
+
 	<div id='profileInfo'>
 		I am : <span id=''><?php echo $u->getFullname(); ?></span><br />
 		email : <?php echo $u->getEmail(); ?> <br />
 		here I am called : <span id='profileUsername'><?php echo $u->getUsername(); ?></span><br />
 		Insti Roll : <?php echo $u->getRoll(); ?> (Helps us to give you better suggestions )<br />
 	</div>
-	
+
 </div>
 
 
@@ -63,3 +62,4 @@ $(document).ready(function() {
 <script src='js/ui.js' type='text/javascript' ></script>
 </body>
 </html>
+
