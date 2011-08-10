@@ -56,7 +56,7 @@ $topNotLoggedIn = "<div id='top'>
 	else{
 
 $topNotLoggedIn = "<div id='top'>
-<a href='' id='logo' title='Paathshaala'> <h1></h1> </a>
+<a href='index.php' id='logo' title='Paathshaala'> <h1></h1> </a>
 <ul class='topbarLeft'>
 <li>
 <form action='search.php' method='get'>
