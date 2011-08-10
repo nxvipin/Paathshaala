@@ -5,26 +5,12 @@
 */
 
 function makeBox (myobj) {
-	if( myobj.fullname.length > 16 ) {
-		var trim = myobj.fullname.slice(0 ,13 );
-			trim = trim + '...';
-	} else {
-		var trim = myobj.fullname; }
-
-return box = "<div class='storyBox'>" +
-	"<a href='video.php?video=" + myobj.cid +"' >" +
-		"<div class='imageBox'>" +
-		"<img src='" + myobj.poster +"' class='thumbnail'/>" +
-		"<div class='metaInfo'>" + myobj.title + "</div>" +
-		"</div> </a>" +
-	"<div class='metaBox'>" +
-		"<div class='metaUser'>" +
-			"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-			"<span class='metaName' >" + trim +"</span>" +
-		"</div>" +
-		"<div class='metaViews'>" + myobj.viewcount + "</div>" +
-	"</div>" +
-"</div>";
+	if( myobj.fullname.length > 18 ) {
+		myobj.fullname = myobj.fullname.slice(0 ,15 );
+		myobj.fullname = myobj.fullname + '...';
+	}
+	var box = templates.box.supplant(myobj);
+	return box;
 }
 
 function updateStoryBox(type) {
@@ -82,7 +68,7 @@ function updateStoryBox(type) {
 					groupBox2 = groupBox2 + storyBox;
 				}
 			groupBox2 = groupBox2 + "</div>";
-		
+
 			var res = "<div>" + title + groupBox1 + more + groupBox2 + less + "</div>" ;
 			$('div#container').append(res);
 		}
@@ -108,3 +94,4 @@ function updateStoryBox(type) {
 		$(this).hide();
 	});	}); /* Ajax call ends */
 }
+
