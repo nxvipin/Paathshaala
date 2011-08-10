@@ -1,12 +1,11 @@
-/*	Codes to update the myVideos videos in the profile page
-	No need to call functions in the html since it is called in the js script.
-	Insert the script at the end of the page.
+/*
+	Codes to update the myVideos videos in the profile page
 */
 
 function updatemyVideos() {
 	$("#loading").show();
 	$.getJSON( 'json/uservideouploads.json.php', function(myJsonObj) {
-	
+
 	var len = myJsonObj.length;
 
 	var uploadVideo = '';
@@ -14,24 +13,10 @@ function updatemyVideos() {
 
 	$('div#newVideo div.metaInfo').hide();
 
-
 	var groupBox1 = "<div class='groupBox'>" + uploadVideo ;
 		for (i =0; i <4 ; i++){
 			var myobj = myJsonObj[i];
-			var storyBox = "<div class='storyBox'>" +
-				"<a href='video.php?video=" + myobj.cid +"' >" +
-				"<div class='imageBox'>" +
-					"<img src='" + myobj.poster +"' class='thumbnail'/>" +
-					"<div class='metaInfo'>" + myobj.title + "</div>" +
-				"</div> </a>" +
-				"<div class='metaBox'>" +
-					"<div class='metaUser'>" +
-						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.fullname +"</span>" +
-					"</div>" +
-					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
-				"</div>" +
-			"</div>";
+			var storyBox = templates.box.supplant(myobj);
 			groupBox1 = groupBox1 + storyBox;
 		}
 	groupBox1 = groupBox1 + "</div>";
@@ -39,20 +24,7 @@ function updatemyVideos() {
 	var groupBox2 = "<div class='groupBox Hidden'>";
 		for (i =4; i < len ; i++){
 			var myobj = myJsonObj[i];
-			var storyBox = "<div class='storyBox'>" +
-				"<a href='video.php?video=" + myobj.cid +"' >" +
-				"<div class='imageBox'>" +
-					"<img src='" + myobj.poster +"' class='thumbnail'/>" +
-					"<div class='metaInfo'>" + myobj.title + "</div>" +
-				"</div> </a>" +
-				"<div class='metaBox'>" +
-					"<div class='metaUser'>" +
-						"<img src='" + myobj.userpic + "' class='metaImage' /> " +
-						"<span class='metaName' >" + myobj.fullname +"</span>" +
-					"</div>" +
-					"<div class='metaViews'>" + myobj.viewcount + "</div>" +
-				"</div>" +
-			"</div>";
+			var storyBox = templates.box.supplant(myobj);
 			groupBox2 = groupBox2 + storyBox;
 		}
 	groupBox1 = groupBox1 + "</div>";
@@ -80,3 +52,4 @@ function updatemyVideos() {
 	});
 	$("#loading").fadeOut('slow');
 }
+
