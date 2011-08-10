@@ -9,6 +9,11 @@
 	echo $header;
 ?>
 
+<style type="text/css" media="screen">
+a.text { text-decoration:underline; }
+</style>
+
+
 </head>
 <body>
 <div id='topbar'></div>
@@ -32,7 +37,7 @@
 
 <p class='q'>Why doesn't this website work for me?</p>
 <p class='ans'>This is a work under beta stage; there can be bugs, so please cooperate with us.Please post a
- <a href='feedback.php' class='text'>feedback</a>, if you face any problem. Feedback will help us to improve the overall quality of the work. If your problem is inability to play the videos, please go through this <a href='http://en.wikipedia.org/wiki/Wikipedia:Media_help_%28Ogg%29' class='text'> article</a> by wikipedia on playing ogg container files.</p>
+ <a onclick='showFeedback()' class='text'>feedback</a>, if you face any problem. Feedback will help us to improve the overall quality of the work. If your problem is inability to play the videos, please go through this <a href='http://en.wikipedia.org/wiki/Wikipedia:Media_help_%28Ogg%29' class='text'> article</a> by wikipedia on playing ogg container files.</p>
 
 
 <p class='q'>How is this made?</p>
@@ -70,7 +75,7 @@
 
 
 <p class='q'>Who is building this?</p>
-<p class='ans'>Please visit our credits page for a full list of <a href='credits.php' class='text' >contributors</a> of the project.</p>
+<p class='ans'>Please visit our credits page for a full list of <a href='' class='text' >contributors</a> of the project.</p>
 
 
 <p class='q'>What system requirements are needed to watch videos on Paathshaala?</p>
@@ -83,20 +88,20 @@
 
 <p class='q'>How can I contribute / help?</p>
 <p class='ans'>Promote this page among your friends and help us with more visitors and quality feedback.<br/>
-We have thousands of videos in our archive with us.The site database is under construction with these videos.The primary help you can do is to help us organise content. Please visit <a href='contribute.php' class='text'>Contribute page</a>, select a video, watch it and submit the form associated with it. This will add the content to the custom built database which will enable searching and ordering of the content later. Even if you don't want to help, please don't mess up, just ignore the page. May be some day, this whole project will be useful to you. You may search and a find a javascript tutorial or a cad demonstration which you contributed.<br/>
-You may even help us with html, php or CSS development. Feel free to give us a <a href='feedback.php' class='text'> feedback</a> and we will get back to you.<br/>
-Got a kick ass idea? just <a href='feedback.php' class='text'>tell us</a></p>
+We have thousands of videos in our archive with us.The site database is under construction with these videos.The primary help you can do is to help us organise content. Please visit <a href='' class='text'>Contribute page</a>, select a video, watch it and submit the form associated with it. This will add the content to the custom built database which will enable searching and ordering of the content later. Even if you don't want to help, please don't mess up, just ignore the page. May be some day, this whole project will be useful to you. You may search and a find a javascript tutorial or a cad demonstration which you contributed.<br/>
+You may even help us with html, php or CSS development. Feel free to give us a <a onclick='showFeedback()' class='text'> feedback</a> and we will get back to you.<br/>
+Got a kick ass idea? just <a onclick='showFeedback()' class='text'>tell us</a></p>
 
 
 <p class='q'>So, if I have a good video how can I share it here?</p>
-<p class='ans'>You cannot add any videos now, we have a lot of videos with us now,first we have to organise that and then you will be notified. This project is under construction.We will scale this project with more functionalities and features later like uploading user videos.We aim to build this like wikipedia, contribution from the community will keep the portal active. But now there is a huge probability that you are wanting to share a video which we already have.You can get a login and publish the videos in our database.Anybody with a login can add proper title , description and tags and publish a video , and your name will come up in our <a href='credits.php' class='text' >contributors</a> page also.</p>
+<p class='ans'>You cannot add any videos now, we have a lot of videos with us now,first we have to organise that and then you will be notified. This project is under construction.We will scale this project with more functionalities and features later like uploading user videos.We aim to build this like wikipedia, contribution from the community will keep the portal active. But now there is a huge probability that you are wanting to share a video which we already have.You can get a login and publish the videos in our database.Anybody with a login can add proper title , description and tags and publish a video , and your name will come up in our <a href='' class='text' >contributors</a> page also.</p>
 
 
 <p class='q'>So i would love to work , can i have a login ?</p>
-<p class='ans'>Please join our <a href='http://groups.google.com/group/paathshaala_tuw' class='text'> mailing list</a> for details. If you have any trouble , please contact Paul Alex. Mail : paul.alex.pax@gmail.com Mob : +91 81291 65 789.</p>
+<p class='ans'>Please join our <a href='http://groups.google.com/group/paathshaala_tuw' class='text'> mailing list</a> for details. If you have any trouble , please contact Paul Alex. <br />Mail : paul.alex.pax@gmail.com Mob : +91 81291 65 789.</p>
 
 <p class='q'>I want to know something which is not here. What do I do?</p>
-<p class='ans'>Join our <a href='http://groups.google.com/group/paathshaala_tuw' class='text'> mailing list</a> or <a href='feedback.php#question' class='text'>ask a question</a>.</p>
+<p class='ans'>Join our <a href='http://groups.google.com/group/paathshaala_tuw' class='text'> mailing list</a> or <a onclick='showFeedback()' class='text'>ask a question</a>.</p>
 
 </div>
 
