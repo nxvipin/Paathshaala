@@ -3,55 +3,36 @@
 */
 
 function getVideoHtml(cid) {
-	var link;
-	if (cid === undefined ) { // Contribute page stuff 
-		cid = 'newvideo';
+
+	var link, videoBox = $('div.videodiv'), tags ;
+	if (cid === undefined ) { // Contribute page stuff
+		cid = 'newvideo'; // Thanks to loose type casting.
 		link = 'json/getnewvideo.json.php';
 	} else {
 		link = 'json/video.json.php?video=' + cid;
 	}
-	
-	var videoBox = $('div.videodiv');
-	$.getJSON( link, function(myObj) {
+	$.getJSON( link, function(myobj) {
+		myobj.tagString ="";
 		if ( cid === 'newvideo' ) {
-			myObj.tags = ['Enter new tags for the video'];
+			myobj.tags = ['Enter new tags for the video'];
 		}
-		if (myObj.path && myObj.title) {
-		var tags = myObj.tags;
-		var tagString ="" , series="" ;
-		for( i in tags ) {
-			if (tags[i] !== '') {
-				tagString = tagString + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
+		if (myobj.path && myobj.title) {
+			tags = myobj.tags;
+			for( i in tags ) {
+				if (tags[i] !== '') {
+					myobj.tagString = myobj.tagString + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
+				}
 			}
-		}validate()
-
-		if ( myObj.sid) {
-			series = "<div class='series'> <img src='pics/series.png' /> <span>This video #" + myObj.order + " of <a href='search.php?sid=" + myObj.sid +"'>" + "<span id='sName'>" + myObj.sname +"</span>" + "</a> </span> </div>"
+			validate();
+			if ( myobj.sid) {
+				myobj.series = templates.series.supplant(myobj);
+			} else {
+				myobj.series = '';
+			}
+			myobj.likestatus = String(myobj.likestatus);
+			video = templates.video.supplant(myobj);
 		} else {
-			series = '';
-		}
-
-		video= "<span class='videoTitle'>" + myObj.title + "</span><br/>" +
-				"<span class='videoUser'> Video by : " + myObj.uname + "</span>" +
-				"<!-- Begin VideoJS -->" +
-				"<div class='video-js-box'>" +
-					"<video cid='" + myObj.cid + "' poster='" + myObj.poster + "' class='video-js' controls preload height=325 width=550>" +
-						"<source src='" + myObj.path + "' type='video/ogg; codecs=\"theora, vorbis\"' />" +
-					"</video>" +
-				"</div>" +
-				"<!-- End VideoJS -->" +
-				"<!-- video bar -->" +
-				"<div class='videoBar'>" +
-					"<img src='pics/vidbar/watch.png' class='VideoBarButton' /><span class='videoBarElement' id='playCount'>Views:" + myObj.viewcount + "</span>" +
-					"<span id='likes' defStatus='" + myObj.likestatus + "' ></span>" +
-					"<img src='pics/vidbar/download.png' title='Download' class='VideoBarButton' style='float:right;' id='downloadButton' />" +
-				"</div>" +
-				"<!-- /video bar -->" +
-				"<img src='pics/vidbar/tag.png' title='tags' style='margin-left:6px;'/>" +
-				"<ul class='tags'>" + tagString + "</ul>" + series +
-				"<div class='VideoDesc'>" + myObj.desc + "</div>";
-		} else {
-			video = "Sorry, content not found :("
+			video = "Sorry, video not found :(";
 			$('div.commentBox , span.smallSubtitle , div.commentWarp').hide();
 		}
 		videoBox.html(video);
@@ -66,6 +47,6 @@ function getVideoHtml(cid) {
 				$('div.VideoDesc').html("Description please :)")
 				validateVideo();
 		}
-
 	});
 }
+
