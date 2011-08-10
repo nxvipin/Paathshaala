@@ -21,7 +21,7 @@ $(document).ready(function() {
 </head>
 <body>
 <div id='topbar'></div>
-<img src="pics/load.gif" id='loading'/ style='display:none;'>
+<img src="pics/load.gif" id='loading' style='display:none;'>
 <div id='container'>
 	<?php	echo $topNotLoggedIn;
 			echo $feedback; ?>
