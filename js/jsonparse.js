@@ -175,9 +175,6 @@ switch (st) {
 	 case '2':
 		likeBox.html(msg.loggedOut);
 		break;
-	 case '0':
-		likeBox.html(msg.disliked);
-		break;
 	 default:
 		likeBox.html(msg.error);
 		break;
