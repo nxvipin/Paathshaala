@@ -44,6 +44,7 @@ function getVideoJson($cid,$uid)
 			"uid"=>$v->getUserId(),
 			"uname"=>user::getFullNameS($v->getUserId())
 			);
+	$v->addViewCount();
 	return json_encode($json);
 }
 
