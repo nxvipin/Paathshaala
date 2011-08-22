@@ -4,14 +4,11 @@
 <title>Paathshaala Video</title>
 
 <?php
-
 	include 'source.php';
 	include 'functions/ui.php';
 	echo $header;
 ?>
-<script src='js/like.js' type='text/javascript'></script>
-<script src='js/video.js' type='text/javascript'></script>
-<script src="js/parsevideo.js" type="text/javascript"></script>
+
 <link rel='stylesheet' href='css/video-js.css'>
 <link rel='stylesheet' href='css/video.css'>
 
@@ -47,7 +44,7 @@ function getActiveUser() {
 		if(isset($_GET['video'])){
 			echo "<span class='smallSubtitle'>Comments</span>";
 			echo "<div class='commentWarp'></div>";
-			echo $commentSubmit; 
+			echo $commentSubmit;
 		}
 		else{
 			echo "Content not found :-(";
@@ -55,19 +52,17 @@ function getActiveUser() {
 	?>
 	</div> <!--/ main left -->
 
-<div class='mainRight'>
-
-</div> <!-- /main right -->
+	<div class='mainRight'></div> <!-- /main right -->
 
 
 </div><!-- /container -->
 
-
-
 <?php echo $bottomBar; ?>
 <div id="bottombar"></div>
+<script src='js/video.js' type='text/javascript'></script>
 <script src='js/comment.js' type='text/javascript'></script>
 <script src='js/related.js' type='text/javascript'></script>
-<script src='js/ui.js' type='text/javascript' ></script>
+<script src='js/ui.js' type='text/javascript'></script>
 </body>
 </html>
+

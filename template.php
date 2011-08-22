@@ -4,7 +4,6 @@
 <title>Paathshaala Intro</title>
 
 <?php
-
 	include 'source.php';
 	echo $header;
 ?>
@@ -12,9 +11,7 @@
 </head>
 <body>
 <div id='topbar'></div>
-<img src="pics/load.gif" id='loading'/ style='display:none;'>
-
-
+<img src="pics/load.gif" id='loading' style='display:none;'>
 <div id='container'>
 	<?php	echo $topNotLoggedIn;
 			echo $feedback; ?>
@@ -25,3 +22,4 @@
 <script src='js/ui.js' type='text/javascript' ></script>
 </body>
 </html>
+

@@ -15,15 +15,14 @@
 </div><!-- /container -->
 <?php	echo $bottomBar; ?>
 <div id="bottombar"></div>
-<script src="js/ui.js" type="text/javascript"></script>
-<script src="js/storybox.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-
 	updateStoryBox('Featured')
 	updateStoryBox('Popular')
 	updateStoryBox('TopRated')
 });
 </script>
+<script src='js/ui.js' type='text/javascript'></script>
 </body>
 </html>
+

@@ -21,34 +21,23 @@ $(document).ready(function() {
 </head>
 <body>
 <div id='topbar'></div>
-<img src="pics/load.gif" id='loading'/ style='display:none;'>
-
-
+<img src="pics/load.gif" id='loading' style='display:none;'>
 <div id='container'>
 	<?php	echo $topNotLoggedIn;
 			echo $feedback; ?>
-
 <div class='mainLeft'>
-
-<span class='smallSubtitle'>Search Results</span>
-
-<div id=findStuff></div>
-<div id='ShowNext'> Show more results.</div>
-<div id=next></div>
-
-
-
+	<span class='smallSubtitle'>Search Results</span>
+	<div id=findStuff></div>
+	<div id='ShowNext'> Show more results.</div>
+	<div id=next></div>
 </div>
-
 <div class='mainRight'>
 </div>
-
-
 </div><!-- /container -->
-
 <?php echo $bottomBar; ?>
 <div id="bottombar"></div>
 <script src='js/ui.js' type='text/javascript' ></script>
 <script src='js/search.js' type='text/javascript' ></script>
 </body>
 </html>
+
