@@ -37,7 +37,7 @@ function validate() {
 	};
 
 	regEx = {
-		fname : /\w{5,}/ ,
+		fname : /[\w\s]{5,}/ ,
 		username : /.{3,}/ ,
 		email : /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/ ,
 		roll : /^[bmp]+[01]\d[01]\d{3}[a-z][a-z]/ ,
