@@ -221,7 +221,7 @@ function getVideoHtml(cid) {
 		if ( cid === 'newvideo' ) {
 			myobj.tags = ['Enter new tags for the video'];
 		}
-		if (myobj.path && myobj.title) {
+		if (myobj.path) {
 			tags = myobj.tags;
 			for( i in tags ) {
 				if (tags[i] !== '') {
