@@ -116,6 +116,14 @@ class user
 		return $global_user_folder."/".sha1($this->uid.$global_salt).".png";
 	}
 	
+	public function updateUser($fname,$roll,$email){
+		$sql="update users set us_fname = '$fname', us_rollno = '$roll', us_email = '$email' where us_id = '$this->uid'";
+		if(dbquery($sql)){
+			return 1;
+		}
+		return 0;
+	}
+	
 	/**
 	* Static function to return the PATH of the user pic URL when user id is known.
 	* @param integer $uid User ID
