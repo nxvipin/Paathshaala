@@ -140,6 +140,17 @@ class user
 		return 0;
 	}
 	
+	public static function updateInfo($uid, $fname, $roll, $email){
+		$uid=pg_escape_string($uid);
+		$fname=pg_escape_string($fname);
+		$roll=strtolower(pg_escape_string($roll));
+		$email=pg_escape_string($email);
+		$sql="update users set us_fullname='$fname', us_rollno='$roll', us_email='$email' where us_id='$uid' returning us_id";
+		$row=resource2array(dbquery($sql));
+		return $row[0];
+		
+	}
+	
 	/**
 	* Static function to return the PATH of the user pic URL when user id is known.
 	* @param integer $uid User ID
