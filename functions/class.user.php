@@ -125,11 +125,12 @@ class user
 	}
 	
 	public function updatePass($oldpass,$newpass){
-		global global_salt;
-		$sql="Select us_pass from users where us_pass = '".sha1($oldpass.$global_salt)."' and us_id = '$this->uid' returning us_id";
+		global $global_salt;
+		$sql="Select us_id from users where us_pass = '".sha1($oldpass.$global_salt)."' and us_id = '".$this->uid."'";
 		$row=resource2array(dbquery($sql));
 		if($row[0]){
-			$sql="update users set us_pass = '".sha1($newpass+$global_salt)."' where us_id = '$this->uid' returning us_id";
+			$newpass=pg_escape_string($newpass);
+			$sql="update users set us_pass = '".sha1($newpass.$global_salt)."' where us_id = '$this->uid' returning us_id";
 			$row=resource2array(dbquery($sql));
 			if($row[0]){
 				return 1;
