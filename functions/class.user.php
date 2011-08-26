@@ -124,6 +124,20 @@ class user
 		return 0;
 	}
 	
+	public function updatePass($oldpass,$newpass){
+		global global_salt;
+		$sql="Select us_pass from users where us_pass = '".sha1($oldpass.$global_salt)."' and us_id = '$this->uid' returning us_id";
+		$row=resource2array(dbquery($sql));
+		if($row[0]){
+			$sql="update users set us_pass = '".sha1($newpass+$global_salt)."' where us_id = '$this->uid' returning us_id";
+			$row=resource2array(dbquery($sql));
+			if($row[0]){
+				return 1;
+			}
+		}
+		return 0;
+	}
+	
 	/**
 	* Static function to return the PATH of the user pic URL when user id is known.
 	* @param integer $uid User ID
