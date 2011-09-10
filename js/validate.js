@@ -1,7 +1,18 @@
  /*
-	Functions to handle all join form manipulations
-	The whole code wrapped in validate() function which is called when form.join is shown
+	Functions to handle form manipulations
+	Code wrapped in validateJoin() & validateVideo(), which is called in respective pages.
+	validateJoin() called when form.join is shown
+	validateVideo() called in contribute page after page load.
+	This code needs lot of clean up, ugly implementation.
+	TODO
+		Move all validation to RegEx
+		Need better status variables.
+		Better error messages
+		No message loop in the end needed.
+		Standard way to print messages
+		Get rid of loose variables and use objects
 */
+
 
 function validateJoin() {
 	"use strict";
@@ -161,12 +172,6 @@ function validateJoin() {
 		}
 	});
 } // End of validateJoin()
-
-/*
-	Functions to handle all join form manipulations
-	The whole code wrapped in validate() function which is called when form.join is shown
-	This code needs lot of clean up, ugly implementation to validate input feilds, move all to reg ex and improve the status method.
-*/
 
 function validateVideo() {
 
