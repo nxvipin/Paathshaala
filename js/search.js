@@ -24,6 +24,7 @@ function update(q,tag,p) {
 	$("#loading").show();
 	$.getJSON( link, function(myJsonObj) {
 		if (myJsonObj == '' ) { /* Nothing returned from query => last page */
+			$('#findStuff').append("<span style='margin:25px auto'>Sorry no results found. Try for something like <a style='color:#1F456B' href='search.php?tag=physics'>physics</a>, <a style='color:#1F456B' href='search.php?tag=computer'>computers</a> or <a style='color:#1F456B' href='search.php?tag=ted'>ted</a>.</span>");
 			$('div#next').remove();
 			$('div#ShowNext').remove();
 		}
