@@ -228,7 +228,7 @@ function getVideoHtml(cid) {
 					myobj.tagString = myobj.tagString + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
 				}
 			}
-			validate();
+			validateJoin();
 			if ( myobj.sid) {
 				myobj.series = templates.series.supplant(myobj);
 			} else {
