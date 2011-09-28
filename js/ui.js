@@ -176,3 +176,10 @@ setTimeout(function(){
 	$('#loading').fadeOut(1000);
 }, 200);
 
+$("span#helpTrigger").click(function(){
+	$("div#helpMessage").slideToggle();
+});
+
+$('span.news').click(function(){
+	$('div#indexMesssage').fadeOut("fast");
+});
