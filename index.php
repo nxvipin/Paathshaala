@@ -12,8 +12,8 @@
 <div id='container'>
 	<?php	echo $topNotLoggedIn;
 			echo $feedback; ?>
-	<div class="indexMesssage">
-		Paathshaala developer meetup ! Venue : CSED 301. Monday Oct 3 05:00 PM.
+	<div id="indexMesssage">
+		Paathshaala developer meetup ! Venue : CSED 301. Monday Oct 3 05:00 PM. <span id="cross" class="news">X</span>
 	</div>
 </div><!-- /container -->
 <?php	echo $bottomBar; ?>
