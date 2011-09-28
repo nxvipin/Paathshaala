@@ -185,7 +185,7 @@ margin-right: 0;
 
 #bottombar {
 background: none repeat scroll 0 0 #EFEFEF;
-border-top: 1px solid #D4D4D4;
+border-top: 1px solid #D4D4D4;#3A75AF
 box-shadow: 0 0 -10px rgba(212, 212, 212, 0.9);
 height: 40px;
 width: 100%;
@@ -438,4 +438,20 @@ cursor: url(../pics/arrow.png) 0 0, auto;
 
 img.feedbackDock:hover {
 margin-left:2px;
+}
+
+.indexMesssage {
+    background: none repeat scroll 0 0 #EFEFEF;
+    border: 1px solid #D4D4D4;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 10px rgba(212, 212, 212, 0.898);
+    color: #464646;
+    font-size: 16px;
+    height: 20px;
+    left: 215px;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+    top: -60px;
+    width: 685px;
 }
