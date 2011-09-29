@@ -13,7 +13,7 @@
 	<?php	echo $topNotLoggedIn;
 			echo $feedback; ?>
 	<div id="indexMesssage">
-		Paathshaala developer meetup ! Venue : CSED 301. Monday Oct 3 05:00 PM. <span id="cross" class="news">X</span>
+	Paathshaala developer meetup ! Venue : CSED 301. Monday Oct 3 05:00 PM.  <a href="https://github.com/nitcalicut/Paathshaala/wiki/Paathshaala-Developer-Meetup"> More info</a> <span id="cross" class="news">X</span>
 	</div>
 </div><!-- /container -->
 <?php	echo $bottomBar; ?>
