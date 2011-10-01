@@ -2,7 +2,7 @@
 
 function grayOut(vis, options) {
 	var options = options || {};
-	var zindex = options.zindex || 50;
+	var zindex = options.zindex || 99;
 	var opacity = options.opacity || 50;
 	var opaque = (opacity / 70);
 	var bgcolor = options.bgcolor || '#030303';
