@@ -13,7 +13,7 @@
 	<?php	echo $topNotLoggedIn;
 			echo $feedback; ?>
 	<div id="indexMesssage">
-	Developer Meetup was a huge success. Thanks to all who attended the event. <a href="https://github.com/nitcalicut/Paathshaala/wiki/Paathshaala-Developer-Meetup"> More info</a> <span id="cross" class="news">X</span>
+	We pay our tribute to our <a href="video.php?video=261"><em>inspiration</em></a>. RIP Steve Jobs (February 24, 1955 – October 5, 2011).<span id="cross" class="news">X</span>
 	</div>
 </div><!-- /container -->
 <?php	echo $bottomBar; ?>
