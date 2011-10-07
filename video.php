@@ -63,6 +63,7 @@ function getActiveUser() {
 <script src='js/comment.js' type='text/javascript'></script>
 <script src='js/related.js' type='text/javascript'></script>
 <script src='js/ui.js' type='text/javascript'></script>
+<?php	echo $piwik; ?>
 </body>
 </html>
 

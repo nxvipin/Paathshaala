@@ -26,6 +26,7 @@ $(document).ready(function() {
 });
 </script>
 <script src='js/ui.js' type='text/javascript'></script>
+<?php	echo $piwik; ?>
 </body>
 </html>
 

@@ -20,6 +20,7 @@
 <?php echo $bottomBar; ?>
 <div id="bottombar"></div>
 <script src='js/ui.js' type='text/javascript' ></script>
+<?php	echo $piwik; ?>
 </body>
 </html>
 
