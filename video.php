@@ -37,7 +37,6 @@ function getActiveUser() {
 <div id='container'>
 	<?php	echo $topNotLoggedIn;
 			echo $feedback; ?>
-
 	<div class='mainLeft'>
 	<div class='videodiv'></div>
 	<?php
@@ -51,10 +50,7 @@ function getActiveUser() {
 		}
 	?>
 	</div> <!--/ main left -->
-
-	<div class='mainRight'></div> <!-- /main right -->
-
-
+	<div class='mainRight'><!-- main right --></div> 
 </div><!-- /container -->
 
 <?php echo $bottomBar; ?>
