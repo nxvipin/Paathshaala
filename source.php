@@ -6,9 +6,7 @@ $header="
 	<link rel='stylesheet' href='css/structure.css'/>
 	<link rel='stylesheet' href='css/popup.css'/>
 	<link rel='stylesheet' href='css/storybox.css'/>
-	<script src='js/jquery-1.6.2.min.js' type='text/javascript'></script>
-	<script src='js/jquery.timeago.js' type='text/javascript'></script>
-	<script src='js/jquery.jkey.js' type='text/javascript' ></script>
+	<script src='js/jquery.js' type='text/javascript'></script>
 	<script src='js/functions.js' type='text/javascript' ></script>
 	<script src='js/parseui.js' type='text/javascript'></script>";
 
