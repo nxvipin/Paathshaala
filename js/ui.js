@@ -1,46 +1,27 @@
-//Grayout code moved here 'coz its loaded whereever this is loaded
 
-function grayOut(vis, options) {
-	var options = options || {};
-	var zindex = options.zindex || 99;
-	var opacity = options.opacity || 50;
-	var opaque = (opacity / 70);
-	var bgcolor = options.bgcolor || '#030303';
-	var dark=document.getElementById('darkenScreenObject');
-	if (!dark) {
-		// The dark layer doesn't exist, it's never been created.	So we'll
-		// create it here and apply some basic styles.
-		var tbody = document.getElementsByTagName("body")[0];
-		var tnode = document.createElement('div');					// Create the layer.
-				tnode.style.position='fixed';						// Position absolutely
-				tnode.style.top='0px';								// In the top
-				tnode.style.left='0px';								// Left corner of the page
-				tnode.style.overflow='hidden';						// Try to avoid making scroll bars
-				tnode.style.display='none';							// Start out Hidden
-				tnode.id='darkenScreenObject';						// Name it so we can find it later
-		tbody.appendChild(tnode);									// Add it to the web page
-		dark=document.getElementById('darkenScreenObject');			// Get the object.
-	}
-	if (vis) {
-		// Calculate the page width and height
-		if( document.body && ( document.body.scrollWidth || document.body.scrollHeight ) ) {
-				var pageWidth = '100%';
-				var pageHeight = '2000px'; //guess :P
-		}
-		//set the shader to cover the entire page and make it visible.
-		dark.style.opacity=opaque;
-		dark.style.MozOpacity=opaque;
-		dark.style.filter='alpha(opacity='+opacity+')';
-		dark.style.zIndex=zindex;
-		dark.style.backgroundColor=bgcolor;
-		dark.style.width= pageWidth;
-		dark.style.height= pageHeight;
-		dark.style.display='block';
-	} else {
-		 dark.style.display='none';
-	}
+	/* Grayout */
+
+function grayOut(vis,options){var options=options||{},zindex=options.zindex||99,opacity=options.opacity||50,opaque=(opacity/70),bgcolor=options.bgcolor||'#030303',dark=document.getElementById('darkenScreenObject');if(!dark){var tbody=document.getElementsByTagName("body")[0],tnode=document.createElement('div');tnode.style.position='fixed';tnode.style.top='0px';tnode.style.left='0px';tnode.style.overflow='hidden';tnode.style.display='none';tnode.id='darkenScreenObject';tbody.appendChild(tnode);dark=document.getElementById('darkenScreenObject');}if(vis){if(document.body&&(document.body.scrollWidth||document.body.scrollHeight)){var pageWidth='100%';var pageHeight='2000px';}dark.style.opacity=opaque;dark.style.MozOpacity=opaque;dark.style.filter='alpha(opacity='+opacity+')';dark.style.zIndex=zindex;dark.style.backgroundColor=bgcolor;dark.style.width=pageWidth;dark.style.height=pageHeight;dark.style.display='block';}else{dark.style.display='none';}}
+
+function hideFeedback() {
+	$('div#feedback').fadeOut("fast");
+	grayOut(false);
 }
 
+function showFeedback() {
+	grayOut(true);
+	$('div#feedback').load('feedback.html').fadeIn("slow");
+}
+
+function hideEditProfile() {
+	$('#editProfile').fadeOut("fast");
+	grayOut(false);
+}
+
+function showEditProfile() {
+	grayOut(true);
+	$('div#editProfile').load('editprofile.html').fadeIn("slow");
+}
 
 $(".searchBox").
 	focus(function () {
@@ -65,7 +46,6 @@ $("div.loggedUser").click(function(){
 		$("#logChangeButton").attr('src', 'pics/down.png');
 	}
 });
-
 
 $("li#showlogin").click(function(){
 	if (loginShown === 0 ) {
@@ -96,12 +76,20 @@ $("li#showJoin").click(function() {
 	}
 });
 
+$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
+	showFeedback();
+});
+
 $('img.metaImage , img.loggedImage').error(function(){
 	$(this).attr('src','pics/default.png');
 });
 
 $('div#snapShot img, div.commentBoxImage img').error(function(){
 	$(this).attr('src','pics/profile.png');
+});
+
+$('span.news').click(function(){
+	$('div#indexMesssage').fadeOut("fast");
 });
 
 /* Submit comment using an enter key press */
@@ -124,62 +112,10 @@ $('#comment').jkey('down',function(){
 
 /* Handle height of comment box */
 
-var commbox = $('textarea#comment').parent().parent().parent();
-var ht = commbox.height();
+var commbox = $('textarea#comment').parent().parent().parent(), ht = commbox.height();
 $('textarea#comment').keyup( function() {
 	var len = $('#comment').attr('value').length;
 	var lineno = Math.floor( Number(len) / 40 );
 	$(this).attr('rows' , lineno + 2)
 	commbox.height(ht + (14 * lineno) );
-});
-
-/* Need grayout.js */
-/* popup stuff */
-
-function hideFeedback() {
-	$('div#feedback').fadeOut("fast");
-	grayOut(false);
-}
-
-function showFeedback() {
-	grayOut(true);
-	$('div#feedback').load('feedback.html').fadeIn("slow");
-}
-
-function hideEditProfile() {
-	$('#editProfile').fadeOut("fast");
-	grayOut(false);
-}
-
-function showEditProfile() {
-	grayOut(true);
-	$('div#editProfile').load('editprofile.html').fadeIn("slow");
-}
-
-$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
-	showFeedback();
-});
-
-$('img#downloadButton.VideoBarButton').click(function(){
-	alert('Please right click on the video and save the video while being played');
-});
-
-$('img#editProfileButton').click(function(){
-	showEditProfile();
-});
-
-$("span#helpTrigger").click(function(){
-	$("div#helpMessage").slideToggle();
-});
-
-setTimeout(function(){
-	$('#loading').fadeOut(1000);
-}, 200);
-
-$("span#helpTrigger").click(function(){
-	$("div#helpMessage").slideToggle();
-});
-
-$('span.news').click(function(){
-	$('div#indexMesssage').fadeOut("fast");
 });
