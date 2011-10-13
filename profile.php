@@ -20,7 +20,7 @@
 <script src='js/myvideos.js' type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	updatemyVideos();
+	updateStoryBox('Uploads');
 	updateStoryBox('Liked');
 	updateStoryBox('Disliked');
 });

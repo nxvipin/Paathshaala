@@ -11,8 +11,7 @@ $header="
 	<script src='js/jquery.jkey.js' type='text/javascript' ></script>
 	<script src='js/functions.js' type='text/javascript' ></script>
 	<script src='js/validate.js' type='text/javascript' ></script>
-	<script src='js/templates.js' type='text/javascript'></script>
-	<script src='js/jsonparse.js' type='text/javascript'></script>";
+	<script src='js/parseui.js' type='text/javascript'></script>";
 
 	if(!isset($_SESSION['uid'])){
 $topNotLoggedIn = "<div id='top'>
