@@ -203,6 +203,9 @@ function getVideoHtml(cid) {
 		if ( cid !== 'newvideo' ) {
 			var defStatus = $('span#likes').attr('defStatus');
 			updateLikeBox(defStatus); /* Update to def status */
+			$('img#downloadButton.VideoBarButton').click(function(){
+				alert('Please right click on the video and save the video while being played');
+			});
 		} else {
 				$('div.videoBar').html("<div style='text-align:center;'>Thanks for adding a new video to paathshaala</div>"); // Remove download button
 				$('span.videoTitle').html("Enter a new title for your video");
