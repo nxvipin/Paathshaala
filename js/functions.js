@@ -27,135 +27,142 @@ if(typeof String.prototype.supplant !== 'function') {
 	};
 }
 
-function hashTag(elem) {
-	var data = $(elem).html();
-	var reg = /#(\w{1,})/g;
-	var res = data.match(reg);
-	var len = res.length;
-	for( var i =0; i < len ; i = i+1) {
-		data = data.replace( res[i],'<a href=search.php?tag=' + res[i] + '>' + res[i] + '</a>' );
-	}
-	$(elem).html(data);
-}
+var Paathshaala = {
+	hashTag : function(elem) {
+			var data = $(elem).html(),
+				reg = /#(\w{1,})/g,
+				res = data.match(reg),
+				len = res.length;
+			for( var i =0; i < len ; i = i+1) {
+				data = data.replace( res[i],'<a href=search.php?tag=' + res[i] + '>' + res[i] + '</a>' );
+			}
+			$(elem).html(data);
+		},
+	showFeedback : function() {
+			grayOut(true);
+			$('div#feedback').load('feedback.html').fadeIn("slow");
+		},
+	hideFeedback : function () {
+			$('div#feedback').fadeOut("fast");
+			grayOut(false);
+		},
+	showEditProfile: function () {
+			grayOut(true);
+			$('div#editProfile').load('editprofile.html').fadeIn("slow");
+		},
+	hideEditProfile : function() {
+			$('#editProfile').fadeOut("fast");
+			grayOut(false);
+		},
+	searchBox : function() {
+			$(".searchBox").
+				focus(function () {
+					$(this).animate({width: '380px'} , 250 , '' , function () {})
+				}).
+				focusout(function () {
+					$(this).animate({width: '270px'} , 150 , '' , function () {});
+				});
+		},
+	dashBoard : function() {
+			var dashShown = 0,loginShown = 0,joinShown = 0;
+			$("div.loggedUser").
+				click(function(){
+					if (! dashShown) {
+						$('.dashBoard').slideToggle('fast');
+						dashShown = 1;
+						$("#logChangeButton").attr('src', 'pics/up.png');
+					} else {
+						$('.dashBoard').slideToggle('fast');
+						dashShown = 0;
+						$("#logChangeButton").attr('src', 'pics/down.png');
+					}
+				});
+		$("li#showlogin").
+			click(function(){
+				if (loginShown === 0 ) {
+					$('form.login').slideToggle('fast');
+					$('form.join').slideUp('fast');
+					loginShown = 1;
+					joinShown = 0;
+					$("#logChangeButton").attr('src', 'pics/up.png');
+				} else {
+					$('.login').slideToggle('fast');
+					loginShown = 0;
+					$("#logChangeButton").attr('src', 'pics/down.png');
+				}
+			});
+		$("li#showJoin").
+			click(function() {
+				if (! joinShown) {
+					$('.join').slideToggle('fast');
+					$('.login').slideUp('fast');
+					joinShown = 1;
+					loginShown = 0;
+					$("#logChangeButton").attr('src', 'pics/up.png');
+					validateJoin(); // Calls the join form validate and submit functions from js/validate.js
+				} else {
+					$('.join').slideToggle('fast');
+					joinShown = 0;
+					$("#logChangeButton").attr('src', 'pics/down.png');
+				}
+			});
+		},
+	imageError : function() {
+			/* Buggy. not working in profile page and top logged image */
+			$('img').error(function(){
+				$(this).attr('src','pics/default.png');
+			});
+		},
+	comments : function() {
+			/* Submit comment using an enter key press */
+			$('#comment').keypress(function(event) {
+				if (event.which == '13') {
+					event.preventDefault();
+					subComment();
+				}
+			});
+			/*	Need the jkey plugin
+				New line in comment using a down key press */
+			$('#comment').jkey('down',function(){
+				var comBox =$('#comment');
+				data = comBox.attr('value') + '\n';
+				comBox.attr('value' , data);
+			});
+			/* Handle height of comment box */
+			var commbox = $('textarea#comment').parent().parent().parent(), ht = commbox.height();
+			$('textarea#comment').keyup( function() {
+				var len = $('#comment').attr('value').length;
+				var lineno = Math.floor( Number(len) / 40 );
+				$(this).attr('rows' , lineno + 2)
+				commbox.height(ht + (14 * lineno) );
+			});
+		},
+	quirks : function(){ /* Stuff which i cant put anywhere else. Cant pollute the global object, hence this is here */
+			$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
+				Paathshaala.showFeedback();
+			});
+			$('span.news').click(function(){
+				$('div#indexMesssage').fadeOut("fast");
+			});
+		}
+};
 
+/*	Generic actions 
+	Looks like modules. Need to learn more about this
+	At one point i may be able to call only whats needed and improve page performance.
+	Eg: call Paathshaala.comments(); only in the video page after DOM load
+*/ 
 
-
-function hideFeedback() {
-	$('div#feedback').fadeOut("fast");
-	grayOut(false);
-}
-
-function showFeedback() {
-	grayOut(true);
-	$('div#feedback').load('feedback.html').fadeIn("slow");
-}
-
-function hideEditProfile() {
-	$('#editProfile').fadeOut("fast");
-	grayOut(false);
-}
-
-function showEditProfile() {
-	grayOut(true);
-	$('div#editProfile').load('editprofile.html').fadeIn("slow");
-}
-
-$(".searchBox").
-	focus(function () {
-		$(this).animate({width: '380px'} , 250 , '' , function () {})
-	}).
-	focusout(function () {
-		$(this).animate({width: '270px'} , 150 , '' , function () {});
+$(document).ready(function(){
+	Paathshaala.searchBox();
+	Paathshaala.dashBoard();
+	Paathshaala.imageError();
+	Paathshaala.comments();
+	Paathshaala.quirks();
 });
 
-var dashShown = 0;
-var loginShown = 0;
-var joinShown = 0;
 
-$("div.loggedUser").click(function(){
-	if (! dashShown) {
-		$('.dashBoard').slideToggle('fast');
-		dashShown = 1;
-		$("#logChangeButton").attr('src', 'pics/up.png');
-	} else {
-		$('.dashBoard').slideToggle('fast');
-		dashShown = 0;
-		$("#logChangeButton").attr('src', 'pics/down.png');
-	}
-});
 
-$("li#showlogin").click(function(){
-	if (loginShown === 0 ) {
-		$('form.login').slideToggle('fast');
-		$('form.join').slideUp('fast');
-		loginShown = 1;
-		joinShown = 0;
-		$("#logChangeButton").attr('src', 'pics/up.png');
-	} else {
-		$('.login').slideToggle('fast');
-		loginShown = 0;
-		$("#logChangeButton").attr('src', 'pics/down.png');
-	}
-});
-
-$("li#showJoin").click(function() {
-	if (! joinShown) {
-		$('.join').slideToggle('fast');
-		$('.login').slideUp('fast');
-		joinShown = 1;
-		loginShown = 0;
-		$("#logChangeButton").attr('src', 'pics/up.png');
-		validateJoin(); // Calls the join form validate and submit functions from js/validate.js
-	} else {
-		$('.join').slideToggle('fast');
-		joinShown = 0;
-		$("#logChangeButton").attr('src', 'pics/down.png');
-	}
-});
-
-$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
-	showFeedback();
-});
-
-$('img.metaImage , img.loggedImage').error(function(){
-	$(this).attr('src','pics/default.png');
-});
-
-$('div#snapShot img, div.commentBoxImage img').error(function(){
-	$(this).attr('src','pics/profile.png');
-});
-
-$('span.news').click(function(){
-	$('div#indexMesssage').fadeOut("fast");
-});
-
-/* Submit comment using an enter key press */
-
-$('#comment').keypress(function(event) {
-	if (event.which == '13') {
-		event.preventDefault();
-		subComment();
-	}
-});
-
-/* Need the jkey plugin */
-/* New line in comment using a down key press */
-
-$('#comment').jkey('down',function(){
-	var comBox =$('#comment');
-	data = comBox.attr('value') + '\n';
-	comBox.attr('value' , data);
-});
-
-/* Handle height of comment box */
-
-var commbox = $('textarea#comment').parent().parent().parent(), ht = commbox.height();
-$('textarea#comment').keyup( function() {
-	var len = $('#comment').attr('value').length;
-	var lineno = Math.floor( Number(len) / 40 );
-	$(this).attr('rows' , lineno + 2)
-	commbox.height(ht + (14 * lineno) );
-});
 
  /*
 	Functions to handle form manipulations
