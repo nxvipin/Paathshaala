@@ -1,17 +1,25 @@
 <?php
 	session_start();
+
 $header="
 	<meta charset='UTF-8' />
 	<link rel='shortcut icon' href='pics/favicon.png'>
 	<link rel='stylesheet' href='css/structure.css'/>
 	<link rel='stylesheet' href='css/popup.css'/>
-	<link rel='stylesheet' href='css/storybox.css'/>
+	<link rel='stylesheet' href='css/storybox.css'/>";
+
+$scripts="
 	<script src='js/jquery.js' type='text/javascript'></script>
 	<script src='js/functions.js' type='text/javascript' ></script>
 	<script src='js/parseui.js' type='text/javascript'></script>";
 
+$feedback = "<img src='pics/feedback.png' alt='feedback button' title='feedback button' class='feedbackDock' />
+<div id='feedback'></div>";
+
+$piwik = "<script type=\"text/javascript\">var pkBaseURL =\"http://192.168.5.27/piwik/\"; document.write(unescape(\"%3Cscript src=\'\" + pkBaseURL + \"piwik.js\' type=\'text/javascript\'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">try {var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 1);piwikTracker.trackPageView();piwikTracker.enableLinkTracking();} catch( err ) {} </script>";
+
 	if(!isset($_SESSION['uid'])){
-$topNotLoggedIn = "<div id='top'>
+$topBar = "<div id='top'>
 	<a href='index.php' id='logo' title='Paathshaala'> <h1></h1> </a>
 	<ul class='topbarLeft'>
 		<li>
@@ -52,7 +60,7 @@ $topNotLoggedIn = "<div id='top'>
 	}
 	else{
 
-$topNotLoggedIn = "<div id='top'>
+$topBar = "<div id='top'>
 <a href='index.php' id='logo' title='Paathshaala'> <h1></h1> </a>
 <ul class='topbarLeft'>
 <li>
@@ -77,6 +85,7 @@ $topNotLoggedIn = "<div id='top'>
 </div>
 </div> <!-- /top -->";
 }
+
 $bottomBar = "<div id='bottom'>
 	<a href='http://www.teamunwired.org/' id='logo' title='teamunwired'> <h1></h1> </a>
 	<ul class='bottomLinks'>
@@ -98,7 +107,9 @@ $bottomBar = "<div id='bottom'>
 			<a href='http://www.facebook.com/paathshaala.tuw'><img src='pics/facebook.png'> </a>&nbsp;&nbsp;
 			<a href='http://twitter.com/jaseemabid/'><img src='pics/twitter.png'> </a></li>
 		</ul>
-</div> <!-- /bottom -->";
+	</div> <!-- /bottom -->
+	<div id='bottombar'></div>";
+
 if(isset($_SESSION['uid']))
 {
 $commentSubmit = "<div class='commentBox'style='height: 70px;'>
@@ -117,10 +128,7 @@ else
 	$commentSubmit="Please log in to comment.";
 }
 
-$feedback = "<img src='pics/feedback.png' alt='feedback button' title='feedback button' class='feedbackDock' />
-<div id='feedback'></div>";
 
-$piwik = "<script type=\"text/javascript\">var pkBaseURL =\"http://192.168.5.27/piwik/\"; document.write(unescape(\"%3Cscript src=\'\" + pkBaseURL + \"piwik.js\' type=\'text/javascript\'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">try {var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 1);piwikTracker.trackPageView();piwikTracker.enableLinkTracking();} catch( err ) {} </script>";
 
 ?>
 
