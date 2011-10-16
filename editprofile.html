@@ -66,9 +66,9 @@ $('span#feedbackFormSubmitProfile').click(function() {
 });
 
 $('span#feedbackFormSubmitPasswd').click(function() {
-	var p  = $('input#pWord1').attr('value');
-	var p1 = $('input#pWord1').attr('value');
-	var p2 = $('input#pWord2').attr('value');
+	var p  = $('input#pWord1').attr('value'),
+		p1 = $('input#pWord1').attr('value'),
+		p2 = $('input#pWord2').attr('value');
 	if( p1 !== p2) { 
 		alert("Enter the same password");
 	} else if ( p1.length < 6 ) {
