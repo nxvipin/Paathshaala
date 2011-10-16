@@ -42,7 +42,7 @@ $('span#feedbackFormSubmit')
 			delete feedback.fname;
 			$.post("response/submitfeedback.php", feedback, function(data){
 				setTimeout(function(){
-					hideFeedback();
+					Paathshaala.hideFeedback();
 				},2000);
 				$('ul.links, div#blueLine').remove();
 				if (data)
@@ -53,7 +53,7 @@ $('span#feedbackFormSubmit')
 		}
 	});
 $('div#darkenScreenObject').click(function(){
-	hideFeedback();
+	Paathshaala.hideFeedback();
 });
 
 </script>
