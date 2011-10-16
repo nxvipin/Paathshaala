@@ -1,19 +1,13 @@
 /*
-	General JS functions required in all pages will be written in this page.
-	Individual page specific codes will be split into smaller files.
+	General JS functions for Paathshaala
 */
-
-/* Function to manipulate $_GET[] variables with JS */
 
 /* Read a page's GET URL variables and return them as an associative array. */
 /* Example implementation : var cid = getUrlVars()['id']; */
 
-function getUrlVars()
-{
-	var vars = [], hash;
-	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-	for(var i = 0; i < hashes.length; i++)
-	{
+function getUrlVars() {
+	var i =0, vars = [], hash, hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	for(i = 0; i < hashes.length; i++) {
 		hash = hashes[i].split('=');
 		vars.push(hash[0]);
 		vars[hash[0]] = hash[1];
@@ -21,8 +15,7 @@ function getUrlVars()
 	return vars;
 }
 
-// Supplant 
-
+/* Supplant */
 if(typeof String.prototype.supplant !== 'function') {
 	String.prototype.supplant = function(o) {
 		return this.replace(/{([^{}]*)}/g,
@@ -45,6 +38,124 @@ function hashTag(elem) {
 	$(elem).html(data);
 }
 
+
+
+function hideFeedback() {
+	$('div#feedback').fadeOut("fast");
+	grayOut(false);
+}
+
+function showFeedback() {
+	grayOut(true);
+	$('div#feedback').load('feedback.html').fadeIn("slow");
+}
+
+function hideEditProfile() {
+	$('#editProfile').fadeOut("fast");
+	grayOut(false);
+}
+
+function showEditProfile() {
+	grayOut(true);
+	$('div#editProfile').load('editprofile.html').fadeIn("slow");
+}
+
+$(".searchBox").
+	focus(function () {
+		$(this).animate({width: '380px'} , 250 , '' , function () {})
+	}).
+	focusout(function () {
+		$(this).animate({width: '270px'} , 150 , '' , function () {});
+});
+
+var dashShown = 0;
+var loginShown = 0;
+var joinShown = 0;
+
+$("div.loggedUser").click(function(){
+	if (! dashShown) {
+		$('.dashBoard').slideToggle('fast');
+		dashShown = 1;
+		$("#logChangeButton").attr('src', 'pics/up.png');
+	} else {
+		$('.dashBoard').slideToggle('fast');
+		dashShown = 0;
+		$("#logChangeButton").attr('src', 'pics/down.png');
+	}
+});
+
+$("li#showlogin").click(function(){
+	if (loginShown === 0 ) {
+		$('form.login').slideToggle('fast');
+		$('form.join').slideUp('fast');
+		loginShown = 1;
+		joinShown = 0;
+		$("#logChangeButton").attr('src', 'pics/up.png');
+	} else {
+		$('.login').slideToggle('fast');
+		loginShown = 0;
+		$("#logChangeButton").attr('src', 'pics/down.png');
+	}
+});
+
+$("li#showJoin").click(function() {
+	if (! joinShown) {
+		$('.join').slideToggle('fast');
+		$('.login').slideUp('fast');
+		joinShown = 1;
+		loginShown = 0;
+		$("#logChangeButton").attr('src', 'pics/up.png');
+		validateJoin(); // Calls the join form validate and submit functions from js/validate.js
+	} else {
+		$('.join').slideToggle('fast');
+		joinShown = 0;
+		$("#logChangeButton").attr('src', 'pics/down.png');
+	}
+});
+
+$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
+	showFeedback();
+});
+
+$('img.metaImage , img.loggedImage').error(function(){
+	$(this).attr('src','pics/default.png');
+});
+
+$('div#snapShot img, div.commentBoxImage img').error(function(){
+	$(this).attr('src','pics/profile.png');
+});
+
+$('span.news').click(function(){
+	$('div#indexMesssage').fadeOut("fast");
+});
+
+/* Submit comment using an enter key press */
+
+$('#comment').keypress(function(event) {
+	if (event.which == '13') {
+		event.preventDefault();
+		subComment();
+	}
+});
+
+/* Need the jkey plugin */
+/* New line in comment using a down key press */
+
+$('#comment').jkey('down',function(){
+	var comBox =$('#comment');
+	data = comBox.attr('value') + '\n';
+	comBox.attr('value' , data);
+});
+
+/* Handle height of comment box */
+
+var commbox = $('textarea#comment').parent().parent().parent(), ht = commbox.height();
+$('textarea#comment').keyup( function() {
+	var len = $('#comment').attr('value').length;
+	var lineno = Math.floor( Number(len) / 40 );
+	$(this).attr('rows' , lineno + 2)
+	commbox.height(ht + (14 * lineno) );
+});
 
  /*
 	Functions to handle form manipulations
