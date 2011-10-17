@@ -1,5 +1,5 @@
 <span class='fbTitle'>We are listening</span>
-<span id='cross' onclick='hideFeedback()'>X</span>
+<span id='cross'>X</span>
 <div id='blueLine'></div>
 <ul class='links'>
 	<li type='I' desc='So, Whats the idea?' class='hilite '>Idea</li>
@@ -53,6 +53,10 @@ $('span#feedbackFormSubmit')
 		}
 	});
 $('div#darkenScreenObject').click(function(){
+	Paathshaala.hideFeedback();
+});
+
+$('span#cross').click(function(){
 	Paathshaala.hideFeedback();
 });
 
