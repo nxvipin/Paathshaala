@@ -50,11 +50,12 @@ var Paathshaala = {
 		},
 	showFeedback : function() {
 			grayOut(true);
-			$('div#feedback').load('feedback.html').fadeIn("slow");
+			$('div#feedback').show()
+			$('div#feedback').load('feedback.html');
 		},
 	hideFeedback : function () {
-			$('div#feedback').fadeOut("fast");
 			grayOut(false);
+			$('div#feedback').hide();
 		},
 	showEditProfile: function () {
 			grayOut(true);
