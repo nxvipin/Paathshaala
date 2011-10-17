@@ -10,8 +10,7 @@ $header="
 
 $scripts="
 	<script src='js/jquery.js' type='text/javascript'></script>
-	<script src='js/functions.js' type='text/javascript' ></script>
-	<script src='js/parseui.js' type='text/javascript'></script>";
+	<script src='js/functions.js' type='text/javascript' ></script>";
 
 $feedback = "<img src='pics/feedback.png' alt='feedback button' title='feedback button' class='feedbackDock' />
 <div id='feedback'></div>";
