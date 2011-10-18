@@ -27,6 +27,14 @@ if(typeof String.prototype.supplant !== 'function') {
 	};
 }
 
+Array.prototype.allTrue = function() {
+	var i = 0;
+	for (i = 0; i < this.length; i+=1) {
+		if(!this[i]) return false;
+	}
+	return true;
+}
+
 var Paathshaala = {
 	hashTag : function(elem) {
 			var data = $(elem).html(),
