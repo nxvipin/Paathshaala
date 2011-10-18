@@ -26,7 +26,7 @@ if(typeof String.prototype.supplant !== 'function') {
 			});
 	};
 }
-
+/*
 Object.prototype.allTrue = function() {
 	var i = 0;
 	for (i in this) {
@@ -35,7 +35,7 @@ Object.prototype.allTrue = function() {
 		}
 	}
 	return true;
-}
+}*/
 
 var Paathshaala = {
 	hashTag : function(elem) {
