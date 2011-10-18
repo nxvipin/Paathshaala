@@ -195,29 +195,6 @@ $(document).ready(function(){
 
 
 
- /*
-	Functions to handle form manipulations
-	Code wrapped in validateJoin() & validateVideo(), which is called in respective pages.
-	validateJoin() called when form.join is shown
-	validateVideo() called in contribute page after page load.
-	This code needs lot of clean up, ugly implementation.
-	TODO
-		Move all validation to RegEx
-		Need better status variables.
-		Better error messages
-		No message loop in the end needed.
-		Standard way to print messages
-		Get rid of loose variables and use objects
-*/
-
-/*
-	Core file to generate all ui elements dynamically.
-	Template files and all parse functions stay in this file.
-	Paathshaala.templates parsed in to content using the supplant property defined in ECMAScript5
-	Eg : video = Paathshaala.templates.video.supplant(myObj);
-*/
-
-
 
 function updateStoryBox(type) {
 	/*
@@ -270,10 +247,8 @@ function updateStoryBox(type) {
 	$.getJSON( link , function(myJsonObj) {
 		var i, storyBox, myobj,
 			groupBox  = "<div class='groupBox'>",
-			groupBox1 = "<div class='groupBox'>",
 			groupBox2 = "<div class='groupBox Hidden'>";
 		if (myJsonObj.length === 4 ) {
-			groupBox = "<div class='groupBox'>";
 			for (i =0; i <4 ; i +=1){
 				myobj = myJsonObj[i];
 				storyBox = makeBox(myobj);
@@ -285,16 +260,16 @@ function updateStoryBox(type) {
 			for (i =0; i <4 ; i +=1){
 				myobj = myJsonObj[i];
 				storyBox = makeBox(myobj);
-				groupBox1 = groupBox1 + storyBox;
+				groupBox = groupBox + storyBox;
 			}
-			groupBox1 = groupBox1 + "</div>";
+			groupBox = groupBox + "</div>";
 				for (i =4; i < myJsonObj.length ; i +=1){
 					myobj = myJsonObj[i];
 					storyBox = makeBox(myobj);
 					groupBox2 = groupBox2 + storyBox;
 				}
 			groupBox2 = groupBox2 + "</div>";
-			$('div#container').append("<div>" + title + groupBox1 + more + groupBox2 + less + "</div>");
+			$('div#container').append("<div>" + title + groupBox + more + groupBox2 + less + "</div>");
 		}
 	}).complete(function(){
 		$('img.metaImage').error(function(){
