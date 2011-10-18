@@ -5,6 +5,16 @@
 /* Read a page's GET URL variables and return them as an associative array. */
 /* Example implementation : var cid = getUrlVars()['id']; */
 
+/*
+	Known bugs :
+		Error image not working
+		Rewrite validates
+		Rewrite storyBox()
+		Template modules
+*/
+
+
+
 function getUrlVars() {
 	var i =0, vars = [], hash, hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
 	for(i = 0; i < hashes.length; i++) {
