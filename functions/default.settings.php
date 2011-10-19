@@ -6,22 +6,24 @@
 */
 
 //Main Database(postgreSQL) settings
-$global_host			=	'';		// <Database Host>
-$global_port			=	'';		// <Database Port>
-$global_dbname			=	''; 	// <Database Name>
-$global_user			=	'';		// <Database User>
-$global_password		=	''; 	// <Database Password>
+$global_host				=	'';		// <Database Host>
+$global_port				=	'';		// <Database Port>
+$global_dbname				=	''; 	// <Database Name>
+$global_user				=	'';		// <Database User>
+$global_password			=	''; 	// <Database Password>
 
 //Application Settings
-$global_salt			=	'';		// <SALT added to any string before encryption>
-$global_thumbs_folder	=	'';		// <Thumbs folder where thumbnails will be stored>
-$global_user_folder		=	'';		// <User folder where user data will be stored>
+$global_salt				=	'';		// <SALT added to any string before encryption>
+$global_thumbs_folder		=	'';		// <Thumbs folder where thumbnails will be stored>
+$global_user_folder			=	'';		// <User folder where user data will be stored>
+$global_raw_videos_folder	=	'';		// <Folder where non indexed, non series videos are stored>
+$global_raw_series_folder	=	'';		// <Folder where non indexed, series videos are stored>
 
 //CouchDB Settings
-$global_couch_host		=	'';		// <CouchDB Host>
-$global_couch_port		=	'';		// <CouchDB Port>
-$global_couch_dbname	=	'';		// <CouchDB Database Name>
-$global_couch_user		=	'';		// <CouchDB Username>
-$global_couch_password	=	'';		// <CouchDB Password>
+$global_couch_host			=	'';		// <CouchDB Host>
+$global_couch_port			=	'';		// <CouchDB Port>
+$global_couch_dbname		=	'';		// <CouchDB Database Name>
+$global_couch_user			=	'';		// <CouchDB Username>
+$global_couch_password		=	'';		// <CouchDB Password>
 
 ?>

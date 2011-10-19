@@ -23,7 +23,7 @@ include_once 'functions.php';
 abstract class content
 {
 	
-	protected $cid,$title,$desc,$timestamp,$uid,$status,$views,$seriesid,$order;
+	protected $cid,$title,$desc,$timestamp,$uid,$status,$views,$seriesid,$order,$sname;
 	
 	public function getContentId()
 	{
@@ -53,13 +53,17 @@ abstract class content
 	{
 		return $this->uid;
 	}
-	public function getSeries()
+	public function getSeriesId()
 	{
 		return $this->seriesid;
 	}
 	public function getOrder()
 	{
 		return $this->order;
+	}
+	public function getSeriesName()
+	{
+		return $this->sname;
 	}
 	/**
 	* Returns the content tags as an array. Tag name is pulled from tag ID internally.
@@ -107,15 +111,20 @@ abstract class content
 		$series=pg_fetch_assoc(dbquery($sql));
 		$this->seriesid=$series['cs_seriesid'];
 		$this->order=$series['cs_order'];
+		if($this->seriesid){
+			$sql="Select sr_name from series where sr_id='".$this->seriesid."'";
+			$name=pg_fetch_assoc(dbquery($sql));
+			$this->sname=$name['sr_name'];
+		}
 	}
 	
 	/**
-	* Returns all the Content ID's in the series to whcih the current content belongs.
-	* @return array Array of all Content ID's which belong to the series of current content.
+	* Returns all the Content ID's in the series given by the series ID.
+	* @return array Array of all Content ID's which belong to the geiven series.
 	*/
-	public function getCompleteSeries()
+	public static function getCompleteSeries($sid)
 	{
-		$sql="Select cs_contentid from content_series where cs_seriesid='".$this->seriesid."'";
+		$sql="Select cs_contentid from content_series where cs_seriesid='".$sid."'";
 		return resource2array(dbquery($sql));
 	}
 	

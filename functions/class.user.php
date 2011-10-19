@@ -116,6 +116,41 @@ class user
 		return $global_user_folder."/".sha1($this->uid.$global_salt).".png";
 	}
 	
+	public function updateUser($fname,$roll,$email){
+		$sql="update users set us_fname = '$fname', us_rollno = '$roll', us_email = '$email' where us_id = '$this->uid'";
+		if(dbquery($sql)){
+			return 1;
+		}
+		return 0;
+	}
+	
+	public static function updatePass($uid,$oldpass,$newpass){
+		global $global_salt;
+		$uid=pg_escape_string($uid);
+		$sql="Select us_id from users where us_pass = '".sha1($oldpass.$global_salt)."' and us_id = '".$uid."'";
+		$row=resource2array(dbquery($sql));
+		if($row[0]){
+			$newpass=pg_escape_string($newpass);
+			$sql="update users set us_pass = '".sha1($newpass.$global_salt)."' where us_id = '$this->uid' returning us_id";
+			$row=resource2array(dbquery($sql));
+			if($row[0]){
+				return 1;
+			}
+		}
+		return 0;
+	}
+	
+	public static function updateInfo($uid, $fname, $roll, $email){
+		$uid=pg_escape_string($uid);
+		$fname=pg_escape_string($fname);
+		$roll=strtolower(pg_escape_string($roll));
+		$email=pg_escape_string($email);
+		$sql="update users set us_fullname='$fname', us_rollno='$roll', us_email='$email' where us_id='$uid' returning us_id";
+		$row=resource2array(dbquery($sql));
+		return $row[0];
+		
+	}
+	
 	/**
 	* Static function to return the PATH of the user pic URL when user id is known.
 	* @param integer $uid User ID
@@ -126,6 +161,73 @@ class user
 		global $global_user_folder, $global_salt;
 		return $global_user_folder."/".sha1($uid.$global_salt).".png";
 	}
+	
+	/**
+	* Static function to check if a username already exists.
+	* @param string $uname Given Username
+	* @return integer returns (exists:1 | does not exist:0)
+	*/
+	public static function checkUsernameExists($uname)
+	{
+		$sql="Select us_id from users where us_name='$uname'";
+		$row=pg_fetch_row(dbquery($sql));
+		if($row)
+			return 1;
+		else
+			return 0;
+	}
+	
+	/**
+	* Static function check if an email already exists. 
+	* @param string $email Given Email ID
+	* @return integer (1: exists | 0: does not exists)
+	*/
+	public static function checkEmailExists($email)
+	{
+		$sql="Select us_id from users where us_email='$email'";
+		$row=pg_fetch_row(dbquery($sql));
+		if($row)
+			return 1;
+		else
+			return 0;
+	}
+	
+	/**
+	* Checks if a user liked/dislike a content.
+	* @param integer $uid User ID of the logged in user.
+	* @param integer $cid Content ID to be checked.
+	* @return integer (1: Like, -1: dislike, 0: default, 2: user not logged in)
+	*/
+	public static function checkLike($uid,$cid)
+	{
+		if(!$uid)
+			return 2;
+		else{	
+			$sql="Select cl_value from content_like where cl_uid='$uid' and cl_cid='$cid'";
+			$row=pg_fetch_array(dbquery($sql));
+			if($row)
+				return $row[0];
+			else
+				return 0;
+		}
+	}
+	
+	/**
+	* Checks if a roll no already exists in the database.
+	* @param string $roll Register number of the user.
+	* @return integer (1:exists | 0:does not exist)
+	*/
+	public static function checkRollExists($roll)
+	{
+		$roll=strtolower($roll);
+		$sql="Select us_id from users where us_rollno='$roll'";
+		$row=pg_fetch_row(dbquery($sql));
+		if($row)
+			return 1;
+		else
+			return 0;
+	}
+	
 	
 	
 }
