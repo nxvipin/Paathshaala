@@ -1,0 +1,304 @@
+/* Video page stuff */
+span.videoTitle{
+display:inline-block;
+color:#3a75af;
+font-size: 20px;
+padding:0px;
+margin:5px 5px 0px 5px;
+}
+
+span.videoUser {
+font-size:13px;
+position:relative;
+top:-3px;
+left:10px;
+}
+
+div.videoBar {
+position:relative;
+width:557px;
+height:32px;
+margin:5px;
+border:1px solid #dddddd;
+border-radius:5px;
+background:#f5f5f5;
+background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#efefef));
+background: -moz-linear-gradient(top,#ffffff,#efefef);
+}
+
+.tags {
+margin-top: -32px;
+}
+
+.tags li{
+display:inline-block;
+margin-left:5px;
+}
+
+.tags a {
+background:#555555;
+border-radius: 4px 4px 4px 4px;
+color: #f7f7f7;
+font-size: 10px;
+line-height: 0;
+margin-right: 1px;
+margin-top: 1px;
+padding: 2px;
+text-transform: uppercase;
+}
+
+.tags a:hover {
+background:#44608e;
+}
+
+img.VideoBarButton {
+margin:3px;  /* Size fitting and verical align. Using 32 px images */
+vertical-align:middle;
+height:25px;
+}
+
+span.videoBarElement {
+display: inline-block; /** important **/
+vertical-align:middle; /** important **/
+padding:0;
+font-size:14px;
+}
+
+/* Video side listing*/
+span.sideMainTitle {
+background: #3A75AF;
+color: white;
+font-size: 20px;
+margin: 10px 0 25px;
+padding-left: 75px;
+display:inline-block;
+position:relative;
+width:275px;
+}
+
+div.relatedVideoWrap {
+position:relative;
+overflow:hidden;
+height:475px;
+}
+
+div.relatedVideo {
+/* The video listing in the right side used for series n related n similar*/
+width:350px;
+height:90px;
+margin:0 0 5px 0;
+padding:0px;
+font-size:12px;
+display:block;
+}
+
+div.relatedVideo:hover {
+background:#efefef;
+}
+
+div.relatedVideoImage {
+width:110px;
+height:74px;
+position:relative;
+padding:2px;
+border: 1px solid #cccccc;
+border-radius:5px;
+background:transparent;
+}
+
+div.relatedVideoContent {
+display:block;
+height:74px;
+width:230px;
+position:relative;
+left:120px;
+top:-84px;
+}
+
+span.sideYesNo {
+color:white;
+background:#777777;
+border-radius:5px;
+padding:2px;
+margin:0px 2px;
+cursor: url(../pics/pointer.png), auto;
+font-size:10px;
+}
+
+span.sideTitle {
+font-size:13px;
+color:#1F456B;
+}
+
+span.sideTitle:hover {
+color:#3A75AF;
+}
+'newVideoSubmit'
+span.sideViews { /* No property needed, all inherited :) */
+margin:1px 0px;
+color:#3A75AF;
+}
+
+span.sideUploader { /* No property needed, all inherited :) */
+margin:1px 0px;
+color:#3A75AF;
+}
+
+span.smallSubtitle {  /* Saying stuff like top comments in the video page */
+display:block;
+border-bottom: 1px solid #CCCCCC;
+color:#1F456B;
+font-size:16px;
+margin: 10px 0;
+padding: 2px 5px;
+}
+
+/* Comments */
+div.commentBox {
+margin:2px 0px;
+width:570px;
+min-height:55px;
+border-bottom: 1px dotted #CCCCCC;
+padding-bottom:10px;
+}
+
+div.commentBoxImage {
+margin:0px 2px 0px opx;
+border:0px;
+width:60px;
+height:60px;
+float:left;
+clear:left;
+}
+
+div.commentBoxImage img {
+width:90%;
+height:90%;
+}
+
+div.commentBoxText {
+font-size: 14px;
+margin:0px; border:0px; width:500px; float:right; clear:right;
+}
+
+textarea#comment {
+color: #555555;
+font-size:14px;
+width: 500px;
+}
+
+span.commentTitle {
+display:inline-block;
+margin: 0 0 0 -10px;
+font-size:13px;
+color:#1F456B;
+padding:0px;
+font-style: italic;
+}
+
+time.timeago {
+font-size:12px;
+margin:0 0 0 5px;
+font-style: italic;
+color: #666666;
+}
+
+span.CommentCrossReport , span.CommentCrossDelete {
+position:relative;
+top:0px;
+left:485px;
+cursor: url(../pics/pointer.png), auto;
+color:#555555;
+}
+
+.delConfirm {
+cursor: url(../pics/pointer.png), auto;
+padding: 10px 0 10px 25px;
+position: relative;
+right:100px;
+}
+'newVideoSubmit'
+div#delConfirmRespText {
+margin:-3px auto;
+font-size: 12px;
+}
+
+span.delYesNo {
+font-size: 12px;
+color:white;
+background:#777777;
+border-radius:5px;
+padding:3px;
+margin:2px;
+cursor: url(../pics/pointer.png), auto;
+position: relative;
+top: 4px;
+}
+
+span.delYesNo:hover {
+background :#3369C0
+}
+
+div.series span {
+position: relative;
+top: -8px;
+}
+
+
+div.series img {
+height:25px;
+width:25px;
+margin-left:6px;
+}
+
+/* Contribute page stuff */
+
+div.message {
+position:relative;
+margin-bottom:20px;
+width:100%;
+padding:5px;
+border:0px solid #bdc7d8;
+border-radius:5px;
+}
+
+form.newVideoSubmit input, form.newVideoSubmit textarea {
+font-size: 16px;
+color:#555555;
+background:transparent;
+border: 1px solid #BDC7D8;
+border-radius:5px;
+padding: 6px;
+margin-top: 2px;
+padding-bottom: 4px;
+width:100%;
+height:20px;
+}
+
+form.newVideoSubmit textarea {
+height:140px;
+}
+
+div.newVideoSubmitButton {
+border-radius: 8px 8px 8px 8px;
+box-shadow: 1px 1px 2px #666666;
+background:url("../pics/plus.png") no-repeat scroll 10px 50% #B8B8B8;
+color: #333333;
+width:300px;
+font-size: 18px;
+height: 50px;
+line-height: 47px;
+margin:0px;
+opacity: 0.8;
+outline: medium none;
+padding: 0 15px 0 50px;
+text-decoration: none;
+text-shadow: 1px 1px 1px #F0F0F0;
+}
+
+div.newVideoSubmitButton:hover { 
+cursor: url(../pics/pointer.png), auto;
+box-shadow: 1px 1px 2px #FFFFFF;
+text-shadow: 1px 1px 1px #FFFFFF;
+opacity: 1;
+}

@@ -15,15 +15,18 @@
 */
 include_once 'functions/class.video.php';
 include_once 'functions/class.user.php';
+include_once 'functions/class.functions.php';
 
 /**
 * Returns JSON string containing all video details.
 * @param integer $cid Content ID of the video.
+* @param integer $uid User ID of the user who requests the video.
 * @return string JSON String 
 */
-function getVideoJson($cid)
+function getVideoJson($cid,$uid)
 {
 	$v=new video($cid);
+	$v->fetchSeries();
 	$json=array(
 			"cid"=>$v->getContentId(),
 			"title"=>$v->getTitle(),
@@ -34,9 +37,14 @@ function getVideoJson($cid)
 			"status"=>$v->getStatus(),
 			"path"=>$v->getCompletePath(),
 			"poster"=>$v->getPoster(),
+			"likestatus"=>user::checkLike($uid,$cid),
+			"sid"=>$v->getSeriesId(),
+			"sname"=>$v->getSeriesName(),
+			"order"=>$v->getOrder(),
 			"uid"=>$v->getUserId(),
 			"uname"=>user::getFullNameS($v->getUserId())
 			);
+	$v->addViewCount();
 	return json_encode($json);
 }
 
@@ -192,6 +200,29 @@ function getUserUploadedVideosJson($uid)
 							'uid'=>$obj->getUserId(),
 							'fullname'=>user::getFullNameS($obj->getUserId()),
 							'userpic'=>user::getUserPictureS($obj->getUserId())));
+	}
+	return json_encode($json);
+}
+
+/**
+* 
+* @param
+* @return
+*/
+function getRelatedSeriesJson($sid)
+{
+	$seriesvideos=content::getCompleteSeries($sid);
+	$count=count($seriesvideos);
+	$json=array();
+	for($i=0;$i<$count;$i++){
+		$obj = new video($seriesvideos[$i]);
+		array_push($json,array( 'cid'=>$obj->getContentId(),
+							'title'=>$obj->getTitle(),
+							'viewcount'=>$obj->getViewCount(),
+							'poster'=>$obj->getPoster(),
+							'timestamp'=>$obj->getTimestamp(),
+							'uid'=>$obj->getUserId(),
+							'uname'=>user::getFullNameS($obj->getUserId())));
 	}
 	return json_encode($json);
 }

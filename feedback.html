@@ -1,0 +1,63 @@
+<span class='fbTitle'>We are listening</span>
+<span id='cross' onclick='hideFeedback()'>X</span>
+<div id='blueLine'></div>
+<ul class='links'>
+	<li type='I' desc='So, Whats the idea?' class='hilite '>Idea</li>
+	<li type='Q' desc='Have you been through the FAQ ?' >Question</li>
+	<li type='X' desc='How can we help you ?' >Problem</li>
+	<li type='P' desc='Thanks for the support :)' >Praise</li>
+</ul>
+<div class='content'>
+	<div class='panel' style='display:block;'>
+		<form class='feedbackForm'>
+			<input required id='fType' type='hidden'  value='I' /><br />
+			<input required id='fName' type='text' placeholder='Username' /><br />
+			<textarea required id='fDesc' placeholder="So, Whats the idea?"></textarea><br />
+			<span id='feedbackFormSubmit' class='grayButton'>Submit</span>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+$('div#feedback ul.links li').click(function() {
+	$(this).parent().children().removeClass('hilite');
+	$(this).addClass('hilite');
+	$('div#feedback div.content .panel').fadeOut("fast").fadeIn("");
+	var numb = $("div#feedback ul.links li").index(this);
+	var type = $("div#feedback ul.links li").eq(numb).attr('type');
+	var desc = $("div#feedback ul.links li").eq(numb).attr('desc');
+	$('input#fType').attr('value',type);
+	$('textarea#fDesc').attr('placeholder',desc);
+});
+
+$('span#feedbackFormSubmit')
+	.click(function() {
+		var fb = $(this).parent();
+		var feedback = {} ;
+		feedback.type	= $('input#fType').attr('value');
+		feedback.fname	= $('input#fName').attr('value');
+		feedback.desc	= $('textarea#fDesc').attr('value');
+		if( feedback.fname !=='' && feedback.desc !== '' ) {
+			feedback.desc = feedback.fname + ' says ' + feedback.desc;
+			delete feedback.fname;
+			$.post("response/submitfeedback.php", feedback, function(data){
+				setTimeout(function(){
+					hideFeedback();
+				},2000);
+				$('ul.links, div#blueLine').remove();
+				if (data)
+					$('div#feedback').html("<div style='font-size:19px; text-align:center; padding:100px 0px;'>" + data.status + "</div>");
+				else 
+					fb.html("<div style='font-size:19px; text-align:center; padding:100px 0px;'>Error submitting feedback </div>");
+			} , "json" );
+		}
+	});
+
+$('div#darkenScreenObject').click(function(){
+	hideFeedback();
+});
+
+</script>
+
+<!-- </div> -->

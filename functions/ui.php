@@ -27,27 +27,35 @@ include_once 'class.user.php';
 function getVideoHtml($cid)
 {
 	$v=new video($cid);
-	echo $v->getTitle();
 	$tagarray=$v->getTags();
 	$c=count($tagarray);
 	$tags="";
 	for($i=0;$i<$c;$i++)
 		$tags.="<li><a href='search.php?tag=".$tagarray[$i]."'>".$tagarray[$i]."</a></li>";
-	echo $tags;
-	$video= "<h2 class='video_title'>".$v->getTitle()."</h2>".
-			"<div class='video-js-box'>
-				<video cid='".$v->getContentId()."' poster='".$v->getPoster()."' class='video-js' controls preload height='325px' width='550px'>
-				<source src='content/ted2.ogv' type='video/ogg; codecs='theora, vorbis'' />
+	
+	$video= "<span class='videoTitle'>".$v->getTitle()."</span>
+	
+	<!-- Begin VideoJS -->
+		<div class='video-js-box'>
+			<video cid='".$v->getContentId()."' poster='".$v->getPoster()."' class='video-js' controls preload height=325 width=550>
+			<source src='".$v->getCompletePath()."' type='video/ogg; codecs=\"theora, vorbis\"' />
 			</video>
-			</div>".
-			"<div class='videoBar'>
-				<img src='pics/vidbar/watch.png' class='VideoBarButton' /><span class='videoBarElement' id='playCount'>Views:".$v->getViewCount()."</span>
-				<img src='pics/vidbar/download.png' title='Download' class='VideoBarButton' style='float:right;' onclick=\"alert('Please right click on the video and save the video while being played');\"/>
-				<img src='pics/vidbar/bug.png' title='Report issue' class='VideoBarButton' style='float:right;' onclick=\"showFeedback()\" />
-			</div>".
-			"<img src='pics/vidbar/tag.png' title='tags' style='margin-left:6px;'/>".
-				"<ul class='tags'>".$tags."</ul>".
-			"<div class='VideoDesc'>".$v->getDesc()."</div>";
+		</div>
+	<!-- End VideoJS -->
+	
+	<!-- video bar -->
+	
+	<div class='videoBar'>
+		<img src='pics/vidbar/watch.png' class='VideoBarButton' /><span class='videoBarElement' id='playCount'>Views:".$v->getViewCount()."</span>
+		<span id='likes' defStatus='1' ></span>
+		<img src='pics/vidbar/download.png' title='Download' class='VideoBarButton' style='float:right;' id='downloadButton' />
+	</div>
+
+	<!-- /video bar -->
+	
+	<img src='pics/vidbar/tag.png' title='tags' style='margin-left:6px;'/>
+	<ul class='tags'>".$tags."</ul>
+	<div class='VideoDesc'>".$v->getDesc()."</div>";
 	$v->addViewCount();
 	return $video;
 }

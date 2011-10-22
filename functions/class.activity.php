@@ -82,8 +82,9 @@ class activity
 		$uid=pg_escape_string($uid);
 		$type=pg_escape_string($type);
 		$desc=pg_escape_string($desc);
-		$sql="Insert into feedback(fb_ip,fb_uid,fb_type,fb_desc) values('$ip','$uid','$type','$desc') returning fb_id";	
-		return pg_fetch_result(dbquery($sql),0,0);
+		$sql="Insert into feedback(fb_ip,fb_uid,fb_type,fb_desc) values('$ip','$uid','$type','$desc') returning fb_id";
+		$row=resource2array(dbquery($sql));
+		return $row[0];
 	}
 	
 	/**
@@ -135,6 +136,7 @@ class activity
 	*/
 	public static function logout()
 	{
+		session_start();
 		session_destroy();
 		$_SESSION=array();
 	}
