@@ -18,7 +18,7 @@
 			echo $feedback; ?>
 	<span style='font-size:24px; color:#3A75AF'> Contribute to paathshaala</span> <span id="helpTrigger" style='font-size:14px'> [help] </span>
 	<div id='helpMessage' class='message' style='border:0px; display:none'>
-		We have a lot of unpublished videos with us which is not yet searchable. Your contribution will make this video public and useful for others.<i>One small step for a student, one giant leap for student kind.</i><br />Please dont mess up !
+		We have a lot of unpublished videos with us which is not yet searchable. Your contribution will make this video public and useful for others.<br/><i>One small step for a student, one giant leap for student kind.</i><br />Please dont mess up !
 	</div>
 	<div class='mainLeft'>
 	<div class='videodiv'></div>
@@ -44,7 +44,11 @@
 <script src='js/comment.js' type='text/javascript'></script>
 <script type='text/javascript'>
 $(document).ready(function() {
-	getVideoHtml();
+	Paathshaala.getVideo();
+	$('span#helpTrigger').click(function(){
+		$('div#helpMessage').slideToggle();
+	});
+
 });
 </script>
 
