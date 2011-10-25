@@ -5,7 +5,6 @@ $header="
 	<meta charset='UTF-8' />
 	<link rel='shortcut icon' href='pics/favicon.png'>
 	<link rel='stylesheet/less' type='text/css' href='css/structure.less'>
-	<link rel='stylesheet/less' type='text/css' href='css/popup.less'>
 	<link rel='stylesheet/less' type='text/css' href='css/storybox.less'>
 	<script src='js/less-1.1.3.min.js' type='text/javascript'></script>";
 

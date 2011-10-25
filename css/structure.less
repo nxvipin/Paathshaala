@@ -475,3 +475,138 @@ padding: 10px;
 position: relative;
 width: 685px;
 }
+
+/* Popup stuff */
+div#feedback, div#editProfile {
+display:none;
+position:fixed;
+top:100px;
+left:35%;
+width : 400px;
+height : 275px;
+z-index:100;
+border-color: #D2D2D2;
+background:#f5f5f5;
+border-right: 1px solid #DDDDDD;
+border-style: none solid solid;
+border-width:1px;
+padding: 10px 10px 10px 10px;
+box-shadow:5px 4px 5px rgba(2, 2, 2, 0.5);
+border-radius:5px;
+}
+
+div#feedback form.feedbackForm {
+border:0px solid #80afdf;
+position:relative;
+top:-20px;
+}
+
+span.fbTitle {
+font-family: 'Pacifico', arial, serif;
+font-size:20px;
+background:transparent;
+color:#6480a5;
+}
+
+span#cross {
+position:absolute;
+top:10px;
+right:10px;
+font-family:Arial;
+.ptr;
+z-index: 10;
+}
+
+div#blueLine {
+height:40px;
+width:100%;
+margin:10px 0px;
+background:transparent;
+border-bottom:1px solid #b5d2f0;
+border-top:1px dotted #d1d1d1;
+}
+
+ul.links li {
+z-index:55;
+position:relative;
+top:-45px;
+display:inline-block;
+background: -moz-linear-gradient(center top , #F0F0EA, #D5D7CE) repeat scroll 0 0 transparent;
+color: #333333;
+text-shadow: 0 1px 0 #FFFFFF;
+border: 1px solid #BBBBBB;
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+display: inline-block;
+outline: medium none;
+text-align: center;
+text-decoration: none;
+.ptr;
+height:20px;
+padding:2px 3px;
+margin:-10px 1px 1px 1px;
+}
+
+.links li:hover {
+background: #fefefe;
+border-radius:4px;
+}
+
+.links li.hilite {
+background: #fefefe;
+border-radius:4px;
+}
+
+.content div.panel {
+padding-top:10px;
+z-index:52;
+position:relative;
+top:-60px;
+display:none;
+width:400px;
+height:100px;
+}
+
+form.feedbackForm input , form.feedbackForm textarea {
+-moz-transition: all 0.3s ease-in-out 0s;
+font-size:14px;
+color: #555555;
+background: #efefef;
+width:390px;
+border: 1px #D2D2D2 solid;
+padding-left:10px;
+border-radius: 5px;
+height:25px;
+padding-left:10px;
+margin-bottom:2px;
+outline: medium none;
+text-shadow: 0 1px 0 #FFFFFF;
+}
+
+form.feedbackForm textarea {
+height:100px;
+}
+
+.grayButton {
+background: -moz-linear-gradient(center top , #F0F0EA, #D5D7CE) repeat scroll 0 0 transparent;
+color: #333333;
+text-shadow: 0 1px 0 #FFFFFF;
+border: 1px solid #BBBBBB;
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+display: inline-block;
+font-size: 12px;
+outline: medium none;
+padding: 3px 10px 4px;
+text-align: center;
+text-decoration: none;
+.ptr;
+position:relative;
+top:10px;
+float:right;
+}
+
+.grayButton:hover {
+background: -moz-linear-gradient(center top ,#D5D7CE,  #F0F0EA) repeat scroll 0 0 transparent;
+color: #555555;
+}
