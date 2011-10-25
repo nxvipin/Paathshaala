@@ -48,6 +48,7 @@ Object.prototype.allTrue = function() {
 }*/
 
 var Paathshaala = {
+	activePage : 1,
 	hashTag : function(elem) {
 			var data = $(elem).html(),
 				reg = /#(\w{1,})/g,
@@ -158,6 +159,54 @@ var Paathshaala = {
 				commbox.height(ht + (14 * lineno) );
 			});
 		},
+	Search : function (q,tag,p) {
+		/*
+			@params:	q : query
+						tag : tag search
+						p : page number. This is internal now, not handles via get variables. Can provide a UI later if needed
+		*/
+			var myobj, link, video, searchDiv = $('#findStuff');
+
+			if ( q === '' || tag === '') { /* Disables empty queries */
+				$('#findStuff').append(Paathshaala.templates.blankQuery);
+				$('div#next, div#ShowNext').remove();
+				return;
+			}
+			link = ( tag === undefined )
+				? link = 'json/search.json.php?q=' + q + '&p=' + p
+				: link = 'json/tagsearch.json.php?tag=' + tag + '&p=' + p
+
+			$("#loading").show();
+			$.getJSON( link, function(myJsonObj) {
+				if (myJsonObj == '' ) { /* Nothing returned from query => last page */
+					if (Paathshaala.activePage === 1)
+						$('#findStuff').append(Paathshaala.templates.noResults);
+					else 
+						$('#findStuff').append(Paathshaala.templates.noMore);
+					$('div#next, div#ShowNext').remove();
+				}
+				for (i in myJsonObj){
+					myobj = myJsonObj[i];
+					video = Paathshaala.templates.searchVid.supplant(myobj);
+					searchDiv.append(video);
+				}
+			}).complete(function(){
+				$("span#searchYes").click(function() {
+					ContId = $(this).parent().attr('cid');
+					$(this).parent().html('Thanks for the feedback').delay(1000).fadeOut(1000);
+					var q = getUrlVars()['q'];/* tag exist */
+					$.post("response/relatedFeed.php", { 'q':q , cId:ContId,response:'yes'});
+				});
+				$("span#searchNo").click(function() {
+					ContId = $(this).parent().attr('cid');
+					$(this).parent().html('Thanks for the feedback').parent().parent().parent().fadeOut("slow");
+					var q = getUrlVars()['q'];
+					$.post("response/relatedFeed.php", { 'q':q , cId:ContId,response:'no'});
+				});
+				$("time.timeago").timeago();
+			});
+			$("#loading").fadeOut('slow');
+		},
 	quirks : function(){ /* Stuff which i cant put anywhere else. Cant pollute the global object, hence this is here */
 			$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
 				Paathshaala.showFeedback();
@@ -183,7 +232,10 @@ Paathshaala.templates = {
 			disliked : "<span id='likesDisliked'><span id='likeButton' data='1' title='like this'><img src='pics/vidbar/plus.png'	class='VideoBarButton' /><span>like this</span></span><span id='dislikeButton' data='-1' title='You dislike this' style='opacity:0.5'><img src='pics/vidbar/minus.png' class='VideoBarButton'/>You dislike this.</span></span>",
 			error : "<span id='likesDisliked' style='margin:0px 5px;'>Something went wrong.</span>",
 			loggedOut : "<span id='likesDisliked' style='margin:0px 5px;'>Login to like content</span>"
-		}
+		},
+		blankQuery : "<span style='margin:25px auto'>Enter your keyword to search. You cant run blank queries </span>",
+		noResults : "<span style='margin:25px auto'>Sorry no results found. Try for something like <a style='color:#1F456B' href='search.php?tag=physics'>physics</a>, <a style='color:#1F456B' href='search.php?tag=computer'>computers</a> or <a style='color:#1F456B' href='search.php?tag=ted'>ted</a>.</span>",
+		noMore :"<span style='margin:25px auto'>No more results found.</span>"
 }
 
 
@@ -200,75 +252,17 @@ $(document).ready(function(){
 	Paathshaala.imageError();
 	Paathshaala.comments();
 	Paathshaala.quirks();
-});
 
-
-/* Search stuff */
-
-var activePage = 0;
-
-/*
-	@params:	q : query
-				tag : tag search
-				p : page number. This is internal now, not handles via get variables. Can provide a UI later if needed
-*/
-
-function update(q,tag,p) {
-
-	var myobj, link, video, searchDiv = $('#findStuff');
-
-	if ( q === '') { /* Disables empty queries */
-		$('#findStuff').append("<span style='margin:25px auto'>Enter your keyword to search. You cant run blank queries </span>");
-		$('div#next').remove();
-		$('div#ShowNext').remove();
-		return;
-	}
-	if (tag === undefined ) { /* tag dont exist */
-		link = 'json/search.json.php?q=' + q + '&p=' + p;
-	} else { /* tag exist */
-		link = 'json/tagsearch.json.php?tag=' + tag + '&p=' + p;
-	}
-	$("#loading").show();
-	$.getJSON( link, function(myJsonObj) {
-		if (myJsonObj == '' ) { /* Nothing returned from query => last page */
-			if (activePage === 1) {
-				$('#findStuff').append("<span style='margin:25px auto'>Sorry no results found. Try for something like <a style='color:#1F456B' href='search.php?tag=physics'>physics</a>, <a style='color:#1F456B' href='search.php?tag=computer'>computers</a> or <a style='color:#1F456B' href='search.php?tag=ted'>ted</a>.</span>");
-			} else {
-				$('#findStuff').append("<span style='margin:25px auto'>No more results found.</span>");
-			}
-			$('div#next').remove();
-			$('div#ShowNext').remove();
-		}
-		for (i in myJsonObj){
-			myobj = myJsonObj[i]; /* loops through all objects in the passed array */
-			//Watched = "<span class='watched'>Watched <span class='sideViews'>"+ myobj.viewcount +"</span>  times.</span><br/>";
-			//Response = "<span class='response' cid='" + myobj.cid + "'>Is this what you where looking for ? <span class='sideYesNo' id='searchYes' > Yes </span> <span class='sideYesNo' id='searchNo'> No </span></span>";
-			video = Paathshaala.templates.searchVid.supplant(myobj);
-			searchDiv.append(video);
-		}
-	}).complete(function(){
-		$("span#searchYes").click(function() {
-			ContId = $(this).parent().attr('cid');
-			$(this).parent().html('Thanks for the feedback').delay(1000).fadeOut(1000);
-			var q = getUrlVars()['q'];/* tag exist */
-			$.post("response/relatedFeed.php", { 'q':q , cId:ContId,response:'yes'});
-		});
-		$("span#searchNo").click(function() {
-			ContId = $(this).parent().attr('cid');
-			$(this).parent().html('Thanks for the feedback').parent().parent().parent().fadeOut("slow");
-			var q = getUrlVars()['q'];
-			$.post("response/relatedFeed.php", { 'q':q , cId:ContId,response:'no'});
-		});
-		$("time.timeago").timeago();
+	$('#next').mouseenter( function() {
+		var q = getUrlVars()['q'];
+		var tag = getUrlVars()['tag'];
+		Paathshaala.Search( q , tag ,Paathshaala.activePage++);
 	});
-	$("#loading").fadeOut('slow');
-}
 
-$('#next').mouseenter( function() {
-	var q = getUrlVars()['q'];
-	var tag = getUrlVars()['tag'];
-	update( q , tag ,++activePage);
 });
+
+
+
 
 /* search finished */
 
