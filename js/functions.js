@@ -240,19 +240,7 @@ $(document).ready(function(){
 	Paathshaala.imageError();
 	Paathshaala.comments();
 	Paathshaala.quirks();
-
-	$('#next').mouseenter( function() {
-		var q = getUrlVars()['q'];
-		var tag = getUrlVars()['tag'];
-		Paathshaala.Search( q , tag ,Paathshaala.activePage++);
-	});
-
 });
-
-
-
-
-/* search finished */
 
 
 function updateStoryBox(type) {
