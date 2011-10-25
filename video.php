@@ -39,7 +39,7 @@
 <script src='js/comment.js' type='text/javascript'></script>
 <script type='text/javascript'>
 $(document).ready(function() {
-	getVideoHtml( <?php echo $_GET['video'] ?> );
+	Paathshaala.getVideo( <?php echo $_GET['video'] ?> );
 	/* Function calls to update the comments */
 	updateComment("/couch/comments/_design/comments/_view/commentbycid?key=\"<?php echo $_GET['video']; ?>\"");
 	getNewComment(function(changes){
