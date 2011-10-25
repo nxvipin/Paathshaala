@@ -34,9 +34,9 @@
 <script src='js/search.js' type='text/javascript' ></script>
 <script type='text/javascript'>
 $(document).ready(function() {
-	var q = getUrlVars()['q'];
-	var tag = getUrlVars()['tag'];
-	update( q , tag ,++activePage);
+	var q = getUrlVars()['q'],
+		tag = getUrlVars()['tag'];
+	Paathshaala.Search( q , tag ,Paathshaala.activePage++);
 });
 </script>
 </body>
