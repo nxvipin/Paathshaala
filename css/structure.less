@@ -26,14 +26,18 @@ font-family: 'Droid Sans';
 font-family: 'Pacifico';
 }
 
+/* Templates and color schemes */
+
+@blue : #3A75AF;
+
 /* Change selected text color */
 ::-moz-selection {
 color:white;
-background:#3A75AF ;
+background:@blue ;
 }
 ::selection {
 color:white;
-background:#3A75AF ;
+background:@blue ;
 }
 
 
@@ -430,7 +434,7 @@ margin:0px;
 /* General styling */
 
 .q {
-color:#3a75af;
+color:@blue;
 font-size: 16px;
 }
 
