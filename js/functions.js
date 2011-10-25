@@ -161,12 +161,12 @@ var Paathshaala = {
 		},
 	Search : function (q,tag,p) {
 		/*
-			@params:	q : query
-						tag : tag search
-						p : page number. This is internal now, not handles via get variables. Can provide a UI later if needed
+			@params:
+				q : query
+				tag : tag search
+				p : page number.
 		*/
 			var myobj, link, video, searchDiv = $('#findStuff');
-
 			if ( q === '' || tag === '') { /* Disables empty queries */
 				$('#findStuff').append(Paathshaala.templates.blankQuery);
 				$('div#next, div#ShowNext').remove();
@@ -191,18 +191,6 @@ var Paathshaala = {
 					searchDiv.append(video);
 				}
 			}).complete(function(){
-				$("span#searchYes").click(function() {
-					ContId = $(this).parent().attr('cid');
-					$(this).parent().html('Thanks for the feedback').delay(1000).fadeOut(1000);
-					var q = getUrlVars()['q'];/* tag exist */
-					$.post("response/relatedFeed.php", { 'q':q , cId:ContId,response:'yes'});
-				});
-				$("span#searchNo").click(function() {
-					ContId = $(this).parent().attr('cid');
-					$(this).parent().html('Thanks for the feedback').parent().parent().parent().fadeOut("slow");
-					var q = getUrlVars()['q'];
-					$.post("response/relatedFeed.php", { 'q':q , cId:ContId,response:'no'});
-				});
 				$("time.timeago").timeago();
 			});
 			$("#loading").fadeOut('slow');
