@@ -2,7 +2,7 @@
 	session_start();
 $header="
 	<meta charset='UTF-8' />
-	<link rel='shortcut icon' href='pics/favicon.png'>
+	<link rel='shortcut icon' href='favicon.ico'>
 	<link rel='stylesheet' href='css/structure.css'/>
 	<link rel='stylesheet' href='css/popup.css'/>
 	<link rel='stylesheet' href='css/storybox.css'/>
