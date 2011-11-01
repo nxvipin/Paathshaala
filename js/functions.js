@@ -7,8 +7,7 @@
 
 /*
 	Known bugs :
-		Error image not working
-		Rewrite validates
+		Rewrite validate
 		Rewrite storyBox()
 		Template modules
 */
@@ -129,10 +128,8 @@ var Paathshaala = {
 			});
 		},
 	imageError : function() {
-			/* Buggy. not working in profile page and top logged image */
-			$('img').error(function(){
-				$(this).attr('src','pics/default.png');
-			});
+			$('img#loggedImage').error().attr('src','pics/default.png');
+			$('div#snapShot img').error().attr('src','pics/profile.png');
 		},
 	comments : function() {
 			/* Submit comment using an enter key press */
@@ -394,12 +391,10 @@ function updateStoryBox(type) {
 			$('div#container').append("<div>" + title + groupBox + more + groupBox2 + less + "</div>");
 		}
 	}).complete(function(){
-		$('img.metaImage').error(function(){
-			$(this).attr('src','pics/default.png');
-		});
-		$('img.thumbnail').error(function(){
-			$(this).attr('src','pics/error.png');
-		});
+
+		$('img.metaImage').error().attr('src','pics/default.png');
+		$('img.thumbnail').error().attr('src','pics/error.png');
+
 		$('span.more').click(function(){
 			$(this).hide();
 			$(this).parent().find('.Hidden').slideDown('fast');
