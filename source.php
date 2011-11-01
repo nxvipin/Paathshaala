@@ -73,7 +73,7 @@ $topBar = "<div id='top'>
 </ul>
 
 <div class='loggedUser'>
-<img src='".$_SESSION['userpic']."' class='loggedImage'/>
+<img src='".$_SESSION['userpic']."' class='loggedImage' id='loggedImage'/>
 <span class='loggedName' >".$_SESSION['fullname']."</span>
 <img src='pics/down.png' id='logChangeButton' style='position:relative; top:-9px; height:10px;'>
 </div>
