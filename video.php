@@ -38,6 +38,11 @@
 <script src='js/video.js' type='text/javascript'></script>
 <script src='js/comment.js' type='text/javascript'></script>
 <script type='text/javascript'>
+
+function getActiveUser() {
+	<?php echo "return \"" .$_SESSION['uid']. "\"" ; ?> ;
+}
+
 $(document).ready(function() {
 	Paathshaala.getVideo( <?php echo $_GET['video'] ?> );
 	/* Function calls to update the comments */
@@ -47,6 +52,7 @@ $(document).ready(function() {
 		updateComment("/couch/comments/_design/comments/_view/commentbyid?key=\""+changes.results[0].id+"\"");
 	});
 });
+
 </script>
 </body>
 </html>
