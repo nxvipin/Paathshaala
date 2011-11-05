@@ -1,18 +1,13 @@
 /*
-	General JS functions for Paathshaala
-*/
+	Main script for Paathshaala
+	Author : Jaseem Abid <jaseemabid@gmail.com>
 
-/* Read a page's GET URL variables and return them as an associative array. */
-/* Example implementation : var cid = getUrlVars()['id']; */
-
-/*
 	Known bugs :
-		Rewrite validate
-		Rewrite storyBox()
+		No validate video
 */
 
-
-
+/*	Read a page's GET URL variables and return them as an associative array.
+	Example implementation : var cid = getUrlVars()['id']; */
 function getUrlVars() {
 	var i =0, vars = [], hash, hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
 	for(i = 0; i < hashes.length; i++) {
