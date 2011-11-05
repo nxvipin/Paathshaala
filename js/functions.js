@@ -330,11 +330,16 @@ var Paathshaala = {
 				});
 
 				$('span.more').click(function(){
-					$(this).hide().parent().find('.Hidden').slideDown('fast').parent().find('.less').fadeIn();
+					$(this).hide();
+					$(this).parent().find('.Hidden').slideDown('fast');
+					$(this).parent().find('.less').fadeIn();
 				});
 				$('span.less').click(function(){
-					$(this).parent().find('.Hidden').slideUp('fast').parent().find('.more').fadeIn().hide();
+					$(this).parent().find('.Hidden').slideUp('fast');
+					$(this).parent().find('.more').fadeIn();
+					$(this).hide();
 				});
+
 			});
 		},
 validateJoin : function () {
