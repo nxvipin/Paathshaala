@@ -308,19 +308,23 @@ var Paathshaala = {
 			}
 
 			$.getJSON( link , function(json) {
-				var i,
-					groupBox  = $("<div>").addClass('groupBox'),
-					groupBox2 = $("<div>").addClass('Hidden').addClass('groupBox');
-				if (json.length === 4 ) {
-					for (i =0; i <4 ; i +=1)
-						groupBox = groupBox.append(videoBox(json[i]));
+				if (json.length !== 0 ) {
+					var i,
+						groupBox  = $("<div>").addClass('groupBox'),
+						groupBox2 = $("<div>").addClass('Hidden').addClass('groupBox');
+					if (json.length === 4 ) {
+						for (i =0; i <4 ; i +=1)
+							groupBox = groupBox.append(videoBox(json[i]));
+						$('div#container').append(title).append(groupBox);
+					} else { /* All multi boxes handled in same way if more than 4 */
+						for (i =0; i <4 ; i +=1)
+							groupBox = groupBox.append(videoBox(json[i]));
+						for (i =4; i < json.length ; i +=1)
+							groupBox2 = groupBox2.append(videoBox(json[i]));
+						$('div#container').append($("<div>").append(title , groupBox , more , groupBox2 , less));
+					}
+				} else {
 					$('div#container').append(title).append(groupBox);
-				} else { /* All multi boxes handled in same way if more than 4 */
-					for (i =0; i <4 ; i +=1)
-						groupBox = groupBox.append(videoBox(json[i]));
-					for (i =4; i < json.length ; i +=1)
-						groupBox2 = groupBox2.append(videoBox(json[i]));
-					$('div#container').append($("<div>").append(title , groupBox , more , groupBox2 , less));
 				}
 			}).complete(function(){
 
