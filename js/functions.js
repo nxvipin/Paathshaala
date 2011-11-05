@@ -362,7 +362,7 @@ validateJoin : function () {
 					username : {
 						valid : 'Username available' ,
 						invalid: {
-							regEx : 'Too short',
+							regEx : 'Username too short',
 							ajax : 'This username is not available'
 						}
 					},
@@ -430,6 +430,7 @@ validateJoin : function () {
 				switch (id) {
 					case 'fname' :
 						ok(id);
+						joinMessage.text(msg[id].valid + data);
 						break;
 					case 'pass1' :
 						if(getRegEx(regEx, id).test(data))
