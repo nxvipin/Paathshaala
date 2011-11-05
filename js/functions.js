@@ -270,6 +270,75 @@ var Paathshaala = {
 				}
 			});
 	},
+	updateStoryBox : function (type) {
+			/*
+				type : Featured/ Top Rated / Popular...
+				All box layout updated with same code.
+				New ui needed for upload video trigger
+			*/
+			var videoBox = function (myobj) {
+							if( myobj.fullname.length > 18 )
+								myobj.fullname = myobj.fullname.slice(0 ,15 ) + '...';
+							return Paathshaala.templates.box.supplant(myobj);
+						},
+				link,
+				title = $("<span>").addClass('groupTitle'), 
+				more = $("<span>").addClass('more').html("Show more"),
+				less = $("<span>").addClass('less').html("Show less");
+			title = title.html(type);
+			switch (type) {
+				case 'Featured' :
+					link = 'json/featured.json.php';
+					break;
+				case 'Top Rated' :
+					link = 'json/toprated.json.php';
+					break;
+				case 'Popular':
+					link = 'json/popular.json.php';
+					break;
+				case 'Liked videos':
+					link = 'json/uservideolikes.json.php';
+					break;
+				case 'Disliked videos':
+					link = 'json/uservideodislikes.json.php';
+					break;
+				case 'My Uploads':
+					link = 'json/uservideouploads.json.php';
+					break;
+			}
+
+			$.getJSON( link , function(json) {
+				var i,
+					groupBox  = $("<div>").addClass('groupBox'),
+					groupBox2 = $("<div>").addClass('Hidden').addClass('groupBox');
+				if (json.length === 4 ) {
+					for (i =0; i <4 ; i +=1)
+						groupBox = groupBox.append(videoBox(json[i]));
+					$('div#container').append(title).append(groupBox);
+				} else { /* All multi boxes handled in same way if more than 4 */
+					for (i =0; i <4 ; i +=1)
+						groupBox = groupBox.append(videoBox(json[i]));
+					for (i =4; i < json.length ; i +=1)
+						groupBox2 = groupBox2.append(videoBox(json[i]));
+					$('div#container').append($("<div>").append(title , groupBox , more , groupBox2 , less));
+				}
+			}).complete(function(){
+
+				$('img.metaImage').error(function(){
+					$(this).attr('src','pics/default.png');
+				});
+				$('img.thumbnail').error(function(){
+					$(this).attr('src','pics/error.png');
+				});
+
+				$('span.more').click(function(){
+					$(this).hide().parent().find('.Hidden').slideDown('fast').parent().find('.less').fadeIn();
+				});
+				$('span.less').click(function(){
+					$(this).parent().find('.Hidden').slideUp('fast').parent().find('.more').fadeIn().hide();
+				});
+			});
+		},
 	quirks : function(){ /* Stuff which i cant put anywhere else. Cant pollute the global object, hence this is here */
 			$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
 				Paathshaala.showFeedback();
@@ -316,74 +385,3 @@ $(document).ready(function(){
 	Paathshaala.comments();
 	Paathshaala.quirks();
 });
-
-
-function updateStoryBox(type) {
-	/*
-		type : Featured/ Top Rated / Popular...
-		All box layout updated with same code.
-		New ui needed for upload video trigger
-	*/
-	var videoBox = function (myobj) {
-					if( myobj.fullname.length > 18 )
-						myobj.fullname = myobj.fullname.slice(0 ,15 ) + '...';
-					return Paathshaala.templates.box.supplant(myobj);
-				},
-		link,
-		title = $("<span>").addClass('groupTitle'), 
-		more = $("<span>").addClass('more').html("Show more"),
-		less = $("<span>").addClass('less').html("Show less");
-	title = title.html(type);
-	switch (type) {
-		case 'Featured' :
-			link = 'json/featured.json.php';
-			break;
-		case 'Top Rated' :
-			link = 'json/toprated.json.php';
-			break;
-		case 'Popular':
-			link = 'json/popular.json.php';
-			break;
-		case 'Liked videos':
-			link = 'json/uservideolikes.json.php';
-			break;
-		case 'Disliked videos':
-			link = 'json/uservideodislikes.json.php';
-			break;
-		case 'My Uploads':
-			link = 'json/uservideouploads.json.php';
-			break;
-	}
-
-	$.getJSON( link , function(json) {
-		var i,
-			groupBox  = $("<div>").addClass('groupBox'),
-			groupBox2 = $("<div>").addClass('Hidden').addClass('groupBox');
-		if (json.length === 4 ) {
-			for (i =0; i <4 ; i +=1)
-				groupBox = groupBox.append(videoBox(json[i]));
-			$('div#container').append(title).append(groupBox);
-		} else { /* All multi boxes handled in same way if more than 4 */
-			for (i =0; i <4 ; i +=1)
-				groupBox = groupBox.append(videoBox(json[i]));
-			for (i =4; i < json.length ; i +=1)
-				groupBox2 = groupBox2.append(videoBox(json[i]));
-			$('div#container').append($("<div>").append(title , groupBox , more , groupBox2 , less));
-		}
-	}).complete(function(){
-
-		$('img.metaImage').error(function(){
-			$(this).attr('src','pics/default.png');
-		});
-		$('img.thumbnail').error(function(){
-			$(this).attr('src','pics/error.png');
-		});
-
-		$('span.more').click(function(){
-			$(this).hide().parent().find('.Hidden').slideDown('fast').parent().find('.less').fadeIn();
-		});
-		$('span.less').click(function(){
-			$(this).parent().find('.Hidden').slideUp('fast').parent().find('.more').fadeIn().hide();
-		});
-	});
-}
