@@ -342,7 +342,7 @@ var Paathshaala = {
 
 			});
 		},
-validateJoin : function () {
+	validateJoin : function () {
 			"use strict";
 			var input, data, id, i,
 				joinMessage = $('div.joinMessage'),
