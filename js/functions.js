@@ -6,11 +6,12 @@
 		No validate video
 */
 
-/*	Read a page's GET URL variables and return them as an associative array.
+/*	Read a page's GET URL variables and return them as an associative array
 	Example implementation : var cid = getUrlVars()['id']; */
 function getUrlVars() {
+	"use strict";
 	var i =0, vars = [], hash, hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-	for(i = 0; i < hashes.length; i++) {
+	for(i = 0; i < hashes.length; i+= 1) {
 		hash = hashes[i].split('=');
 		vars.push(hash[0]);
 		vars[hash[0]] = hash[1];
@@ -21,6 +22,7 @@ function getUrlVars() {
 /* Supplant */
 if(typeof String.prototype.supplant !== 'function') {
 	String.prototype.supplant = function(o) {
+		"use strict";
 		return this.replace(/{([^{}]*)}/g,
 			function (a,b) {
 				var r = o[b];
@@ -46,8 +48,9 @@ var Paathshaala = {
 			var data = $(elem).html(),
 				reg = /#(\w{1,})/g,
 				res = data.match(reg),
-				len = res.length;
-			for( var i =0; i < len ; i = i+1) {
+				len = res.length,
+				i;
+			for(i =0; i < len ; i += 1) {
 				data = data.replace( res[i],'<a href=search.php?tag=' + res[i] + '>' + res[i] + '</a>' );
 			}
 			$(elem).html(data);
@@ -70,11 +73,9 @@ var Paathshaala = {
 			grayOut(false);
 		},
 	searchBox : function() {
-			$(".searchBox").
-				focus(function () {
+			$(".searchBox").focus(function () {
 					$(this).animate({width: '380px'} , 250 , '' , function () {})
-				}).
-				focusout(function () {
+				}).focusout(function () {
 					$(this).animate({width: '270px'} , 150 , '' , function () {});
 				});
 		},
@@ -140,8 +141,8 @@ var Paathshaala = {
 			/*	Need the jkey plugin
 				New line in comment using a down key press */
 			$('#comment').jkey('down',function(){
-				var comBox =$('#comment');
-				data = comBox.attr('value') + '\n';
+				var comBox =$('#comment'),
+					data = comBox.attr('value') + '\n';
 				comBox.attr('value' , data);
 			});
 			/* Handle height of comment box */
@@ -158,7 +159,7 @@ var Paathshaala = {
 			@params:
 				q : query
 				tag : tag search
-				p : page number.
+				p : page number
 		*/
 			var myobj, link, video, searchDiv = $('#findStuff');
 			if ( q === '' || tag === '') { /* Disables empty queries */
@@ -168,14 +169,13 @@ var Paathshaala = {
 			}
 			link = ( tag === undefined )
 				? link = 'json/search.json.php?q=' + q + '&p=' + p
-				: link = 'json/tagsearch.json.php?tag=' + tag + '&p=' + p
+				: link = 'json/tagsearch.json.php?tag=' + tag + '&p=' + p;
 
-			$("#loading").show();
 			$.getJSON( link, function(json) {
 				if (json == '' ) { /* Nothing returned from query => last page */
 					if (Paathshaala.activePage === 1)
 						$('#findStuff').append(Paathshaala.templates.noResults);
-					else 
+					else
 						$('#findStuff').append(Paathshaala.templates.noMore);
 					$('div#next, div#ShowNext').remove();
 				}
@@ -187,7 +187,6 @@ var Paathshaala = {
 			}).complete(function(){
 				$("time.timeago").timeago();
 			});
-			$("#loading").fadeOut('slow');
 		},
 		getVideo: function(cid) {
 			/* @params:	cid:contentid of the video to be played */
@@ -267,8 +266,8 @@ var Paathshaala = {
 	},
 	updateStoryBox : function (type) {
 			/*
-				type : Featured/ Top Rated / Popular...
-				All box layout updated with same code.
+				type : Featured/ Top Rated / Popular
+				All box layout updated with same code
 				New ui needed for upload video trigger
 			*/
 			var videoBox = function (myobj) {
@@ -277,7 +276,7 @@ var Paathshaala = {
 							return Paathshaala.templates.box.supplant(myobj);
 						},
 				link,
-				title = $("<span>").addClass('groupTitle'), 
+				title = $("<span>").addClass('groupTitle'),
 				more = $("<span>").addClass('more').html("Show more"),
 				less = $("<span>").addClass('less').html("Show less");
 			title = title.html(type);
@@ -399,22 +398,26 @@ validateJoin : function () {
 				};
 
 			function getRegEx(Obj,id) {
+				"use strict";
 				return Obj[id];
 			}
 
 			function ok(id) {
+				"use strict";
 				joinMessage.text(msg[id].valid);
 				verified[id] = data;
 				$('input#' + id).next('img').attr('src','pics/verified.png');
 			}
 
 			function bug(id,type) {
+				"use strict";
 				joinMessage.text(msg[id].invalid[type]);
 				verified[id] = false;
 				$('input#' + id).next('img').attr('src','pics/cross.png');
 			}
 
 			function val(element) {
+				"use strict";
 				input = $(element);
 				data = input.attr('value');
 				id = input.attr('id');
@@ -443,7 +446,7 @@ validateJoin : function () {
 							$.getJSON('response/checkreg.php?' + id + '=' + data, function(response) {
 								if(response.status === 1 ) {
 									bug(id,'ajax');
-								} 
+								}
 							});
 						} else
 							bug(id,'regEx');
@@ -480,12 +483,13 @@ validateJoin : function () {
 			});
 		},
 	quirks : function(){ /* Stuff which i cant put anywhere else. Cant pollute the global object, hence this is here */
-			$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
-				Paathshaala.showFeedback();
-			});
-			$('span.news').click(function(){
-				$('div#indexMesssage').fadeOut("fast");
-			});
+		"use strict";
+		$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
+			Paathshaala.showFeedback();
+		});
+		$('span.news').click(function(){
+			$('div#indexMesssage').fadeOut("fast");
+		});
 		}
 };
 
@@ -510,13 +514,11 @@ Paathshaala.templates = {
 		noMore :"<span style='margin:25px auto'>No more results found.</span>"
 }
 
-
-
-/*	Generic actions 
+/*	Generic actions
 	Looks like modules. Need to learn more about this
-	At one point i may be able to call only whats needed and improve page performance.
+	At one point i may be able to call only whats needed and improve page performance
 	Eg: call Paathshaala.comments(); only in the video page after DOM load
-*/ 
+*/
 
 $(document).ready(function(){
 	Paathshaala.searchBox();
@@ -526,9 +528,5 @@ $(document).ready(function(){
 	Paathshaala.quirks();
 	Paathshaala.validateJoin();
 });
-
-
-
-
 
 
