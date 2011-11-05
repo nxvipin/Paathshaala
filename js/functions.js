@@ -80,20 +80,20 @@ var Paathshaala = {
 		},
 	dashBoard : function() {
 			var dashShown = 0,loginShown = 0,joinShown = 0;
-			$("div.loggedUser").
-				click(function(){
-					if (! dashShown) {
-						$('.dashBoard').slideToggle('fast');
-						dashShown = 1;
-						$("#logChangeButton").attr('src', 'pics/up.png');
-					} else {
-						$('.dashBoard').slideToggle('fast');
-						dashShown = 0;
-						$("#logChangeButton").attr('src', 'pics/down.png');
-					}
-				});
-		$("li#showlogin").
-			click(function(){
+
+			$("div.loggedUser").click(function(){
+				if (! dashShown) {
+					$('.dashBoard').slideToggle('fast');
+					dashShown = 1;
+					$("#logChangeButton").attr('src', 'pics/up.png');
+				} else {
+					$('.dashBoard').slideToggle('fast');
+					dashShown = 0;
+					$("#logChangeButton").attr('src', 'pics/down.png');
+				}
+			});
+
+			$("li#showlogin").click(function(){
 				if (loginShown === 0 ) {
 					$('form.login').slideToggle('fast');
 					$('form.join').slideUp('fast');
@@ -106,8 +106,8 @@ var Paathshaala = {
 					$("#logChangeButton").attr('src', 'pics/down.png');
 				}
 			});
-		$("li#showJoin").
-			click(function() {
+
+			$("li#showJoin").click(function() {
 				if (! joinShown) {
 					$('.join').slideToggle('fast');
 					$('.login').slideUp('fast');
