@@ -1,21 +1,25 @@
 <?php
 	session_start();
+
 $header="
 	<meta charset='UTF-8' />
-	<link rel='shortcut icon' href='favicon.ico'>
-	<link rel='stylesheet' href='css/structure.css'/>
-	<link rel='stylesheet' href='css/popup.css'/>
-	<link rel='stylesheet' href='css/storybox.css'/>
-	<script src='js/jquery-1.6.2.min.js' type='text/javascript'></script>
-	<script src='js/jquery.timeago.js' type='text/javascript'></script>
-	<script src='js/jquery.jkey.js' type='text/javascript' ></script>
-	<script src='js/functions.js' type='text/javascript' ></script>
-	<script src='js/validate.js' type='text/javascript' ></script>
-	<script src='js/templates.js' type='text/javascript'></script>
-	<script src='js/jsonparse.js' type='text/javascript'></script>";
+	<link rel='shortcut icon' href='pics/favicon.png'>
+	<link rel='stylesheet/less' type='text/css' href='css/structure.less'>
+	<link rel='stylesheet/less' type='text/css' href='css/storybox.less'>
+	<script src='js/less-1.1.3.min.js' type='text/javascript'></script>";
+
+$scripts="
+	<script src='js/jquery.js' type='text/javascript'></script>
+	<script src='js/functions.js' type='text/javascript' ></script>";
+
+$feedback = "<img src='pics/feedback.png' alt='feedback button' title='feedback button' class='feedbackDock' />
+<div id='feedback'></div>";
+
+$piwik = "<script type=\"text/javascript\">var pkBaseURL =\"http://192.168.5.27/piwik/\"; document.write(unescape(\"%3Cscript src=\'\" + pkBaseURL + \"piwik.js\' type=\'text/javascript\'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">try {var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 1);piwikTracker.trackPageView();piwikTracker.enableLinkTracking();} catch( err ) {} </script>";
+
 
 	if(!isset($_SESSION['uid'])){
-$topNotLoggedIn = "<div id='top'>
+$topBar = "<div id='top'>
 	<a href='index.php' id='logo' title='Paathshaala'> <h1></h1> </a>
 	<ul class='topbarLeft'>
 		<li>
@@ -44,19 +48,19 @@ $topNotLoggedIn = "<div id='top'>
 
 <form class='join' action='response/join.php' method='get'>
 		<div class='joinMessage'>Enter your credentials</div>
-		<img src='pics/user.png'> <input required type='text' id='fname' name='fname' placeholder='Full Name' /> <img src='pics/null.png'><br />
-		<img src='pics/users.png'> <input required type='text' id='username' name='uname' placeholder='Username' /> <img src='pics/null.png'> <br />
-		<img src='pics/mail.png'> <input required type='email' id='email' name='email' placeholder='Email'/> <img src='pics/null.png'><br />
-		<img src='pics/roll.png'> <input required type='text' id='roll' name='roll' placeholder='Roll Number' /> <img src='pics/null.png'> <br />
-		<img src='pics/key.png'> <input required type='password' id='pass1' name='pass1' placeholder='Password' /> <img src='pics/null.png'> <br />
-		<img src='pics/key.png'> <input required type='password' id='pass2' name='pass2' placeholder='Password again'/> <img src='pics/null.png'> <br />
+		<img src='pics/user.png'> <input required type='text' id='fname' placeholder='Full Name' /> <img src='pics/null.png'><br />
+		<img src='pics/users.png'> <input required type='text' id='username' placeholder='Username' /> <img src='pics/null.png'> <br />
+		<img src='pics/mail.png'> <input required type='email' id='email' placeholder='Email'/> <img src='pics/null.png'><br />
+		<img src='pics/roll.png'> <input required type='text' id='roll' placeholder='Roll Number' /> <img src='pics/null.png'> <br />
+		<img src='pics/key.png'> <input required type='password' id='pass1' placeholder='Password' /> <img src='pics/null.png'> <br />
+		<img src='pics/key.png'> <input required type='password' id='pass2' placeholder='Password again'/> <img src='pics/null.png'> <br />
 		<button id='joinButton' type='button'>Join</button>
 </form>
 </div> <!-- /top -->";
 	}
 	else{
 
-$topNotLoggedIn = "<div id='top'>
+$topBar = "<div id='top'>
 <a href='index.php' id='logo' title='Paathshaala'> <h1></h1> </a>
 <ul class='topbarLeft'>
 <li>
@@ -70,7 +74,7 @@ $topNotLoggedIn = "<div id='top'>
 </ul>
 
 <div class='loggedUser'>
-<img src='".$_SESSION['userpic']."' class='loggedImage'/>
+<img src='".$_SESSION['userpic']."' class='loggedImage' id='loggedImage'/>
 <span class='loggedName' >".$_SESSION['fullname']."</span>
 <img src='pics/down.png' id='logChangeButton' style='position:relative; top:-9px; height:10px;'>
 </div>
@@ -81,6 +85,7 @@ $topNotLoggedIn = "<div id='top'>
 </div>
 </div> <!-- /top -->";
 }
+
 $bottomBar = "<div id='bottom'>
 	<a href='http://www.teamunwired.org/' id='logo' title='teamunwired'> <h1></h1> </a>
 	<ul class='bottomLinks'>
@@ -102,7 +107,9 @@ $bottomBar = "<div id='bottom'>
 			<a href='http://www.facebook.com/paathshaala.tuw'><img src='pics/facebook.png'> </a>&nbsp;&nbsp;
 			<a href='http://twitter.com/jaseemabid/'><img src='pics/twitter.png'> </a></li>
 		</ul>
-</div> <!-- /bottom -->";
+	</div> <!-- /bottom -->
+	<div id='bottombar'></div>";
+
 if(isset($_SESSION['uid']))
 {
 $commentSubmit = "<div class='commentBox'style='height: 70px;'>
@@ -121,10 +128,7 @@ else
 	$commentSubmit="Please log in to comment.";
 }
 
-$feedback = "<img src='pics/feedback.png' alt='feedback button' title='feedback button' class='feedbackDock' />
-<div id='feedback'></div>";
 
-$piwik = "<script type=\"text/javascript\">var pkBaseURL =\"http://192.168.5.27/piwik/\"; document.write(unescape(\"%3Cscript src=\'\" + pkBaseURL + \"piwik.js\' type=\'text/javascript\'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">try {var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 1);piwikTracker.trackPageView();piwikTracker.enableLinkTracking();} catch( err ) {} </script>";
 
 ?>
 

@@ -13,3 +13,9 @@
 * You can clone the code at your forked repo or `git://github.com/nitcalicut/Paathshaala.git`
 * If you have any queries, please report it here. New developers are most welcome. Please feel free to contact [jaseemabid] (/jaseemabid) or [swvist] (/swvist) for queries.
 
+### Development branches :
+	master	:	The current stable version deployed in servers
+	dev		:	The next big thing that is going to be part of master.
+				Rewriting major JavaScript functions here.
+	less	:	Ported the project to less from css.
+				Major rewrite for performance gains and code maintainability.
