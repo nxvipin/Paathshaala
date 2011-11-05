@@ -339,6 +339,147 @@ var Paathshaala = {
 				});
 			});
 		},
+validateJoin : function () {
+			"use strict";
+			var input, data, id, i,
+				joinMessage = $('div.joinMessage'),
+				verified = {
+					fname :		false,
+					username :	false,
+					email :		false,
+					roll :		false,
+					pass1 :		false,
+					pass2 :		false
+				},
+				msg = {
+					fname : {
+						valid : 'Hello ' /* full name */,
+						invalid: 'Enter a valid full name'
+					},
+					username : {
+						valid : 'Username available' ,
+						invalid: {
+							regEx : 'Too short',
+							ajax : 'This username is not available'
+						}
+					},
+					email : {
+						valid : 'Thanks, we wont spam you !' ,
+						invalid: {
+							regEx : 'Enter a valid email',
+							ajax : 'This email is not available'
+						}
+					},
+					roll : {
+						valid : 'Seems like a valid NITC roll' ,
+						invalid: {
+							regEx : 'Enter a valid NITC roll',
+							ajax : 'This NITC roll is not available'
+						}
+					},
+					pass1 : {
+						valid : 'Secure password' ,
+						invalid: {
+							regEx : 'Enter a secure password'
+						}
+					},
+					pass2 : {
+						valid : 'Password matches',
+						invalid: {
+							regEx : 'Enter the same password'
+						}
+					}
+				},
+				regEx = {
+					fname :		/[\w\s]{5,}/ ,
+					username :	/.{3,}/ ,
+					email :		/^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/ ,
+					roll :		/^[bmpBMP]+[01]\d[01]\d{3}[a-zA-Z][a-zA-z]/ ,
+					pass1 :		/.{6}/,
+					pass2 :		/.{6}/
+				};
+
+			function getRegEx(Obj,id) {
+				return Obj[id];
+			}
+
+			function ok(id) {
+				joinMessage.text(msg[id].valid);
+				verified[id] = data;
+				$('input#' + id).next('img').attr('src','pics/verified.png');
+			}
+
+			function bug(id,type) {
+				joinMessage.text(msg[id].invalid[type]);
+				verified[id] = false;
+				$('input#' + id).next('img').attr('src','pics/cross.png');
+			}
+
+			function val(element) {
+				input = $(element);
+				data = input.attr('value');
+				id = input.attr('id');
+
+				switch (id) {
+					case 'fname' :
+						ok(id);
+						break;
+					case 'pass1' :
+						if(getRegEx(regEx, id).test(data))
+							ok(id);
+						else
+							bug(id,'regEx');
+						break;
+					case 'pass2' :
+						if(data === verified['pass1'] && verified['pass1'] != false)
+							ok(id);
+						else
+							bug(id,'regEx');
+						break;
+					case 'username' :
+					case 'email' :
+					case 'roll' :
+						if(getRegEx(regEx, id).test(data)) {
+							ok(id);
+							$.getJSON('response/checkreg.php?' + id + '=' + data, function(response) {
+								if(response.status === 1 ) {
+									bug(id,'ajax');
+								} 
+							});
+						} else
+							bug(id,'regEx');
+						break;
+					default :
+						joinMessage.text("Unknown feild");
+				}
+			}
+
+			$("form.join input").keyup(function(){
+					$(this).next('img').attr('src','pics/tinyload.gif');
+					val(this);
+				}).focusout(function(){
+					$(this).next('img').attr('src','pics/tinyload.gif');
+					val(this);
+				});
+
+			$('button#joinButton').click(function(){
+				for (i in verified ) {
+					if (verified[i] === false )
+						return;
+				}
+
+				$.getJSON( 'response/join.php' , verified , function(response) {
+					if(response.status) {
+						$('form.join').html("Join Succsessful :)<br/>Now please login with the new username and password").height(70);
+						setTimeout(function(){
+							$('li#showlogin').trigger('click');
+						},1000);
+					} else {
+						$('form.join').html("Somewhere something went wrong");
+					}
+				});
+			});
+		},
 	quirks : function(){ /* Stuff which i cant put anywhere else. Cant pollute the global object, hence this is here */
 			$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
 				Paathshaala.showFeedback();
@@ -384,150 +525,11 @@ $(document).ready(function(){
 	Paathshaala.imageError();
 	Paathshaala.comments();
 	Paathshaala.quirks();
+	Paathshaala.validateJoin();
 });
 
-function validateJoin() {
-	"use strict";
-	var input, data, id, i,
-		joinMessage = $('div.joinMessage'),
-		verified = {
-			fname :		false,
-			username :	false,
-			email :		false,
-			roll :		false,
-			pass1 :		false,
-			pass2 :		false
-		},
-		msg = {
-			fname : {
-				valid : 'Hello ' /* full name */,
-				invalid: 'Enter a valid full name'
-			},
-			username : {
-				valid : 'Username available' ,
-				invalid: {
-					regEx : 'Too short',
-					ajax : 'This username is not available'
-				}
-			},
-			email : {
-				valid : 'Thanks, we wont spam you !' ,
-				invalid: {
-					regEx : 'Enter a valid email',
-					ajax : 'This email is not available'
-				}
-			},
-			roll : {
-				valid : 'Seems like a valid NITC roll' ,
-				invalid: {
-					regEx : 'Enter a valid NITC roll',
-					ajax : 'This NITC roll is not available'
-				}
-			},
-			pass1 : {
-				valid : 'Secure password' ,
-				invalid: {
-					regEx : 'Enter a secure password'
-				}
-			},
-			pass2 : {
-				valid : 'Password matches',
-				invalid: {
-					regEx : 'Enter the same password'
-				}
-			}
-		},
-		regEx = {
-			fname :		/[\w\s]{5,}/ ,
-			username :	/.{3,}/ ,
-			email :		/^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/ ,
-			roll :		/^[bmpBMP]+[01]\d[01]\d{3}[a-zA-Z][a-zA-z]/ ,
-			pass1 :		/.{6}/,
-			pass2 :		/.{6}/
-		};
 
-	function getRegEx(Obj,id) {
-		return Obj[id];
-	}
 
-	function ok(id) {
-		joinMessage.text(msg[id].valid);
-		verified[id] = data;
-		$('input#' + id).next('img').attr('src','pics/verified.png');
-	}
 
-	function bug(id,type) {
-		joinMessage.text(msg[id].invalid[type]);
-		verified[id] = false;
-		$('input#' + id).next('img').attr('src','pics/cross.png');
-	}
-
-	function val(element) {
-		input = $(element);
-		data = input.attr('value');
-		id = input.attr('id');
-
-		switch (id) {
-			case 'fname' :
-				ok(id);
-				break;
-			case 'pass1' :
-				if(getRegEx(regEx, id).test(data))
-					ok(id);
-				else
-					bug(id,'regEx');
-				break;
-			case 'pass2' :
-				if(data === verified['pass1'] && verified['pass1'] != false)
-					ok(id);
-				else
-					bug(id,'regEx');
-				break;
-			case 'username' :
-			case 'email' :
-			case 'roll' :
-				if(getRegEx(regEx, id).test(data)) {
-					ok(id);
-					$.getJSON('response/checkreg.php?' + id + '=' + data, function(response) {
-						if(response.status === 1 ) {
-							bug(id,'ajax');
-						} 
-					});
-				} else
-					bug(id,'regEx');
-				break;
-			default :
-				joinMessage.text("Unknown feild");
-		}
-	}
-
-	$("form.join input").keyup(function(){
-			$(this).next('img').attr('src','pics/tinyload.gif');
-			val(this);
-		}).focusout(function(){
-			$(this).next('img').attr('src','pics/tinyload.gif');
-			val(this);
-		});
-
-	$('button#joinButton').click(function(){
-		for (i in verified ) {
-			if (verified[i] === false )
-				return;
-		}
-
-		$.getJSON( 'response/join.php' , verified , function(response) {
-			if(response.status) {
-				$('form.join').html("Join Succsessful :)<br/>Now please login with the new username and password").height(70);
-				setTimeout(function(){
-					$('li#showlogin').trigger('click');
-				},1000);
-			} else {
-				$('form.join').html("Somewhere something went wrong");
-			}
-		});
-	});
-}
-
-validateJoin();
 
 
