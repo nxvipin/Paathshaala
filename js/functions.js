@@ -176,16 +176,16 @@ var Paathshaala = {
 				: link = 'json/tagsearch.json.php?tag=' + tag + '&p=' + p
 
 			$("#loading").show();
-			$.getJSON( link, function(myJsonObj) {
-				if (myJsonObj == '' ) { /* Nothing returned from query => last page */
+			$.getJSON( link, function(json) {
+				if (json == '' ) { /* Nothing returned from query => last page */
 					if (Paathshaala.activePage === 1)
 						$('#findStuff').append(Paathshaala.templates.noResults);
 					else 
 						$('#findStuff').append(Paathshaala.templates.noMore);
 					$('div#next, div#ShowNext').remove();
 				}
-				for (i in myJsonObj){
-					myobj = myJsonObj[i];
+				for (i in json){
+					myobj = json[i];
 					video = Paathshaala.templates.searchVid.supplant(myobj);
 					searchDiv.append(video);
 				}
@@ -320,78 +320,55 @@ $(document).ready(function(){
 
 function updateStoryBox(type) {
 	/*
-		type : Featured/ TopRated / Popular...
-		All box layout updatedwith same code.
+		type : Featured/ Top Rated / Popular...
+		All box layout updated with same code.
 		New ui needed for upload video trigger
 	*/
-	var makeBox = function (myobj) {
-					if( myobj.fullname.length > 18 ) {
-						myobj.fullname = myobj.fullname.slice(0 ,15 );
-						myobj.fullname = myobj.fullname + '...';
-					}
-					var box = Paathshaala.templates.box.supplant(myobj);
-					return box;
+	var videoBox = function (myobj) {
+					if( myobj.fullname.length > 18 )
+						myobj.fullname = myobj.fullname.slice(0 ,15 ) + '...';
+					return Paathshaala.templates.box.supplant(myobj);
 				},
-		link, title, 
-		more = "<span class='more'>Gimme more !!</span>",
-		less = "<span class='less'>Hide all this !!</span></div>";
-
+		link,
+		title = $("<span>").addClass('groupTitle'), 
+		more = $("<span>").addClass('more').html("Show more"),
+		less = $("<span>").addClass('less').html("Show less");
+	title = title.html(type);
 	switch (type) {
 		case 'Featured' :
 			link = 'json/featured.json.php';
-			title = "<span class=groupTitle>Featured</span>" ;
 			break;
-		case 'TopRated' :
+		case 'Top Rated' :
 			link = 'json/toprated.json.php';
-			title =  "<span class=groupTitle>Top Rated</span>";
 			break;
 		case 'Popular':
 			link = 'json/popular.json.php';
-			title = "<span class=groupTitle>Popular</span>";
 			break;
-		case 'Liked':
+		case 'Liked videos':
 			link = 'json/uservideolikes.json.php';
-			title = "<span class=groupTitle>Liked videos</span>";
 			break;
-		case 'Disliked':
+		case 'Disliked videos':
 			link = 'json/uservideodislikes.json.php';
-			title = "<span class=groupTitle>Disliked videos</span>";
 			break;
-		case 'Uploads':
+		case 'My Uploads':
 			link = 'json/uservideouploads.json.php';
-			title = "<span class=groupTitle>My videos</span>";
 			break;
-		default:
-			// "Something went wrong";
-			break;
-		}
+	}
 
-	$.getJSON( link , function(myJsonObj) {
-		var i, storyBox, myobj,
-			groupBox  = "<div class='groupBox'>",
-			groupBox2 = "<div class='groupBox Hidden'>";
-		if (myJsonObj.length === 4 ) {
-			for (i =0; i <4 ; i +=1){
-				myobj = myJsonObj[i];
-				storyBox = makeBox(myobj);
-				groupBox = groupBox + storyBox;
-			}
-			groupBox = groupBox + "</div>";
-			$('div#container').append(title + groupBox);
+	$.getJSON( link , function(json) {
+		var i,
+			groupBox  = $("<div>").addClass('groupBox'),
+			groupBox2 = $("<div>").addClass('Hidden').addClass('groupBox');
+		if (json.length === 4 ) {
+			for (i =0; i <4 ; i +=1)
+				groupBox = groupBox.append(videoBox(json[i]));
+			$('div#container').append(title).append(groupBox);
 		} else { /* All multi boxes handled in same way if more than 4 */
-			for (i =0; i <4 ; i +=1){
-				myobj = myJsonObj[i];
-				storyBox = makeBox(myobj);
-				groupBox = groupBox + storyBox;
-			}
-			groupBox = groupBox + "</div>";
-				for (i =4; i < myJsonObj.length ; i +=1){
-					myobj = myJsonObj[i];
-					storyBox = makeBox(myobj);
-					groupBox2 = groupBox2 + storyBox;
-				}
-			groupBox2 = groupBox2 + "</div>";
-			$('div#container').append("<div>" + title + groupBox + more + groupBox2 + less + "</div>");
+			for (i =0; i <4 ; i +=1)
+				groupBox = groupBox.append(videoBox(json[i]));
+			for (i =4; i < json.length ; i +=1)
+				groupBox2 = groupBox2.append(videoBox(json[i]));
+			$('div#container').append($("<div>").append(title , groupBox , more , groupBox2 , less));
 		}
 	}).complete(function(){
 
@@ -403,14 +380,10 @@ function updateStoryBox(type) {
 		});
 
 		$('span.more').click(function(){
-			$(this).hide();
-			$(this).parent().find('.Hidden').slideDown('fast');
-			$(this).parent().find('.less').fadeIn();
+			$(this).hide().parent().find('.Hidden').slideDown('fast').parent().find('.less').fadeIn();
 		});
 		$('span.less').click(function(){
-			$(this).parent().find('.Hidden').slideUp('fast');
-			$(this).parent().find('.more').fadeIn();
-			$(this).hide();
+			$(this).parent().find('.Hidden').slideUp('fast').parent().find('.more').fadeIn().hide();
 		});
 	});
 }
