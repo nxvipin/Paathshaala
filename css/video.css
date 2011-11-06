@@ -86,7 +86,7 @@ div.relatedVideo {
 /* The video listing in the right side used for series n related n similar*/
 width:350px;
 height:90px;
-margin:0 0 5px 0;
+margin:15px 0;
 padding:0px;
 font-size:12px;
 display:block;
@@ -96,7 +96,7 @@ div.relatedVideo:hover {
 background:#efefef;
 }
 
-div.relatedVideoImage {
+div.relatedVideoImage, div.relatedVideoImage img {
 width:110px;
 height:74px;
 position:relative;
@@ -113,6 +113,7 @@ width:230px;
 position:relative;
 left:120px;
 top:-84px;
+margin:5px 10px;
 }
 
 span.sideYesNo {
