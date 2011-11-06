@@ -33,9 +33,15 @@
 ?>
 <script type='text/javascript'>
 $(document).ready(function() {
-	var q = getUrlVars()['q'],
-		tag = getUrlVars()['tag'];
-	Paathshaala.Search( q , tag ,Paathshaala.activePage++);
+
+	$('div#next').mouseover(function(){
+		var q = getUrlVars()['q'],
+				tag = getUrlVars()['tag'];
+			Paathshaala.Search( q , tag );
+	});
+
+	$('div#next').trigger('mouseover');
+
 });
 </script>
 </body>
