@@ -31,7 +31,6 @@
 	echo $scripts;
 	echo $piwik; 
 ?>
-<script src='js/search.js' type='text/javascript' ></script>
 <script type='text/javascript'>
 $(document).ready(function() {
 	var q = getUrlVars()['q'],
