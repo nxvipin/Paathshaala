@@ -154,13 +154,14 @@ var Paathshaala = {
 				commbox.height(ht + (14 * lineno) );
 			});
 		},
-	Search : function (q,tag,p) {
+	Search : function (q,tag) {
 		/*
 			@params:
 				q : query
 				tag : tag search
-				p : page number
+				p : page number = Paathshaala.activePage
 		*/
+			p = Paathshaala.activePage++;
 			var myobj, link, video, searchDiv = $('#findStuff');
 			if ( q === '' || tag === '') { /* Disables empty queries */
 				$('#findStuff').append(Paathshaala.templates.blankQuery);
