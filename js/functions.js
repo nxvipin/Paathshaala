@@ -263,6 +263,9 @@ var Paathshaala = {
 						$('span.videoTitle').html("Enter a new title for your video");
 						$('div.VideoDesc').html("Description please")
 				}
+			
+				Paathshaala.validateVideo();
+			
 			});
 	},
 	updateStoryBox : function (type) {
@@ -489,6 +492,93 @@ var Paathshaala = {
 				});
 			});
 		},
+	validateVideo : function() {
+		var verified = {
+				title	:	false,
+				tags	:	false,
+				desc	:	false
+			},
+			dom = {
+				help	: $("div#helpLog"),
+				title	: $("span.videoTitle"),
+				desc	: $("div.VideoDesc"),
+				tags	: $("ul.tags")
+			};
+
+		function val(element) { /* validates the form data, handles images etc */
+			var input = $(element),
+				data = input.attr('value'),
+				id = input.attr('id');
+
+			switch(id) {
+				case 'title' :
+					dom.title.text(data);
+					if (data.length > 10) {
+						verified.title = data;
+						dom.help.text('Okey ! title updated ')
+					} else {
+						dom.help.text('Title is too short');
+						verified.title = false;
+					}
+					break;
+				case 'tags' :
+					dom.help.text('Enter comma seperated tags');
+					var tagList = data.split(','),
+						tagString = '';
+					if (tagList.length < 4) {
+						dom.help.text("Minimum 4 tags please");
+						verified.tags = false;
+					} else {
+						verified.tags = data;
+					}
+					for (i in tagList) {
+						tagList[i] = jQuery.trim(tagList[i]);
+						if (tagList[i].length > 2) {
+							tagString = tagString + "<li><a href='search.php?tag=" + tagList[i] + "'>" + tagList[i] + "</a><li>"
+						} else {
+							dom.help.text("Minimum 3 charactres long");
+						}
+					}
+					dom.tags.html(tagString);
+					break;
+				case 'desc' :
+					verified.desc = data;
+					dom.desc.html(data);
+					break;
+				}
+			}
+
+		$("form.newVideoSubmit input,textarea#desc").focus(function() {
+			$(this).keyup(function() {
+				var input = $(this);
+				val(input);
+			});
+		}).focusout(function() {
+			var input = $(this);
+			val(input);
+		});
+
+		$("div.newVideoSubmitButton").click(function() {
+			for (i in verified ) {
+				if (verified[i] === false ) {
+					dom.help.text("Error in submitting form, Validate input");
+					return;
+				}
+			}
+			verified.series = $("span#sName").text();
+			verified.desc = $("textarea#desc").attr('value');
+			dom.help.text("Submitting the video");
+			$.post("response/submitvideo.php", verified, function(response) {
+				if(response.status === 1 ) {
+					$(this).hide();
+					$('div.mainRight').html("Video submitted successfully.<br/>Now you may enjoy it here :)");
+				} else {
+					dom.help.text("Error submitting the video");
+				}
+			}, "json");
+		});
+	
+	},
 	quirks : function(){ /* Stuff which i cant put anywhere else. Cant pollute the global object, hence this is here */
 		"use strict";
 		$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
