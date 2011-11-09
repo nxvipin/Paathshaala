@@ -122,7 +122,6 @@ background:#777777;
 border-radius:5px;
 padding:2px;
 margin:0px 2px;
-cursor: url(../pics/pointer.png), auto;
 font-size:10px;
 }
 
@@ -208,12 +207,10 @@ span.CommentCrossReport , span.CommentCrossDelete {
 position:relative;
 top:0px;
 left:485px;
-cursor: url(../pics/pointer.png), auto;
 color:#555555;
 }
 
 .delConfirm {
-cursor: url(../pics/pointer.png), auto;
 padding: 10px 0 10px 25px;
 position: relative;
 right:100px;
@@ -231,7 +228,6 @@ background:#777777;
 border-radius:5px;
 padding:3px;
 margin:2px;
-cursor: url(../pics/pointer.png), auto;
 position: relative;
 top: 4px;
 }
@@ -298,7 +294,6 @@ text-shadow: 1px 1px 1px #F0F0F0;
 }
 
 div.newVideoSubmitButton:hover { 
-cursor: url(../pics/pointer.png), auto;
 box-shadow: 1px 1px 2px #FFFFFF;
 text-shadow: 1px 1px 1px #FFFFFF;
 opacity: 1;

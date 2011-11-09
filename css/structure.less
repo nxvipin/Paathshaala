@@ -34,16 +34,6 @@ font-family: 'Pacifico';
 @gray1		: #EFEFEF;
 @gray2		: #F1F2F2;
 
-/* Cursors */
-
-.ptr {
-	cursor: url(../pics/pointer.png) 0 0, auto;
-}
-
-.arrow {
-	cursor: url(../pics/arrow.png) 0 0, auto;
-}
-
 /* Change selected text color */
 ::-moz-selection {
 color:white;
@@ -75,7 +65,6 @@ margin: 0;
 
 body {
 .droidSans;
-.arrow;
 background:@offWhite;
 margin: 0;
 color: @letters;
@@ -86,7 +75,6 @@ a {
 	color: @letters;
 	text-decoration:none;
 	border:0px;
-	.ptr;
 	&:hover {
 	text-decoration: underline;
 	}
@@ -277,7 +265,6 @@ color: @letters;
 position:absolute;
 left:0px;
 top:4px;
-.ptr;
 }
 
 input.searchBox {
@@ -288,7 +275,6 @@ border: 1px #D2D2D2 solid;
 padding-left:30px;
 border-radius: 13px 13px 13px 13px;
 height:25px;
-cursor: url(../pics/text.png) 0 0, auto;
 }
 
 button.tickButton{
@@ -297,7 +283,6 @@ position:relative;
 top:2px;
 border:0px solid #c2e1ef;
 color: @letters;
-.ptr;
 float:right;
 }
 
@@ -361,7 +346,7 @@ form.login , form.join , .dashBoard {
 
 	span.check {
 		display:none;
-		.ptr;
+		
 	}
 
 	button {
@@ -377,7 +362,7 @@ form.login , form.join , .dashBoard {
 		padding: 3px 10px 4px;
 		text-align: center;
 		text-decoration: none;
-		.ptr;
+		
 		position:relative;
 		top:5px;
 		left:180px;
@@ -393,7 +378,7 @@ form.join {
 	width:135px;
 	height:60px;
 	z-index:1200;
-	.ptr;
+	
 }
 
 .loggedUser {
@@ -453,7 +438,6 @@ img.feedbackDock {
 	position:fixed;
 	left:-2px;
 	top:30%;
-	.arrow;
 	&:hover { margin-left:2px; }
 }
 
@@ -512,7 +496,6 @@ position:absolute;
 top:10px;
 right:10px;
 font-family:Arial;
-.ptr;
 z-index: 10;
 }
 
@@ -540,7 +523,6 @@ display: inline-block;
 outline: medium none;
 text-align: center;
 text-decoration: none;
-.ptr;
 height:20px;
 padding:2px 3px;
 margin:-10px 1px 1px 1px;
@@ -599,7 +581,6 @@ outline: medium none;
 padding: 3px 10px 4px;
 text-align: center;
 text-decoration: none;
-.ptr;
 position:relative;
 top:10px;
 float:right;
