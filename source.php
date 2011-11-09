@@ -22,14 +22,10 @@ $piwik = "<script type=\"text/javascript\">var pkBaseURL =\"http://192.168.5.27/
 $topBar = "<div id='top'>
 	<a href='index.php' id='logo' title='Paathshaala'> <h1></h1> </a>
 	<ul class='topbarLeft'>
-		<li>
 			<form action='search.php' method='get' >
+				<img src='pics/search.png' class='searchButton' /> 
 				<input type='search' name='tag' placeholder='Search' class='searchBox' required />
-				 <button type='submit' class='searchButton'>
-					<img src='pics/search.png' alt=''/>
-				</button>
 			</form>
-		</li>
 	</ul>
 
 	<ul class='userBar'>
