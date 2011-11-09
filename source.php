@@ -21,17 +21,12 @@ $piwik = "<script type=\"text/javascript\">var pkBaseURL =\"http://192.168.5.27/
 	if(!isset($_SESSION['uid'])){
 $topBar = "<div id='top'>
 	<a href='index.php' id='logo' title='Paathshaala'> <h1></h1> </a>
-	<ul class='topbarLeft'>
-		<li>
-			<form action='search.php' method='get' >
-				<input type='search' name='tag' placeholder='Search' class='searchBox' required />
-				 <button type='submit' class='searchButton'>
-					<img src='pics/search.png' alt=''/>
-				</button>
-			</form>
-		</li>
-	</ul>
-
+<div class='topbarLeft'>
+	<form action='search.php' method='get' >
+	<img src='pics/search.png' class='searchButton' /> 
+	<input type='search' name='tag' placeholder='Search' class='searchBox' required />
+	</form>
+</div>
 	<ul class='userBar'>
 		<li id=showJoin><a>Join</a></li>
 		<li>|</li>
@@ -62,15 +57,12 @@ $topBar = "<div id='top'>
 
 $topBar = "<div id='top'>
 <a href='index.php' id='logo' title='Paathshaala'> <h1></h1> </a>
-<ul class='topbarLeft'>
-<li>
-<form action='search.php' method='get'>
-<input type='search' name='tag' placeholder='Search' class='searchBox'/>
-<button type='submit' class='searchButton'>
-<img src='pics/search.png' alt=''/>
-</button>
-</form>
-</li>
+<div class='topbarLeft'>
+	<form action='search.php' method='get' >
+	<img src='pics/search.png' class='searchButton' /> 
+	<input type='search' name='tag' placeholder='Search' class='searchBox' required />
+	</form>
+</div>
 </ul>
 
 <div class='loggedUser'>
