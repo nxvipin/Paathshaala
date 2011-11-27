@@ -1,9 +1,12 @@
-/*
-	Main script for Paathshaala
-	Author : Jaseem Abid <jaseemabid@gmail.com>
-
-	Known bugs :
-		No validate video
+/*!
+ * Paathshaala
+ * Copyright 2011, Jaseem Abid <jaseemabid@gmail.com>
+ * licensed under GPLv3
+ * Authors :
+ *    Jaseem Abid <jaseemabid@gmail.com>
+ *    Vipin Nair <swvist@gmail.coms>
+ * Known bugs :
+ *    Nil :)
 */
 
 /*	Read a page's GET URL variables and return them as an associative array
