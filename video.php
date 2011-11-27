@@ -44,7 +44,7 @@ function getActiveUser() {
 }
 
 $(document).ready(function() {
-	Paathshaala.getVideo( <?php echo $_GET['video'] ?> );
+	P.getVideo( <?php echo $_GET['video'] ?> );
 	/* Function calls to update the comments */
 	updateComment("/couch/comments/_design/comments/_view/commentbycid?key=\"<?php echo $_GET['video']; ?>\"");
 	getNewComment(function(changes){

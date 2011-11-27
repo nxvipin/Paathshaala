@@ -44,7 +44,7 @@
 <script src='js/comment.js' type='text/javascript'></script>
 <script type='text/javascript'>
 $(document).ready(function() {
-	Paathshaala.getVideo();
+	P.getVideo();
 	$('span#helpTrigger').click(function(){
 		$('div#helpMessage').slideToggle();
 	});

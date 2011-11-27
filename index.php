@@ -24,9 +24,9 @@
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
-	Paathshaala.updateStoryBox('Featured')
-	Paathshaala.updateStoryBox('Popular')
-	Paathshaala.updateStoryBox('Top Rated')
+	P.updateStoryBox('Featured')
+	P.updateStoryBox('Popular')
+	P.updateStoryBox('Top Rated')
 });
 </script>
 

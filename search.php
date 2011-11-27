@@ -33,15 +33,12 @@
 ?>
 <script type='text/javascript'>
 $(document).ready(function() {
-
 	$('div#next').mouseover(function(){
 		var q = getUrlVars()['q'],
 				tag = getUrlVars()['tag'];
-			Paathshaala.Search( q , tag );
+			P.Search( q , tag );
 	});
-
 	$('div#next').trigger('mouseover');
-
 });
 </script>
 </body>

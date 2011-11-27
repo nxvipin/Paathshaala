@@ -46,9 +46,9 @@
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
-	Paathshaala.updateStoryBox('My Uploads');
-	Paathshaala.updateStoryBox('Liked videos');
-	Paathshaala.updateStoryBox('Disliked videos');
+	P.updateStoryBox('My Uploads');
+	P.updateStoryBox('Liked videos');
+	P.updateStoryBox('Disliked videos');
 });
 </script>
 </body>
