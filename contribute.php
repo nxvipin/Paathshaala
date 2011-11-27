@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id='topbar'></div>
-<img src="pics/load.gif" id='loading'/ style='display:none;'>
+<img src="pics/load.gif" id='loading' style='display:none;'>
 <div id='container'>
 	<?php	echo $topBar;
 			echo $feedback; ?>
@@ -41,7 +41,6 @@
 	echo $piwik; 
 ?>
 <script src='js/video.js' type='text/javascript'></script>
-<script src='js/comment.js' type='text/javascript'></script>
 <script type='text/javascript'>
 $(document).ready(function() {
 	P.getVideo();
