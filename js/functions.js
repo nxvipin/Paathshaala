@@ -57,15 +57,6 @@
 				}
 				$(elem).html(data);
 			},
-		showFeedback : function() {
-				grayOut(true);
-				$('div#feedback').show()
-				$('div#feedback').load('feedback.html');
-			},
-		hideFeedback : function () {
-				grayOut(false);
-				$('div#feedback').hide();
-			},
 		showEditProfile: function () {
 				grayOut(true);
 				$('div#editProfile').load('editprofile.html').fadeIn("slow");
@@ -356,8 +347,59 @@
 			$('span.news').click(function(){
 				$('div#indexMesssage').fadeOut("fast");
 			});
-			}
+		}
 	};
+
+	Paathshaala.showFeedback = function() {
+			grayOut(true);
+			$('div#feedback').show()
+			$('div#feedback').load('feedback.html', function(){
+				$('div#feedback ul.links li').click(function() {
+					$(this).parent().children().removeClass('hilite');
+					$(this).addClass('hilite');
+					$('div#feedback div.content .panel').fadeOut("fast").fadeIn("");
+					var numb = $("div#feedback ul.links li").index(this),
+						type = $("div#feedback ul.links li").eq(numb).attr('type'),
+						desc = $("div#feedback ul.links li").eq(numb).attr('desc');
+					$('input#fType').attr('value',type);
+					$('textarea#fDesc').attr('placeholder',desc);
+				});
+				$('span#feedbackFormSubmit')
+					.click(function() {
+						var fb = $(this).parent(),
+							feedback = {
+								type	: $('input#fType').attr('value'),
+								fname	: $('input#fName').attr('value'),
+								desc	: $('textarea#fDesc').attr('value')
+							};
+						if( feedback.fname !=='' && feedback.desc !== '' ) {
+							feedback.desc = feedback.fname + ' says ' + feedback.desc;
+							delete feedback.fname;
+							$.post("response/submitfeedback.php", feedback, function(data){
+								setTimeout(function(){
+									P.hideFeedback();
+								},2000);
+								$('ul.links, div#blueLine').remove();
+								if (data)
+									$('div#feedback').html("<div style='font-size:19px; text-align:center; padding:100px 0px;'>" + data.status + "</div>");
+								else 
+									fb.html("<div style='font-size:19px; text-align:center; padding:100px 0px;'>Error submitting feedback </div>");
+							} , "json" );
+						}
+					});
+				$('div#darkenScreenObject').click(function(){
+					P.hideFeedback();
+				});
+
+				$('span#cross').click(function(){
+					P.hideFeedback();
+				});
+			});
+		};
+	Paathshaala.hideFeedback = function () {
+			grayOut(false);
+			$('div#feedback').hide();
+		};
 
 	Paathshaala.validateJoin = function () {
 		"use strict";
