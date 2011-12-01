@@ -52,7 +52,8 @@ $topBar = "<div id='top'>
 		<img src='pics/key.png'> <input required type='password' id='pass2' placeholder='Password again'/> <img src='.$nullImage.'> <br />
 		<button id='joinButton' type='button'>Join</button>
 </form>
-</div> <!-- /top -->";
+</div>
+<img src='pics/load.gif' id='loading' style='display:none;'>";
 	}
 	else{
 
@@ -76,7 +77,8 @@ $topBar = "<div id='top'>
 <a href='faq.php'><img src='pics/settings.png'> Help </a><br />
 <a href='response/logout.php'><img src='pics/tick.png'> Sign off </a><br />
 </div>
-</div> <!-- /top -->";
+</div>
+<img src='pics/load.gif' id='loading' style='display:none;'> ";
 }
 
 $bottomBar = "<div id='bottom'>

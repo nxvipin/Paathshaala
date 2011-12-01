@@ -337,7 +337,15 @@
 				});
 			},
 		quirks : function(){ /* Stuff which i cant put anywhere else. Cant pollute the global object, hence this is here */
-			"use strict";
+			$('#loading')
+			.hide()  // hide it initially
+			.ajaxStart(function() {
+				$(this).show();
+			})
+			.ajaxStop(function() {
+				$(this).fadeOut(1400);
+			});
+
 			$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
 				Paathshaala.showFeedback();
 			});

@@ -34,7 +34,7 @@
 		I am : <span id=''><?php echo $u->getFullname(); ?></span><br />
 		email : <?php echo $u->getEmail(); ?> <br />
 		here I am called : <span id='profileUsername'><?php echo $u->getUsername(); ?></span><br />
-		Insti Roll : <?php echo $u->getRoll(); ?> (Helps us to give you better suggestions)<br />
+		Institute Roll : <?php echo $u->getRoll(); ?> (Helps us to give you better suggestions)<br />
 	</div>
 </div>
 

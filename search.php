@@ -11,7 +11,6 @@
 </head>
 <body>
 <div id='topbar'></div>
-<img src="pics/load.gif" id='loading' style='display:none;'>
 <div id='container'>
 <?php
 	echo $topBar;
