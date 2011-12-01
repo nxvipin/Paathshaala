@@ -34,8 +34,8 @@
 <script type='text/javascript'>
 $(document).ready(function() {
 	$('div#next').mouseover(function(){
-		var q = getUrlVars()['q'],
-				tag = getUrlVars()['tag'];
+		var q = P.getUrlVars()['q'],
+				tag = P.getUrlVars()['tag'];
 			P.Search( q , tag );
 	});
 	$('div#next').trigger('mouseover');
