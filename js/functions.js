@@ -14,9 +14,8 @@
 	// Use the correct document accordingly with window argument (sandbox)
 	var document = window.document,
 		navigator = window.navigator,
-		location = window.location;
-
-	function getUrlVars() {
+		location = window.location,
+		getUrlVars = function() {
 		/*
 			Read a page's GET URL variables and return them as an associative array
 			Example : var cid = getUrlVars()['id'];
@@ -29,7 +28,7 @@
 			vars[hash[0]] = hash[1];
 		}
 		return vars;
-	}
+	};
 
 	/* Supplant */
 	if(typeof String.prototype.supplant !== 'function') {
@@ -642,6 +641,8 @@
 			noMore :"<span style='margin:25px auto'>No more results found.</span>"
 	}; // ! templates
 
+	// Expose getUrlVars() to Paathshaala Object
+	Paathshaala.getUrlVars = getUrlVars;
 	// Expose Paathshaala to the global object
 	window.Paathshaala = window.P = Paathshaala;
 
@@ -654,10 +655,11 @@ if(vis){if(document.body&&(document.body.scrollWidth||document.body.scrollHeight
 dark.style.opacity=opaque;dark.style.MozOpacity=opaque;dark.style.filter='alpha(opacity='+opacity+')';dark.style.zIndex=zindex;dark.style.backgroundColor=bgcolor;dark.style.width=pageWidth;dark.style.height=pageHeight;dark.style.display='block';}else{dark.style.display='none';}}
 
 $(document).ready(function(){
+
 	P.searchBox();
 	P.dashBoard();
 	P.imageError();
 	P.comments();
 	P.quirks();
 	P.validate.join();
-});	
+});
