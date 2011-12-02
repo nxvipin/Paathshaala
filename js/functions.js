@@ -181,83 +181,83 @@
 					$("time.timeago").timeago();
 				});
 			},
-			getVideo: function(cid) {
-				/* @params:	cid:contentid of the video to be played */
-				var updateLikeBox = function(st) {
-					var likeBox = $('span#likes');
-					switch (st) {
-						 case '1': likeBox.html(Paathshaala.templates.likes.liked); break;
-						 case '-1': likeBox.html(Paathshaala.templates.likes.disliked); break;
-						 case '2': likeBox.html(Paathshaala.templates.likes.loggedOut); break;
-						 case '0': likeBox.html(Paathshaala.templates.likes.def); break;
-						 default: likeBox.html(Paathshaala.templates.likes.error); break;
-					}
-					$('span#likeButton').click(function() {
-						var status = $(this).parent().attr("id"),
-							value = $(this).attr("data");
-						if (status !== 'likesLiked' ) {
-							$.post("response/savelikes.php", { cid: cid, value: value } );
-							updateLikeBox('1');
-						}
-					});
-					$('span#dislikeButton').click(function() {
-						var status = $(this).parent().attr("id"),
-							value = $(this).attr("data");
-						if (status !== 'likesDisliked' ) {
-							$.post("response/savelikes.php", { cid: cid, value: value } );
-							updateLikeBox('-1');
-						}
-					});
-				}, link, videoBox = $('div.videodiv'), tags;
-
-				if(cid === undefined ) {
-					cid = 'newvideo';
-					link = 'json/getnewvideo.json.php';
-				} else {
-					link = 'json/video.json.php?video=' + cid;
+		getVideo: function(cid) {
+			/* @params:	cid:contentid of the video to be played */
+			var updateLikeBox = function(st) {
+				var likeBox = $('span#likes');
+				switch (st) {
+					 case '1': likeBox.html(Paathshaala.templates.likes.liked); break;
+					 case '-1': likeBox.html(Paathshaala.templates.likes.disliked); break;
+					 case '2': likeBox.html(Paathshaala.templates.likes.loggedOut); break;
+					 case '0': likeBox.html(Paathshaala.templates.likes.def); break;
+					 default: likeBox.html(Paathshaala.templates.likes.error); break;
 				}
-
-				$.getJSON( link, function(myobj) {
-					myobj.tagString ="";
-					var i = 0, video;
-					if ( cid === 'newvideo' ) {
-						myobj.tags = ['Enter new tags for the video'];
+				$('span#likeButton').click(function() {
+					var status = $(this).parent().attr("id"),
+						value = $(this).attr("data");
+					if (status !== 'likesLiked' ) {
+						$.post("response/savelikes.php", { cid: cid, value: value } );
+						updateLikeBox('1');
 					}
-					if (myobj.path) {
-						tags = myobj.tags;
-						for( i =0; i< tags.length; i+=1 ) {
-							if (tags[i]) {
-								myobj.tagString = myobj.tagString + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
-							}
-						}
-						if ( myobj.sid) {
-							myobj.series = Paathshaala.templates.series.supplant(myobj);
-						} else {
-							myobj.series = '';
-						}
-						myobj.likestatus = String(myobj.likestatus);
-						video = Paathshaala.templates.video.supplant(myobj);
-					} else {
-						video = "Sorry, video not found :(";
-						$('div.commentBox , span.smallSubtitle , div.commentWarp').hide();
-					}
-					videoBox.html(video);
-				}).complete(function(){
-					VideoJS.setupAllWhenReady();
-					if ( cid !== 'newvideo' ) {
-						var defStatus = $('span#likes').attr('defStatus');
-						updateLikeBox(defStatus); /* Update to def status */
-						$('img#downloadButton.VideoBarButton').click(function(){
-							alert('Please right click on the video and save the video while being played');
-						});
-					} else {
-							$('div.videoBar').html("<div style='text-align:center;'>Thanks for adding a new video to paathshaala</div>");
-							$('span.videoTitle').html("Enter a new title for your video");
-							$('div.VideoDesc').html("Description please")
-					}
-					Paathshaala.validate.video();
 				});
-		},
+				$('span#dislikeButton').click(function() {
+					var status = $(this).parent().attr("id"),
+						value = $(this).attr("data");
+					if (status !== 'likesDisliked' ) {
+						$.post("response/savelikes.php", { cid: cid, value: value } );
+						updateLikeBox('-1');
+					}
+				});
+			}, link, videoBox = $('div.videodiv'), tags;
+
+			if(cid === undefined ) {
+				cid = 'newvideo';
+				link = 'json/getnewvideo.json.php';
+			} else {
+				link = 'json/video.json.php?video=' + cid;
+			}
+
+			$.getJSON( link, function(myobj) {
+				myobj.tagString ="";
+				var i = 0, video;
+				if ( cid === 'newvideo' ) {
+					myobj.tags = ['Enter new tags for the video'];
+				}
+				if (myobj.path) {
+					tags = myobj.tags;
+					for( i =0; i< tags.length; i+=1 ) {
+						if (tags[i]) {
+							myobj.tagString = myobj.tagString + "<li><a href='search.php?tag=" + tags[i]+ "'>" + tags[i] + "</a></li>";
+						}
+					}
+					if ( myobj.sid) {
+						myobj.series = Paathshaala.templates.series.supplant(myobj);
+					} else {
+						myobj.series = '';
+					}
+					myobj.likestatus = String(myobj.likestatus);
+					video = Paathshaala.templates.video.supplant(myobj);
+				} else {
+					video = "Sorry, video not found :(";
+					$('div.commentBox , span.smallSubtitle , div.commentWarp').hide();
+				}
+				videoBox.html(video);
+			}).complete(function(){
+				VideoJS.setupAllWhenReady();
+				if ( cid !== 'newvideo' ) {
+					var defStatus = $('span#likes').attr('defStatus');
+					updateLikeBox(defStatus); /* Update to def status */
+					$('img#downloadButton.VideoBarButton').click(function(){
+						alert('Please right click on the video and save the video while being played');
+					});
+				} else {
+						$('div.videoBar').html("<div style='text-align:center;'>Thanks for adding a new video to paathshaala</div>");
+						$('span.videoTitle').html("Enter a new title for your video");
+						$('div.VideoDesc').html("Description please")
+				}
+				Paathshaala.validate.video();
+			});
+			},
 		updateStoryBox : function (type) {
 				/*
 					type : Featured/ Top Rated / Popular
