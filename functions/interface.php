@@ -1,6 +1,7 @@
 <?php
 /**
 * Interface functions are the functions that send/recieve data from the user interface.
+* All interface function and their helper functions are defined here.
 * TODO: Heavy refactoring possible. 
 * All interface functions MUST be defined here.
 * @author Vipin Nair <swvist@gmail.com>
@@ -72,7 +73,17 @@ function getTagSearchJson($tag,$page)
 	}
 	return json_encode($json);
 }
-	
+
+/**
+* Returs an array(size $count) of the CID's of most popular videos 
+* @param integer $count The number of videos that should be returned.
+* @return array Array of Popular Videos CID's.
+*/
+function getPopularVideoArray($count){
+	$sql="Select cn_id from content_video order by cn_views desc limit $count";
+	return resource2array(dbquery($sql));
+}
+
 /**
 * Returs the JSON strings of the $count most popular videos and their details.
 * @param integer $count The number of videos that should be returned.
@@ -80,8 +91,7 @@ function getTagSearchJson($tag,$page)
 */
 function getPopularVideoJson($count)
 {
-	$sql="Select cn_id from content_video order by cn_views desc limit $count";
-	$contentarray=resource2array(dbquery($sql));
+	$contentarray = getPopularVideoArray($count);
 	$json=array();
 	$vcount=count($contentarray);
 	for($i=0;$i<$vcount;$i++)
@@ -97,6 +107,17 @@ function getPopularVideoJson($count)
 							'userpic'=>user::getUserPictureS($obj->getUserId())));
 	}
 	return json_encode($json);
+}
+
+/**
+* Returs an array(size $count) of the CID's of featured videos 
+* @param integer $count The number of videos that should be returned.
+* @return array Array of Featured Videos CID's.
+*/
+function getFeaturedVideoArray($count)
+{
+	$sql="Select ft_cid from featured limit $count";
+	return resource2array(dbquery($sql));
 }
 
 /**
@@ -106,8 +127,7 @@ function getPopularVideoJson($count)
 */
 function getFeaturedVideoJson($count)
 {
-	$sql="Select ft_cid from featured limit $count";
-	$contentarray=resource2array(dbquery($sql));
+	$contentarray = getFeaturedVideoArray($count);
 	$json=array();
 	$vcount=count($contentarray);
 	for($i=0;$i<$vcount;$i++)
@@ -126,14 +146,24 @@ function getFeaturedVideoJson($count)
 }
 
 /**
+* Returs an array(size $count) of the CID's of top rated videos 
+* @param integer $count The number of videos that should be returned.
+* @return array Array of top rated Videos CID's.
+*/
+function getTopRatedVideoArray($count)
+{
+	$sql="Select cn_id from content_video order by cn_likes desc limit $count";
+	return resource2array(dbquery($sql));
+}
+
+/**
 * Returns the Top Rated videos content ID.
 * @param integer $count The number of Top rated videos required.
 * @return string JSON contatining data of top rated videos.
 */
 function getTopRatedVideoJson($count)
 {
-	$sql="Select cn_id from content_video order by cn_likes desc limit $count";
-	$contentarray=resource2array(dbquery($sql));
+	$contentarray=getTopRatedVideoArray($count);
 	$json=array();
 	$vcount=count($contentarray);
 	for($i=0;$i<$vcount;$i++)
