@@ -37,7 +37,7 @@ function getVideoJson($cid,$uid)
 			"status"=>$v->getStatus(),
 			"path"=>$v->getCompletePath(),
 			"poster"=>$v->getPoster(),
-			"likestatus"=>user::checkLike($uid,$cid),
+			"likestatus"=>($v->getContentId())?user::checkLike($uid,$cid):NULL,
 			"sid"=>$v->getSeriesId(),
 			"sname"=>$v->getSeriesName(),
 			"order"=>$v->getOrder(),
