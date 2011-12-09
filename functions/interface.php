@@ -1,9 +1,7 @@
 <?php
 /**
 * Interface functions are the functions that send/recieve data from the user interface.
-* All interface function and their helper functions are defined here.
-* TODO: Heavy refactoring possible. 
-* All interface functions MUST be defined here.
+* All interface function and their helper functions MUST be defined here.
 * @author Vipin Nair <swvist@gmail.com>
 * @author Jaseem Abid <jaseemabid@gmail.com>
 * @copyright Copyright (c) 2011, Vipin Nair & Jaseem Abid
@@ -75,7 +73,7 @@ function getTagSearchJson($tag,$page)
 }
 
 /**
-* Returs an array(size $count) of the CID's of most popular videos 
+* Helper Function. Returs an array(size $count) of the CID's of most popular videos 
 * @param integer $count The number of videos that should be returned.
 * @return array Array of Popular Videos CID's.
 */
@@ -85,32 +83,7 @@ function getPopularVideoArray($count){
 }
 
 /**
-* Returs the JSON strings of the $count most popular videos and their details.
-* @param integer $count The number of videos that should be returned.
-* @return string Popular Videos JSON.
-*/
-function getPopularVideoJson($count)
-{
-	$contentarray = getPopularVideoArray($count);
-	$json=array();
-	$vcount=count($contentarray);
-	for($i=0;$i<$vcount;$i++)
-	{
-		$obj=new video($contentarray[$i]);
-		array_push($json,array( 'cid'=>$obj->getContentId(),
-							'title'=>$obj->getTitle(),
-							'viewcount'=>$obj->getViewCount(),
-							'poster'=>$obj->getPoster(),
-							'timestamp'=>$obj->getTimestamp(),
-							'uid'=>$obj->getUserId(),
-							'fullname'=>user::getFullNameS($obj->getUserId()),
-							'userpic'=>user::getUserPictureS($obj->getUserId())));
-	}
-	return json_encode($json);
-}
-
-/**
-* Returs an array(size $count) of the CID's of featured videos 
+* Helper Function. Returs an array(size $count) of the CID's of featured videos 
 * @param integer $count The number of videos that should be returned.
 * @return array Array of Featured Videos CID's.
 */
@@ -121,32 +94,7 @@ function getFeaturedVideoArray($count)
 }
 
 /**
-* Returs the JSON strings of the $count Featured videos and their details.
-* @param integer $count The number of videos that should be returned.
-* @return string Featured Videos JSON.
-*/
-function getFeaturedVideoJson($count)
-{
-	$contentarray = getFeaturedVideoArray($count);
-	$json=array();
-	$vcount=count($contentarray);
-	for($i=0;$i<$vcount;$i++)
-	{
-		$obj=new video($contentarray[$i]);
-		array_push($json,array( 'cid'=>$obj->getContentId(),
-							'title'=>$obj->getTitle(),
-							'viewcount'=>$obj->getViewCount(),
-							'poster'=>$obj->getPoster(),
-							'timestamp'=>$obj->getTimestamp(),
-							'uid'=>$obj->getUserId(),
-							'fullname'=>user::getFullNameS($obj->getUserId()),
-							'userpic'=>user::getUserPictureS($obj->getUserId())));
-	}
-	return json_encode($json);
-}
-
-/**
-* Returs an array(size $count) of the CID's of top rated videos 
+* Helper Function. Returs an array(size $count) of the CID's of top rated videos 
 * @param integer $count The number of videos that should be returned.
 * @return array Array of top rated Videos CID's.
 */
@@ -157,13 +105,21 @@ function getTopRatedVideoArray($count)
 }
 
 /**
-* Returns the Top Rated videos content ID.
-* @param integer $count The number of Top rated videos required.
-* @return string JSON contatining data of top rated videos.
+* Returs the JSON strings of the $count of $type ofStorybox Video content 
+* and their details.
+* $type = featured | toprated | popular
+* @param integer $count The number of videos that should be returned.
+* @return string Featured Videos JSON.
 */
-function getTopRatedVideoJson($count)
-{
-	$contentarray=getTopRatedVideoArray($count);
+function getStoryBoxJson($type,$count){
+	switch ($type) {
+		case "featured":	$contentarray = getFeaturedVideoArray($count);
+							break;
+		case "popular":		$contentarray = getPopularVideoArray($count);
+							break;
+		case "toprated":	$contentarray = getTopRatedVideoArray($count);
+							break;
+	}
 	$json=array();
 	$vcount=count($contentarray);
 	for($i=0;$i<$vcount;$i++)
@@ -180,7 +136,6 @@ function getTopRatedVideoJson($count)
 	}
 	return json_encode($json);
 }
-
 /**
 * Returns liked/disliked videos of a user.
 * @param integer $uid User ID
