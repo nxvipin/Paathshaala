@@ -16,6 +16,7 @@ $global_password			=	''; 	// <Database Password>
 $global_salt				=	'';		// <SALT added to any string before encryption>
 $global_thumbs_folder		=	'';		// <Thumbs folder where thumbnails will be stored>
 $global_user_folder			=	'';		// <User folder where user data will be stored>
+$global_user_default_pic	=	'';		// <Default pic for registered users>
 $global_raw_videos_folder	=	'';		// <Folder where non indexed, non series videos are stored>
 $global_raw_series_folder	=	'';		// <Folder where non indexed, series videos are stored>
 $global_servers["SERVER_ID"]=	'';		// <SERVER ID, SERVER IP>
