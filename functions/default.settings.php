@@ -18,6 +18,7 @@ $global_thumbs_folder		=	'';		// <Thumbs folder where thumbnails will be stored>
 $global_user_folder			=	'';		// <User folder where user data will be stored>
 $global_raw_videos_folder	=	'';		// <Folder where non indexed, non series videos are stored>
 $global_raw_series_folder	=	'';		// <Folder where non indexed, series videos are stored>
+$global_servers["SERVER_ID"]=	'';		// <SERVER ID, SERVER IP>
 
 //CouchDB Settings
 $global_couch_host			=	'';		// <CouchDB Host>
