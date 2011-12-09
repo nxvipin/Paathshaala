@@ -9,7 +9,7 @@
  *    Nil :)
 */
 
-;(function( window, undefined ) {
+;(function( window, $, undefined ) {
 
 	// Use the correct document accordingly with window argument (sandbox)
 	var document = window.document,
@@ -646,7 +646,7 @@
 	// Expose Paathshaala to the global object
 	window.Paathshaala = window.P = Paathshaala;
 
-})( window );
+})( window, jQuery );
 
 /* ! Paathshaala */
 
