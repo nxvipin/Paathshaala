@@ -20,7 +20,7 @@ include_once 'functions.php';
 */
 class user
 {
-	private $uid, $uname, $ufullname, $uroll, $uemail;
+	private $uid, $uname, $ufullname, $uroll, $uemail, $upic;
 	
 	/**
 	* The constructor selects the appropriate function based on the number of
@@ -44,13 +44,14 @@ class user
 	*/
 	protected function view($uid)
 	{
-		$sql="Select us_name, us_fullname, us_rollno, us_email from users where us_id = '$uid'";
+		$sql="Select us_name, us_fullname, us_rollno, us_email, us_pic from users where us_id = '$uid'";
 		$user=pg_fetch_assoc(dbquery($sql));
 		$this->uid=$uid;
 		$this->uname=$user['us_name'];
 		$this->ufullname=$user['us_fullname'];
 		$this->uroll=$user['us_rollno'];
 		$this->uemail=$user['us_email'];
+		$this->upic=$user['us_pic'];
 	}
 	
 	/**
@@ -76,7 +77,7 @@ class user
 	
 	public function getUserId()
 	{
-		Return $this->uid;
+		return $this->uid;
 	}
 	
 	public function getUsername()
@@ -154,12 +155,24 @@ class user
 	/**
 	* Static function to return the PATH of the user pic URL when user id is known.
 	* @param integer $uid User ID
+	* @param integer $exist Avoid a query if we already know that the pic exists 
+	* 						i.e, if $exist=1, we can avoid a query
 	* @return string relative PATH of the user DP.
 	*/
-	public static function getUserPictureS($uid)
+	public static function getUserPictureS($uid,$exist=0)
 	{
-		global $global_user_folder, $global_salt;
-		return $global_user_folder."/".sha1($uid.$global_salt).".png";
+		global $global_user_folder, $global_salt, $global_user_default_pic;
+		if($exist==0){
+			$sql="Select us_pic from users where us_id = '$uid'";
+			$picexist=pg_fetch_assoc(dbquery($sql));
+			$exist=$picexist["us_pic"];
+		}
+		if($exist==1){
+			return $global_user_folder."/".sha1($uid.$global_salt).".png";
+		}
+		else{
+			return $global_user_folder."/".$global_user_default_pic;
+		}
 	}
 	
 	/**
