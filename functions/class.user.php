@@ -1,6 +1,7 @@
 <?php
 /**
 * User class for handling user related functions.
+* TODO: Refactor Possible
 * @author Vipin Nair <swvist@gmail.com>
 * @author Jaseem Abid <jaseemabid@gmail.com>
 * @copyright Copyright (c) 2011, Vipin Nair & Jaseem Abid
@@ -113,8 +114,13 @@ class user
 	
 	public function getUserPicture()
 	{
-		global $global_user_folder, $global_salt;
-		return $global_user_folder."/".sha1($this->uid.$global_salt).".png";
+		global $global_user_folder, $global_salt, $global_user_default_pic;
+		if($exist==1){
+			return $global_user_folder."/".sha1($uid.$global_salt).".png";
+		}
+		else{
+			return $global_user_folder."/".$global_user_default_pic;
+		}
 	}
 	
 	public function updateUser($fname,$roll,$email){
