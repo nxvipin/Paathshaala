@@ -44,19 +44,21 @@ class video extends content
 	*/
 	protected function view($cid)
 	{
-		$this->cid=$cid;
-		$sql="Select * from content_video where cn_id='".$this->cid."'";
+		$sql="Select * from content_video where cn_id='".$cid."'";
 		$res=dbquery($sql);
 		$vid=pg_fetch_assoc($res);
-		$this->title=$vid['cn_title'];
-		$this->desc=$vid['cn_desc'];
-		$this->timestamp=$vid['cn_timestamp'];
-		$this->status=$vid['cn_status'];
-		$this->views=$vid['cn_views'];
-		$this->uid=$vid['cn_userid'];
-		$this->serverid=$vid['cf_serverid'];
-		$this->path=$vid['cf_path'];
-		$this->file=$vid['cv_file'];
+		if($vid){
+			$this->cid=$cid;
+			$this->title=$vid['cn_title'];
+			$this->desc=$vid['cn_desc'];
+			$this->timestamp=$vid['cn_timestamp'];
+			$this->status=$vid['cn_status'];
+			$this->views=$vid['cn_views'];
+			$this->uid=$vid['cn_userid'];
+			$this->serverid=$vid['cf_serverid'];
+			$this->path=$vid['cf_path'];
+			$this->file=$vid['cv_file'];
+		}
 	}
 	
 	/**
@@ -88,7 +90,9 @@ class video extends content
 	*/
 	public function getCompletePath()
 	{
-		return getServer($this->serverid)."/".$this->path."/".$this->cid.$this->file.".ogv";
+		if($this->cid){
+			return getServer($this->serverid)."/".$this->path."/".$this->cid.$this->file.".ogv";
+		}
 	}
 	
 	/**
@@ -98,7 +102,9 @@ class video extends content
 	public function getPoster()
 	{
 		global $global_thumbs_folder;
-		return getServer($this->serverid)."/".$global_thumbs_folder."/".$this->cid.$this->file.".png";
+		if($this->cid){
+			return getServer($this->serverid)."/".$global_thumbs_folder."/".$this->cid.$this->file.".png";
+		}
 	}
 	
 	/**

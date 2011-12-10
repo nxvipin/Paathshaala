@@ -115,7 +115,7 @@ class activity
 		global $global_salt;
 		$uname=pg_escape_string($uname);
 		$upass=sha1($upass.$global_salt);
-		$sql="Select us_id, us_name, us_fullname, us_status from users where us_name='$uname' and us_pass='$upass'";
+		$sql="Select us_id, us_name, us_fullname, us_status, us_pic from users where us_name='$uname' and us_pass='$upass'";
 		$res=dbquery($sql);
 		if($res)
 		{
@@ -125,7 +125,7 @@ class activity
 			$_SESSION['username']=$user[1];
 			$_SESSION['fullname']=$user[2];
 			$_SESSION['status']=$user[3];
-			$_SESSION['userpic']=user::getUserPictureS($user[0]);
+			$_SESSION['userpic']=user::getUserPictureS($user[0],$user[4]);
 			return 1;
 		}
 		return 0;

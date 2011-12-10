@@ -6,6 +6,6 @@
 	//The front page design requires only 4 videos in Top rated category. If needed less/more, the get variable should be set.
 	if(!isset($_GET['count']))
 		$_GET['count']=4;
-	echo getTopRatedVideoJson($_GET['count']);
+	echo getStoryBoxJson("toprated",$_GET['count']);
 	
 ?>

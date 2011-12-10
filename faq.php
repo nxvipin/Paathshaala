@@ -4,7 +4,6 @@
 <title>Paathshaala FAQ</title>
 
 <?php
-
 	include 'source.php';
 	echo $header;
 ?>
@@ -19,7 +18,7 @@ a.text { text-decoration:underline; }
 <img src="pics/load.gif" id='loading' style='display:none;'>
 
 <div id='container'>
-	<?php	echo $topNotLoggedIn;
+	<?php	echo $topBar;
 			echo $feedback; ?>
 
 <div class='mainLeft'>
@@ -93,11 +92,11 @@ Got a kick ass idea? just <a onclick='showFeedback()' class='text'>tell us</a></
 </div>
 
 </div><!-- /container -->
-
-<?php echo $bottomBar; ?>
-<div id="bottombar"></div>
-<script src='js/ui.js' type='text/javascript' ></script>
-<?php	echo $piwik; ?>
+<?php
+	echo $bottomBar;
+	echo $scripts;
+	echo $piwik; 
+?>
 </body>
 </html>
 

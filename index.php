@@ -10,23 +10,26 @@
 <body>
 <div id='topbar'></div>
 <div id='container'>
-	<?php	echo $topNotLoggedIn;
+	<?php	echo $topBar;
 			echo $feedback; ?>
 	<div id="indexMesssage">
 	We pay our tribute to our <a href="video.php?video=261"><em>inspiration</em></a>. RIP Steve Jobs (February 24, 1955 – October 5, 2011).<span id="cross" class="news">X</span>
 	</div>
 </div><!-- /container -->
-<?php	echo $bottomBar; ?>
-<div id="bottombar"></div>
+
+<?php
+	echo $bottomBar;
+	echo $scripts;
+	echo $piwik; 
+?>
 <script type="text/javascript">
 $(document).ready(function() {
-	updateStoryBox('Featured')
-	updateStoryBox('Popular')
-	updateStoryBox('TopRated')
+	P.updateStoryBox('Featured')
+	P.updateStoryBox('Popular')
+	P.updateStoryBox('Top Rated')
 });
 </script>
-<script src='js/ui.js' type='text/javascript'></script>
-<?php	echo $piwik; ?>
+
 </body>
 </html>
 
