@@ -56,8 +56,8 @@ function resource2array($res)
 */
 function getServer($sid)
 {
-	if($sid=="SP")
-		return "http://192.168.5.27";
+	global $global_servers;
+	return $global_servers[$sid];
 }
 
 /**

@@ -13,14 +13,16 @@
 <div id='topbar'></div>
 <img src="pics/load.gif" id='loading' style='display:none;'>
 <div id='container'>
-	<?php	echo $topNotLoggedIn;
-			echo $feedback; ?>
+<?php
+	echo $topBar;
+	echo $feedback; 
+?>
 </div><!-- /container -->
-
-<?php echo $bottomBar; ?>
-<div id="bottombar"></div>
-<script src='js/ui.js' type='text/javascript' ></script>
-<?php	echo $piwik; ?>
+<?php
+	echo $bottomBar;
+	echo $scripts;
+	echo $piwik; 
+?>
 </body>
 </html>
 
