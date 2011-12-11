@@ -211,4 +211,15 @@ function getRelatedSeriesJson($sid)
 	}
 	return json_encode($json);
 }
+
+function getNewVideoJson($uname){
+	global $global_raw_videos_folder, $global_servers, $global_thumbs_folder;
+	$newvid = array(
+				"path"	=>	$global_servers["SP"]."/".$global_raw_videos_folder."/".
+							getRandomVideo($_SERVER["DOCUMENT_ROOT"]."/".$global_raw_videos_folder),
+				"poster"=>	NULL,
+				"series"=>	NULL,
+				"uname"	=> $uname);
+	return json_encode($newvid);
+}
 ?>
