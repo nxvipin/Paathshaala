@@ -73,16 +73,6 @@ function getTagSearchJson($tag,$page)
 }
 
 /**
-* Helper Function. Returs an array(size $count) of the CID's of most popular videos 
-* @param integer $count The number of videos that should be returned.
-* @return array Array of Popular Videos CID's.
-*/
-function getPopularVideoArray($count){
-	$sql="Select cn_id from content_video order by cn_views desc limit $count";
-	return resource2array(dbquery($sql));
-}
-
-/**
 * Helper Function. Returs an array(size $count) of the CID's of featured videos 
 * @param integer $count The number of videos that should be returned.
 * @return array Array of Featured Videos CID's.
@@ -105,27 +95,27 @@ function getTopRatedVideoArray($count)
 }
 
 /**
-* Returs the JSON strings of the $count of $type ofStorybox Video content 
-* and their details.
-* $type = featured | toprated | popular
+* Helper Function. Returs an array(size $count) of the CID's of most popular videos 
 * @param integer $count The number of videos that should be returned.
-* @return string Featured Videos JSON.
+* @return array Array of Popular Videos CID's.
 */
-function getStoryBoxJson($type,$count){
-	switch ($type) {
-		case "featured":	$contentarray = getFeaturedVideoArray($count);
-							break;
-		case "popular":		$contentarray = getPopularVideoArray($count);
-							break;
-		case "toprated":	$contentarray = getTopRatedVideoArray($count);
-							break;
-	}
-	$json=array();
+function getPopularVideoArray($count){
+	$sql="Select cn_id from content_video order by cn_views desc limit $count";
+	return resource2array(dbquery($sql));
+}
+
+/**
+* Helper Function. Returns data for each CID in input array as an array
+* @param array $contentarray An array of content ID's
+* @return array Data for all CID's in input as an array
+*/
+function getStoryBoxDataArray($contentarray){
 	$vcount=count($contentarray);
+	$data = array();
 	for($i=0;$i<$vcount;$i++)
 	{
 		$obj=new video($contentarray[$i]);
-		array_push($json,array( 'cid'=>$obj->getContentId(),
+		array_push($data,array( 'cid'=>$obj->getContentId(),
 							'title'=>$obj->getTitle(),
 							'viewcount'=>$obj->getViewCount(),
 							'poster'=>$obj->getPoster(),
@@ -134,8 +124,36 @@ function getStoryBoxJson($type,$count){
 							'fullname'=>user::getFullNameS($obj->getUserId()),
 							'userpic'=>user::getUserPictureS($obj->getUserId())));
 	}
+	return $data;
+}
+
+/**
+* Returs a combined JSON for all the story box sections
+* Utilizes various helper functions
+* @param integer $fcount The number of videos in featured section
+* @param integer $tcount The number of videos in toprated section
+* @param integer $pcount The number of videos in popular section
+* @return string JSON string containing all Storybox data
+*/
+function getCombinedStoryBoxJson($fcount, $tcount, $pcount){
+	$featuredarray	= getFeaturedVideoArray($fcount);
+	
+	//Remove any featured array content from toprated
+	$topratedarray	= getTopRatedVideoArray($tcount+$fcount);
+	$topratedarray	= array_values(array_diff($topratedarray, $featuredarray));
+	array_splice($topratedarray,$tcount);
+	
+	//Remove both of the above from popular
+	$populararray	= getPopularVideoArray($pcount+$tcount+$fcount);
+	$populararray	= array_values(array_diff($populararray,array_merge($featuredarray, $topratedarray)));
+	array_splice($populararray,$pcount);
+	
+	$json = array(	"featured"	=>	getStoryBoxDataArray($featuredarray),
+					"toprated"	=>	getStoryBoxDataArray($topratedarray),
+					"popular"	=>	getStoryBoxDataArray($populararray));
 	return json_encode($json);
 }
+
 /**
 * Returns liked/disliked videos of a user.
 * @param integer $uid User ID
