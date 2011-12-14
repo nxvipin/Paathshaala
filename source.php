@@ -1,6 +1,8 @@
 <?php
+	include 'functions/settings.php';
+	global $global_piwik_tracking;
 	session_start();
-
+	
 $header="
 	<meta charset='UTF-8' />
 	<link rel='shortcut icon' href='favicon.ico'>
@@ -15,7 +17,12 @@ $scripts="
 $feedback = "<img src='pics/feedback.png' alt='feedback button' title='feedback button' class='feedbackDock' />
 <div id='feedback'></div>";
 
-$piwik = "<script type=\"text/javascript\">var pkBaseURL =\"http://192.168.5.27/piwik/\"; document.write(unescape(\"%3Cscript src=\'\" + pkBaseURL + \"piwik.js\' type=\'text/javascript\'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">try {var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 1);piwikTracker.trackPageView();piwikTracker.enableLinkTracking();} catch( err ) {} </script>";
+if($global_piwik_tracking){
+	$piwik = "<script type=\"text/javascript\">var pkBaseURL =\"http://192.168.5.27/piwik/\"; document.write(unescape(\"%3Cscript src=\'\" + pkBaseURL + \"piwik.js\' type=\'text/javascript\'%3E%3C/script%3E\"));</script><script type=\"text/javascript\">try {var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 1);piwikTracker.trackPageView();piwikTracker.enableLinkTracking();} catch( err ) {} </script>";
+}
+else{
+	$piwik = "";
+}
 
 $nullImage="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sJCgcqHkarI5cAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAHElEQVQ4y2P8//8/AyWAiYFCMGrAqAGjBgwWAwBjmgMd7D3zQQAAAABJRU5ErkJggg==";
 
