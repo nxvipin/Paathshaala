@@ -12,9 +12,9 @@
 /**
 * Includes files to access content and users.
 */
-include_once 'functions/class.video.php';
-include_once 'functions/class.user.php';
-include_once 'functions/class.functions.php';
+include_once 'class.video.php';
+include_once 'class.user.php';
+include_once 'functions.php';
 
 /**
 * Returns JSON string containing all video details.
