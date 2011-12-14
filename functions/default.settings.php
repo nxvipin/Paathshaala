@@ -20,6 +20,7 @@ $global_user_default_pic	=	'';		// <Default pic for registered users>
 $global_raw_videos_folder	=	'';		// <Folder where non indexed, non series videos are stored>
 $global_raw_series_folder	=	'';		// <Folder where non indexed, series videos are stored>
 $global_servers["SERVER_ID"]=	'';		// <SERVER ID, SERVER IP>
+$global_piwik_tracking		=	'';		// <true of false, enables/disables piwik tracking>
 
 //CouchDB Settings
 $global_couch_host			=	'';		// <CouchDB Host>
