@@ -188,6 +188,26 @@
 					Paathshaala.validate.video();
 				});
 			},
+		grayOut : function (option){
+				if(option) {
+					$("<div>")
+						.attr('id', 'darkenScreenObject')
+						.css({
+								'position': 'absolute',
+								'top': '0px',
+								'left': '0px',
+								backgroundColor: '#030303',
+								'opacity': '0.25',
+								'width': '100%',
+								'height': $(document).height(),
+								zIndex: 99
+						})
+						.appendTo("body");
+
+				} else {
+					$('div#darkenScreenObject').remove();
+				}
+			},
 		hashTag : function(elem) {
 				var data = $(elem).html(),
 					reg = /#(\w{1,})/g,
@@ -201,10 +221,10 @@
 			},
 		hideEditProfile : function() {
 				$('#editProfile').fadeOut("fast");
-				grayOut(false);
+				this.grayOut(false);
 			},
 		hideFeedback : function () {
-				grayOut(false);
+				this.grayOut(false);
 				$('div#feedback').hide();
 			},
 		imageError : function() {
@@ -276,11 +296,11 @@
 					});
 			},
 		showEditProfile: function () {
-				grayOut(true);
+				this.grayOut(true);
 				$('div#editProfile').load('editprofile.html').fadeIn("slow");
 			},
 		showFeedback : function() {
-				grayOut(true);
+				this.grayOut(true);
 				$('div#feedback').show()
 				$('div#feedback').load('feedback.html', function(){
 					$('div#feedback ul.links li').click(function() {
@@ -649,10 +669,6 @@
 })( window, jQuery );
 
 /* ! Paathshaala */
-
-function grayOut(vis,options){var options=options||{},zindex=options.zindex||99,opacity=options.opacity||20,opaque=(opacity/80),bgcolor=options.bgcolor||'#030303',dark=document.getElementById('darkenScreenObject');if(!dark){var tbody=document.getElementsByTagName("body")[0],tnode=document.createElement('div');tnode.style.position='fixed';tnode.style.top='0px';tnode.style.left='0px';tnode.style.overflow='hidden';tnode.style.display='none';tnode.id='darkenScreenObject';tbody.appendChild(tnode);dark=document.getElementById('darkenScreenObject');}
-if(vis){if(document.body&&(document.body.scrollWidth||document.body.scrollHeight)){var pageWidth='100%';var pageHeight='2000px';}
-dark.style.opacity=opaque;dark.style.MozOpacity=opaque;dark.style.filter='alpha(opacity='+opacity+')';dark.style.zIndex=zindex;dark.style.backgroundColor=bgcolor;dark.style.width=pageWidth;dark.style.height=pageHeight;dark.style.display='block';}else{dark.style.display='none';}}
 
 $(document).ready(function(){
 	P.searchBox();
