@@ -28,4 +28,7 @@ $global_couch_dbname		=	'';		// <CouchDB Database Name>
 $global_couch_user			=	'';		// <CouchDB Username>
 $global_couch_password		=	'';		// <CouchDB Password>
 
+//Piwik Settings
+$global_piwik_status		=	false;		// <Piwik tracking status. true | false>
+
 ?>
