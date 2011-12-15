@@ -671,10 +671,17 @@
 /* ! Paathshaala */
 
 $(document).ready(function(){
-	P.searchBox();
-	P.dashBoard();
-	P.imageError();
-	P.comments();
-	P.quirks();
-	P.validate.join();
+	if($.browser.msie) {
+		$("div#indexMesssage").remove();
+		$("<div>").attr('id','indexMesssage')
+			.html("Have a life, <a href='http://abetterbrowser.org/'><em>use a modern browser</em></a>. We dont support Internet Explorer.")
+			.appendTo("#container");
+	} else {
+		P.searchBox();
+		P.dashBoard();
+		P.imageError();
+		P.comments();
+		P.quirks();
+		P.validate.join();
+	}
 });
