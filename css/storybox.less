@@ -16,11 +16,14 @@ div.groupBox {
 }
 
 .more, .less {
-display:block;
-font-size:14px;
-position: absolute;
-right: 200px;
-cursor: url('../pics/pointer.png') , auto;
+	display:block;
+	font-size:14px;
+	position: absolute;
+	right: 200px;
+	cursor: pointer;
+	&:hover {
+		text-decoration:underline;
+	}
 }
 
 .less {
