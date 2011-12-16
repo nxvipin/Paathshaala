@@ -117,9 +117,9 @@ class activity
 		$upass=sha1($upass.$global_salt);
 		$sql="Select us_id, us_name, us_fullname, us_status, us_pic from users where us_name='$uname' and us_pass='$upass'";
 		$res=dbquery($sql);
-		if($res)
+		$user=resource2array($res);
+		if($user)
 		{
-			$user=resource2array($res);
 			session_start();
 			$_SESSION['uid']=$user[0];
 			$_SESSION['username']=$user[1];
