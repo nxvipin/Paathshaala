@@ -382,7 +382,7 @@
 							// throw exception if json is invalid
 							if ($.isEmptyObject(json) )
 								throw "Empty JSON";
-							title = $("<span>").addClass('groupTitle').html(title)
+							title = $("<span>").addClass('groupTitle').html(title);
 							var i,
 								groupBox  = $("<div>").addClass('groupBox'),
 								groupBox2 = $("<div>").addClass('Hidden').addClass('groupBox');
