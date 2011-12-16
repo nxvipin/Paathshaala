@@ -23,11 +23,9 @@
 	echo $piwik; 
 ?>
 <script type="text/javascript">
-$(document).ready(function() {
-	P.updateStoryBox('Featured')
-	P.updateStoryBox('Popular')
-	P.updateStoryBox('Top Rated')
-});
+	$(document).ready(function() {
+		P.updateStoryBox('homePage');
+	});
 </script>
 
 </body>

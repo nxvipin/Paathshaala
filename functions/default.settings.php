@@ -29,4 +29,5 @@ $global_couch_dbname		=	'';		// <CouchDB Database Name>
 $global_couch_user			=	'';		// <CouchDB Username>
 $global_couch_password		=	'';		// <CouchDB Password>
 
+
 ?>

@@ -188,6 +188,26 @@
 					Paathshaala.validate.video();
 				});
 			},
+		grayOut : function (option){
+				if(option) {
+					$("<div>")
+						.attr('id', 'darkenScreenObject')
+						.css({
+								'position': 'absolute',
+								'top': '0px',
+								'left': '0px',
+								backgroundColor: '#030303',
+								'opacity': '0.25',
+								'width': '100%',
+								'height': $(document).height(),
+								zIndex: 99
+						})
+						.appendTo("body");
+
+				} else {
+					$('div#darkenScreenObject').remove();
+				}
+			},
 		hashTag : function(elem) {
 				var data = $(elem).html(),
 					reg = /#(\w{1,})/g,
@@ -201,10 +221,10 @@
 			},
 		hideEditProfile : function() {
 				$('#editProfile').fadeOut("fast");
-				grayOut(false);
+				this.grayOut(false);
 			},
 		hideFeedback : function () {
-				grayOut(false);
+				this.grayOut(false);
 				$('div#feedback').hide();
 			},
 		imageError : function() {
@@ -276,11 +296,11 @@
 					});
 			},
 		showEditProfile: function () {
-				grayOut(true);
+				this.grayOut(true);
 				$('div#editProfile').load('editprofile.html').fadeIn("slow");
 			},
 		showFeedback : function() {
-				grayOut(true);
+				this.grayOut(true);
 				$('div#feedback').show()
 				$('div#feedback').load('feedback.html', function(){
 					$('div#feedback ul.links li').click(function() {
@@ -327,81 +347,91 @@
 			},
 		updateStoryBox : function (type) {
 				/*
-					type : Featured/ Top Rated / Popular
+					type : homePage / 'Liked videos' ...
 					All box layout updated with same code
 					New ui needed for upload video trigger
 				*/
-				var videoBox = function (myobj) {
-								if( myobj.fullname.length > 18 )
-									myobj.fullname = myobj.fullname.slice(0 ,15 ) + '...';
-								return Paathshaala.templates.box.supplant(myobj);
-							},
-					link,
-					title = $("<span>").addClass('groupTitle'),
-					more = $("<span>").addClass('more').html("Show more"),
-					less = $("<span>").addClass('less').html("Show less");
-				title = title.html(type);
+				var more = $("<span>").addClass('more').html("Show more"),
+					less = $("<span>").addClass('less').html("Show less"),
+					complete = function(){
+						$('img.metaImage').error(function(){
+							$(this).attr('src','pics/default.png');
+						});
+						$('img.thumbnail').error(function(){
+							$(this).attr('src','pics/error.png');
+						});
+
+						$('span.more').click(function(){
+							$(this).hide();
+							$(this).parent().find('.Hidden').slideDown('fast');
+							$(this).parent().find('.less').fadeIn();
+						});
+						$('span.less').click(function(){
+							$(this).parent().find('.Hidden').slideUp('fast');
+							$(this).parent().find('.more').fadeIn();
+							$(this).hide();
+						});
+					},
+					videoBox = function (myobj) {
+						if( myobj.fullname.length > 18 )
+							myobj.fullname = myobj.fullname.slice(0 ,15 ) + '...';
+						return Paathshaala.templates.box.supplant(myobj);
+					},
+					groupBox = function(title, json) {
+						try {
+							// throw exception if json is invalid
+							if ($.isEmptyObject(json) )
+								throw "Empty JSON";
+							title = $("<span>").addClass('groupTitle').html(title);
+							var i,
+								groupBox  = $("<div>").addClass('groupBox'),
+								groupBox2 = $("<div>").addClass('Hidden').addClass('groupBox');
+							if (json.length === 4 ) {
+								for (i =0; i <4 ; i +=1)
+									groupBox = groupBox.append(videoBox(json[i]));
+								$('div#container').append(title).append(groupBox);
+							} else { /* All multi boxes handled in same way if more than 4 */
+								for (i =0; i <4 ; i +=1)
+									groupBox = groupBox.append(videoBox(json[i]));
+								for (i =4; i < json.length ; i +=1)
+									groupBox2 = groupBox2.append(videoBox(json[i]));
+								$('div#container').append($("<div>").append(title , groupBox , more , groupBox2 , less));
+							}
+						} catch(e) {
+							// handle invalid json case
+							if (e === "Empty JSON")
+								console.log("Empty JSON recived from server");
+						} finally {
+							// i wonder what to do here.
+						}
+					};
+
 				switch (type) {
-					case 'Featured' :
-						link = 'json/featured.json.php';
-						break;
-					case 'Top Rated' :
-						link = 'json/toprated.json.php';
-						break;
-					case 'Popular':
-						link = 'json/popular.json.php';
+					case 'homePage':
+						$.getJSON( 'json/homeStorybox.json.php' , function(json){
+							groupBox('Featured', json.featured);
+							groupBox('Popular', json.popular);
+							groupBox('Top Rated', json.toprated);
+						}).complete(function(){ complete(); });
 						break;
 					case 'Liked videos':
-						link = 'json/uservideolikes.json.php';
+						$.getJSON( 'json/uservideolikes.json.php' , function(json){
+							groupBox('Liked videos', json);
+						}).complete(function(){ complete(); });
 						break;
 					case 'Disliked videos':
-						link = 'json/uservideodislikes.json.php';
+						$.getJSON( 'json/uservideodislikes.json.php' ,function(json){
+							groupBox('Disliked videos', json);
+						}).complete(function(){ complete(); });
 						break;
 					case 'My Uploads':
-						link = 'json/uservideouploads.json.php';
+						$.getJSON( 'json/uservideouploads.json.php' , function(json){
+						groupBox('My Uploads', json);
+						}).complete(function(){ complete(); });
 						break;
 				}
 
-				$.getJSON( link , function(json) {
-					if (json.length !== 0 ) {
-						var i,
-							groupBox  = $("<div>").addClass('groupBox'),
-							groupBox2 = $("<div>").addClass('Hidden').addClass('groupBox');
-						if (json.length === 4 ) {
-							for (i =0; i <4 ; i +=1)
-								groupBox = groupBox.append(videoBox(json[i]));
-							$('div#container').append(title).append(groupBox);
-						} else { /* All multi boxes handled in same way if more than 4 */
-							for (i =0; i <4 ; i +=1)
-								groupBox = groupBox.append(videoBox(json[i]));
-							for (i =4; i < json.length ; i +=1)
-								groupBox2 = groupBox2.append(videoBox(json[i]));
-							$('div#container').append($("<div>").append(title , groupBox , more , groupBox2 , less));
-						}
-					} else {
-						$('div#container').append(title).append(groupBox);
-					}
-				}).complete(function(){
 
-					$('img.metaImage').error(function(){
-						$(this).attr('src','pics/default.png');
-					});
-					$('img.thumbnail').error(function(){
-						$(this).attr('src','pics/error.png');
-					});
-
-					$('span.more').click(function(){
-						$(this).hide();
-						$(this).parent().find('.Hidden').slideDown('fast');
-						$(this).parent().find('.less').fadeIn();
-					});
-					$('span.less').click(function(){
-						$(this).parent().find('.Hidden').slideUp('fast');
-						$(this).parent().find('.more').fadeIn();
-						$(this).hide();
-					});
-
-				});
 			}
 	};
 
@@ -650,15 +680,18 @@
 
 /* ! Paathshaala */
 
-function grayOut(vis,options){var options=options||{},zindex=options.zindex||99,opacity=options.opacity||20,opaque=(opacity/80),bgcolor=options.bgcolor||'#030303',dark=document.getElementById('darkenScreenObject');if(!dark){var tbody=document.getElementsByTagName("body")[0],tnode=document.createElement('div');tnode.style.position='fixed';tnode.style.top='0px';tnode.style.left='0px';tnode.style.overflow='hidden';tnode.style.display='none';tnode.id='darkenScreenObject';tbody.appendChild(tnode);dark=document.getElementById('darkenScreenObject');}
-if(vis){if(document.body&&(document.body.scrollWidth||document.body.scrollHeight)){var pageWidth='100%';var pageHeight='2000px';}
-dark.style.opacity=opaque;dark.style.MozOpacity=opaque;dark.style.filter='alpha(opacity='+opacity+')';dark.style.zIndex=zindex;dark.style.backgroundColor=bgcolor;dark.style.width=pageWidth;dark.style.height=pageHeight;dark.style.display='block';}else{dark.style.display='none';}}
-
 $(document).ready(function(){
-	P.searchBox();
-	P.dashBoard();
-	P.imageError();
-	P.comments();
-	P.quirks();
-	P.validate.join();
+	if($.browser.msie) {
+		$("div#indexMesssage").remove();
+		$("<div>").attr('id','indexMesssage')
+			.html("Have a life, <a href='http://abetterbrowser.org/'><em>use a modern browser</em></a>. We dont support Internet Explorer.")
+			.appendTo("#container");
+	} else {
+		P.searchBox();
+		P.dashBoard();
+		P.imageError();
+		P.comments();
+		P.quirks();
+		P.validate.join();
+	}
 });
