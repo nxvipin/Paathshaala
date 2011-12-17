@@ -22,7 +22,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		P.indexMesssage('We pay our tribute to our <a hrefour tribute to our <a href="video.php?video=261"><em>inspiration</em></a>. RIP Steve Jobs (February 24, 1955 – October 5, 2011).')
-		P.updateStoryBox('homePage');
+		 .updateStoryBox('homePage');
 	});
 </script>
 

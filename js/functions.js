@@ -710,11 +710,11 @@ $(document).ready(function(){
 		P.indexMesssage("Have a life, <a href='http://abetterbrowser.org/'><em>use a modern browser</em></a>. We dont support Internet Explorer.");
 		throw "Internet Explorer";
 	} else {
-		P.searchBox();
-		P.dashBoard();
-		P.imageError();
-		P.comments();
-		P.quirks();
-		P.validate.join();
+		P.searchBox()
+		 .dashBoard()
+		 .imageError()
+		 .comments()
+		 .quirks()
+		 .validate.join();
 	}
 });
