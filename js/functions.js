@@ -54,6 +54,7 @@
 					$(this).attr('rows' , lineno + 2)
 					commbox.height(ht + (14 * lineno) );
 				});
+				return this;
 			},
 		dashBoard : function() {
 				var dashShown = 0,loginShown = 0,joinShown = 0;
@@ -97,6 +98,7 @@
 						$("#logChangeButton").attr('src', 'pics/down.png');
 					}
 				});
+				return this;
 			},
 		getUrlVars : function() {
 				/*
@@ -187,6 +189,7 @@
 					}
 					Paathshaala.validate.video();
 				});
+				return this;
 			},
 		grayOut : function (option){
 				if(option) {
@@ -207,6 +210,7 @@
 				} else {
 					$('div#darkenScreenObject').remove();
 				}
+				return this;
 			},
 		hashTag : function(elem) {
 				var data = $(elem).html(),
@@ -218,14 +222,17 @@
 					data = data.replace( res[i],'<a href=search.php?tag=' + res[i] + '>' + res[i] + '</a>' );
 				}
 				$(elem).html(data);
+				return this;
 			},
 		hideEditProfile : function() {
 				$('#editProfile').fadeOut("fast");
 				this.grayOut(false);
+				return this;
 			},
 		hideFeedback : function () {
 				this.grayOut(false);
 				$('div#feedback').hide();
+				return this;
 			},
 		imageError : function() {
 				$('img#loggedImage').error(function(){
@@ -234,6 +241,7 @@
 				$('div#snapShot img').error(function(){
 					$(this).attr('src','pics/profile.png');
 				});
+				return this;
 			},
 		indexMesssage : function(text) {
 				if( $('#indexMesssage').length === 0 ) {
@@ -262,6 +270,7 @@
 				$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
 					Paathshaala.showFeedback();
 				});
+				return this;
 			},
 		Search : function (q,tag) {
 				/*
@@ -297,6 +306,7 @@
 				}).complete(function(){
 					$("time.timeago").timeago();
 				});
+				return this;
 			},
 		searchBox : function() {
 				$(".searchBox").focus(function () {
@@ -304,10 +314,12 @@
 					}).focusout(function () {
 						$(this).animate({width: '270px'} , 150 , '' , function () {});
 					});
+				return this;
 			},
 		showEditProfile: function () {
 				this.grayOut(true);
 				$('div#editProfile').load('editprofile.html').fadeIn("slow");
+				return this;
 			},
 		showFeedback : function() {
 				this.grayOut(true);
@@ -354,6 +366,7 @@
 						P.hideFeedback();
 					});
 				});
+				return this;
 			},
 		updateStoryBox : function (type) {
 				/*
@@ -440,8 +453,7 @@
 						}).complete(function(){ complete(); });
 						break;
 				}
-
-
+				return this;
 			}
 	};
 
@@ -594,6 +606,7 @@
 				}
 			});
 		});
+		return this;
 	};
 
 	Paathshaala.validate.video = function() {
@@ -681,6 +694,7 @@
 				}
 			}, "json");
 		});
+		return this;
 	};
 
 	// Expose Paathshaala to the global object
