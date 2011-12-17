@@ -235,6 +235,19 @@
 					$(this).attr('src','pics/profile.png');
 				});
 			},
+		indexMesssage : function(text) {
+				if( $('#indexMesssage').length === 0 ) {
+					$("<div>").attr('id','indexMesssage')
+						.html(text)
+						.append($('<img>').addClass('news').attr('id','cross').attr('src','data:image/gif;base64,R0lGODlhFAAUAMQAAPb29ubm5ejo6Onp6evr6/X19WZmZu3t7fT09G9vb/Dw8PLy8tvb28DAwMPDw7y8vL29va6urqqqqtnZ2eTk5NjY2NLS0gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAUABQAAAV8YCCOZGkCaKquqci+qwvP8vzWdhysFqVSFt3KkGCgGAmDUNUgMpCGxpJJTEp1hay2EDEYIlutCEEuT5LESbksWrjdlSQEQqy83SKFXp986B9Ee3oiB4WFEg6GBw4SigciBJGSk5SSIgOYmZqbmSICn6ChoqCeo6ahJqmqIQA7').attr('title','Close the message')).insertAfter("#top");
+				} else {
+					$('#indexMesssage').find('span').html(text)
+				}
+				$('img.news').click(function(){
+					$('div#indexMesssage').fadeOut("fast");
+				});
+				return this;
+			},
 		quirks : function(){
 				/* Stuff which i cant put anywhere else. Cant pollute the global object, hence this is here */
 				$('#loading')
@@ -248,9 +261,6 @@
 
 				$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
 					Paathshaala.showFeedback();
-				});
-				$('span.news').click(function(){
-					$('div#indexMesssage').fadeOut("fast");
 				});
 			},
 		Search : function (q,tag) {
@@ -683,9 +693,8 @@
 $(document).ready(function(){
 	if($.browser.msie) {
 		$("div#indexMesssage").remove();
-		$("<div>").attr('id','indexMesssage')
-			.html("Have a life, <a href='http://abetterbrowser.org/'><em>use a modern browser</em></a>. We dont support Internet Explorer.")
-			.appendTo("#container");
+		P.indexMesssage("Have a life, <a href='http://abetterbrowser.org/'><em>use a modern browser</em></a>. We dont support Internet Explorer.");
+		throw "Internet Explorer";
 	} else {
 		P.searchBox();
 		P.dashBoard();
