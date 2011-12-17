@@ -46,9 +46,9 @@
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
-	P.updateStoryBox('My Uploads');
-	P.updateStoryBox('Liked videos');
-	P.updateStoryBox('Disliked videos');
+	P.updateStoryBox('My Uploads')
+	 .updateStoryBox('Liked videos')
+	 .updateStoryBox('Disliked videos');
 });
 </script>
 </body>

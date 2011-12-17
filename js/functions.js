@@ -54,6 +54,7 @@
 					$(this).attr('rows' , lineno + 2)
 					commbox.height(ht + (14 * lineno) );
 				});
+				return this;
 			},
 		dashBoard : function() {
 				var dashShown = 0,loginShown = 0,joinShown = 0;
@@ -97,6 +98,7 @@
 						$("#logChangeButton").attr('src', 'pics/down.png');
 					}
 				});
+				return this;
 			},
 		getUrlVars : function() {
 				/*
@@ -187,6 +189,7 @@
 					}
 					Paathshaala.validate.video();
 				});
+				return this;
 			},
 		grayOut : function (option){
 				if(option) {
@@ -207,6 +210,7 @@
 				} else {
 					$('div#darkenScreenObject').remove();
 				}
+				return this;
 			},
 		hashTag : function(elem) {
 				var data = $(elem).html(),
@@ -218,14 +222,17 @@
 					data = data.replace( res[i],'<a href=search.php?tag=' + res[i] + '>' + res[i] + '</a>' );
 				}
 				$(elem).html(data);
+				return this;
 			},
 		hideEditProfile : function() {
 				$('#editProfile').fadeOut("fast");
 				this.grayOut(false);
+				return this;
 			},
 		hideFeedback : function () {
 				this.grayOut(false);
 				$('div#feedback').hide();
+				return this;
 			},
 		imageError : function() {
 				$('img#loggedImage').error(function(){
@@ -234,6 +241,20 @@
 				$('div#snapShot img').error(function(){
 					$(this).attr('src','pics/profile.png');
 				});
+				return this;
+			},
+		indexMesssage : function(text) {
+				if( $('#indexMesssage').length === 0 ) {
+					$("<div>").attr('id','indexMesssage')
+						.html(text)
+						.append($('<img>').addClass('news').attr('id','cross').attr('src','data:image/gif;base64,R0lGODlhFAAUAMQAAPb29ubm5ejo6Onp6evr6/X19WZmZu3t7fT09G9vb/Dw8PLy8tvb28DAwMPDw7y8vL29va6urqqqqtnZ2eTk5NjY2NLS0gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAUABQAAAV8YCCOZGkCaKquqci+qwvP8vzWdhysFqVSFt3KkGCgGAmDUNUgMpCGxpJJTEp1hay2EDEYIlutCEEuT5LESbksWrjdlSQEQqy83SKFXp986B9Ee3oiB4WFEg6GBw4SigciBJGSk5SSIgOYmZqbmSICn6ChoqCeo6ahJqmqIQA7').attr('title','Close the message')).insertAfter("#top");
+				} else {
+					$('#indexMesssage').find('span').html(text)
+				}
+				$('img.news').click(function(){
+					$('div#indexMesssage').fadeOut("fast");
+				});
+				return this;
 			},
 		quirks : function(){
 				/* Stuff which i cant put anywhere else. Cant pollute the global object, hence this is here */
@@ -249,9 +270,7 @@
 				$('img#bugButton.VideoBarButton, img.feedbackDock').click(function(){
 					Paathshaala.showFeedback();
 				});
-				$('span.news').click(function(){
-					$('div#indexMesssage').fadeOut("fast");
-				});
+				return this;
 			},
 		Search : function (q,tag) {
 				/*
@@ -287,6 +306,7 @@
 				}).complete(function(){
 					$("time.timeago").timeago();
 				});
+				return this;
 			},
 		searchBox : function() {
 				$(".searchBox").focus(function () {
@@ -294,10 +314,12 @@
 					}).focusout(function () {
 						$(this).animate({width: '270px'} , 150 , '' , function () {});
 					});
+				return this;
 			},
 		showEditProfile: function () {
 				this.grayOut(true);
 				$('div#editProfile').load('editprofile.html').fadeIn("slow");
+				return this;
 			},
 		showFeedback : function() {
 				this.grayOut(true);
@@ -344,6 +366,7 @@
 						P.hideFeedback();
 					});
 				});
+				return this;
 			},
 		updateStoryBox : function (type) {
 				/*
@@ -430,8 +453,7 @@
 						}).complete(function(){ complete(); });
 						break;
 				}
-
-
+				return this;
 			}
 	};
 
@@ -584,6 +606,7 @@
 				}
 			});
 		});
+		return this;
 	};
 
 	Paathshaala.validate.video = function() {
@@ -671,6 +694,7 @@
 				}
 			}, "json");
 		});
+		return this;
 	};
 
 	// Expose Paathshaala to the global object
@@ -683,15 +707,14 @@
 $(document).ready(function(){
 	if($.browser.msie) {
 		$("div#indexMesssage").remove();
-		$("<div>").attr('id','indexMesssage')
-			.html("Have a life, <a href='http://abetterbrowser.org/'><em>use a modern browser</em></a>. We dont support Internet Explorer.")
-			.appendTo("#container");
+		P.indexMesssage("Have a life, <a href='http://abetterbrowser.org/'><em>use a modern browser</em></a>. We dont support Internet Explorer.");
+		throw "Internet Explorer";
 	} else {
-		P.searchBox();
-		P.dashBoard();
-		P.imageError();
-		P.comments();
-		P.quirks();
-		P.validate.join();
+		P.searchBox()
+		 .dashBoard()
+		 .imageError()
+		 .comments()
+		 .quirks()
+		 .validate.join();
 	}
 });

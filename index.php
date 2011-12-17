@@ -12,9 +12,6 @@
 <div id='container'>
 	<?php	echo $topBar;
 			echo $feedback; ?>
-	<div id="indexMesssage">
-	We pay our tribute to our <a href="video.php?video=261"><em>inspiration</em></a>. RIP Steve Jobs (February 24, 1955 – October 5, 2011).<span id="cross" class="news">X</span>
-	</div>
 </div><!-- /container -->
 
 <?php
@@ -24,7 +21,8 @@
 ?>
 <script type="text/javascript">
 	$(document).ready(function() {
-		P.updateStoryBox('homePage');
+		P.indexMesssage('We pay our tribute to our <a hrefour tribute to our <a href="video.php?video=261"><em>inspiration</em></a>. RIP Steve Jobs (February 24, 1955 – October 5, 2011).')
+		 .updateStoryBox('homePage');
 	});
 </script>
 
